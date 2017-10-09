@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12120" systemVersion="16B2657" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SYJianJieViewController">
+            <connections>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Syt-dQ-sga">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                    <subviews>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="login_logo" translatesAutoresizingMaskIntoConstraints="NO" id="ZIr-qU-Udc">
+                            <rect key="frame" x="149.5" y="30" width="75" height="75"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="75" id="NKW-Wx-54n"/>
+                                <constraint firstAttribute="width" constant="75" id="ps9-f1-uzB"/>
+                            </constraints>
+                        </imageView>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="龙果云拍" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zN8-jS-GVp">
+                            <rect key="frame" x="0.0" y="110" width="375" height="21"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="21" id="dse-C6-Lgm"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" editable="NO" usesAttributedText="YES" translatesAutoresizingMaskIntoConstraints="NO" id="zYC-qL-Nfq">
+                            <rect key="frame" x="10" y="156" width="355" height="511"/>
+                            <color key="backgroundColor" red="0.97647058823529409" green="0.97647058823529409" blue="0.97647058823529409" alpha="1" colorSpace="calibratedRGB"/>
+                            <attributedString key="attributedText">
+                                <fragment>
+                                    <string key="content">        龙果云拍APP，是国内首家精准、定向、永久服务大众的云摄影平台。注册后即送您5元红包和50G免费存储照片空间，再不担心照片丢失。实名认证老师和摄影师后，您可以为家长和顾客定向传送照片，家长和顾客实时接收可免费在手机上欣赏，但未来任何时间通过平台下载您的照片，或者使用您的照片冲印、定制相册等，您都会收到大量的红包奖励。您的照片或作品在龙果云拍app上体验快捷发布的同时，又体现出了您付出的价值！</string>
+                                    <attributes>
+                                        <color key="NSColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                        <font key="NSFont" size="15" name="PingFangSC-Regular"/>
+                                        <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineSpacing="8" tighteningFactorForTruncation="0.0"/>
+                                    </attributes>
+                                </fragment>
+                            </attributedString>
+                            <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                        </textView>
+                    </subviews>
+                    <color key="backgroundColor" red="0.97647058823529409" green="0.97647058823529409" blue="0.97647058823529409" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstItem="zN8-jS-GVp" firstAttribute="leading" secondItem="Syt-dQ-sga" secondAttribute="leading" id="1nX-rI-3S2"/>
+                        <constraint firstAttribute="trailing" secondItem="zYC-qL-Nfq" secondAttribute="trailing" constant="10" id="6VD-kJ-22C"/>
+                        <constraint firstItem="zYC-qL-Nfq" firstAttribute="top" secondItem="zN8-jS-GVp" secondAttribute="bottom" constant="25" id="7ch-l0-EcO"/>
+                        <constraint firstItem="ZIr-qU-Udc" firstAttribute="centerX" secondItem="Syt-dQ-sga" secondAttribute="centerX" id="900-iu-oOO"/>
+                        <constraint firstItem="ZIr-qU-Udc" firstAttribute="top" secondItem="Syt-dQ-sga" secondAttribute="top" constant="30" id="CjQ-si-wTE"/>
+                        <constraint firstItem="zYC-qL-Nfq" firstAttribute="leading" secondItem="Syt-dQ-sga" secondAttribute="leading" constant="10" id="Mfq-cD-ql7"/>
+                        <constraint firstAttribute="trailing" secondItem="zN8-jS-GVp" secondAttribute="trailing" id="dwZ-4I-9qh"/>
+                        <constraint firstItem="zN8-jS-GVp" firstAttribute="top" secondItem="ZIr-qU-Udc" secondAttribute="bottom" constant="5" id="ltO-un-I70"/>
+                        <constraint firstAttribute="bottom" secondItem="zYC-qL-Nfq" secondAttribute="bottom" id="lxW-Mu-0ED"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="Syt-dQ-sga" secondAttribute="trailing" id="Vcd-UF-U4H"/>
+                <constraint firstItem="Syt-dQ-sga" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="h9W-LB-4H8"/>
+                <constraint firstItem="Syt-dQ-sga" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="hWr-Qv-fqc"/>
+                <constraint firstAttribute="bottom" secondItem="Syt-dQ-sga" secondAttribute="bottom" id="htR-SK-bOW"/>
+            </constraints>
+        </view>
+    </objects>
+    <resources>
+        <image name="login_logo" width="106" height="106"/>
+    </resources>
+</document>

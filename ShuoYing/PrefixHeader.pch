@@ -1,0 +1,76 @@
+//
+//  PrefixHeader.pch
+//  ShuoYing
+//
+//  Created by 硕影 on 2016/12/26.
+//  Copyright © 2016年 硕影. All rights reserved.
+//
+
+#ifndef PrefixHeader_pch
+#define PrefixHeader_pch
+
+#ifdef __OBJC__
+#import <UIKit/UIKit.h>
+#import <Foundation/Foundation.h>
+#import "Tool.h"
+#import "UIImage+QTBackgroundColor.h"
+#import "UIViewController+HUD.h"
+#import "IQKeyboardManager.h"
+#import "SYHttpRequest.h"
+#import "XHNetworkCache.h"
+#import "MJRefresh.h"
+#import "UIImageView+WebCache.h"
+#import "UINavigationBar+BackgroundColor.h"
+#import "XBUpdatePhotoManager.h"
+#import "UIView+XLExtension.h"
+#import "XLPhotoBrowser.h"
+#import "MBProgressHUD.h"
+#import "SVProgressHUD.h"
+#import "WXApiObject.h"
+#import "DataMD5.h"
+#import "WXApi.h"
+#import <Photos/Photos.h>
+
+#import "ZLPhotoActionSheet.h"
+#import "ZLDefine.h"
+#import "ZLCollectionCell.h"
+
+#import "UIViewController+Cloudox.h"
+#import "UINavigationController+Cloudox.h"
+
+#import <UMSocialCore/UMSocialCore.h>
+#import "NoDataView.h"
+#import "LQPopUpView.h"
+#import "UIImage+GIF.h"
+
+#ifdef DEBUG
+#define NSLog(FORMAT, ...) fprintf(stderr,"%s\n",[[NSString stringWithFormat:FORMAT, ##__VA_ARGS__] UTF8String]);
+#else
+#define NSLog(...)
+#endif
+
+#define UserToken [[NSUserDefaults standardUserDefaults] objectForKey:@"token"]
+#define Mobile [[NSUserDefaults standardUserDefaults] objectForKey:@"mobile"]
+
+#define LoginStatus [[NSUserDefaults standardUserDefaults] boolForKey:@"LoginStatus"]
+
+#define NoPicture [UIImage imageNamed:@"shangchuan_wode_wutupian"]
+
+#define BaseUrl @"http://m.yunxiangguan.cn"
+#define ImgUrl @"http://www.yunxiangguan.cn/uploads/"
+
+
+#define RGB(A, B, C) [UIColor colorWithRed:A/255.0 green:B/255.0 blue:C/255.0 alpha:1.0]
+#define HexRGB(rgbValue) [UIColor colorWithRed:((float)((rgbValue & 0xFF0000) >> 16))/255.0 green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/255.0 alpha:1.0]
+
+#define BackGroundColor [UIColor colorWithRed:249/255.0 green:249/255.0 blue:249/255.0 alpha:1.0]
+#define NavigationColor [UIColor colorWithRed:71/255.0 green:205/255.0 blue:187/255.0 alpha:1.0]
+
+#define kScreenWidth [UIScreen mainScreen].bounds.size.width
+#define kScreenHeight [UIScreen mainScreen].bounds.size.height
+#define kTableViewHeight [UIScreen mainScreen].bounds.size.height-64
+#define LAST_RUN_VERSION_KEY @"last_run_version_of_application"
+#define isFirstActionApp [[NSUserDefaults standardUserDefaults] boolForKey:@"isFirstActionApp"]
+
+#endif
+#endif 

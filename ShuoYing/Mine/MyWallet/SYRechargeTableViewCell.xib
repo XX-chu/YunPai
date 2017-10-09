@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="16B2657" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="KGk-i7-Jjw" customClass="SYRechargeTableViewCell">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ACC-lK-NM5">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="RVg-Kg-pU3">
+                                <rect key="frame" x="15" y="6" width="30" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="30" id="LWC-49-tEB"/>
+                                    <constraint firstAttribute="height" constant="30" id="dyP-gc-3i3"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dtV-8d-4mV">
+                                <rect key="frame" x="60" y="11.5" width="37.5" height="20"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="20" id="aAl-Qs-Cch"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="qV4-a2-ukY">
+                                <rect key="frame" x="285" y="11" width="20" height="20"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="20" id="8c5-s6-VaY"/>
+                                    <constraint firstAttribute="height" constant="20" id="CBV-vB-dOF"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="RVg-Kg-pU3" firstAttribute="centerY" secondItem="ACC-lK-NM5" secondAttribute="centerY" id="1CG-ul-kIl"/>
+                            <constraint firstItem="qV4-a2-ukY" firstAttribute="centerY" secondItem="ACC-lK-NM5" secondAttribute="centerY" id="5Rz-vO-42l"/>
+                            <constraint firstItem="dtV-8d-4mV" firstAttribute="leading" secondItem="RVg-Kg-pU3" secondAttribute="trailing" constant="15" id="B4c-Sj-m93"/>
+                            <constraint firstAttribute="trailing" secondItem="qV4-a2-ukY" secondAttribute="trailing" constant="15" id="KVN-dV-wNu"/>
+                            <constraint firstItem="dtV-8d-4mV" firstAttribute="centerY" secondItem="RVg-Kg-pU3" secondAttribute="centerY" id="Qi7-Li-xFK"/>
+                            <constraint firstItem="RVg-Kg-pU3" firstAttribute="leading" secondItem="ACC-lK-NM5" secondAttribute="leading" constant="15" id="XFu-B4-8fU"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <constraints>
+                    <constraint firstAttribute="bottom" secondItem="ACC-lK-NM5" secondAttribute="bottom" id="AsN-NA-UeX"/>
+                    <constraint firstItem="ACC-lK-NM5" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="K4Y-5Q-ej2"/>
+                    <constraint firstAttribute="trailing" secondItem="ACC-lK-NM5" secondAttribute="trailing" id="aQJ-EM-Lic"/>
+                    <constraint firstItem="ACC-lK-NM5" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="x9g-2U-WcT"/>
+                </constraints>
+            </tableViewCellContentView>
+            <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+            <connections>
+                <outlet property="RechargeImageView" destination="RVg-Kg-pU3" id="T53-k6-sVj"/>
+                <outlet property="RechargeIsSelectedIMG" destination="qV4-a2-ukY" id="kO4-JS-hq9"/>
+                <outlet property="RechargeLabel" destination="dtV-8d-4mV" id="56t-zx-z1k"/>
+            </connections>
+        </tableViewCell>
+    </objects>
+</document>

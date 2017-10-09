@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="16B2657" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionReusableView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="U6b-Vx-4bR" customClass="SYMyAlbumInfosHeaderCollectionReusableView">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="50"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AJV-qQ-Ldg">
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="50"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2016/11/22" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eom-NR-BFZ">
+                            <rect key="frame" x="126.5" y="15.5" width="67" height="20"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="20" id="kyy-wj-IaP"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="U1L-uN-AHv">
+                            <rect key="frame" x="96.5" y="25" width="25" height="1"/>
+                            <color key="backgroundColor" red="0.88235294117647056" green="0.88627450980392153" blue="0.88627450980392153" alpha="1" colorSpace="calibratedRGB"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="1" id="MLy-E2-hyY"/>
+                                <constraint firstAttribute="width" constant="25" id="NEa-a6-cPm"/>
+                            </constraints>
+                        </view>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="24S-30-8Aj">
+                            <rect key="frame" x="198.5" y="24.5" width="25" height="1"/>
+                            <color key="backgroundColor" red="0.88235294117647056" green="0.88627450980392153" blue="0.88627450980392153" alpha="1" colorSpace="calibratedRGB"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="1" id="SFk-SO-91K"/>
+                                <constraint firstAttribute="width" constant="25" id="uut-uC-ZoS"/>
+                            </constraints>
+                        </view>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstItem="24S-30-8Aj" firstAttribute="leading" secondItem="eom-NR-BFZ" secondAttribute="trailing" constant="5" id="3bL-qg-a29"/>
+                        <constraint firstItem="24S-30-8Aj" firstAttribute="centerY" secondItem="AJV-qQ-Ldg" secondAttribute="centerY" id="6wM-dM-n5d"/>
+                        <constraint firstItem="eom-NR-BFZ" firstAttribute="centerX" secondItem="AJV-qQ-Ldg" secondAttribute="centerX" id="FEl-cP-qeP"/>
+                        <constraint firstItem="eom-NR-BFZ" firstAttribute="leading" secondItem="U1L-uN-AHv" secondAttribute="trailing" constant="5" id="HTd-5i-WYc"/>
+                        <constraint firstItem="eom-NR-BFZ" firstAttribute="centerY" secondItem="AJV-qQ-Ldg" secondAttribute="centerY" id="Yy6-6F-Yff"/>
+                        <constraint firstItem="U1L-uN-AHv" firstAttribute="centerY" secondItem="AJV-qQ-Ldg" secondAttribute="centerY" id="nhI-UA-MPx"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <constraints>
+                <constraint firstItem="AJV-qQ-Ldg" firstAttribute="top" secondItem="U6b-Vx-4bR" secondAttribute="top" id="AC6-Fp-Rqc"/>
+                <constraint firstAttribute="bottom" secondItem="AJV-qQ-Ldg" secondAttribute="bottom" id="ms8-gs-6kv"/>
+                <constraint firstItem="AJV-qQ-Ldg" firstAttribute="leading" secondItem="U6b-Vx-4bR" secondAttribute="leading" id="n5w-dw-r0Q"/>
+                <constraint firstAttribute="trailing" secondItem="AJV-qQ-Ldg" secondAttribute="trailing" id="y96-Df-yrI"/>
+            </constraints>
+            <connections>
+                <outlet property="timeLabel" destination="eom-NR-BFZ" id="vzB-6M-SzW"/>
+            </connections>
+        </collectionReusableView>
+    </objects>
+</document>

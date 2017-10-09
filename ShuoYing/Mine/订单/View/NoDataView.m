@@ -1,0 +1,30 @@
+//
+//  NoDataView.m
+//  ShuoYing
+//
+//  Created by 硕影 on 2017/4/1.
+//  Copyright © 2017年 硕影. All rights reserved.
+//
+
+#import "NoDataView.h"
+
+@implementation NoDataView
+
+
+// Only override drawRect: if you perform custom drawing.
+// An empty implementation adversely affects performance during animation.
+- (void)drawRect:(CGRect)rect {
+    // Drawing code
+    self.userInteractionEnabled = YES;
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(chongxinjiazai)];
+    [self addGestureRecognizer:tap];
+}
+
+- (void)chongxinjiazai{
+    if (self.block) {
+        self.block();
+    }
+}
+
+
+@end

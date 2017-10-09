@@ -1,0 +1,24 @@
+//
+//  SYDefaultAddressTableViewCell.m
+//  ShuoYing
+//
+//  Created by 硕影 on 2017/4/5.
+//  Copyright © 2017年 硕影. All rights reserved.
+//
+
+#import "SYDefaultAddressTableViewCell.h"
+
+@implementation SYDefaultAddressTableViewCell
+
+- (void)awakeFromNib {
+    [super awakeFromNib];
+    // Initialization code
+}
+
+- (void)setSelected:(BOOL)selected animated:(BOOL)animated {
+    [super setSelected:selected animated:animated];
+
+    
+}
+
+@end

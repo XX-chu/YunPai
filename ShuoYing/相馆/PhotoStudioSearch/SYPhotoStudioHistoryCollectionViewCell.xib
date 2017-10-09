@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12118" systemVersion="16B2657" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gTV-IL-0wX" customClass="SYPhotoStudioHistoryCollectionViewCell">
+            <rect key="frame" x="0.0" y="0.0" width="100" height="95"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="100" height="95"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4zk-Zx-CGL">
+                        <rect key="frame" x="0.0" y="0.0" width="100" height="95"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xn8-Lz-cp1">
+                                <rect key="frame" x="0.0" y="0.0" width="100" height="95"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                <color key="textColor" red="0.61176470588235299" green="0.60784313725490191" blue="0.60784313725490191" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="Xn8-Lz-cp1" secondAttribute="trailing" id="Upy-mz-kuP"/>
+                            <constraint firstAttribute="bottom" secondItem="Xn8-Lz-cp1" secondAttribute="bottom" id="e5C-0i-OhQ"/>
+                            <constraint firstItem="Xn8-Lz-cp1" firstAttribute="top" secondItem="4zk-Zx-CGL" secondAttribute="top" id="fIy-SD-8fH"/>
+                            <constraint firstItem="Xn8-Lz-cp1" firstAttribute="leading" secondItem="4zk-Zx-CGL" secondAttribute="leading" id="gSo-nu-5Wx"/>
+                        </constraints>
+                    </view>
+                </subviews>
+            </view>
+            <constraints>
+                <constraint firstAttribute="bottom" secondItem="4zk-Zx-CGL" secondAttribute="bottom" id="7Sh-dk-PEl"/>
+                <constraint firstItem="4zk-Zx-CGL" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="9RS-TJ-Ck3"/>
+                <constraint firstAttribute="trailing" secondItem="4zk-Zx-CGL" secondAttribute="trailing" id="Caj-vP-gci"/>
+                <constraint firstItem="4zk-Zx-CGL" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="VZq-CA-47Z"/>
+            </constraints>
+            <size key="customSize" width="100" height="95"/>
+            <connections>
+                <outlet property="contentLabel" destination="Xn8-Lz-cp1" id="9Ud-9I-AJz"/>
+            </connections>
+            <point key="canvasLocation" x="59" y="76.5"/>
+        </collectionViewCell>
+    </objects>
+</document>
