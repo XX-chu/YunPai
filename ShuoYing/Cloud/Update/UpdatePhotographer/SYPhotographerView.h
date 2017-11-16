@@ -16,7 +16,5 @@
 @property (weak, nonatomic) IBOutlet UILabel *updateHistoryLabel;
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
 
-@property (weak, nonatomic) IBOutlet UIButton *setPriceBtn;
-@property (weak, nonatomic) IBOutlet UIButton *updateToCloudBtn;
 
 @end

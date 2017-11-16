@@ -89,7 +89,7 @@
 }
 
 - (void)initBottomView{
-    UIView *huodongView = [[UIView alloc] initWithFrame:CGRectMake(0, kScreenHeight - 64 - 50, kScreenWidth, 50)];
+    UIView *huodongView = [[UIView alloc] initWithFrame:CGRectMake(0, kScreenHeight - kNavigationBarHeightAndStatusBarHeight - 50, kScreenWidth, 50)];
     huodongView.backgroundColor = [UIColor whiteColor];
     [self.view addSubview:huodongView];
     self.hudongView = huodongView;
@@ -371,11 +371,12 @@
     }
     
     NSArray *data = [self.dataSourceDic objectForKey:@"data"];
+    NSDictionary *dic = data[indexPath.row];
+    cell.infosLabel.text = [dic objectForKey:@"imginfo"];
     UIImage *image = [[SDImageCache sharedImageCache] imageFromDiskCacheForKey:[NSString stringWithFormat:@"%@%@",ImgUrl,[data[indexPath.row] objectForKey:@"img_min"]]];
     if (image) {
         cell.contentImageView.image = image;
     }else{
-        
         [cell.contentImageView sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@",ImgUrl,[data[indexPath.row] objectForKey:@"img_min"]]] placeholderImage:[UIImage imageNamed:@"shangchuan_wode_wutupian"] completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
             [self.tableView reloadData];
         }];
@@ -491,11 +492,13 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     NSArray *data = [self.dataSourceDic objectForKey:@"data"];
-
+    NSDictionary *dic = data[indexPath.row];
+    NSString *str = [dic objectForKey:@"imginfo"];
+    CGFloat strHeight = [[Tool sharedInstance] heightForString:str andWidth:kScreenWidth - 20 fontSize:13];
     UIImage *image = [[SDImageCache sharedImageCache] imageFromDiskCacheForKey:[NSString stringWithFormat:@"%@%@",ImgUrl,[data[indexPath.row] objectForKey:@"img_min"]]];
    
     if (image) {
-        return kScreenWidth / image.size.width * image.size.height + 10;
+        return kScreenWidth / image.size.width * image.size.height + 20 + strHeight;
     }
     return 200;
 
@@ -837,7 +840,7 @@
 
 - (UITableView *)tableView{
     if (!_tableView) {
-        _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, kScreenHeight - 64 - 50) style:UITableViewStyleGrouped];
+        _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, kScreenHeight - kNavigationBarHeightAndStatusBarHeight - 50) style:UITableViewStyleGrouped];
         _tableView.backgroundColor = BackGroundColor;
         _tableView.delegate = self;
         _tableView.dataSource = self;

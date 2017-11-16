@@ -478,6 +478,80 @@
 		47FE83B91E1CFF8A00781AAA /* SYChangePhoneViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 47FE83B71E1CFF8A00781AAA /* SYChangePhoneViewController.m */; };
 		47FE83BA1E1CFF8A00781AAA /* SYChangePhoneViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 47FE83B81E1CFF8A00781AAA /* SYChangePhoneViewController.xib */; };
 		A7BD0AB4E7A2308FDBF71F98 /* libPods-ShuoYingUITests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7CF478745506CA26EFDE90EB /* libPods-ShuoYingUITests.a */; };
+		B2022FC31FB6D30500F09219 /* SYCertifieYunPaiShiViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B2022FC11FB6D30500F09219 /* SYCertifieYunPaiShiViewController.m */; };
+		B2022FC41FB6D30500F09219 /* SYCertifieYunPaiShiViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B2022FC21FB6D30500F09219 /* SYCertifieYunPaiShiViewController.xib */; };
+		B2022FC71FB6DEB800F09219 /* SYMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B2022FC61FB6DEB800F09219 /* SYMapViewController.m */; };
+		B205E9711FA86B2400C79A9E /* SYMyReciveViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B205E9701FA86B2400C79A9E /* SYMyReciveViewController.m */; };
+		B205E9741FA86B7600C79A9E /* SYMyReciveTeacherViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B205E9731FA86B7600C79A9E /* SYMyReciveTeacherViewController.m */; };
+		B205E9771FA86B8600C79A9E /* SYMyReciveGrapherViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B205E9761FA86B8600C79A9E /* SYMyReciveGrapherViewController.m */; };
+		B20C44241FBC076E00EFAABD /* SYYuYueModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B20C44231FBC076E00EFAABD /* SYYuYueModel.m */; };
+		B20C44271FBC12D000EFAABD /* SYYuYueInfosViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B20C44261FBC12D000EFAABD /* SYYuYueInfosViewController.m */; };
+		B20C442B1FBC12F600EFAABD /* SYYuYueInfosTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B20C44291FBC12F600EFAABD /* SYYuYueInfosTableViewCell.m */; };
+		B20C442C1FBC12F600EFAABD /* SYYuYueInfosTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B20C442A1FBC12F600EFAABD /* SYYuYueInfosTableViewCell.xib */; };
+		B20C442F1FBC1D0F00EFAABD /* SYYunPaiShiInfos.m in Sources */ = {isa = PBXBuildFile; fileRef = B20C442E1FBC1D0F00EFAABD /* SYYunPaiShiInfos.m */; };
+		B20C44321FBC262900EFAABD /* DateTimePickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = B20C44301FBC262800EFAABD /* DateTimePickerView.m */; };
+		B20C44361FBC28EA00EFAABD /* SYLiJiYuYueViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B20C44341FBC28EA00EFAABD /* SYLiJiYuYueViewController.m */; };
+		B20C44371FBC28EA00EFAABD /* SYLiJiYuYueViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B20C44351FBC28EA00EFAABD /* SYLiJiYuYueViewController.xib */; };
+		B20C443A1FBC369900EFAABD /* SYYunPaiOrderInfosViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B20C44391FBC369900EFAABD /* SYYunPaiOrderInfosViewController.m */; };
+		B20C443E1FBC50B000EFAABD /* SYMyYuYueViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B20C443D1FBC50B000EFAABD /* SYMyYuYueViewController.m */; };
+		B20C44411FBC50E400EFAABD /* SYMyYiWanChengViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B20C44401FBC50E400EFAABD /* SYMyYiWanChengViewController.m */; };
+		B20C44441FBC50F800EFAABD /* SYMyYuYueZhongViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B20C44431FBC50F800EFAABD /* SYMyYuYueZhongViewController.m */; };
+		B20C44471FBC510600EFAABD /* SYMyDaiPaiSheViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B20C44461FBC510600EFAABD /* SYMyDaiPaiSheViewController.m */; };
+		B20C444A1FBC511200EFAABD /* SYMyDaiPingJiaViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B20C44491FBC511200EFAABD /* SYMyDaiPingJiaViewController.m */; };
+		B20C444E1FBC570F00EFAABD /* SYMyYuYueZhongTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B20C444C1FBC570F00EFAABD /* SYMyYuYueZhongTableViewCell.m */; };
+		B20C444F1FBC570F00EFAABD /* SYMyYuYueZhongTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B20C444D1FBC570F00EFAABD /* SYMyYuYueZhongTableViewCell.xib */; };
+		B20C44521FBC5B0F00EFAABD /* SYYuYueOrderModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B20C44511FBC5B0F00EFAABD /* SYYuYueOrderModel.m */; };
+		B20C44551FBC5E6E00EFAABD /* SYHaveCreatOrderInfosViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B20C44541FBC5E6E00EFAABD /* SYHaveCreatOrderInfosViewController.m */; };
+		B20C44591FBC701100EFAABD /* SYMyYunPaiCommetViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B20C44571FBC701100EFAABD /* SYMyYunPaiCommetViewController.m */; };
+		B20C445A1FBC701100EFAABD /* SYMyYunPaiCommetViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B20C44581FBC701100EFAABD /* SYMyYunPaiCommetViewController.xib */; };
+		B20CF5AB1FA99E0F0073F369 /* SYShareHistoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B20CF5AA1FA99E0F0073F369 /* SYShareHistoryViewController.m */; };
+		B20CF5AF1FA99E2B0073F369 /* SYShareHIstoryTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B20CF5AD1FA99E2B0073F369 /* SYShareHIstoryTableViewCell.m */; };
+		B20CF5B01FA99E2B0073F369 /* SYShareHIstoryTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B20CF5AE1FA99E2B0073F369 /* SYShareHIstoryTableViewCell.xib */; };
+		B20FD2061FBA783400848FC5 /* SYYunPaiEditZiShuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B20FD2041FBA783400848FC5 /* SYYunPaiEditZiShuViewController.m */; };
+		B20FD2071FBA783400848FC5 /* SYYunPaiEditZiShuViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B20FD2051FBA783400848FC5 /* SYYunPaiEditZiShuViewController.xib */; };
+		B20FD20B1FBA8B0B00848FC5 /* SYYunPaiSheBeiEditViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B20FD2091FBA8B0B00848FC5 /* SYYunPaiSheBeiEditViewController.m */; };
+		B20FD20C1FBA8B0B00848FC5 /* SYYunPaiSheBeiEditViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B20FD20A1FBA8B0B00848FC5 /* SYYunPaiSheBeiEditViewController.xib */; };
+		B20FD2101FBA982A00848FC5 /* SYUpdateYunPaiShiViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B20FD20F1FBA982A00848FC5 /* SYUpdateYunPaiShiViewController.m */; };
+		B20FD2141FBA98DC00848FC5 /* SYEditImageCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B20FD2121FBA98DC00848FC5 /* SYEditImageCollectionViewCell.m */; };
+		B20FD2151FBA98DC00848FC5 /* SYEditImageCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B20FD2131FBA98DC00848FC5 /* SYEditImageCollectionViewCell.xib */; };
+		B20FD2191FBAB85700848FC5 /* SYYunPaiKeHuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B20FD2181FBAB85700848FC5 /* SYYunPaiKeHuViewController.m */; };
+		B20FD21C1FBAB9C600848FC5 /* SYYuYueIngViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B20FD21B1FBAB9C600848FC5 /* SYYuYueIngViewController.m */; };
+		B20FD21F1FBAB9D200848FC5 /* SYDaiPaiSheViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B20FD21E1FBAB9D200848FC5 /* SYDaiPaiSheViewController.m */; };
+		B20FD2221FBAB9E100848FC5 /* SYYiWanChengViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B20FD2211FBAB9E100848FC5 /* SYYiWanChengViewController.m */; };
+		B20FD2251FBAB9ED00848FC5 /* SYKeHuPingJiaViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B20FD2241FBAB9ED00848FC5 /* SYKeHuPingJiaViewController.m */; };
+		B20FD22A1FBABEE000848FC5 /* SYYunPaiDianTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B20FD2281FBABEE000848FC5 /* SYYunPaiDianTableViewCell.m */; };
+		B20FD22B1FBABEE000848FC5 /* SYYunPaiDianTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B20FD2291FBABEE000848FC5 /* SYYunPaiDianTableViewCell.xib */; };
+		B20FD22F1FBAC08100848FC5 /* SYYunPaiShiCommentTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B20FD22D1FBAC08100848FC5 /* SYYunPaiShiCommentTableViewCell.m */; };
+		B20FD2301FBAC08100848FC5 /* SYYunPaiShiCommentTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B20FD22E1FBAC08100848FC5 /* SYYunPaiShiCommentTableViewCell.xib */; };
+		B21557301FB5449200005BBE /* SYOrderInfosTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B215572E1FB5449200005BBE /* SYOrderInfosTableViewCell.m */; };
+		B21557311FB5449200005BBE /* SYOrderInfosTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B215572F1FB5449200005BBE /* SYOrderInfosTableViewCell.xib */; };
+		B21557351FB58AF300005BBE /* SYOrderCreatTimeTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B21557331FB58AF300005BBE /* SYOrderCreatTimeTableViewCell.m */; };
+		B21557361FB58AF300005BBE /* SYOrderCreatTimeTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B21557341FB58AF300005BBE /* SYOrderCreatTimeTableViewCell.xib */; };
+		B26BD0B81FB973DD0042EC1E /* SYMyYunPaiShopViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B26BD0B61FB973DD0042EC1E /* SYMyYunPaiShopViewController.m */; };
+		B26BD0B91FB973DD0042EC1E /* SYMyYunPaiShopViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B26BD0B71FB973DD0042EC1E /* SYMyYunPaiShopViewController.xib */; };
+		B26BD0BC1FB97B220042EC1E /* SYYunPaiShopEditViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B26BD0BB1FB97B220042EC1E /* SYYunPaiShopEditViewController.m */; };
+		B26BD0C11FB97FCD0042EC1E /* SYEditAvatorTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B26BD0BF1FB97FCD0042EC1E /* SYEditAvatorTableViewCell.m */; };
+		B26BD0C21FB97FCD0042EC1E /* SYEditAvatorTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B26BD0C01FB97FCD0042EC1E /* SYEditAvatorTableViewCell.xib */; };
+		B26BD0C61FB981660042EC1E /* SYYuePaiPriceTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B26BD0C41FB981660042EC1E /* SYYuePaiPriceTableViewCell.m */; };
+		B26BD0C71FB981660042EC1E /* SYYuePaiPriceTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B26BD0C51FB981660042EC1E /* SYYuePaiPriceTableViewCell.xib */; };
+		B26BD0CB1FB9842A0042EC1E /* SYYunPaiDeviceTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B26BD0C91FB9842A0042EC1E /* SYYunPaiDeviceTableViewCell.m */; };
+		B26BD0CC1FB9842A0042EC1E /* SYYunPaiDeviceTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B26BD0CA1FB9842A0042EC1E /* SYYunPaiDeviceTableViewCell.xib */; };
+		B26BD0D01FB992C60042EC1E /* SYCustomTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B26BD0CE1FB992C60042EC1E /* SYCustomTableViewCell.m */; };
+		B26BD0D11FB992C60042EC1E /* SYCustomTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B26BD0CF1FB992C60042EC1E /* SYCustomTableViewCell.xib */; };
+		B26BD0D51FB9959B0042EC1E /* SYTitleAndImageTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B26BD0D31FB9959B0042EC1E /* SYTitleAndImageTableViewCell.m */; };
+		B26BD0D61FB9959B0042EC1E /* SYTitleAndImageTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B26BD0D41FB9959B0042EC1E /* SYTitleAndImageTableViewCell.xib */; };
+		B274D6B61FBAC81300D37F51 /* SYYuYueViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B274D6B51FBAC81300D37F51 /* SYYuYueViewController.m */; };
+		B274D6BB1FBACF1500D37F51 /* SYYuYueTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B274D6B91FBACF1500D37F51 /* SYYuYueTableViewCell.m */; };
+		B274D6BC1FBACF1500D37F51 /* SYYuYueTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B274D6BA1FBACF1500D37F51 /* SYYuYueTableViewCell.xib */; };
+		B2E186FC1FB597C000DFD9EF /* SYMyFaBuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B2E186FB1FB597C000DFD9EF /* SYMyFaBuViewController.m */; };
+		B2EC94A01FAB0FA9008211D8 /* LSXPlacehoderTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = B2EC94961FAB0FA8008211D8 /* LSXPlacehoderTextView.m */; };
+		B2EC94A11FAB0FA9008211D8 /* UIColor+YMHex.m in Sources */ = {isa = PBXBuildFile; fileRef = B2EC94981FAB0FA8008211D8 /* UIColor+YMHex.m */; };
+		B2EC94A21FAB0FA9008211D8 /* UIView+SDAutoLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = B2EC94991FAB0FA8008211D8 /* UIView+SDAutoLayout.m */; };
+		B2EC94A31FAB0FA9008211D8 /* LSXAlertInputView.m in Sources */ = {isa = PBXBuildFile; fileRef = B2EC949E1FAB0FA9008211D8 /* LSXAlertInputView.m */; };
+		B2EC94A41FAB0FA9008211D8 /* UITableView+SDAutoTableViewCellHeight.m in Sources */ = {isa = PBXBuildFile; fileRef = B2EC949F1FAB0FA9008211D8 /* UITableView+SDAutoTableViewCellHeight.m */; };
+		B2F7D7DF1FBD238C000BF65C /* SYYunPaiShiHaveCreatOrderInfosViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B2F7D7DE1FBD238C000BF65C /* SYYunPaiShiHaveCreatOrderInfosViewController.m */; };
+		B2F7D7E31FBD3262000BF65C /* SYTouSuYunPaiShiViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B2F7D7E11FBD3262000BF65C /* SYTouSuYunPaiShiViewController.m */; };
+		B2F7D7E41FBD3262000BF65C /* SYTouSuYunPaiShiViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B2F7D7E21FBD3262000BF65C /* SYTouSuYunPaiShiViewController.xib */; };
 		CDFE55A3C71F5C2A4D236188 /* libPods-ShuoYing.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9BCE3FC2726424BE2130C05E /* libPods-ShuoYing.a */; };
 /* End PBXBuildFile section */
 
@@ -1400,6 +1474,133 @@
 		8A4B479C23D634645EAB68F5 /* Pods-ShuoYingTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ShuoYingTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-ShuoYingTests/Pods-ShuoYingTests.release.xcconfig"; sourceTree = "<group>"; };
 		993FDB730EDE8EBD1714157E /* Pods-ShuoYing.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ShuoYing.release.xcconfig"; path = "Pods/Target Support Files/Pods-ShuoYing/Pods-ShuoYing.release.xcconfig"; sourceTree = "<group>"; };
 		9BCE3FC2726424BE2130C05E /* libPods-ShuoYing.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ShuoYing.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		B2022FC01FB6D30500F09219 /* SYCertifieYunPaiShiViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SYCertifieYunPaiShiViewController.h; sourceTree = "<group>"; };
+		B2022FC11FB6D30500F09219 /* SYCertifieYunPaiShiViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SYCertifieYunPaiShiViewController.m; sourceTree = "<group>"; };
+		B2022FC21FB6D30500F09219 /* SYCertifieYunPaiShiViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SYCertifieYunPaiShiViewController.xib; sourceTree = "<group>"; };
+		B2022FC51FB6DEB800F09219 /* SYMapViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SYMapViewController.h; sourceTree = "<group>"; };
+		B2022FC61FB6DEB800F09219 /* SYMapViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SYMapViewController.m; sourceTree = "<group>"; };
+		B205E96F1FA86B2400C79A9E /* SYMyReciveViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SYMyReciveViewController.h; sourceTree = "<group>"; };
+		B205E9701FA86B2400C79A9E /* SYMyReciveViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SYMyReciveViewController.m; sourceTree = "<group>"; };
+		B205E9721FA86B7600C79A9E /* SYMyReciveTeacherViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SYMyReciveTeacherViewController.h; sourceTree = "<group>"; };
+		B205E9731FA86B7600C79A9E /* SYMyReciveTeacherViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SYMyReciveTeacherViewController.m; sourceTree = "<group>"; };
+		B205E9751FA86B8600C79A9E /* SYMyReciveGrapherViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SYMyReciveGrapherViewController.h; sourceTree = "<group>"; };
+		B205E9761FA86B8600C79A9E /* SYMyReciveGrapherViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SYMyReciveGrapherViewController.m; sourceTree = "<group>"; };
+		B20C44221FBC076E00EFAABD /* SYYuYueModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SYYuYueModel.h; sourceTree = "<group>"; };
+		B20C44231FBC076E00EFAABD /* SYYuYueModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SYYuYueModel.m; sourceTree = "<group>"; };
+		B20C44251FBC12D000EFAABD /* SYYuYueInfosViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SYYuYueInfosViewController.h; sourceTree = "<group>"; };
+		B20C44261FBC12D000EFAABD /* SYYuYueInfosViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SYYuYueInfosViewController.m; sourceTree = "<group>"; };
+		B20C44281FBC12F600EFAABD /* SYYuYueInfosTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SYYuYueInfosTableViewCell.h; sourceTree = "<group>"; };
+		B20C44291FBC12F600EFAABD /* SYYuYueInfosTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SYYuYueInfosTableViewCell.m; sourceTree = "<group>"; };
+		B20C442A1FBC12F600EFAABD /* SYYuYueInfosTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SYYuYueInfosTableViewCell.xib; sourceTree = "<group>"; };
+		B20C442D1FBC1D0F00EFAABD /* SYYunPaiShiInfos.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SYYunPaiShiInfos.h; sourceTree = "<group>"; };
+		B20C442E1FBC1D0F00EFAABD /* SYYunPaiShiInfos.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SYYunPaiShiInfos.m; sourceTree = "<group>"; };
+		B20C44301FBC262800EFAABD /* DateTimePickerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DateTimePickerView.m; sourceTree = "<group>"; };
+		B20C44311FBC262800EFAABD /* DateTimePickerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DateTimePickerView.h; sourceTree = "<group>"; };
+		B20C44331FBC28EA00EFAABD /* SYLiJiYuYueViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SYLiJiYuYueViewController.h; sourceTree = "<group>"; };
+		B20C44341FBC28EA00EFAABD /* SYLiJiYuYueViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SYLiJiYuYueViewController.m; sourceTree = "<group>"; };
+		B20C44351FBC28EA00EFAABD /* SYLiJiYuYueViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SYLiJiYuYueViewController.xib; sourceTree = "<group>"; };
+		B20C44381FBC369900EFAABD /* SYYunPaiOrderInfosViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SYYunPaiOrderInfosViewController.h; sourceTree = "<group>"; };
+		B20C44391FBC369900EFAABD /* SYYunPaiOrderInfosViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SYYunPaiOrderInfosViewController.m; sourceTree = "<group>"; };
+		B20C443C1FBC50B000EFAABD /* SYMyYuYueViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SYMyYuYueViewController.h; sourceTree = "<group>"; };
+		B20C443D1FBC50B000EFAABD /* SYMyYuYueViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SYMyYuYueViewController.m; sourceTree = "<group>"; };
+		B20C443F1FBC50E400EFAABD /* SYMyYiWanChengViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SYMyYiWanChengViewController.h; sourceTree = "<group>"; };
+		B20C44401FBC50E400EFAABD /* SYMyYiWanChengViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SYMyYiWanChengViewController.m; sourceTree = "<group>"; };
+		B20C44421FBC50F800EFAABD /* SYMyYuYueZhongViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SYMyYuYueZhongViewController.h; sourceTree = "<group>"; };
+		B20C44431FBC50F800EFAABD /* SYMyYuYueZhongViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SYMyYuYueZhongViewController.m; sourceTree = "<group>"; };
+		B20C44451FBC510600EFAABD /* SYMyDaiPaiSheViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SYMyDaiPaiSheViewController.h; sourceTree = "<group>"; };
+		B20C44461FBC510600EFAABD /* SYMyDaiPaiSheViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SYMyDaiPaiSheViewController.m; sourceTree = "<group>"; };
+		B20C44481FBC511200EFAABD /* SYMyDaiPingJiaViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SYMyDaiPingJiaViewController.h; sourceTree = "<group>"; };
+		B20C44491FBC511200EFAABD /* SYMyDaiPingJiaViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SYMyDaiPingJiaViewController.m; sourceTree = "<group>"; };
+		B20C444B1FBC570F00EFAABD /* SYMyYuYueZhongTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SYMyYuYueZhongTableViewCell.h; sourceTree = "<group>"; };
+		B20C444C1FBC570F00EFAABD /* SYMyYuYueZhongTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SYMyYuYueZhongTableViewCell.m; sourceTree = "<group>"; };
+		B20C444D1FBC570F00EFAABD /* SYMyYuYueZhongTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SYMyYuYueZhongTableViewCell.xib; sourceTree = "<group>"; };
+		B20C44501FBC5B0F00EFAABD /* SYYuYueOrderModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SYYuYueOrderModel.h; sourceTree = "<group>"; };
+		B20C44511FBC5B0F00EFAABD /* SYYuYueOrderModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SYYuYueOrderModel.m; sourceTree = "<group>"; };
+		B20C44531FBC5E6E00EFAABD /* SYHaveCreatOrderInfosViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SYHaveCreatOrderInfosViewController.h; sourceTree = "<group>"; };
+		B20C44541FBC5E6E00EFAABD /* SYHaveCreatOrderInfosViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SYHaveCreatOrderInfosViewController.m; sourceTree = "<group>"; };
+		B20C44561FBC701100EFAABD /* SYMyYunPaiCommetViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SYMyYunPaiCommetViewController.h; sourceTree = "<group>"; };
+		B20C44571FBC701100EFAABD /* SYMyYunPaiCommetViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SYMyYunPaiCommetViewController.m; sourceTree = "<group>"; };
+		B20C44581FBC701100EFAABD /* SYMyYunPaiCommetViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SYMyYunPaiCommetViewController.xib; sourceTree = "<group>"; };
+		B20CF5A91FA99E0F0073F369 /* SYShareHistoryViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SYShareHistoryViewController.h; sourceTree = "<group>"; };
+		B20CF5AA1FA99E0F0073F369 /* SYShareHistoryViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SYShareHistoryViewController.m; sourceTree = "<group>"; };
+		B20CF5AC1FA99E2B0073F369 /* SYShareHIstoryTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SYShareHIstoryTableViewCell.h; sourceTree = "<group>"; };
+		B20CF5AD1FA99E2B0073F369 /* SYShareHIstoryTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SYShareHIstoryTableViewCell.m; sourceTree = "<group>"; };
+		B20CF5AE1FA99E2B0073F369 /* SYShareHIstoryTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SYShareHIstoryTableViewCell.xib; sourceTree = "<group>"; };
+		B20FD2031FBA783400848FC5 /* SYYunPaiEditZiShuViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SYYunPaiEditZiShuViewController.h; sourceTree = "<group>"; };
+		B20FD2041FBA783400848FC5 /* SYYunPaiEditZiShuViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SYYunPaiEditZiShuViewController.m; sourceTree = "<group>"; };
+		B20FD2051FBA783400848FC5 /* SYYunPaiEditZiShuViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SYYunPaiEditZiShuViewController.xib; sourceTree = "<group>"; };
+		B20FD2081FBA8B0B00848FC5 /* SYYunPaiSheBeiEditViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SYYunPaiSheBeiEditViewController.h; sourceTree = "<group>"; };
+		B20FD2091FBA8B0B00848FC5 /* SYYunPaiSheBeiEditViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SYYunPaiSheBeiEditViewController.m; sourceTree = "<group>"; };
+		B20FD20A1FBA8B0B00848FC5 /* SYYunPaiSheBeiEditViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SYYunPaiSheBeiEditViewController.xib; sourceTree = "<group>"; };
+		B20FD20E1FBA982A00848FC5 /* SYUpdateYunPaiShiViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SYUpdateYunPaiShiViewController.h; sourceTree = "<group>"; };
+		B20FD20F1FBA982A00848FC5 /* SYUpdateYunPaiShiViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SYUpdateYunPaiShiViewController.m; sourceTree = "<group>"; };
+		B20FD2111FBA98DC00848FC5 /* SYEditImageCollectionViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SYEditImageCollectionViewCell.h; sourceTree = "<group>"; };
+		B20FD2121FBA98DC00848FC5 /* SYEditImageCollectionViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SYEditImageCollectionViewCell.m; sourceTree = "<group>"; };
+		B20FD2131FBA98DC00848FC5 /* SYEditImageCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SYEditImageCollectionViewCell.xib; sourceTree = "<group>"; };
+		B20FD2171FBAB85700848FC5 /* SYYunPaiKeHuViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SYYunPaiKeHuViewController.h; sourceTree = "<group>"; };
+		B20FD2181FBAB85700848FC5 /* SYYunPaiKeHuViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SYYunPaiKeHuViewController.m; sourceTree = "<group>"; };
+		B20FD21A1FBAB9C600848FC5 /* SYYuYueIngViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SYYuYueIngViewController.h; sourceTree = "<group>"; };
+		B20FD21B1FBAB9C600848FC5 /* SYYuYueIngViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SYYuYueIngViewController.m; sourceTree = "<group>"; };
+		B20FD21D1FBAB9D200848FC5 /* SYDaiPaiSheViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SYDaiPaiSheViewController.h; sourceTree = "<group>"; };
+		B20FD21E1FBAB9D200848FC5 /* SYDaiPaiSheViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SYDaiPaiSheViewController.m; sourceTree = "<group>"; };
+		B20FD2201FBAB9E100848FC5 /* SYYiWanChengViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SYYiWanChengViewController.h; sourceTree = "<group>"; };
+		B20FD2211FBAB9E100848FC5 /* SYYiWanChengViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SYYiWanChengViewController.m; sourceTree = "<group>"; };
+		B20FD2231FBAB9ED00848FC5 /* SYKeHuPingJiaViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SYKeHuPingJiaViewController.h; sourceTree = "<group>"; };
+		B20FD2241FBAB9ED00848FC5 /* SYKeHuPingJiaViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SYKeHuPingJiaViewController.m; sourceTree = "<group>"; };
+		B20FD2271FBABEE000848FC5 /* SYYunPaiDianTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SYYunPaiDianTableViewCell.h; sourceTree = "<group>"; };
+		B20FD2281FBABEE000848FC5 /* SYYunPaiDianTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SYYunPaiDianTableViewCell.m; sourceTree = "<group>"; };
+		B20FD2291FBABEE000848FC5 /* SYYunPaiDianTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SYYunPaiDianTableViewCell.xib; sourceTree = "<group>"; };
+		B20FD22C1FBAC08100848FC5 /* SYYunPaiShiCommentTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SYYunPaiShiCommentTableViewCell.h; sourceTree = "<group>"; };
+		B20FD22D1FBAC08100848FC5 /* SYYunPaiShiCommentTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SYYunPaiShiCommentTableViewCell.m; sourceTree = "<group>"; };
+		B20FD22E1FBAC08100848FC5 /* SYYunPaiShiCommentTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SYYunPaiShiCommentTableViewCell.xib; sourceTree = "<group>"; };
+		B215572D1FB5449200005BBE /* SYOrderInfosTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SYOrderInfosTableViewCell.h; sourceTree = "<group>"; };
+		B215572E1FB5449200005BBE /* SYOrderInfosTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SYOrderInfosTableViewCell.m; sourceTree = "<group>"; };
+		B215572F1FB5449200005BBE /* SYOrderInfosTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SYOrderInfosTableViewCell.xib; sourceTree = "<group>"; };
+		B21557321FB58AF300005BBE /* SYOrderCreatTimeTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SYOrderCreatTimeTableViewCell.h; sourceTree = "<group>"; };
+		B21557331FB58AF300005BBE /* SYOrderCreatTimeTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SYOrderCreatTimeTableViewCell.m; sourceTree = "<group>"; };
+		B21557341FB58AF300005BBE /* SYOrderCreatTimeTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SYOrderCreatTimeTableViewCell.xib; sourceTree = "<group>"; };
+		B26BD0B51FB973DD0042EC1E /* SYMyYunPaiShopViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SYMyYunPaiShopViewController.h; sourceTree = "<group>"; };
+		B26BD0B61FB973DD0042EC1E /* SYMyYunPaiShopViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SYMyYunPaiShopViewController.m; sourceTree = "<group>"; };
+		B26BD0B71FB973DD0042EC1E /* SYMyYunPaiShopViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SYMyYunPaiShopViewController.xib; sourceTree = "<group>"; };
+		B26BD0BA1FB97B220042EC1E /* SYYunPaiShopEditViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SYYunPaiShopEditViewController.h; sourceTree = "<group>"; };
+		B26BD0BB1FB97B220042EC1E /* SYYunPaiShopEditViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SYYunPaiShopEditViewController.m; sourceTree = "<group>"; };
+		B26BD0BE1FB97FCD0042EC1E /* SYEditAvatorTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SYEditAvatorTableViewCell.h; sourceTree = "<group>"; };
+		B26BD0BF1FB97FCD0042EC1E /* SYEditAvatorTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SYEditAvatorTableViewCell.m; sourceTree = "<group>"; };
+		B26BD0C01FB97FCD0042EC1E /* SYEditAvatorTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SYEditAvatorTableViewCell.xib; sourceTree = "<group>"; };
+		B26BD0C31FB981660042EC1E /* SYYuePaiPriceTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SYYuePaiPriceTableViewCell.h; sourceTree = "<group>"; };
+		B26BD0C41FB981660042EC1E /* SYYuePaiPriceTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SYYuePaiPriceTableViewCell.m; sourceTree = "<group>"; };
+		B26BD0C51FB981660042EC1E /* SYYuePaiPriceTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SYYuePaiPriceTableViewCell.xib; sourceTree = "<group>"; };
+		B26BD0C81FB9842A0042EC1E /* SYYunPaiDeviceTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SYYunPaiDeviceTableViewCell.h; sourceTree = "<group>"; };
+		B26BD0C91FB9842A0042EC1E /* SYYunPaiDeviceTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SYYunPaiDeviceTableViewCell.m; sourceTree = "<group>"; };
+		B26BD0CA1FB9842A0042EC1E /* SYYunPaiDeviceTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SYYunPaiDeviceTableViewCell.xib; sourceTree = "<group>"; };
+		B26BD0CD1FB992C60042EC1E /* SYCustomTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SYCustomTableViewCell.h; sourceTree = "<group>"; };
+		B26BD0CE1FB992C60042EC1E /* SYCustomTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SYCustomTableViewCell.m; sourceTree = "<group>"; };
+		B26BD0CF1FB992C60042EC1E /* SYCustomTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SYCustomTableViewCell.xib; sourceTree = "<group>"; };
+		B26BD0D21FB9959B0042EC1E /* SYTitleAndImageTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SYTitleAndImageTableViewCell.h; sourceTree = "<group>"; };
+		B26BD0D31FB9959B0042EC1E /* SYTitleAndImageTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SYTitleAndImageTableViewCell.m; sourceTree = "<group>"; };
+		B26BD0D41FB9959B0042EC1E /* SYTitleAndImageTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SYTitleAndImageTableViewCell.xib; sourceTree = "<group>"; };
+		B274D6B41FBAC81300D37F51 /* SYYuYueViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SYYuYueViewController.h; sourceTree = "<group>"; };
+		B274D6B51FBAC81300D37F51 /* SYYuYueViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SYYuYueViewController.m; sourceTree = "<group>"; };
+		B274D6B81FBACF1500D37F51 /* SYYuYueTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SYYuYueTableViewCell.h; sourceTree = "<group>"; };
+		B274D6B91FBACF1500D37F51 /* SYYuYueTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SYYuYueTableViewCell.m; sourceTree = "<group>"; };
+		B274D6BA1FBACF1500D37F51 /* SYYuYueTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SYYuYueTableViewCell.xib; sourceTree = "<group>"; };
+		B2E186FA1FB597C000DFD9EF /* SYMyFaBuViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SYMyFaBuViewController.h; sourceTree = "<group>"; };
+		B2E186FB1FB597C000DFD9EF /* SYMyFaBuViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SYMyFaBuViewController.m; sourceTree = "<group>"; };
+		B2EC94961FAB0FA8008211D8 /* LSXPlacehoderTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LSXPlacehoderTextView.m; sourceTree = "<group>"; };
+		B2EC94971FAB0FA8008211D8 /* UIColor+YMHex.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+YMHex.h"; sourceTree = "<group>"; };
+		B2EC94981FAB0FA8008211D8 /* UIColor+YMHex.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+YMHex.m"; sourceTree = "<group>"; };
+		B2EC94991FAB0FA8008211D8 /* UIView+SDAutoLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+SDAutoLayout.m"; sourceTree = "<group>"; };
+		B2EC949A1FAB0FA8008211D8 /* LSXPlacehoderTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LSXPlacehoderTextView.h; sourceTree = "<group>"; };
+		B2EC949B1FAB0FA8008211D8 /* UIView+SDAutoLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+SDAutoLayout.h"; sourceTree = "<group>"; };
+		B2EC949C1FAB0FA8008211D8 /* UITableView+SDAutoTableViewCellHeight.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITableView+SDAutoTableViewCellHeight.h"; sourceTree = "<group>"; };
+		B2EC949D1FAB0FA9008211D8 /* LSXAlertInputView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LSXAlertInputView.h; sourceTree = "<group>"; };
+		B2EC949E1FAB0FA9008211D8 /* LSXAlertInputView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LSXAlertInputView.m; sourceTree = "<group>"; };
+		B2EC949F1FAB0FA9008211D8 /* UITableView+SDAutoTableViewCellHeight.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITableView+SDAutoTableViewCellHeight.m"; sourceTree = "<group>"; };
+		B2F7D7DD1FBD238C000BF65C /* SYYunPaiShiHaveCreatOrderInfosViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SYYunPaiShiHaveCreatOrderInfosViewController.h; sourceTree = "<group>"; };
+		B2F7D7DE1FBD238C000BF65C /* SYYunPaiShiHaveCreatOrderInfosViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SYYunPaiShiHaveCreatOrderInfosViewController.m; sourceTree = "<group>"; };
+		B2F7D7E01FBD3262000BF65C /* SYTouSuYunPaiShiViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SYTouSuYunPaiShiViewController.h; sourceTree = "<group>"; };
+		B2F7D7E11FBD3262000BF65C /* SYTouSuYunPaiShiViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SYTouSuYunPaiShiViewController.m; sourceTree = "<group>"; };
+		B2F7D7E21FBD3262000BF65C /* SYTouSuYunPaiShiViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SYTouSuYunPaiShiViewController.xib; sourceTree = "<group>"; };
 		C6D5D501B6C897F6B61FFABC /* Pods-ShuoYingUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ShuoYingUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ShuoYingUITests/Pods-ShuoYingUITests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -1408,6 +1609,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				47FE497D1E1507F50028A37F /* MapKit.framework in Frameworks */,
 				47D7CF141E7D40D10054E8D0 /* CoreMotion.framework in Frameworks */,
 				47D7CF121E7D40CA0054E8D0 /* CFNetwork.framework in Frameworks */,
 				47EC6E921E6FA13C00829A57 /* CoreGraphics.framework in Frameworks */,
@@ -1428,7 +1630,6 @@
 				47E591D11E2C9B0D009EEC30 /* libc++.tbd in Frameworks */,
 				47EC6E9F1E6FA42100829A57 /* UMSocialNetwork.framework in Frameworks */,
 				47E591CD1E2C9AAA009EEC30 /* libz.tbd in Frameworks */,
-				47FE497D1E1507F50028A37F /* MapKit.framework in Frameworks */,
 				47FE497B1E1507F00028A37F /* CoreLocation.framework in Frameworks */,
 				47EC6E8B1E6FA0F200829A57 /* libWeiboSDK.a in Frameworks */,
 				47EC6E881E6FA0F200829A57 /* TencentOpenAPI.framework in Frameworks */,
@@ -1934,6 +2135,11 @@
 				47EC6EA41E6FA6E400829A57 /* QTShareView.m */,
 				474657861E6E97780038AC04 /* SYErWeiMaViewController.h */,
 				474657871E6E97780038AC04 /* SYErWeiMaViewController.m */,
+				B20CF5A91FA99E0F0073F369 /* SYShareHistoryViewController.h */,
+				B20CF5AA1FA99E0F0073F369 /* SYShareHistoryViewController.m */,
+				B20CF5AC1FA99E2B0073F369 /* SYShareHIstoryTableViewCell.h */,
+				B20CF5AD1FA99E2B0073F369 /* SYShareHIstoryTableViewCell.m */,
+				B20CF5AE1FA99E2B0073F369 /* SYShareHIstoryTableViewCell.xib */,
 			);
 			name = ShareEr;
 			sourceTree = "<group>";
@@ -1962,6 +2168,12 @@
 				475E73171E97758A0059CE05 /* DeleteOrderView.h */,
 				475E73181E97758A0059CE05 /* DeleteOrderView.m */,
 				475E731A1E9775A00059CE05 /* DeleteOrderView.xib */,
+				B215572D1FB5449200005BBE /* SYOrderInfosTableViewCell.h */,
+				B215572E1FB5449200005BBE /* SYOrderInfosTableViewCell.m */,
+				B215572F1FB5449200005BBE /* SYOrderInfosTableViewCell.xib */,
+				B21557321FB58AF300005BBE /* SYOrderCreatTimeTableViewCell.h */,
+				B21557331FB58AF300005BBE /* SYOrderCreatTimeTableViewCell.m */,
+				B21557341FB58AF300005BBE /* SYOrderCreatTimeTableViewCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -2138,9 +2350,7 @@
 		4783B7651E10B67700EBCEF5 /* Find */ = {
 			isa = PBXGroup;
 			children = (
-				4783B76F1E10B77900EBCEF5 /* View */,
 				4783B76E1E10B77100EBCEF5 /* Controller */,
-				4783B76D1E10B76900EBCEF5 /* Model */,
 				4783B7701E10B7EF00EBCEF5 /* SYFindViewController.h */,
 				4783B7711E10B7EF00EBCEF5 /* SYFindViewController.m */,
 			);
@@ -2150,6 +2360,7 @@
 		4783B7661E10B68F00EBCEF5 /* Mine */ = {
 			isa = PBXGroup;
 			children = (
+				B2022FBC1FB6D28300F09219 /* 我的云拍店 */,
 				473907461EB9A4C300102EB2 /* 购物车 */,
 				473F569A1E8E248300992F12 /* 订单 */,
 				474657851E6E97450038AC04 /* ShareEr */,
@@ -2160,7 +2371,6 @@
 				4783B7B01E11381000EBCEF5 /* MyWallet */,
 				4783B7751E10B80300EBCEF5 /* View */,
 				4783B7741E10B7FE00EBCEF5 /* Controller */,
-				4783B7731E10B7F300EBCEF5 /* Model */,
 				4783B7761E10B84500EBCEF5 /* SYMineViewController.h */,
 				4783B7771E10B84500EBCEF5 /* SYMineViewController.m */,
 			);
@@ -2181,6 +2391,8 @@
 		4783B7681E10B70B00EBCEF5 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				B274D6B31FBAC6FD00D37F51 /* 预约摄影 */,
+				B205E96E1FA86B0E00C79A9E /* 我的接受 */,
 				47D7CEF31E7D08500054E8D0 /* SDCycleScrollView */,
 				47FE496F1E14ED1D0028A37F /* SYCloudViewController.h */,
 				47FE49701E14ED1D0028A37F /* SYCloudViewController.m */,
@@ -2252,13 +2464,6 @@
 			path = View;
 			sourceTree = "<group>";
 		};
-		4783B76D1E10B76900EBCEF5 /* Model */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Model;
-			sourceTree = "<group>";
-		};
 		4783B76E1E10B77100EBCEF5 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
@@ -2284,20 +2489,6 @@
 			path = Controller;
 			sourceTree = "<group>";
 		};
-		4783B76F1E10B77900EBCEF5 /* View */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = View;
-			sourceTree = "<group>";
-		};
-		4783B7731E10B7F300EBCEF5 /* Model */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Model;
-			sourceTree = "<group>";
-		};
 		4783B7741E10B7FE00EBCEF5 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
@@ -2318,6 +2509,8 @@
 				47563EAA1E1DDC6B00BE9961 /* SYChangePasswordViewController.xib */,
 				472905041F0F5FAB00A44A3A /* SYMyGuanZhuViewController.h */,
 				472905051F0F5FAB00A44A3A /* SYMyGuanZhuViewController.m */,
+				B2E186FA1FB597C000DFD9EF /* SYMyFaBuViewController.h */,
+				B2E186FB1FB597C000DFD9EF /* SYMyFaBuViewController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -2335,6 +2528,7 @@
 		4783B7891E10E7E100EBCEF5 /* Tool */ = {
 			isa = PBXGroup;
 			children = (
+				B2EC94951FAB0F6C008211D8 /* LSXInputAlertView */,
 				476C97AA1F0D10AA00C1B305 /* KMCompent */,
 				471288071ECDD5C70075DB79 /* LQPopUpView.h */,
 				471288081ECDD5C70075DB79 /* LQPopUpView.m */,
@@ -2905,6 +3099,204 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		B2022FBC1FB6D28300F09219 /* 我的云拍店 */ = {
+			isa = PBXGroup;
+			children = (
+				B20FD2161FBAB83B00848FC5 /* 我的云拍客户 */,
+				B20FD20D1FBA97DF00848FC5 /* 上传作品 */,
+				B26BD0BD1FB97FAF0042EC1E /* View */,
+				B2022FC01FB6D30500F09219 /* SYCertifieYunPaiShiViewController.h */,
+				B2022FC11FB6D30500F09219 /* SYCertifieYunPaiShiViewController.m */,
+				B2022FC21FB6D30500F09219 /* SYCertifieYunPaiShiViewController.xib */,
+				B2022FC51FB6DEB800F09219 /* SYMapViewController.h */,
+				B2022FC61FB6DEB800F09219 /* SYMapViewController.m */,
+				B26BD0B51FB973DD0042EC1E /* SYMyYunPaiShopViewController.h */,
+				B26BD0B61FB973DD0042EC1E /* SYMyYunPaiShopViewController.m */,
+				B26BD0B71FB973DD0042EC1E /* SYMyYunPaiShopViewController.xib */,
+				B26BD0BA1FB97B220042EC1E /* SYYunPaiShopEditViewController.h */,
+				B26BD0BB1FB97B220042EC1E /* SYYunPaiShopEditViewController.m */,
+				B20FD2031FBA783400848FC5 /* SYYunPaiEditZiShuViewController.h */,
+				B20FD2041FBA783400848FC5 /* SYYunPaiEditZiShuViewController.m */,
+				B20FD2051FBA783400848FC5 /* SYYunPaiEditZiShuViewController.xib */,
+				B20FD2081FBA8B0B00848FC5 /* SYYunPaiSheBeiEditViewController.h */,
+				B20FD2091FBA8B0B00848FC5 /* SYYunPaiSheBeiEditViewController.m */,
+				B20FD20A1FBA8B0B00848FC5 /* SYYunPaiSheBeiEditViewController.xib */,
+			);
+			path = "我的云拍店";
+			sourceTree = "<group>";
+		};
+		B205E96E1FA86B0E00C79A9E /* 我的接受 */ = {
+			isa = PBXGroup;
+			children = (
+				B205E96F1FA86B2400C79A9E /* SYMyReciveViewController.h */,
+				B205E9701FA86B2400C79A9E /* SYMyReciveViewController.m */,
+				B205E9721FA86B7600C79A9E /* SYMyReciveTeacherViewController.h */,
+				B205E9731FA86B7600C79A9E /* SYMyReciveTeacherViewController.m */,
+				B205E9751FA86B8600C79A9E /* SYMyReciveGrapherViewController.h */,
+				B205E9761FA86B8600C79A9E /* SYMyReciveGrapherViewController.m */,
+			);
+			path = "我的接受";
+			sourceTree = "<group>";
+		};
+		B20C44211FBC075900EFAABD /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				B20C44221FBC076E00EFAABD /* SYYuYueModel.h */,
+				B20C44231FBC076E00EFAABD /* SYYuYueModel.m */,
+				B20C442D1FBC1D0F00EFAABD /* SYYunPaiShiInfos.h */,
+				B20C442E1FBC1D0F00EFAABD /* SYYunPaiShiInfos.m */,
+				B20C44501FBC5B0F00EFAABD /* SYYuYueOrderModel.h */,
+				B20C44511FBC5B0F00EFAABD /* SYYuYueOrderModel.m */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		B20C443B1FBC509B00EFAABD /* 我的预约 */ = {
+			isa = PBXGroup;
+			children = (
+				B20C443C1FBC50B000EFAABD /* SYMyYuYueViewController.h */,
+				B20C443D1FBC50B000EFAABD /* SYMyYuYueViewController.m */,
+				B20C443F1FBC50E400EFAABD /* SYMyYiWanChengViewController.h */,
+				B20C44401FBC50E400EFAABD /* SYMyYiWanChengViewController.m */,
+				B20C44421FBC50F800EFAABD /* SYMyYuYueZhongViewController.h */,
+				B20C44431FBC50F800EFAABD /* SYMyYuYueZhongViewController.m */,
+				B20C44451FBC510600EFAABD /* SYMyDaiPaiSheViewController.h */,
+				B20C44461FBC510600EFAABD /* SYMyDaiPaiSheViewController.m */,
+				B20C44481FBC511200EFAABD /* SYMyDaiPingJiaViewController.h */,
+				B20C44491FBC511200EFAABD /* SYMyDaiPingJiaViewController.m */,
+				B20C44531FBC5E6E00EFAABD /* SYHaveCreatOrderInfosViewController.h */,
+				B20C44541FBC5E6E00EFAABD /* SYHaveCreatOrderInfosViewController.m */,
+				B20C44561FBC701100EFAABD /* SYMyYunPaiCommetViewController.h */,
+				B20C44571FBC701100EFAABD /* SYMyYunPaiCommetViewController.m */,
+				B20C44581FBC701100EFAABD /* SYMyYunPaiCommetViewController.xib */,
+				B2F7D7E01FBD3262000BF65C /* SYTouSuYunPaiShiViewController.h */,
+				B2F7D7E11FBD3262000BF65C /* SYTouSuYunPaiShiViewController.m */,
+				B2F7D7E21FBD3262000BF65C /* SYTouSuYunPaiShiViewController.xib */,
+			);
+			path = "我的预约";
+			sourceTree = "<group>";
+		};
+		B20FD20D1FBA97DF00848FC5 /* 上传作品 */ = {
+			isa = PBXGroup;
+			children = (
+				B20FD20E1FBA982A00848FC5 /* SYUpdateYunPaiShiViewController.h */,
+				B20FD20F1FBA982A00848FC5 /* SYUpdateYunPaiShiViewController.m */,
+			);
+			path = "上传作品";
+			sourceTree = "<group>";
+		};
+		B20FD2161FBAB83B00848FC5 /* 我的云拍客户 */ = {
+			isa = PBXGroup;
+			children = (
+				B20FD2261FBABECB00848FC5 /* View */,
+				B20FD2171FBAB85700848FC5 /* SYYunPaiKeHuViewController.h */,
+				B20FD2181FBAB85700848FC5 /* SYYunPaiKeHuViewController.m */,
+				B20FD21A1FBAB9C600848FC5 /* SYYuYueIngViewController.h */,
+				B20FD21B1FBAB9C600848FC5 /* SYYuYueIngViewController.m */,
+				B20FD21D1FBAB9D200848FC5 /* SYDaiPaiSheViewController.h */,
+				B20FD21E1FBAB9D200848FC5 /* SYDaiPaiSheViewController.m */,
+				B20FD2201FBAB9E100848FC5 /* SYYiWanChengViewController.h */,
+				B20FD2211FBAB9E100848FC5 /* SYYiWanChengViewController.m */,
+				B20FD2231FBAB9ED00848FC5 /* SYKeHuPingJiaViewController.h */,
+				B20FD2241FBAB9ED00848FC5 /* SYKeHuPingJiaViewController.m */,
+				B2F7D7DD1FBD238C000BF65C /* SYYunPaiShiHaveCreatOrderInfosViewController.h */,
+				B2F7D7DE1FBD238C000BF65C /* SYYunPaiShiHaveCreatOrderInfosViewController.m */,
+			);
+			path = "我的云拍客户";
+			sourceTree = "<group>";
+		};
+		B20FD2261FBABECB00848FC5 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				B20FD2271FBABEE000848FC5 /* SYYunPaiDianTableViewCell.h */,
+				B20FD2281FBABEE000848FC5 /* SYYunPaiDianTableViewCell.m */,
+				B20FD2291FBABEE000848FC5 /* SYYunPaiDianTableViewCell.xib */,
+				B20FD22C1FBAC08100848FC5 /* SYYunPaiShiCommentTableViewCell.h */,
+				B20FD22D1FBAC08100848FC5 /* SYYunPaiShiCommentTableViewCell.m */,
+				B20FD22E1FBAC08100848FC5 /* SYYunPaiShiCommentTableViewCell.xib */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		B26BD0BD1FB97FAF0042EC1E /* View */ = {
+			isa = PBXGroup;
+			children = (
+				B26BD0BE1FB97FCD0042EC1E /* SYEditAvatorTableViewCell.h */,
+				B26BD0BF1FB97FCD0042EC1E /* SYEditAvatorTableViewCell.m */,
+				B26BD0C01FB97FCD0042EC1E /* SYEditAvatorTableViewCell.xib */,
+				B26BD0C31FB981660042EC1E /* SYYuePaiPriceTableViewCell.h */,
+				B26BD0C41FB981660042EC1E /* SYYuePaiPriceTableViewCell.m */,
+				B26BD0C51FB981660042EC1E /* SYYuePaiPriceTableViewCell.xib */,
+				B26BD0C81FB9842A0042EC1E /* SYYunPaiDeviceTableViewCell.h */,
+				B26BD0C91FB9842A0042EC1E /* SYYunPaiDeviceTableViewCell.m */,
+				B26BD0CA1FB9842A0042EC1E /* SYYunPaiDeviceTableViewCell.xib */,
+				B26BD0CD1FB992C60042EC1E /* SYCustomTableViewCell.h */,
+				B26BD0CE1FB992C60042EC1E /* SYCustomTableViewCell.m */,
+				B26BD0CF1FB992C60042EC1E /* SYCustomTableViewCell.xib */,
+				B26BD0D21FB9959B0042EC1E /* SYTitleAndImageTableViewCell.h */,
+				B26BD0D31FB9959B0042EC1E /* SYTitleAndImageTableViewCell.m */,
+				B26BD0D41FB9959B0042EC1E /* SYTitleAndImageTableViewCell.xib */,
+				B20FD2111FBA98DC00848FC5 /* SYEditImageCollectionViewCell.h */,
+				B20FD2121FBA98DC00848FC5 /* SYEditImageCollectionViewCell.m */,
+				B20FD2131FBA98DC00848FC5 /* SYEditImageCollectionViewCell.xib */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		B274D6B31FBAC6FD00D37F51 /* 预约摄影 */ = {
+			isa = PBXGroup;
+			children = (
+				B20C443B1FBC509B00EFAABD /* 我的预约 */,
+				B20C44211FBC075900EFAABD /* Model */,
+				B274D6B71FBACF0300D37F51 /* View */,
+				B274D6B41FBAC81300D37F51 /* SYYuYueViewController.h */,
+				B274D6B51FBAC81300D37F51 /* SYYuYueViewController.m */,
+				B20C44251FBC12D000EFAABD /* SYYuYueInfosViewController.h */,
+				B20C44261FBC12D000EFAABD /* SYYuYueInfosViewController.m */,
+				B20C44331FBC28EA00EFAABD /* SYLiJiYuYueViewController.h */,
+				B20C44341FBC28EA00EFAABD /* SYLiJiYuYueViewController.m */,
+				B20C44351FBC28EA00EFAABD /* SYLiJiYuYueViewController.xib */,
+				B20C44381FBC369900EFAABD /* SYYunPaiOrderInfosViewController.h */,
+				B20C44391FBC369900EFAABD /* SYYunPaiOrderInfosViewController.m */,
+				B20C44311FBC262800EFAABD /* DateTimePickerView.h */,
+				B20C44301FBC262800EFAABD /* DateTimePickerView.m */,
+			);
+			path = "预约摄影";
+			sourceTree = "<group>";
+		};
+		B274D6B71FBACF0300D37F51 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				B274D6B81FBACF1500D37F51 /* SYYuYueTableViewCell.h */,
+				B274D6B91FBACF1500D37F51 /* SYYuYueTableViewCell.m */,
+				B274D6BA1FBACF1500D37F51 /* SYYuYueTableViewCell.xib */,
+				B20C44281FBC12F600EFAABD /* SYYuYueInfosTableViewCell.h */,
+				B20C44291FBC12F600EFAABD /* SYYuYueInfosTableViewCell.m */,
+				B20C442A1FBC12F600EFAABD /* SYYuYueInfosTableViewCell.xib */,
+				B20C444B1FBC570F00EFAABD /* SYMyYuYueZhongTableViewCell.h */,
+				B20C444C1FBC570F00EFAABD /* SYMyYuYueZhongTableViewCell.m */,
+				B20C444D1FBC570F00EFAABD /* SYMyYuYueZhongTableViewCell.xib */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		B2EC94951FAB0F6C008211D8 /* LSXInputAlertView */ = {
+			isa = PBXGroup;
+			children = (
+				B2EC949D1FAB0FA9008211D8 /* LSXAlertInputView.h */,
+				B2EC949E1FAB0FA9008211D8 /* LSXAlertInputView.m */,
+				B2EC949A1FAB0FA8008211D8 /* LSXPlacehoderTextView.h */,
+				B2EC94961FAB0FA8008211D8 /* LSXPlacehoderTextView.m */,
+				B2EC94971FAB0FA8008211D8 /* UIColor+YMHex.h */,
+				B2EC94981FAB0FA8008211D8 /* UIColor+YMHex.m */,
+				B2EC949C1FAB0FA8008211D8 /* UITableView+SDAutoTableViewCellHeight.h */,
+				B2EC949F1FAB0FA9008211D8 /* UITableView+SDAutoTableViewCellHeight.m */,
+				B2EC949B1FAB0FA8008211D8 /* UIView+SDAutoLayout.h */,
+				B2EC94991FAB0FA8008211D8 /* UIView+SDAutoLayout.m */,
+			);
+			path = LSXInputAlertView;
+			sourceTree = "<group>";
+		};
 		FBD33101230C56C531727235 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -3065,8 +3457,10 @@
 				476C97A31F0CB9CF00C1B305 /* SYCloudZanTableViewCell.xib in Resources */,
 				4706C3171E1F856100DE3D6F /* SYFenZuTableViewCell.xib in Resources */,
 				4710BC421E24CD58003CE8D8 /* SYGrapherEditPriceView.xib in Resources */,
+				B21557361FB58AF300005BBE /* SYOrderCreatTimeTableViewCell.xib in Resources */,
 				470260C91E286A8400FE8921 /* SYGrapherInfosTableViewCell.xib in Resources */,
 				473A63851EAA056800D48E49 /* SYPhotoStudioHeaderOneCollectionReusableView.xib in Resources */,
+				B26BD0B91FB973DD0042EC1E /* SYMyYunPaiShopViewController.xib in Resources */,
 				47215F351EB2123E00C99D0F /* SYGuiGeUpView.xib in Resources */,
 				47FE12441E175B0A00C5B569 /* FSActionSheet_cancel@3x.png in Resources */,
 				47EBE38A1EB0A4F7008F021A /* SYBusnessInfosTableViewCell.xib in Resources */,
@@ -3075,6 +3469,7 @@
 				47FE498B1E153C610028A37F /* SYAboutUsViewController.xib in Resources */,
 				47114FBB1E46B60B00DCE3C4 /* ZLCollectionCell.xib in Resources */,
 				47E591E41E2CBEB8009EEC30 /* SYMessageTableViewCell.xib in Resources */,
+				B20FD22B1FBABEE000848FC5 /* SYYunPaiDianTableViewCell.xib in Resources */,
 				47E591C51E2C7BA2009EEC30 /* SYPaymentInfosViewController.xib in Resources */,
 				47351F281E666D1F00B8DDFE /* SYNewTeacherAddPhotoToStudentViewController.xib in Resources */,
 				47EC6EA11E6FA42100829A57 /* UMSocialSDKResources.bundle in Resources */,
@@ -3084,10 +3479,12 @@
 				47114FB81E46B60B00DCE3C4 /* defaultphoto.png in Resources */,
 				47CE41A41F0DCC1A00E59374 /* SYCommentListViewController.xib in Resources */,
 				4732BEB91E271F5100CCAD70 /* SYUpdateGrapherCollectionViewCell.xib in Resources */,
+				B26BD0D61FB9959B0042EC1E /* SYTitleAndImageTableViewCell.xib in Resources */,
 				47FE83AB1E1CF0FA00781AAA /* SYUserInfosViewController.xib in Resources */,
 				4748C1741E8F457F00844207 /* SYShangPinTableViewCell.xib in Resources */,
 				47FE839E1E1C9CB200781AAA /* SYTixianMoneyTableViewCell.xib in Resources */,
 				476C979E1F0C8C9A00C1B305 /* SYCloudCommentContentTableViewCell.xib in Resources */,
+				B21557311FB5449200005BBE /* SYOrderInfosTableViewCell.xib in Resources */,
 				47FE12431E175B0A00C5B569 /* FSActionSheet_cancel@2x.png in Resources */,
 				476DC6401E2E1B5600218971 /* SYTixianTableViewCell.xib in Resources */,
 				4783B7381E10B0B400EBCEF5 /* LaunchScreen.storyboard in Resources */,
@@ -3098,18 +3495,22 @@
 				47D7CEF21E7D017C0054E8D0 /* 用户协议.jpg in Resources */,
 				47EC6E8F1E6FA0F200829A57 /* read_me.txt in Resources */,
 				47FE83961E1C8FF300781AAA /* SYRechargeMoneyTableViewCell.xib in Resources */,
+				B20C444F1FBC570F00EFAABD /* SYMyYuYueZhongTableViewCell.xib in Resources */,
 				47829FB51EB8B642003AE9ED /* CollectionFootView.xib in Resources */,
 				473738261E95E61C00D776E8 /* OrderPayTypeView.xib in Resources */,
 				47D7CF171E7D41890054E8D0 /* AlipaySDK.bundle in Resources */,
 				47114FBC1E46B60B00DCE3C4 /* ZLNoAuthorityViewController.xib in Resources */,
 				47E6A2471EBDA641007CEAC0 /* SYLijiBuyTableViewCell.xib in Resources */,
 				47114FAE1E46B60B00DCE3C4 /* btn_circle@3x.png in Resources */,
+				B2022FC41FB6D30500F09219 /* SYCertifieYunPaiShiViewController.xib in Resources */,
 				471F324A1E6A529600E410E3 /* SYChangeSchoolViewController.xib in Resources */,
 				47D6AF011EC1B162005D6A80 /* SYShopcartSelectePhotoTableViewCell.xib in Resources */,
 				47EC6E891E6FA0F200829A57 /* TencentOpenApi_IOS_Bundle.bundle in Resources */,
 				4706C3121E1F6C6C00DE3D6F /* SYTeacherCertifiedViewController.xib in Resources */,
+				B26BD0D11FB992C60042EC1E /* SYCustomTableViewCell.xib in Resources */,
 				47EC6EA01E6FA42100829A57 /* UMSocialSDKPromptResources.bundle in Resources */,
 				4783B7351E10B0B400EBCEF5 /* Assets.xcassets in Resources */,
+				B20FD2071FBA783400848FC5 /* SYYunPaiEditZiShuViewController.xib in Resources */,
 				47FE83B51E1CF9A700781AAA /* SYPersonalNotViewController.xib in Resources */,
 				47114FAD1E46B60B00DCE3C4 /* btn_circle@2x.png in Resources */,
 				47114FBE1E46B60B00DCE3C4 /* ZLPhotoBrowser.bundle in Resources */,
@@ -3117,10 +3518,12 @@
 				47114FB51E46B60B00DCE3C4 /* btn_unselected.png in Resources */,
 				472B87F91E13D9EB002DE70A /* SYAddToAddressViewController.xib in Resources */,
 				47563EAC1E1DDC6B00BE9961 /* SYChangePasswordViewController.xib in Resources */,
+				B20FD2301FBAC08100848FC5 /* SYYunPaiShiCommentTableViewCell.xib in Resources */,
 				47FE49761E14ED4C0028A37F /* SYCloudTableViewCell.xib in Resources */,
 				474C566B1E63CFF400C7A6AF /* SYMyAlbumInfosHeaderCollectionReusableView.xib in Resources */,
 				47114FB11E46B60B00DCE3C4 /* btn_original_circle@3x.png in Resources */,
 				47D0B53F1E6D69CC000D0307 /* SYGroupPhotoCollectionViewCell.xib in Resources */,
+				B20FD20C1FBA8B0B00848FC5 /* SYYunPaiSheBeiEditViewController.xib in Resources */,
 				47FE83BA1E1CFF8A00781AAA /* SYChangePhoneViewController.xib in Resources */,
 				47114FBA1E46B60B00DCE3C4 /* navBackBtn@2x.png in Resources */,
 				47114FC01E46B60B00DCE3C4 /* ZLThumbnailViewController.xib in Resources */,
@@ -3132,20 +3535,26 @@
 				4783B7331E10B0B400EBCEF5 /* Main.storyboard in Resources */,
 				47D6AEEF1EC1995A005D6A80 /* SYSelectePhotoHeaderCollectionReusableView.xib in Resources */,
 				47A907A61E83AC4800A7A5E1 /* SYPhotoStudioTableViewCell.xib in Resources */,
+				B20C445A1FBC701100EFAABD /* SYMyYunPaiCommetViewController.xib in Resources */,
 				473A638F1EAA0C2500D48E49 /* SYPhotoStudioHistoryCollectionViewCell.xib in Resources */,
 				474C56691E63CFF400C7A6AF /* SYMyAlbumInfosCollectionViewCell.xib in Resources */,
 				475E731B1E9775A00059CE05 /* DeleteOrderView.xib in Resources */,
 				4740503F1EADEBBC00331DDF /* SYPhotoNameTableViewCell.xib in Resources */,
 				47563EB11E1DF2A600BE9961 /* SYForgetPasswordViewController.xib in Resources */,
 				473907451EB9706200102EB2 /* CollectionLineView.xib in Resources */,
+				B26BD0C21FB97FCD0042EC1E /* SYEditAvatorTableViewCell.xib in Resources */,
 				472B87D91E120210002DE70A /* city.plist in Resources */,
+				B20CF5B01FA99E2B0073F369 /* SYShareHIstoryTableViewCell.xib in Resources */,
 				474D84B51E23639C007E981B /* SYGrapherCertifiedViewController.xib in Resources */,
 				47114FB31E46B60B00DCE3C4 /* btn_selected@2x.png in Resources */,
 				4783B7CF1E1147D800EBCEF5 /* SYAddressTableViewCell.xib in Resources */,
+				B20C44371FBC28EA00EFAABD /* SYLiJiYuYueViewController.xib in Resources */,
 				4746579A1E6ED1AD0038AC04 /* SYNoNetworkView.xib in Resources */,
+				B26BD0CC1FB9842A0042EC1E /* SYYunPaiDeviceTableViewCell.xib in Resources */,
 				475E73201E97881E0059CE05 /* SYOrderPingJiaViewController.xib in Resources */,
 				4748C1791E8FA80700844207 /* NoDataView.xib in Resources */,
 				47114FBF1E46B60B00DCE3C4 /* ZLPhotoBrowserCell.xib in Resources */,
+				B2F7D7E41FBD3262000BF65C /* SYTouSuYunPaiShiViewController.xib in Resources */,
 				47E591B41E2C55A9009EEC30 /* SYReportTableViewCell.xib in Resources */,
 				47EC6E901E6FA0F200829A57 /* README.txt in Resources */,
 				4732E0DB1E20E20A005C4911 /* SYTeacherAddPhotoToStudentViewController.xib in Resources */,
@@ -3156,16 +3565,20 @@
 				47AA16511E94DDAC002BC2AE /* SYDefaultAddressTableViewCell.xib in Resources */,
 				474C56711E63CFF400C7A6AF /* SYTeacherAndGrapherCollectionViewCell.xib in Resources */,
 				474D69EE1E642FC700815851 /* SYFromTeacherOrGrapherCollectionViewCell.xib in Resources */,
+				B274D6BC1FBACF1500D37F51 /* SYYuYueTableViewCell.xib in Resources */,
 				4701922C1EBAF0E500AB2C00 /* SYShopcartPayOrderTableViewCell.xib in Resources */,
 				47351F2D1E666E9800B8DDFE /* SYUpdateToStudentCollectionReusableView.xib in Resources */,
 				473F73B11E5EB1FE0024C13C /* SYAddStudentToClassView.xib in Resources */,
 				47707D7B1F05EBF000667860 /* SYCommentViewController.xib in Resources */,
 				47215F3D1EB2169000C99D0F /* CollectionHeadView.xib in Resources */,
 				4783B7AF1E1115ED00EBCEF5 /* SYMineTableViewCell.xib in Resources */,
+				B26BD0C71FB981660042EC1E /* SYYuePaiPriceTableViewCell.xib in Resources */,
 				47114FB21E46B60B00DCE3C4 /* btn_selected.png in Resources */,
 				4783B7C61E1141F400EBCEF5 /* SYRecordsTableViewCell.xib in Resources */,
 				47FE83911E1C8F7B00781AAA /* SYRechargeTableViewCell.xib in Resources */,
+				B20C442C1FBC12F600EFAABD /* SYYuYueInfosTableViewCell.xib in Resources */,
 				47E591B91E2C68E7009EEC30 /* SYYuePaiView.xib in Resources */,
+				B20FD2151FBA98DC00848FC5 /* SYEditImageCollectionViewCell.xib in Resources */,
 				474C56751E63CFF400C7A6AF /* SYUpdataMineCollectionViewCell.xib in Resources */,
 				47FE03B21E2DAD9400B601F5 /* SYMessageInfosTableViewCell.xib in Resources */,
 			);
@@ -3224,13 +3637,16 @@
 			files = (
 			);
 			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
 			);
 			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-ShuoYingUITests-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
 		686F464ECB842C08A4A1DB4D /* [CP] Check Pods Manifest.lock */ = {
@@ -3239,13 +3655,16 @@
 			files = (
 			);
 			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
 			);
 			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-ShuoYingTests-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
 		72999AEEEF22A5ECBD46B568 /* [CP] Copy Pods Resources */ = {
@@ -3254,9 +3673,14 @@
 			files = (
 			);
 			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-ShuoYing/Pods-ShuoYing-resources.sh",
+				"${PODS_ROOT}/IQKeyboardManager/IQKeyboardManager/Resources/IQKeyboardManager.bundle",
+				"${PODS_ROOT}/MJRefresh/MJRefresh/MJRefresh.bundle",
+				"${PODS_ROOT}/SVProgressHUD/SVProgressHUD/SVProgressHUD.bundle",
 			);
 			name = "[CP] Copy Pods Resources";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -3299,13 +3723,16 @@
 			files = (
 			);
 			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
 			);
 			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-ShuoYing-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
 		DF9CAB265488F648062858F3 /* [CP] Copy Pods Resources */ = {
@@ -3339,11 +3766,14 @@
 				4720BDD71EBC664300D4DCF2 /* NSMutableAttributedString+Gallop.m in Sources */,
 				47FE49711E14ED1D0028A37F /* SYCloudViewController.m in Sources */,
 				474050381EADEB7500331DDF /* SYBisnessViewController.m in Sources */,
+				B20C44321FBC262900EFAABD /* DateTimePickerView.m in Sources */,
 				47114FE01E46B61500DCE3C4 /* ZLNoAuthorityViewController.m in Sources */,
 				473F73AF1E5EB1EB0024C13C /* SYAddStudentToClassView.m in Sources */,
 				47FE12471E175B0A00C5B569 /* FSActionSheetConfig.m in Sources */,
+				B20FD2101FBA982A00848FC5 /* SYUpdateYunPaiShiViewController.m in Sources */,
 				47E591B31E2C55A9009EEC30 /* SYReportTableViewCell.m in Sources */,
 				474D84A81E232D30007E981B /* SYTeacherPhotoHistoryCollectionViewCell.m in Sources */,
+				B20C44591FBC701100EFAABD /* SYMyYunPaiCommetViewController.m in Sources */,
 				4720BDCA1EBC664300D4DCF2 /* LWStorage.m in Sources */,
 				474D84B41E23639C007E981B /* SYGrapherCertifiedViewController.m in Sources */,
 				47FE12581E175B3E00C5B569 /* XLZoomingScrollView.m in Sources */,
@@ -3354,7 +3784,9 @@
 				47EBE3891EB0A4F7008F021A /* SYBusnessInfosTableViewCell.m in Sources */,
 				474D84A31E232592007E981B /* SYTeacherPhotoHistoryViewController.m in Sources */,
 				47563EB01E1DF2A600BE9961 /* SYForgetPasswordViewController.m in Sources */,
+				B2EC94A31FAB0FA9008211D8 /* LSXAlertInputView.m in Sources */,
 				47BC2AE11E8BAF2D002EB06E /* SYChakanGrapherViewController.m in Sources */,
+				B20C443A1FBC369900EFAABD /* SYYunPaiOrderInfosViewController.m in Sources */,
 				476C97A21F0CB9CF00C1B305 /* SYCloudZanTableViewCell.m in Sources */,
 				47D7CF781E7D41E30054E8D0 /* APAuthV2Info.m in Sources */,
 				47FE12611E17A6F300C5B569 /* SYChildrenViewController.m in Sources */,
@@ -3366,11 +3798,15 @@
 				4720BDB51EBC664300D4DCF2 /* CALayer+WebCache.m in Sources */,
 				47E591C41E2C7BA2009EEC30 /* SYPaymentInfosViewController.m in Sources */,
 				4720BE021EBC68F700D4DCF2 /* LWImageBrowserButton.m in Sources */,
+				B20CF5AF1FA99E2B0073F369 /* SYShareHIstoryTableViewCell.m in Sources */,
 				474D69ED1E642FC700815851 /* SYFromTeacherOrGrapherCollectionViewCell.m in Sources */,
+				B20FD22F1FBAC08100848FC5 /* SYYunPaiShiCommentTableViewCell.m in Sources */,
 				4720BDB61EBC664300D4DCF2 /* CALayer+WebCacheOperation.m in Sources */,
 				47114FE71E46B61500DCE3C4 /* ZLShowBigImgViewController.m in Sources */,
 				4740504C1EAE122F00331DDF /* SYPhotoNameModel.m in Sources */,
+				B2E186FC1FB597C000DFD9EF /* SYMyFaBuViewController.m in Sources */,
 				47FE49641E14A43B0028A37F /* SYUpdatePhotographerViewController.m in Sources */,
+				B26BD0D51FB9959B0042EC1E /* SYTitleAndImageTableViewCell.m in Sources */,
 				47D0B53E1E6D69CC000D0307 /* SYGroupPhotoCollectionViewCell.m in Sources */,
 				47114FE81E46B61500DCE3C4 /* ZLThumbnailViewController.m in Sources */,
 				4783B7C51E1141F400EBCEF5 /* SYRecordsTableViewCell.m in Sources */,
@@ -3381,6 +3817,8 @@
 				476C97A91F0CD57B00C1B305 /* SYCloudCommentContentModel.m in Sources */,
 				473907441EB9706200102EB2 /* CollectionLineView.m in Sources */,
 				474C566E1E63CFF400C7A6AF /* SYNewAlbumModel.m in Sources */,
+				B26BD0C11FB97FCD0042EC1E /* SYEditAvatorTableViewCell.m in Sources */,
+				B20FD21F1FBAB9D200848FC5 /* SYDaiPaiSheViewController.m in Sources */,
 				474657981E6ED1A20038AC04 /* SYNoNetworkView.m in Sources */,
 				4720BDB81EBC664300D4DCF2 /* LWAsyncDisplayLayer.m in Sources */,
 				47A907A01E83628800A7A5E1 /* SYPhotoStudioViewController.m in Sources */,
@@ -3390,14 +3828,17 @@
 				4720BDB41EBC664300D4DCF2 /* CALayer+LWTransaction.m in Sources */,
 				47FE49751E14ED4C0028A37F /* SYCloudTableViewCell.m in Sources */,
 				4720BDC61EBC664300D4DCF2 /* LWHTMLTextConfig.m in Sources */,
+				B2EC94A11FAB0FA9008211D8 /* UIColor+YMHex.m in Sources */,
 				474342FA1E2752B700C5A5ED /* SYGrapherUpdateHistoryViewController.m in Sources */,
 				473F56C31E8E5E5E00992F12 /* SYXXAllViewController.m in Sources */,
 				47D6AEF31EC19AC0005D6A80 /* SYSelectePhotoCollectionViewCell.m in Sources */,
 				47FE838C1E1C8F6600781AAA /* SYRechargeViewController.m in Sources */,
 				4740504F1EAE13D600331DDF /* SYProductListModel.m in Sources */,
+				B26BD0C61FB981660042EC1E /* SYYuePaiPriceTableViewCell.m in Sources */,
 				4720BE051EBC68F700D4DCF2 /* LWImageBrowserModel.m in Sources */,
 				474050341EADCD3500331DDF /* SYPhotoStudioHistoryView.m in Sources */,
 				4720BDC11EBC664300D4DCF2 /* LWHTMLDisplayView.m in Sources */,
+				B205E9711FA86B2400C79A9E /* SYMyReciveViewController.m in Sources */,
 				474342FD1E27653600C5A5ED /* UIView+BadgeValue.m in Sources */,
 				4783B7601E10B17C00EBCEF5 /* SYBaseNavigationController.m in Sources */,
 				475E73191E97758A0059CE05 /* DeleteOrderView.m in Sources */,
@@ -3410,7 +3851,9 @@
 				474C56731E63CFF400C7A6AF /* SYTeacherAndGrapherModel.m in Sources */,
 				47E632971EAF35AB00B832D7 /* UINavigationController+Cloudox.m in Sources */,
 				47FE125E1E17A6DE00C5B569 /* SYSceneryViewController.m in Sources */,
+				B2EC94A21FAB0FA9008211D8 /* UIView+SDAutoLayout.m in Sources */,
 				47FE12561E175B3E00C5B569 /* XLPhotoBrowser.m in Sources */,
+				B205E9741FA86B7600C79A9E /* SYMyReciveTeacherViewController.m in Sources */,
 				474657881E6E97780038AC04 /* SYErWeiMaViewController.m in Sources */,
 				473F73B91E5ECF620024C13C /* SYEditStudentView.m in Sources */,
 				4720BDBD1EBC664300D4DCF2 /* LWAsyncImageView+WebCacheOperation.m in Sources */,
@@ -3431,11 +3874,16 @@
 				4720BDD91EBC664300D4DCF2 /* SDImageCache+Gallop.m in Sources */,
 				474C56741E63CFF400C7A6AF /* SYUpdataMineCollectionViewCell.m in Sources */,
 				47FE12571E175B3E00C5B569 /* XLProgressView.m in Sources */,
+				B20FD20B1FBA8B0B00848FC5 /* SYYunPaiSheBeiEditViewController.m in Sources */,
+				B274D6BB1FBACF1500D37F51 /* SYYuYueTableViewCell.m in Sources */,
+				B20FD2251FBAB9ED00848FC5 /* SYKeHuPingJiaViewController.m in Sources */,
 				47FB984D1EFA4B9C00D89FDB /* SYCloudContentTableViewCell.m in Sources */,
 				472B87D71E1201FB002DE70A /* OSAddressPickerView.m in Sources */,
+				B2022FC31FB6D30500F09219 /* SYCertifieYunPaiShiViewController.m in Sources */,
 				474C56761E63CFF400C7A6AF /* SYUpdateMineViewController.m in Sources */,
 				4783B7A21E10E82600EBCEF5 /* NSDictionary+Log.m in Sources */,
 				4783B7631E10B19A00EBCEF5 /* SYBaseTabBarController.m in Sources */,
+				B20C44441FBC50F800EFAABD /* SYMyYuYueZhongViewController.m in Sources */,
 				47215F2D1EB186BF00C99D0F /* SYGuiGeView.m in Sources */,
 				4741D0F81EA9AEC00081D07C /* JSDropDownMenu.m in Sources */,
 				47D976E31EC2EA0C0071EBB1 /* SYAnnotation.m in Sources */,
@@ -3446,6 +3894,7 @@
 				4732BEC11E27236D00CCAD70 /* SYUpdateGrapherFlowLayout.m in Sources */,
 				47114FDE1E46B61500DCE3C4 /* ZLBigImageCell.m in Sources */,
 				47215F3E1EB2169000C99D0F /* TagCell.m in Sources */,
+				B20FD21C1FBAB9C600848FC5 /* SYYuYueIngViewController.m in Sources */,
 				4720BDBF1EBC664300D4DCF2 /* LWFlag.m in Sources */,
 				4783B7CA1E11478F00EBCEF5 /* SYAddressViewController.m in Sources */,
 				47FE12351E175B0200C5B569 /* TAAbstractDotView.m in Sources */,
@@ -3457,21 +3906,32 @@
 				47FE12481E175B0A00C5B569 /* FSActionSheetItem.m in Sources */,
 				47E6329A1EAF4DC100B832D7 /* SYCommentModel.m in Sources */,
 				4720BDC01EBC664300D4DCF2 /* LWGIFImage.m in Sources */,
+				B20C44361FBC28EA00EFAABD /* SYLiJiYuYueViewController.m in Sources */,
+				B2EC94A41FAB0FA9008211D8 /* UITableView+SDAutoTableViewCellHeight.m in Sources */,
+				B26BD0BC1FB97B220042EC1E /* SYYunPaiShopEditViewController.m in Sources */,
 				474D84C11E2375DF007E981B /* SYGrapherUpdataPhotoViewController.m in Sources */,
 				4740E1C11EB2D34800DDF8D4 /* SYTwoModel.m in Sources */,
+				B20C443E1FBC50B000EFAABD /* SYMyYuYueViewController.m in Sources */,
+				B20CF5AB1FA99E0F0073F369 /* SYShareHistoryViewController.m in Sources */,
 				473F56C61E8E5E6900992F12 /* SYXXFuKuanViewController.m in Sources */,
+				B20FD2221FBAB9E100848FC5 /* SYYiWanChengViewController.m in Sources */,
 				4720BE031EBC68F700D4DCF2 /* LWImageBrowserCell.m in Sources */,
 				47D7CF091E7D08500054E8D0 /* UIView+SDExtension.m in Sources */,
 				4710BC331E246E1D003CE8D8 /* SYGrapherUpdatePhotoToCloudViewController.m in Sources */,
+				B20C44551FBC5E6E00EFAABD /* SYHaveCreatOrderInfosViewController.m in Sources */,
+				B20C44471FBC510600EFAABD /* SYMyDaiPaiSheViewController.m in Sources */,
 				47829FB41EB8B642003AE9ED /* CollectionFootView.m in Sources */,
 				4720BDFF1EBC68F700D4DCF2 /* LWAlertContentView.m in Sources */,
 				47114FDF1E46B61500DCE3C4 /* ZLCollectionCell.m in Sources */,
+				B20C442B1FBC12F600EFAABD /* SYYuYueInfosTableViewCell.m in Sources */,
 				4720BDD31EBC664300D4DCF2 /* LWTextStorage.m in Sources */,
+				B20C444E1FBC570F00EFAABD /* SYMyYuYueZhongTableViewCell.m in Sources */,
 				47EBE38D1EB0AA88008F021A /* SYBusnessInfosModel.m in Sources */,
 				4720BDD51EBC664300D4DCF2 /* LWTransactionGroup.m in Sources */,
 				47FE83901E1C8F7B00781AAA /* SYRechargeTableViewCell.m in Sources */,
 				47EAE44C1E30B79B00B19D84 /* SYJianJieViewController.m in Sources */,
 				47AE4E831E16580800A09EAD /* XBUpdatePhotoManager.m in Sources */,
+				B20FD22A1FBABEE000848FC5 /* SYYunPaiDianTableViewCell.m in Sources */,
 				4720BDCB1EBC664300D4DCF2 /* LWStorageBuilder.m in Sources */,
 				47FE83991E1C9C5400781AAA /* SYTixianViewController.m in Sources */,
 				47FE12641E17A72200C5B569 /* SYWeddingVeilViewController.m in Sources */,
@@ -3480,9 +3940,12 @@
 				47FE126D1E17A78900C5B569 /* SYNostalgiaViewController.m in Sources */,
 				4720BDC71EBC664300D4DCF2 /* LWImageProcessor.m in Sources */,
 				473F56B71E8E4F5D00992F12 /* SYXSFuKuanViewController.m in Sources */,
+				B26BD0CB1FB9842A0042EC1E /* SYYunPaiDeviceTableViewCell.m in Sources */,
 				4720BDFC1EBC68F700D4DCF2 /* LWActiveIncatorAnimationView.m in Sources */,
+				B20C442F1FBC1D0F00EFAABD /* SYYunPaiShiInfos.m in Sources */,
 				47EBE3851EB0420C008F021A /* SYBisnessInfosViewController.m in Sources */,
 				47FE03B81E2DB70800B601F5 /* SYSearchViewController.m in Sources */,
+				B20FD2141FBA98DC00848FC5 /* SYEditImageCollectionViewCell.m in Sources */,
 				4783B7721E10B7EF00EBCEF5 /* SYFindViewController.m in Sources */,
 				4720BDC81EBC664300D4DCF2 /* LWImageStorage.m in Sources */,
 				47FE12361E175B0200C5B569 /* TAAnimatedDotView.m in Sources */,
@@ -3497,7 +3960,9 @@
 				4732E0D61E20B599005C4911 /* FTPopOverMenu.m in Sources */,
 				4748C1771E8FA7FD00844207 /* NoDataView.m in Sources */,
 				47D7CF7B1E7D41E30054E8D0 /* Order.m in Sources */,
+				B21557351FB58AF300005BBE /* SYOrderCreatTimeTableViewCell.m in Sources */,
 				4720BDFB1EBC68F700D4DCF2 /* LWActiveIncator.m in Sources */,
+				B20C44271FBC12D000EFAABD /* SYYuYueInfosViewController.m in Sources */,
 				4783B7AE1E1115ED00EBCEF5 /* SYMineTableViewCell.m in Sources */,
 				473F56B41E8E4F4700992F12 /* SYXSAllViewController.m in Sources */,
 				4740E1BE1EB2D32200DDF8D4 /* SYOneModel.m in Sources */,
@@ -3508,6 +3973,9 @@
 				4720BDB91EBC664300D4DCF2 /* LWAsyncDisplayView.m in Sources */,
 				47351F301E66AEC100B8DDFE /* SYUpdateToClassViewController.m in Sources */,
 				47114FDD1E46B61500DCE3C4 /* ToastUtils.m in Sources */,
+				B20FD2191FBAB85700848FC5 /* SYYunPaiKeHuViewController.m in Sources */,
+				B20C44411FBC50E400EFAABD /* SYMyYiWanChengViewController.m in Sources */,
+				B2022FC71FB6DEB800F09219 /* SYMapViewController.m in Sources */,
 				47FE126A1E17A76700C5B569 /* SYDocumentarViewController.m in Sources */,
 				470192271EBAF0CF00AB2C00 /* SYShopcartPayOrderViewController.m in Sources */,
 				4720BDD81EBC664300D4DCF2 /* NSString+HTML.m in Sources */,
@@ -3518,13 +3986,16 @@
 				4720BDC91EBC664300D4DCF2 /* LWLayout.m in Sources */,
 				476C97B01F0D10CD00C1B305 /* KMPlaceholderTextView.m in Sources */,
 				4720BDD61EBC664300D4DCF2 /* NSManagedObject+LWLayout.m in Sources */,
+				B20C444A1FBC511200EFAABD /* SYMyDaiPingJiaViewController.m in Sources */,
 				47FB98501EFA569500D89FDB /* SYCloudContentFrameModel.m in Sources */,
+				B20C44241FBC076E00EFAABD /* SYYuYueModel.m in Sources */,
 				470260C41E2869D600FE8921 /* SYGrapherInfosViewController.m in Sources */,
 				47215F3C1EB2169000C99D0F /* CollectionHeadView.m in Sources */,
 				4740E1C41EB2D35000DDF8D4 /* SYThreeModel.m in Sources */,
 				47FE49791E14F3CC0028A37F /* SYCloudModel.m in Sources */,
 				4783B7A81E10E82600EBCEF5 /* UIImage+QTBackgroundColor.m in Sources */,
 				4720BDDB1EBC664300D4DCF2 /* UIImage+Gallop.m in Sources */,
+				B2F7D7DF1FBD238C000BF65C /* SYYunPaiShiHaveCreatOrderInfosViewController.m in Sources */,
 				4720BE0B1EBC725000D4DCF2 /* SDWebImageManager+Gallop.m in Sources */,
 				47FE83AF1E1CF14400781AAA /* SYEditNickViewController.m in Sources */,
 				47AA164C1E94D9D3002BC2AE /* SYOrderPaymentViewController.m in Sources */,
@@ -3539,7 +4010,9 @@
 				4783B7A11E10E82600EBCEF5 /* NSArray+Log.m in Sources */,
 				4706C3161E1F856100DE3D6F /* SYFenZuTableViewCell.m in Sources */,
 				47D6AEFB1EC1A3E1005D6A80 /* SYPhotoListCollectionViewCell.m in Sources */,
+				B2EC94A01FAB0FA9008211D8 /* LSXPlacehoderTextView.m in Sources */,
 				47AE4E521E1608A500A09EAD /* UINavigationBar+BackgroundColor.m in Sources */,
+				B205E9771FA86B8600C79A9E /* SYMyReciveGrapherViewController.m in Sources */,
 				47D7CF0C1E7D27F80054E8D0 /* CCPScrollView.m in Sources */,
 				472905061F0F5FAB00A44A3A /* SYMyGuanZhuViewController.m in Sources */,
 				4783B7781E10B84500EBCEF5 /* SYMineViewController.m in Sources */,
@@ -3551,6 +4024,7 @@
 				47FE83951E1C8FF300781AAA /* SYRechargeMoneyTableViewCell.m in Sources */,
 				4720BE081EBC68F700D4DCF2 /* UIImage+ImageEffects.m in Sources */,
 				47FE83AA1E1CF0FA00781AAA /* SYUserInfosViewController.m in Sources */,
+				B20FD2061FBA783400848FC5 /* SYYunPaiEditZiShuViewController.m in Sources */,
 				474342F71E27316400C5A5ED /* SYUpdateGrapherHeaderCollectionReusableView.m in Sources */,
 				47269B7F1EE286110065B55D /* SYOrderInfosViewController.m in Sources */,
 				474C566D1E63CFF400C7A6AF /* SYMyPhotoModel.m in Sources */,
@@ -3580,6 +4054,7 @@
 				47E591DC1E2CB7A1009EEC30 /* DataMD5.m in Sources */,
 				473F56CC1E8E5E8100992F12 /* SYXXPingJiaViewController.m in Sources */,
 				4783B7C11E1141DC00EBCEF5 /* SYRecordsViewController.m in Sources */,
+				B26BD0D01FB992C60042EC1E /* SYCustomTableViewCell.m in Sources */,
 				476C97A61F0CBB4700C1B305 /* SYZanViewController.m in Sources */,
 				47A808031F341004007FFA86 /* SYRedBagViewController.m in Sources */,
 				47EAE4581E30DE0800B19D84 /* UIImageView+ZCDownload.m in Sources */,
@@ -3605,6 +4080,7 @@
 				4720BDC41EBC664300D4DCF2 /* LWHTMLNode.m in Sources */,
 				473F56A81E8E2EFC00992F12 /* SYXianXiaViewController.m in Sources */,
 				47FE12461E175B0A00C5B569 /* FSActionSheetCell.m in Sources */,
+				B26BD0B81FB973DD0042EC1E /* SYMyYunPaiShopViewController.m in Sources */,
 				47DF02761ECBF7540047828A /* SYBusnessPhotosViewController.m in Sources */,
 				4748C1731E8F457F00844207 /* SYShangPinTableViewCell.m in Sources */,
 				474C56681E63CFF400C7A6AF /* SYMyAlbumInfosCollectionViewCell.m in Sources */,
@@ -3612,6 +4088,8 @@
 				473907561EB9B01100102EB2 /* SYShopcartShangpinModel.m in Sources */,
 				4720BDD01EBC664300D4DCF2 /* LWTextLine.m in Sources */,
 				473F569D1E8E24C900992F12 /* SYOrderViewController.m in Sources */,
+				B20C44521FBC5B0F00EFAABD /* SYYuYueOrderModel.m in Sources */,
+				B2F7D7E31FBD3262000BF65C /* SYTouSuYunPaiShiViewController.m in Sources */,
 				4740503E1EADEBBC00331DDF /* SYPhotoNameTableViewCell.m in Sources */,
 				47D6AEEE1EC1995A005D6A80 /* SYSelectePhotoHeaderCollectionReusableView.m in Sources */,
 				4783B7AA1E10E82600EBCEF5 /* XHNetworkCache.m in Sources */,
@@ -3623,6 +4101,7 @@
 				474C56721E63CFF400C7A6AF /* SYTeacherAndGrapherInfosViewController.m in Sources */,
 				474D84AE1E235CF0007E981B /* SYPhotographerView.m in Sources */,
 				47E632941EAF359500B832D7 /* UIViewController+Cloudox.m in Sources */,
+				B274D6B61FBAC81300D37F51 /* SYYuYueViewController.m in Sources */,
 				47E591E31E2CBEB8009EEC30 /* SYMessageTableViewCell.m in Sources */,
 				4720BDD41EBC664300D4DCF2 /* LWTransaction.m in Sources */,
 				47FE83A11E1CCB7300781AAA /* SYUserInfos.m in Sources */,
@@ -3638,6 +4117,7 @@
 				47D7CF071E7D08500054E8D0 /* SDCollectionViewCell.m in Sources */,
 				475E731F1E97881E0059CE05 /* SYOrderPingJiaViewController.m in Sources */,
 				4783B7B81E1138C900EBCEF5 /* SYMyWalletViewController.m in Sources */,
+				B21557301FB5449200005BBE /* SYOrderInfosTableViewCell.m in Sources */,
 				47FE12541E175B3E00C5B569 /* UIImage+XLExtension.m in Sources */,
 				4720BDFD1EBC68F700D4DCF2 /* LWActionSheetTableViewCell.m in Sources */,
 				47D0B5371E6D63A1000D0307 /* SYGroupPhotoViewController.m in Sources */,
@@ -3807,7 +4287,7 @@
 					"$(PROJECT_DIR)/ShuoYing/UMSocial/UMSocialUI",
 					"$(PROJECT_DIR)/ShuoYing/Pay/Alipay",
 				);
-				GCC_PREFIX_HEADER = /Users/shuoying/Desktop/3.0.7/ShuoYing/PrefixHeader.pch;
+				GCC_PREFIX_HEADER = /Users/chu/Desktop/yunpai/ShuoYing/PrefixHeader.pch;
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"${PODS_ROOT}/Headers/Public\"",
@@ -3852,7 +4332,7 @@
 					"$(PROJECT_DIR)/ShuoYing/UMSocial/UMSocialUI",
 					"$(PROJECT_DIR)/ShuoYing/Pay/Alipay",
 				);
-				GCC_PREFIX_HEADER = /Users/shuoying/Desktop/3.0.7/ShuoYing/PrefixHeader.pch;
+				GCC_PREFIX_HEADER = /Users/chu/Desktop/yunpai/ShuoYing/PrefixHeader.pch;
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"${PODS_ROOT}/Headers/Public\"",

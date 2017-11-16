@@ -21,17 +21,15 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-
     
-    self.navigationBar.barTintColor = [UIColor whiteColor];
-    [self.navigationBar setBackgroundImage:[UIImage imageWithColor:NavigationColor Size:CGSizeMake(kScreenWidth, 64)] forBarMetrics:UIBarMetricsDefault];
+//    self.navigationBar.barTintColor = [UIColor whiteColor];
+    [self.navigationBar setBackgroundImage:[UIImage imageWithColor:NavigationColor Size:CGSizeMake(kScreenWidth, kNavigationBarHeightAndStatusBarHeight)] forBarMetrics:UIBarMetricsDefault];
     self.navigationBar.shadowImage = [UIImage imageWithColor:NavigationColor Size:CGSizeMake(kScreenWidth, 1)];
     self.navigationBar.translucent = NO;
     self.navigationBar.titleTextAttributes = @{NSForegroundColorAttributeName : [UIColor whiteColor], NSFontAttributeName : [UIFont systemFontOfSize:17]};
     self.PopDelegate = self.interactivePopGestureRecognizer.delegate;
     self.delegate = self;
 }
-
 
 #pragma mark --------navigation delegate
 //该方法可以解决popRootViewController时tabbar的bug

@@ -9,7 +9,7 @@
 #import "SYErWeiMaViewController.h"
 
 #import "QTShareView.h"
-
+#import "SYShareHistoryViewController.h"
 
 
 @interface SYErWeiMaViewController ()<QTShareViewDelegate>
@@ -28,7 +28,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    self.title = @"分享二维码";
+    self.title = @"我的分享";
     
     [self getErWeiMa];
 }
@@ -37,17 +37,33 @@
     
     UIButton *buttom = [UIButton buttonWithType:UIButtonTypeCustom];
     [buttom setAdjustsImageWhenHighlighted:NO];
-    buttom.frame = CGRectMake(0, 0, 70, 25);
+    buttom.frame = CGRectMake(0, 0, 40, 25);
     [buttom setImage:[UIImage imageNamed:@"mine_shareapp"] forState:UIControlStateNormal];
     buttom.imageView.contentMode = UIViewContentModeCenter;
-    [buttom setImageEdgeInsets:UIEdgeInsetsMake(0, 25, 0, -25)];
+    [buttom setImageEdgeInsets:UIEdgeInsetsMake(0, 15, 0, -15)];
     [buttom addTarget:self action:@selector(commitComment:) forControlEvents:UIControlEventTouchUpInside];
     UIBarButtonItem *right = [[UIBarButtonItem alloc] initWithCustomView:buttom];
-    self.navigationItem.rightBarButtonItem = right;
+    
+    UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
+    [btn setAdjustsImageWhenHighlighted:NO];
+    btn.frame = CGRectMake(0, 0, 60, 25);
+    [btn setTitle:@"分享记录" forState:UIControlStateNormal];
+    btn.titleLabel.font = [UIFont systemFontOfSize:14];
+    [btn setTitleEdgeInsets:UIEdgeInsetsMake(0, 15, 0, -15)];
+    btn.contentHorizontalAlignment = UIControlContentHorizontalAlignmentRight;
+    [btn addTarget:self action:@selector(shareJilu:) forControlEvents:UIControlEventTouchUpInside];
+    UIBarButtonItem *right1 = [[UIBarButtonItem alloc] initWithCustomView:btn];
+
+    self.navigationItem.rightBarButtonItems = @[right, right1];
+}
+
+- (void)shareJilu:(UIButton *)sender{
+    SYShareHistoryViewController *share = [[SYShareHistoryViewController alloc] init];
+    [self.navigationController pushViewController:share animated:YES];
 }
 
 - (void)loadSubView{
-    UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, kScreenHeight - 64)];
+    UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, kScreenHeight - kNavigationBarHeightAndStatusBarHeight)];
     _imageView = imageView;
     [imageView sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@",ImgUrl, _share]]];
     imageView.userInteractionEnabled = YES;

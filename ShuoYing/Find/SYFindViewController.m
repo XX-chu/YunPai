@@ -63,7 +63,7 @@
     
     // 创建底部滚动视图
     self.mainScrollView = [[UIScrollView alloc] init];
-    _mainScrollView.frame = CGRectMake(0, 40, kScreenWidth, kScreenHeight - 40 - 64 - self.tabBarController.tabBar.frame.size.height);
+    _mainScrollView.frame = CGRectMake(0, 40, kScreenWidth, kScreenHeight - 40 - kNavigationBarHeightAndStatusBarHeight - self.tabBarController.tabBar.frame.size.height);
     _mainScrollView.contentSize = CGSizeMake(self.view.frame.size.width * _titles.count, 0);
     _mainScrollView.backgroundColor = [UIColor clearColor];
     // 开启分页

@@ -24,6 +24,8 @@
 
 @property (nonatomic, strong) NSNumber *state;//0未下载 1已下载
 
+@property (nonatomic, strong) NSNumber *isSelected; //是否选中
+
 - (instancetype)initWithDictionary:(NSDictionary *)dic;
 
 + (instancetype)modelWithDictionary:(NSDictionary *)dic;

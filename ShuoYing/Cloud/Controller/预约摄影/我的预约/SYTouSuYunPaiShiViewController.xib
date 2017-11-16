@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SYTouSuYunPaiShiViewController">
+            <connections>
+                <outlet property="contentTV" destination="7BO-9C-phJ" id="s2L-ZH-AY2"/>
+                <outlet property="countLabel" destination="dbL-wW-LNF" id="msK-bl-a1Y"/>
+                <outlet property="placeHoledLabe" destination="qA3-gP-as1" id="d6H-ro-Pbp"/>
+                <outlet property="tousuBtn" destination="wFM-0R-v8R" id="7Eo-i2-L5g"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="7BO-9C-phJ">
+                    <rect key="frame" x="13" y="10" width="349" height="180"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="180" id="DIe-sI-81J"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                </textView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wFM-0R-v8R">
+                    <rect key="frame" x="13" y="230" width="349" height="50"/>
+                    <color key="backgroundColor" red="0.23921568630000001" green="0.81176470590000005" blue="0.73333333329999995" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="50" id="duy-xj-jec"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <state key="normal" title="我要投诉"/>
+                    <connections>
+                        <action selector="tousuAction:" destination="-1" eventType="touchUpInside" id="fsR-zy-Tqu"/>
+                    </connections>
+                </button>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="150/150" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dbL-wW-LNF">
+                    <rect key="frame" x="299.5" y="167.5" width="45.5" height="14.5"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                    <color key="textColor" red="0.59999999999999998" green="0.59999999999999998" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="对摄影师有什么不满就写在这里吧..." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qA3-gP-as1">
+                    <rect key="frame" x="27" y="18" width="226.5" height="17"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <color key="textColor" red="0.41960784309999999" green="0.41960784309999999" blue="0.41960784309999999" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="7BO-9C-phJ" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="10" id="01H-80-odb"/>
+                <constraint firstItem="wFM-0R-v8R" firstAttribute="top" secondItem="dbL-wW-LNF" secondAttribute="bottom" constant="48" id="0yZ-V8-nFF"/>
+                <constraint firstAttribute="trailing" secondItem="wFM-0R-v8R" secondAttribute="trailing" constant="13" id="Gac-RP-hTw"/>
+                <constraint firstItem="wFM-0R-v8R" firstAttribute="top" secondItem="7BO-9C-phJ" secondAttribute="bottom" constant="40" id="Q4v-FH-WwV"/>
+                <constraint firstItem="qA3-gP-as1" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="18" id="TfH-mY-Gwq"/>
+                <constraint firstAttribute="trailing" secondItem="7BO-9C-phJ" secondAttribute="trailing" constant="13" id="aK8-Sf-MSC"/>
+                <constraint firstItem="wFM-0R-v8R" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="13" id="kMY-hj-L6d"/>
+                <constraint firstAttribute="trailing" secondItem="dbL-wW-LNF" secondAttribute="trailing" constant="30" id="lBE-2Y-qt7"/>
+                <constraint firstItem="qA3-gP-as1" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="27" id="ncw-Tv-bqT"/>
+                <constraint firstItem="7BO-9C-phJ" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="13" id="sUd-IN-gjS"/>
+            </constraints>
+        </view>
+    </objects>
+</document>

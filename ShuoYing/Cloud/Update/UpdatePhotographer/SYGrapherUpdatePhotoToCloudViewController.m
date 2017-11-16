@@ -53,8 +53,9 @@
 
 @property (nonatomic, strong) NSMutableArray *selectedPhotoModelsArr;
 
-@property (weak, nonatomic) IBOutlet UITextField *yuyueTF;
 @property (weak, nonatomic) IBOutlet UITextField *danzhangTF;
+
+@property (nonatomic, strong) NSMutableArray *beizhuArr;
 
 @end
 
@@ -66,7 +67,7 @@
     [super viewDidLoad];
     self.title = @"发布到首页";
     _num = @0;
-    self.containerViewHeight.constant = kScreenHeight - 64;
+    self.containerViewHeight.constant = kScreenHeight - kNavigationBarHeightAndStatusBarHeight;
     self.introTextView.delegate = self;
     self.bigScrollView.delegate = self;
     self.selecteAeraView.userInteractionEnabled = YES;
@@ -78,6 +79,8 @@
 }
 //发布
 - (void)updatePhotosToCloud:(UIButton *)sender{
+    [self.view endEditing:YES];
+    
     if (self.introTextView.text.length == 0) {
         [self showHint:@"请输入您的作品说明"];
         return;
@@ -133,7 +136,7 @@
     NSInteger currentNum = self.selectedPhotosArr.count - muDatas.count + 1;
     
     NSString *url = [NSString stringWithFormat:@"%@%@",BaseUrl,@"/pho/cloudX.html"];
-    NSDictionary *param = @{@"token":UserToken, @"prov":_prov, @"city":_city, @"type":seletedTypeTag, @"info":self.introTextView.text, @"num":_num, @"fee":self.yuyueTF.text, @"cash":self.danzhangTF.text};
+    NSDictionary *param = @{@"token":UserToken, @"prov":_prov, @"city":_city, @"type":seletedTypeTag, @"info":self.introTextView.text, @"num":_num, @"money":self.danzhangTF.text, @"imginfo":self.beizhuArr[0]};
     NSLog(@"param = %@",param);
     [[XBUpdatePhotoManager sharedInstance] updatePhotosWithFile:url param:param fileData:data name:@"img" fileName:[NSString stringWithFormat:@"img%lu.%@",(long)currentNum, [mimaType substringWithRange:NSMakeRange(6, mimaType.length - 6)]] mimeType:mimaType currentNumber:currentNum allNumber:self.selectedPhotosArr.count result:^(NSDictionary *dic) {
         NSLog(@"dic - %@",dic);
@@ -145,6 +148,7 @@
             //成功
             if (muDatas.count > 1) {
                 [self.imagesArr removeObjectAtIndex:0];
+                [self.beizhuArr removeObjectAtIndex:0];
                 _num = [dic objectForKey:@"num"];
                 [self updatePhotosToCloud:sender];
             }else{
@@ -223,6 +227,7 @@
         strongify(weakSelf);
         [weakSelf.selectedPhotosArr removeAllObjects];
         [weakSelf.selectedPhotoModelsArr removeAllObjects];
+        [weakSelf.beizhuArr removeAllObjects];
         
         [weakSelf.selectedPhotosArr addObjectsFromArray:selectPhotos];
         [weakSelf.selectedPhotoModelsArr addObjectsFromArray:selectPhotoModels];
@@ -442,6 +447,9 @@
     [self.imagesView.subviews makeObjectsPerformSelector:@selector(removeFromSuperview)];
     
     for (int i = 0; i < self.imagesArr.count; i++) {
+        if (self.beizhuArr.count < self.imagesArr.count) {
+            [self.beizhuArr addObject:@""];
+        }
         UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(15 + ((kScreenWidth - 70) / 3) * (i % 3) + 20 *(i % 3), ((kScreenWidth - 70) / 3) * (i / 3) + 15 * (i / 3), (kScreenWidth - 70) / 3, (kScreenWidth - 70) / 3)];
         imageView.image = [UIImage imageWithData:self.imagesArr[i]];
         imageView.userInteractionEnabled = YES;
@@ -449,6 +457,23 @@
         UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(photoBrowers:)];
         [imageView addGestureRecognizer:tap];
         [self.imagesView addSubview:imageView];
+        
+        UIButton *editBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+        editBtn.frame = CGRectMake(0, imageView.frame.size.height - 25, imageView.frame.size.width, 25);
+        [editBtn setBackgroundImage:[UIImage imageWithColor:[[UIColor whiteColor] colorWithAlphaComponent:.4] Size:editBtn.frame.size] forState:UIControlStateNormal];
+        [editBtn setImage:[UIImage imageNamed:@"bianji"] forState:UIControlStateNormal];
+        NSString *str = self.beizhuArr[i];
+        if ([str isEqualToString:@""]) {
+            [editBtn setTitle:@"添加备注" forState:UIControlStateNormal];
+        }else{
+            [editBtn setTitle:@"修改备注" forState:UIControlStateNormal];
+        }
+        editBtn.tag = i;
+        [editBtn addTarget:self action:@selector(beizhuAction:) forControlEvents:UIControlEventTouchUpInside];
+        [editBtn setTitleColor:NavigationColor forState:UIControlStateNormal];
+        editBtn.titleLabel.font = [UIFont systemFontOfSize:14];
+        [editBtn setAdjustsImageWhenHighlighted:NO];
+        [imageView addSubview:editBtn];
         
         UIButton *deleteBtn = [UIButton buttonWithType:UIButtonTypeCustom];
         deleteBtn.frame = CGRectMake(CGRectGetWidth(imageView.frame) - 20, 0, 20, 20);
@@ -460,23 +485,18 @@
     }
     NSInteger count = self.imagesArr.count;
     if (count % 3 == 0) {
-//        self.scrollView.contentSize = CGSizeMake(kScreenWidth, ((kScreenWidth - 70) / 3 + 15) * (count / 3));
         self.containerViewHeight.constant = CGRectGetMaxY(self.seletePhotos.frame) + 15 + ((kScreenWidth - 70) / 3 + 15) * (count / 3);
     }else{
-//        self.scrollView.contentSize = CGSizeMake(kScreenWidth, ((kScreenWidth - 70) / 3 + 15) * (count / 3 + 1));
         self.containerViewHeight.constant = CGRectGetMaxY(self.seletePhotos.frame) + 15 + ((kScreenWidth - 70) / 3 + 15) * (count / 3 + 1);
     }
-    NSLog(@"self.co - %f",self.containerViewHeight.constant - kScreenHeight + 64);
-    if (self.containerViewHeight.constant > (kScreenHeight - 64)) {
-        [self.bigScrollView setContentOffset:CGPointMake(0, self.containerViewHeight.constant - (kScreenHeight - 64)) animated:NO];
+    if (self.containerViewHeight.constant > (kScreenHeight - kNavigationBarHeightAndStatusBarHeight)) {
+        [self.bigScrollView setContentOffset:CGPointMake(0, self.containerViewHeight.constant - (kScreenHeight - kNavigationBarHeightAndStatusBarHeight)) animated:NO];
     }
-    
 
 }
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView{
-    NSLog(@"%F",scrollView.contentOffset.x);
-    NSLog(@"%F",scrollView.contentOffset.y);
+    
 }
 
 
@@ -496,10 +516,24 @@
     [self.imagesArr removeObjectAtIndex:sender.tag];
     [self.selectedPhotoModelsArr removeObjectAtIndex:sender.tag];
     [self.selectedPhotosArr removeObjectAtIndex:sender.tag];
-    
+    [self.beizhuArr removeObjectAtIndex:sender.tag];
     [self reloadScrollView];
 }
+#pragma mark - 备注
+- (void)beizhuAction:(UIButton *)sender{
+    NSString *str = self.beizhuArr[sender.tag];
+    __weak typeof(self)weakself = self;
+    LSXAlertInputView * alert=[[LSXAlertInputView alloc]initWithTitle:@"" PlaceholderText:@"请在此输入照片备注..." WithKeybordType:LSXKeyboardTypeDefault CompleteBlock:^(NSString *contents) {
+        NSLog(@"-----%@",contents);
+        [weakself.beizhuArr replaceObjectAtIndex:sender.tag withObject:contents];
+        [sender setTitle:@"修改备注" forState:UIControlStateNormal];
 
+    }];
+    alert.num = 50;
+    [alert show];
+    alert.textViewText = str;
+
+}
 
 - (void)getData{
     
@@ -512,10 +546,6 @@
             
         }else{
             if ([[responseResult objectForKey:@"result"] integerValue] == 1) {
-                //单张照片价格
-//                _money = [NSString stringWithFormat:@"%.2f",[[responseResult objectForKey:@"money"] floatValue] / 100];
-                //约拍价格
-                self.yuyueTF.text = [NSString stringWithFormat:@"%.2f",[[responseResult objectForKey:@"fee"] floatValue] / 100];
                 //发布到首页价格
                 self.danzhangTF.text = [NSString stringWithFormat:@"%.2f",[[responseResult objectForKey:@"cash"] floatValue] / 100];
                 
@@ -556,6 +586,13 @@
         _selectedPhotoModelsArr = [NSMutableArray arrayWithCapacity:0];
     }
     return _selectedPhotoModelsArr;
+}
+
+- (NSMutableArray *)beizhuArr{
+    if (!_beizhuArr) {
+        _beizhuArr = [NSMutableArray arrayWithCapacity:0];
+    }
+    return _beizhuArr;
 }
 
 @end

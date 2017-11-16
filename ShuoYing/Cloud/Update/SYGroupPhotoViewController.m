@@ -194,7 +194,7 @@
     [self.backView addSubview:selectBtn];
     
     
-    UIScrollView *scroll = [[UIScrollView alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(selectBtn.frame) + 15, kScreenWidth, kScreenHeight - 64 - CGRectGetMaxY(selectBtn.frame) - 15)];
+    UIScrollView *scroll = [[UIScrollView alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(selectBtn.frame) + 15, kScreenWidth, kScreenHeight - kNavigationBarHeightAndStatusBarHeight - CGRectGetMaxY(selectBtn.frame) - 15)];
     scroll.showsVerticalScrollIndicator = NO;
     scroll.contentSize = CGSizeMake(kScreenWidth, self.backView.frame.size.height - 126);
     [self.backView addSubview:scroll];
@@ -238,7 +238,7 @@
     if (!_backView) {
         
         
-        _backView = [[UIView alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(self.prompLabel.frame) + 15, kScreenWidth, kScreenHeight - 64 - CGRectGetHeight(self.prompLabel.frame) - 30)];
+        _backView = [[UIView alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(self.prompLabel.frame) + 15, kScreenWidth, kScreenHeight - kNavigationBarHeightAndStatusBarHeight - CGRectGetHeight(self.prompLabel.frame) - 30)];
         _backView.backgroundColor = [UIColor whiteColor];
         
     }

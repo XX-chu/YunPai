@@ -88,7 +88,7 @@ typedef void (^handler)(NSArray<UIImage *> *selectPhotos, NSArray<ZLSelectPhotoM
         self.frame = CGRectMake(0, 0, kViewWidth, kViewHeight);
 
     }else{
-        self.frame = CGRectMake(0, 0, kViewWidth, kViewHeight - 64);
+        self.frame = CGRectMake(0, 0, kViewWidth, kViewHeight - kNavigationBarHeightAndStatusBarHeight);
 
     }
 }
@@ -103,10 +103,10 @@ typedef void (^handler)(NSArray<UIImage *> *selectPhotos, NSArray<ZLSelectPhotoM
         }
     }else{
         if (isChildController) {
-            self.frame = CGRectMake(0, 0, kViewWidth, kViewHeight - 64 - 40);
+            self.frame = CGRectMake(0, 0, kViewWidth, kViewHeight - kNavigationBarHeightAndStatusBarHeight - 40);
             
         }else{
-            self.frame = CGRectMake(0, 0, kViewWidth, kViewHeight - 64);
+            self.frame = CGRectMake(0, 0, kViewWidth, kViewHeight - kNavigationBarHeightAndStatusBarHeight);
 
         }
     }
@@ -269,10 +269,10 @@ static char RelatedKey;
             }
         }else{
             if (self.isChildController) {
-                viewHeight = kViewHeight - 64 - 40;
+                viewHeight = kViewHeight - kNavigationBarHeightAndStatusBarHeight - 40;
                 
             }else{
-                viewHeight = kViewHeight - 64;
+                viewHeight = kViewHeight - kNavigationBarHeightAndStatusBarHeight;
                 
             }
         }

@@ -46,6 +46,8 @@
 
 @property (nonatomic, strong) SYAddressModel *addressModel;
 
+@property (nonatomic, strong) UITextField *liuyanTF;
+
 @end
 
 @implementation SYGouMaiOrderViewController
@@ -115,7 +117,7 @@
 }
 
 - (void)initBottomView{
-    UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, kScreenHeight - 64 - 55, kScreenWidth, 55)];
+    UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, kScreenHeight - kNavigationBarHeightAndStatusBarHeight - 55, kScreenWidth, 55)];
     UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
     [btn setAdjustsImageWhenHighlighted:NO];
     btn.frame = CGRectMake(0, 0, kScreenWidth, 55);
@@ -144,7 +146,7 @@
         
         NSString *message = [NSString stringWithFormat:@"您在“%@”相馆里的“%@”商品还有照片没有选择，请先选择完照片再提交订单",_shangjiaModel.name, shangpin.title];
         LQPopUpView *popUpView = [[LQPopUpView alloc] initWithTitle:@"提示" message:message];
-        popUpView.frame = CGRectMake(0, 0, kScreenWidth, kScreenHeight - 64);
+        popUpView.frame = CGRectMake(0, 0, kScreenWidth, kScreenHeight - kNavigationBarHeightAndStatusBarHeight);
         popUpView.btnStyleDefaultTextColor = NavigationColor;
         [popUpView addBtnWithTitle:@"好的" type:LQPopUpBtnStyleDefault handler:^{
             // do something...
@@ -162,7 +164,7 @@
     [SVProgressHUD show];
     NSString *url = [NSString stringWithFormat:@"%@%@",BaseUrl,@"/store/createorder.html"];
 
-    NSDictionary *param = @{@"token":UserToken, @"id":self.gouwucheID, @"addressid":self.addressModel.addressId};
+    NSDictionary *param = @{@"token":UserToken, @"id":self.gouwucheID, @"addressid":self.addressModel.addressId, @"msg":self.liuyanTF.text};
     [[SYHttpRequest sharedInstance] getDataWithUrl:url Parameter:param ResponseObject:^(NSDictionary *responseResult) {
         [SVProgressHUD dismiss];
         NSLog(@"生成订单 -- %@",responseResult);
@@ -173,7 +175,7 @@
                 
                 SYOrderInfosViewController *orderInfos = [[SYOrderInfosViewController alloc] init];
                 orderInfos.param = @{@"id":[responseResult objectForKey:@"order"], @"token":UserToken, @"state":@1};
-                orderInfos.type = isFromXSGoumai;
+                orderInfos.type = OrderTypeWeiFuKuan;
                 [self.navigationController pushViewController:orderInfos animated:YES];
             }else{
                 if ([responseResult objectForKey:@"msg"]) {
@@ -501,7 +503,11 @@
         [view1 addSubview:lineView];
         
         UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(14, 13, kScreenWidth - 30, 17)];
-        label.text = [self.dataSourceDic objectForKey:@"name"];
+        NSArray *data = [self.dataSourceDic objectForKey:@"data"];
+        if (data.count > 0) {
+            NSDictionary *dic = [data firstObject];
+            label.text = [dic objectForKey:@"name"];
+        }
         label.textColor = RGB(43, 43, 43);
         label.font = [UIFont systemFontOfSize:17];
         [view1 addSubview:label];
@@ -512,11 +518,27 @@
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section{
+    if (section == 1) {
+        return 50;
+    }
     return 0.00001f;
 }
 - (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section{
     UIView *view = [[UIView alloc] init];
-    view.backgroundColor = RGB(248, 248, 248);
+    view.backgroundColor = [UIColor whiteColor];
+    if (section == 1) {
+        UIView *lineView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, 1)];
+        lineView.backgroundColor = HexRGB(0xeaeaea);
+        [view addSubview:lineView];
+        
+        UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(14, 1, 70, 49)];
+        label.text = @"买家留言:";
+        label.font = [UIFont systemFontOfSize:14];
+        label.textColor = HexRGB(0x3f3f3f);
+        [view addSubview:label];
+        
+        [view addSubview:self.liuyanTF];
+    }
     return view;
 }
 
@@ -558,7 +580,7 @@
 
 - (UITableView *)tableView{
     if (!_tableView) {
-        _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, kScreenHeight - 64 - 55) style:UITableViewStyleGrouped];
+        _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, kScreenHeight - kNavigationBarHeightAndStatusBarHeight - 55) style:UITableViewStyleGrouped];
         _tableView.backgroundColor = HexRGB(0xf3f3f3);
         _tableView.delegate = self;
         _tableView.dataSource = self;
@@ -566,5 +588,15 @@
     }
     return _tableView;
 }
+
+- (UITextField *)liuyanTF{
+    if (!_liuyanTF) {
+        _liuyanTF = [[UITextField alloc] initWithFrame:CGRectMake(89, 10, kScreenWidth - 98, 30)];
+        _liuyanTF.placeholder = @"对卖家有什么想说的写在这里吧";
+        _liuyanTF.font = [UIFont systemFontOfSize:14];
+    }
+    return _liuyanTF;
+}
+
 
 @end

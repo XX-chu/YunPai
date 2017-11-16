@@ -22,7 +22,7 @@
 }
 
 - (void)setImageView{
-    UIScrollView *scrollview = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, kScreenHeight - 64)];
+    UIScrollView *scrollview = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, kScreenHeight - kNavigationBarHeightAndStatusBarHeight)];
     scrollview.bounces = NO;
     [self.view addSubview:scrollview];
     

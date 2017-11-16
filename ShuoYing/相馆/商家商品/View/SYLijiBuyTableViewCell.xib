@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12120" systemVersion="16B2657" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -15,7 +15,7 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="208"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="320" height="208"/>
+                <rect key="frame" x="0.0" y="0.0" width="320" height="207.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZPO-fr-9sD">
@@ -78,7 +78,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="合计:¥100.00(含快递¥0.00)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BNk-Gf-h2Q">
-                                <rect key="frame" x="107" y="119" width="199" height="17"/>
+                                <rect key="frame" x="106" y="119" width="200" height="17"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="17" id="hmt-WD-Rau"/>
                                 </constraints>
@@ -97,11 +97,11 @@
                                 <rect key="frame" x="0.0" y="151" width="320" height="45"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="请选择照片" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sDo-fD-yMG">
-                                        <rect key="frame" x="14" y="13" width="82" height="19.5"/>
+                                        <rect key="frame" x="14" y="14.5" width="82" height="17"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="82" id="Aw0-lY-eHK"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <color key="textColor" red="0.2627450980392157" green="0.2627450980392157" blue="0.2627450980392157" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
@@ -111,8 +111,8 @@
                                             <constraint firstAttribute="width" constant="8" id="Sr7-N3-WuV"/>
                                         </constraints>
                                     </imageView>
-                                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8Ai-AE-tne">
-                                        <rect key="frame" x="0.0" y="25" width="320" height="45"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8Ai-AE-tne">
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="45"/>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iI7-v5-doj">
                                         <rect key="frame" x="106" y="23" width="182" height="0.0"/>

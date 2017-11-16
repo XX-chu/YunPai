@@ -107,7 +107,7 @@ static XBUpdatePhotoManager *_sharedInstance = nil;
     
     AFHTTPSessionManager *sessionManager = [AFHTTPSessionManager manager];
     sessionManager.responseSerializer = [AFHTTPResponseSerializer serializer];
-    sessionManager.requestSerializer.timeoutInterval = 10.f;
+    sessionManager.requestSerializer.timeoutInterval = 30.f;
     sessionManager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"application/json",@"text/json",@"text/html",@"text/javascript",@"application/octet-stream", nil];
     __weak typeof(self)waekself = self;
     [sessionManager POST:str parameters:param constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {

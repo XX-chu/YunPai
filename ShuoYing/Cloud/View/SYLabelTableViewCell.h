@@ -17,5 +17,6 @@ typedef void(^BtnClick)(NSInteger btnType);
 @property (weak, nonatomic) IBOutlet UIButton *twoBtn;
 @property (weak, nonatomic) IBOutlet UIButton *threeBtn;
 @property (weak, nonatomic) IBOutlet UIButton *fourBtn;
+@property (weak, nonatomic) IBOutlet UIButton *fiveBtn;
 
 @end

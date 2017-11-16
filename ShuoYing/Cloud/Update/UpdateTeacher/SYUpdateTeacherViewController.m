@@ -122,14 +122,14 @@
 - (void)alreadyCertified{
     if (self.dataSourceArr.count == 0) {
         //说明还没有添加分组
-        UIImageView *backImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, kScreenHeight - 64 - 40 - 70)];
+        UIImageView *backImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, kScreenHeight - kNavigationBarHeightAndStatusBarHeight - 40 - 70)];
         backImageView.contentMode = UIViewContentModeScaleAspectFit;
         backImageView.image = [UIImage imageNamed:@"laoshi_nothing"];
         [self.view addSubview:backImageView];
         
         UIButton *addBtn = [UIButton buttonWithType:UIButtonTypeCustom];
         addBtn.frame = CGRectMake(0, 0, 110, 50);
-        addBtn.center = CGPointMake(kScreenWidth / 2, kScreenHeight - 64 - 40 - 35);
+        addBtn.center = CGPointMake(kScreenWidth / 2, kScreenHeight - kNavigationBarHeightAndStatusBarHeight - 40 - 35);
         [addBtn setImage:[UIImage imageNamed:@"tianjia_fenzu"] forState:UIControlStateNormal];
         [addBtn addTarget:self action:@selector(addFenZu:) forControlEvents:UIControlEventTouchUpInside];
         addBtn.imageView.contentMode = UIViewContentModeScaleAspectFit;
@@ -139,7 +139,7 @@
     }else{
         UIButton *addBtn = [UIButton buttonWithType:UIButtonTypeCustom];
         addBtn.frame = CGRectMake(0, 0, 110, 50);
-        addBtn.center = CGPointMake(kScreenWidth / 2, kScreenHeight - 40 - 35 - 64);
+        addBtn.center = CGPointMake(kScreenWidth / 2, kScreenHeight - 40 - 35 - kNavigationBarHeightAndStatusBarHeight);
         [addBtn setImage:[UIImage imageNamed:@"tianjia_fenzu"] forState:UIControlStateNormal];
         [addBtn addTarget:self action:@selector(addFenZu:) forControlEvents:UIControlEventTouchUpInside];
         addBtn.imageView.contentMode = UIViewContentModeScaleAspectFit;
@@ -338,6 +338,10 @@
         };
     }
     return cell;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+    return 44;
 }
 
 #pragma mark - UITableViewDelegate
@@ -739,7 +743,7 @@
 
 - (UITableView *)tableView{
     if (!_tableView) {
-        _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 30, kScreenWidth, kScreenHeight - 64 - 40 - 30) style:UITableViewStylePlain];
+        _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 30, kScreenWidth, kScreenHeight - kNavigationBarHeightAndStatusBarHeight - 40 - 30) style:UITableViewStylePlain];
         _tableView.backgroundColor = BackGroundColor;
         _tableView.delegate = self;
         _tableView.dataSource = self;

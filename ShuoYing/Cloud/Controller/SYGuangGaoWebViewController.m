@@ -41,7 +41,7 @@
 }
 
 - (void)loadScrollView{
-    self.scrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, kScreenHeight - 64)];
+    self.scrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, kScreenHeight - kNavigationBarHeightAndStatusBarHeight)];
     self.scrollView.contentSize = CGSizeMake(kScreenWidth, 10000);
     [self.view addSubview:self.scrollView];
 }
@@ -66,7 +66,7 @@
     }
     [self.scrollView addSubview:time];
     
-    _webView.frame = CGRectMake(0, CGRectGetMaxY(time.frame), kScreenWidth, kScreenHeight - 64 - CGRectGetMaxY(time.frame));
+    _webView.frame = CGRectMake(0, CGRectGetMaxY(time.frame), kScreenWidth, kScreenHeight - kNavigationBarHeightAndStatusBarHeight - CGRectGetMaxY(time.frame));
     
     
     [self.scrollView addSubview:_webView];

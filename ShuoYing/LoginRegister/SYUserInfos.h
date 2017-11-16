@@ -34,6 +34,9 @@
 
 @property (nonatomic, strong) NSNumber *teacherlv;//老师星级
 
+@property (nonatomic, strong) NSNumber *master;//云拍师：0.认证中，1.认证通过，2.认证未通过，3.从未认证
+
+
 - (instancetype)initWithDictionary:(NSDictionary *)dic;
 
 + (instancetype)userinfosWithDictionry:(NSDictionary *)dic;

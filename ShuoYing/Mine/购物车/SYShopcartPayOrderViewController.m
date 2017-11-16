@@ -29,6 +29,8 @@
 
 @property (nonatomic, strong) NSMutableArray *dataSourceArr;
 
+@property (nonatomic, strong) UITextField *liuyanTF;
+
 @end
 
 @implementation SYShopcartPayOrderViewController
@@ -49,7 +51,7 @@
 }
 
 - (void)initBottomView{
-    UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, kScreenHeight - 64 - 55, kScreenWidth, 55)];
+    UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, kScreenHeight - kNavigationBarHeightAndStatusBarHeight - 55, kScreenWidth, 55)];
     UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
     [btn setAdjustsImageWhenHighlighted:NO];
     btn.frame = CGRectMake(0, 0, kScreenWidth, 55);
@@ -75,7 +77,7 @@
                 NSString *tishi = [NSString stringWithFormat:@"您在%@、%@还有%ld照片没选择，请先选择完照片再提交订单",shangjia.name,shangpin.title,count];
                 LQPopUpView *popUpView = [[LQPopUpView alloc] initWithTitle:@"提示" message:tishi];
                 popUpView.btnStyleDefaultTextColor = NavigationColor;
-                popUpView.frame = CGRectMake(0, 0, kScreenWidth, kScreenHeight - 64);
+                popUpView.frame = CGRectMake(0, 0, kScreenWidth, kScreenHeight - kNavigationBarHeightAndStatusBarHeight);
                 [popUpView addBtnWithTitle:@"好的" type:LQPopUpBtnStyleDefault handler:^{
                     
                 }];
@@ -100,7 +102,7 @@
     NSLog(@"gouwuIDS - %@",gouwuIDS);
     NSLog(@"ids - %@",ids);
     NSString *url = [NSString stringWithFormat:@"%@%@",BaseUrl,@"/store/createorder.html"];
-    NSDictionary *param = @{@"token":UserToken, @"id":ids, @"addressid":self.addressModel.addressId};
+    NSDictionary *param = @{@"token":UserToken, @"id":ids, @"addressid":self.addressModel.addressId, @"msg":self.liuyanTF.text};
     [SVProgressHUD show];
     [[SYHttpRequest sharedInstance] getDataWithUrl:url Parameter:param ResponseObject:^(NSDictionary *responseResult) {
         [SVProgressHUD dismiss];
@@ -112,7 +114,7 @@
 //                [self seletePaytypeWithOrderid:[responseResult objectForKey:@"order"]];
                 SYOrderInfosViewController *orderInfos = [[SYOrderInfosViewController alloc] init];
                 orderInfos.param = @{@"id":[responseResult objectForKey:@"order"], @"token":UserToken, @"state":@1};
-                orderInfos.type = isFromShopcart;
+                orderInfos.type = OrderTypeWeiFuKuan;
                 [self.navigationController pushViewController:orderInfos animated:YES];
             }else{
                 if ([responseResult objectForKey:@"msg"]) {
@@ -411,7 +413,7 @@
     if (section == 0) {
         return 14;
     }else{
-        return 60;
+        return 60 + 50;
     }
 }
 
@@ -427,7 +429,20 @@
         float heji = [[dic objectForKey:@"heji"] floatValue];
         UIView *view = [[UIView alloc] init];
         view.backgroundColor = RGB(248, 248, 248);
-        UIView *view1 = [[UIView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, 46)];
+        
+        UIView *view2 = [[UIView alloc] initWithFrame:CGRectMake(0, 1, kScreenWidth, 49)];
+        view2.backgroundColor = [UIColor whiteColor];
+        [view addSubview:view2];
+        
+        UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(14, 0, 70, 49)];
+        label.text = @"买家留言:";
+        label.font = [UIFont systemFontOfSize:14];
+        label.textColor = HexRGB(0x3f3f3f);
+        [view2 addSubview:label];
+        
+        [view2 addSubview:self.liuyanTF];
+        
+        UIView *view1 = [[UIView alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(view2.frame) + 1, kScreenWidth, 46)];
         view1.backgroundColor = [UIColor whiteColor];
         
         UILabel *label1 = [[UILabel alloc] initWithFrame:CGRectMake(14, 14, (kScreenWidth - 28) / 3, 15)];
@@ -530,7 +545,7 @@
 
 - (UITableView *)tableView{
     if (!_tableView) {
-        _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, kScreenHeight - 64 - 55) style:UITableViewStyleGrouped];
+        _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, kScreenHeight - kNavigationBarHeightAndStatusBarHeight - 55) style:UITableViewStyleGrouped];
         _tableView.backgroundColor = RGB(248, 248, 248);
         _tableView.delegate = self;
         _tableView.dataSource = self;
@@ -544,6 +559,15 @@
         _dataSourceArr = [NSMutableArray arrayWithCapacity:0];
     }
     return _dataSourceArr;
+}
+
+- (UITextField *)liuyanTF{
+    if (!_liuyanTF) {
+        _liuyanTF = [[UITextField alloc] initWithFrame:CGRectMake(89, 10, kScreenWidth - 98, 30)];
+        _liuyanTF.placeholder = @"对卖家有什么想说的写在这里吧";
+        _liuyanTF.font = [UIFont systemFontOfSize:14];
+    }
+    return _liuyanTF;
 }
 
 @end

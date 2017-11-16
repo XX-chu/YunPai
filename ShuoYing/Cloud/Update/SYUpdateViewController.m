@@ -10,7 +10,7 @@
 
 #import "SYUpdateTeacherViewController.h"
 #import "SYUpdatePhotographerViewController.h"
-#import "SYUpdateGroupViewController.h"
+//#import "SYUpdateGroupViewController.h"
 @interface SYUpdateViewController ()<UIScrollViewDelegate>
 {
     UIButton *_currentSelectedBtn;
@@ -19,7 +19,6 @@
     
     SYUpdateTeacherViewController *_teacherVC;
     SYUpdatePhotographerViewController *_grapherVC;
-    SYUpdateGroupViewController *_groupVC;
 }
 
 @property (nonatomic, strong) UIView *labelView;
@@ -90,10 +89,7 @@
     }
     [self addChildViewController:_teacherVC];
     
-    if (!_groupVC) {
-        _groupVC = [[SYUpdateGroupViewController alloc] init];
-    }
-    [self addChildViewController:_groupVC];
+
 }
 
 #pragma mark - UIScrollViewDelegate
@@ -131,9 +127,9 @@
     if (!_labelView) {
         _labelView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, 40)];
         _labelView.backgroundColor = [UIColor whiteColor];
-        NSArray *arr = @[@"摄影师",@"老师",@"摄影家协会"];
+        NSArray *arr = @[@"摄影师",@"老师"];
         for (int i = 0; i < arr.count; i++) {
-            UIButton *btn = [[UIButton alloc] initWithFrame:CGRectMake((kScreenWidth / 3) * i, 0, kScreenWidth / 3, 39)];
+            UIButton *btn = [[UIButton alloc] initWithFrame:CGRectMake((kScreenWidth / 2) * i, 0, kScreenWidth / 2, 39)];
             [btn setTitle:arr[i] forState:UIControlStateNormal];
             btn.titleLabel.font = [UIFont systemFontOfSize:15];
             [btn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
@@ -163,8 +159,8 @@
 
 - (UIScrollView *)scrollView{
     if (!_scrollView) {
-        _scrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 40, kScreenWidth, kScreenHeight - 40 - 64)];
-        _scrollView.contentSize = CGSizeMake(kScreenWidth * 3, kScreenHeight - 40 - 64);
+        _scrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 40, kScreenWidth, kScreenHeight - 40 - kNavigationBarHeightAndStatusBarHeight)];
+        _scrollView.contentSize = CGSizeMake(kScreenWidth * 2, kScreenHeight - 40 - kNavigationBarHeightAndStatusBarHeight);
         _scrollView.showsVerticalScrollIndicator = NO;
         _scrollView.showsHorizontalScrollIndicator = NO;
         _scrollView.pagingEnabled = YES;

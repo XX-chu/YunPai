@@ -60,7 +60,7 @@
 }
 
 - (void)initBottomView{
-    UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, kScreenHeight - 64 - 55, kScreenWidth, 55)];
+    UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, kScreenHeight - kNavigationBarHeightAndStatusBarHeight - 55, kScreenWidth, 55)];
     UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
     [btn setAdjustsImageWhenHighlighted:NO];
     btn.frame = CGRectMake(0, 0, kScreenWidth, 55);
@@ -353,7 +353,7 @@
 
 - (UITableView *)tableView{
     if (!_tableView) {
-        _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, kScreenHeight - 64 - 55) style:UITableViewStyleGrouped];
+        _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, kScreenHeight - kNavigationBarHeightAndStatusBarHeight - 55) style:UITableViewStyleGrouped];
         _tableView.backgroundColor = HexRGB(0xf3f3f3);
         _tableView.delegate = self;
         _tableView.dataSource = self;

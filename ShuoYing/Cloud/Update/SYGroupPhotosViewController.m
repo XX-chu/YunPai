@@ -62,7 +62,7 @@ static NSString *identifier = @"cell";
     layout.itemSize = CGSizeMake((kScreenWidth - 50) / 3, (kScreenWidth - 50) / 3 + 50);
     layout.sectionInset = UIEdgeInsetsMake(10, 10, 10, 10);
     self.flowLayout = layout;
-    self.collectionView = [[UICollectionView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, kScreenHeight - 64) collectionViewLayout:layout];
+    self.collectionView = [[UICollectionView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, kScreenHeight - kNavigationBarHeightAndStatusBarHeight) collectionViewLayout:layout];
     self.collectionView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
         [self getData];
     }];
@@ -173,7 +173,7 @@ static NSString *identifier = @"cell";
 
 - (UIImageView *)noImageView{
     if (!_noImageView) {
-        _noImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, kScreenHeight - 64)];
+        _noImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, kScreenHeight - kNavigationBarHeightAndStatusBarHeight)];
         _noImageView.image = [UIImage imageNamed:@"qunxiangce_nophoto"];
         _noImageView.contentMode = UIViewContentModeCenter;
     }

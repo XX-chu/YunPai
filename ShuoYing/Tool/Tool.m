@@ -41,6 +41,15 @@
     return _sharedInstance;
 }
 
+- (CGFloat) heightForString:(NSString *)value andWidth:(CGFloat)width fontSize:(CGFloat)size{
+    UILabel *label = [[UILabel alloc] init];
+    label.numberOfLines = 0;
+    label.text = value;
+    label.font = [UIFont systemFontOfSize:size];
+    CGSize maxsize = [label sizeThatFits:CGSizeMake(width, MAXFLOAT)];
+    return maxsize.height;
+}
+
 - (BOOL)isMobile:(NSString *)mobileNumbel{
     if (mobileNumbel.length != 11)
     {

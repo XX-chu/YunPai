@@ -28,6 +28,10 @@
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     self.window.backgroundColor = [UIColor whiteColor];
     
+    if (@available(iOS 11.0, *)) {
+        [[UIScrollView appearance] setContentInsetAdjustmentBehavior:UIScrollViewContentInsetAdjustmentNever];
+    }
+
     
     if ([self isFirstLoad]) {
         //第一次
@@ -50,7 +54,8 @@
     }
     //在这里实例化SVProgressHUD
     [SVProgressHUD setDefaultStyle:SVProgressHUDStyleDark];
-    [SVProgressHUD setDefaultMaskType:SVProgressHUDMaskTypeGradient];
+    [SVProgressHUD setDefaultMaskType:SVProgressHUDMaskTypeCustom];
+    [SVProgressHUD setDefaultAnimationType:SVProgressHUDAnimationTypeNative];
     [SVProgressHUD dismissWithDelay:3];
     // Override point for customization after application launch.
     IQKeyboardManager *manager = [IQKeyboardManager sharedManager];

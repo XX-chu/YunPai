@@ -25,9 +25,11 @@
 #import "SYSearchViewController.h"
 #import "SYSelectCityAlert.h"
 #import "SYUpdateMineViewController.h"
-
+#import "SYMyReciveViewController.h"
+#import "SYGrapherUpdatePhotoToCloudViewController.h"
 #import "SDCycleScrollView.h"
 #import "CCPScrollView.h"
+#import "SYYuYueViewController.h"
 
 #import "SYGuangGaoWebViewController.h"
 
@@ -110,6 +112,15 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    if (@available(iOS 11.0, *))
+    {
+        self.tableView.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
+    }
+    else
+    {
+        self.automaticallyAdjustsScrollViewInsets = NO;
+    }
     
     self.page = 1;
     [self.view addSubview:self.tableView];
@@ -232,8 +243,9 @@
                     break;
                 case 2222:
                 {
-                    SYFindViewController *photo = [[SYFindViewController alloc] init];
-                    [self.navigationController pushViewController:photo animated:YES];
+                    SYMyReciveViewController *recive = [[SYMyReciveViewController alloc] init];
+                    [self.navigationController pushViewController:recive animated:YES];
+
                 }
                     break;
                 case 3333:
@@ -250,6 +262,14 @@
                     
                     [self.navigationController pushViewController:updateVC animated:YES];
                     
+                }
+                    break;
+                case 5555:
+                {
+//                    SYFindViewController *photo = [[SYFindViewController alloc] init];
+//                    [self.navigationController pushViewController:photo animated:YES];
+                    SYYuYueViewController *yuyue = [[SYYuYueViewController alloc] init];
+                    [self.navigationController pushViewController:yuyue animated:YES];
                 }
                     break;
                 default:
@@ -633,6 +653,9 @@
         }
         return kScreenWidth / 2;
     }
+    if (section == 1) {
+        return 48;
+    }
     return 0.00001f;
 }
 
@@ -716,7 +739,53 @@
         
         return view;
     }
+    
+    if (section == 1) {
+        UIView *view = [[UIView alloc] init];
+        view.backgroundColor = [UIColor whiteColor];
+        UIView *lineView = [[UIView alloc] initWithFrame:CGRectMake(0, 47, kScreenWidth, 1)];
+        lineView.backgroundColor = HexRGB(0xefefef);
+        [view addSubview:lineView];
+        
+        UIView *view1 = [[UIView alloc] initWithFrame:CGRectMake(15, 12, 5, 20)];
+        view1.backgroundColor = NavigationColor;
+        [view addSubview:view1];
+        
+        UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(CGRectGetMaxX(view1.frame) + 8, 16, 70, 16)];
+        label.text = @"首页晒图";
+        label.font = [UIFont systemFontOfSize:16];
+        label.textColor = HexRGB(0x434343);
+        [view addSubview:label];
+        
+        UIImageView *imageview = [[UIImageView alloc] initWithFrame:CGRectMake(kScreenWidth - 15 - 31, 10, 31, 27)];
+        imageview.image = [UIImage imageNamed:@"fabu"];
+        [view addSubview:imageview];
+        
+        UILabel *label1 = [[UILabel alloc] initWithFrame:CGRectMake(kScreenWidth - 15 - 31 - 70 - 7, 16, 70, 14)];
+        label1.textColor = NavigationColor;
+        label1.text = @"我要发布";
+        label1.font = [UIFont systemFontOfSize:14];
+        label1.textAlignment = NSTextAlignmentRight;
+        [view addSubview:label1];
+        
+        UIButton *fabu = [UIButton buttonWithType:UIButtonTypeCustom];
+        fabu.frame = CGRectMake(kScreenWidth - 120, 0, 120, 48);
+        [fabu addTarget:self action:@selector(fabuAction:) forControlEvents:UIControlEventTouchUpInside];
+        [view addSubview:fabu];
+        return view;
+    }
     return nil;
+}
+
+- (void)fabuAction:(UIButton *)sender{
+    if (!LoginStatus) {
+        SYLoginViewController *login = [[SYLoginViewController alloc] initWithNibName:@"SYLoginViewController" bundle:nil];
+        [self.navigationController pushViewController:login animated:YES];
+        return ;
+    }
+
+    SYGrapherUpdatePhotoToCloudViewController *cloud = [[SYGrapherUpdatePhotoToCloudViewController alloc] initWithNibName:@"SYGrapherUpdatePhotoToCloudViewController" bundle:nil];
+    [self.navigationController pushViewController:cloud animated:YES];
 }
 
 - (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section{
@@ -735,7 +804,6 @@
     if (indexPath.section != 0) {
         if (self.dataSoucreArr.count > 0) {
 
-            
             SYGrapherInfosViewController *grapherinfos = [[SYGrapherInfosViewController alloc] init];
             SYCloudContentFrameModel *frameModel = self.dataSoucreArr[indexPath.section - 1];
             SYCloudModel *model = frameModel.cloudModel;
@@ -960,7 +1028,15 @@
 //获取未读消息统计
 - (void)getUnreadMessage{
     NSString *url = [NSString stringWithFormat:@"%@%@",BaseUrl,@"/user/read.html"];
-    NSDictionary *param = @{@"token":UserToken};
+    NSUserDefaults *us = [NSUserDefaults standardUserDefaults];
+    NSNumber *jingdu = [us objectForKey:@"jingdu"];
+    NSNumber *weidu = [us objectForKey:@"weidu"];
+    NSDictionary *param = nil;
+    if (jingdu && weidu) {
+        param = @{@"token":UserToken, @"lat":weidu, @"long":jingdu};
+    }else{
+        param = @{@"token":UserToken};
+    }
     [[SYHttpRequest sharedInstance] getDataWithUrl:url Parameter:param ResponseObject:^(NSDictionary *responseResult) {
         
         NSLog(@"获取未读消息 -- %@",responseResult);
@@ -1135,17 +1211,18 @@
 - (void)locationManager:(CLLocationManager *)manager
      didUpdateLocations:(NSArray *)locations
 {
-    NSLog(@"%lu", (unsigned long)[locations count]);
     
     CLLocation *newLocation = [locations lastObject];
 //    CLLocationCoordinate2D oldCoordinate = newLocation.coordinate;
     
 //    CLLocation *newLocation = locations[1];
     CLLocationCoordinate2D newCoordinate = newLocation.coordinate;
-    NSLog(@"经度：%f,纬度：%f",newCoordinate.longitude,newCoordinate.latitude);
+//    NSLog(@"经度：%f,纬度：%f",newCoordinate.longitude,newCoordinate.latitude);
     
-    float jingdu = newCoordinate.longitude;
-    float weidu = newCoordinate.latitude;
+    CLLocationCoordinate2D bd = [Tool gcj02ToBd09:newCoordinate];
+    
+    float jingdu = bd.longitude;
+    float weidu = bd.latitude;
     NSUserDefaults *us = [NSUserDefaults standardUserDefaults];
     [us setObject:[NSNumber numberWithFloat:jingdu] forKey:@"jingdu"];
     [us setObject:[NSNumber numberWithFloat:weidu] forKey:@"weidu"];
@@ -1181,7 +1258,7 @@
 #pragma mark - layzLoad
 - (UITableView *)tableView{
     if (!_tableView) {
-        _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, kScreenHeight - 64 - self.tabBarController.tabBar.frame.size.height) style:UITableViewStyleGrouped];
+        _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, kScreenHeight - kNavigationBarHeightAndStatusBarHeight - self.tabBarController.tabBar.frame.size.height) style:UITableViewStyleGrouped];
         _tableView.delegate = self;
         _tableView.dataSource = self;
         _tableView.backgroundColor = BackGroundColor;

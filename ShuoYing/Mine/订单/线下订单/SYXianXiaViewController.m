@@ -56,7 +56,7 @@
     _currentIndex = 0;
     // 创建底部滚动视图
     self.mainScrollView = [[UIScrollView alloc] init];
-    _mainScrollView.frame = CGRectMake(0, LabelViewHeight, kScreenWidth, kScreenHeight - 64 - 42 - 16 - LabelViewHeight);
+    _mainScrollView.frame = CGRectMake(0, LabelViewHeight, kScreenWidth, kScreenHeight - kNavigationBarHeightAndStatusBarHeight - 42 - 16 - LabelViewHeight);
     _mainScrollView.contentSize = CGSizeMake(self.view.frame.size.width * 4, 0);
     _mainScrollView.backgroundColor = [UIColor clearColor];
     // 开启分页

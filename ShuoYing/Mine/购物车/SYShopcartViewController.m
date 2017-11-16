@@ -22,13 +22,17 @@
     UILabel *_bottomYunFeiLabel;
     UIView *_bottomView;
     NSInteger _count;
+    
+    BOOL _isEdit;
+    BOOL _editBottomSelected;
+    UIButton *_editQuanXuanBtn;
+    UIButton *_editDeleteBtn;
+    UIView *_editBottomView;
 }
 
 @property (nonatomic, strong) UITableView *tableView;
 
 @property (nonatomic, strong) NSMutableArray *dataSourceArr;
-
-@property (nonatomic, strong) NSMutableArray *allShangpinArr;
 
 @property (nonatomic, strong) UIView *noThingView;
 
@@ -48,13 +52,172 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.title = @"购物车";
+    _isEdit = NO;
     _bottomSelected = NO;
+    _editBottomSelected = NO;
     _count = 1;
     [self.view addSubview:self.tableView];
+    [self setRightBarItem];
+}
+
+- (void)setRightBarItem{
+    UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
+    btn.frame = CGRectMake(0, 0, 40, kNavigationBarHeightAndStatusBarHeight);
+    [btn setTitle:@"编辑" forState:UIControlStateNormal];
+    [btn setTitle:@"完成" forState:UIControlStateSelected];
+
+    [btn setAdjustsImageWhenHighlighted:NO];
+    btn.titleLabel.font = [UIFont systemFontOfSize:15];
+    [btn addTarget:self action:@selector(editShopCart:) forControlEvents:UIControlEventTouchUpInside];
+    UIBarButtonItem *item = [[UIBarButtonItem alloc] initWithCustomView:btn];
+    self.navigationItem.rightBarButtonItem = item;
+}
+
+- (void)editShopCart:(UIButton *)sender{
+    if (self.dataSourceArr.count == 0) {
+        return;
+    }
+    sender.selected = !sender.selected;
+    _isEdit = sender.selected;
+    for (SYShopcartShangjiaModel *shangjia in self.dataSourceArr) {
+        shangjia.isSelected = @NO;
+        NSArray *goods = shangjia.goods;
+        for (SYShopcartShangpinModel *shangpin in goods) {
+            shangpin.isSelected = @NO;
+        }
+    }
+    if (_isEdit) {
+        [self editBottom];
+    }else{
+        [_editBottomView removeFromSuperview];
+    }
+    [self reloadBottomDataSource];
+    [self.tableView reloadData];
+}
+
+- (void)editBottom{
+    UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, kScreenHeight - 55 - kNavigationBarHeightAndStatusBarHeight, kScreenWidth, 55)];
+    view.backgroundColor = [UIColor whiteColor];
+    _editBottomView = view;
+    
+    UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
+    [btn setAdjustsImageWhenHighlighted:NO];
+    btn.frame = CGRectMake(kScreenWidth - 104, 0, 104, 55);
+    [btn setBackgroundImage:[UIImage imageWithColor:NavigationColor Size:btn.frame.size] forState:UIControlStateNormal];
+    [btn setBackgroundImage:[UIImage imageWithColor:RGB(204, 204, 204) Size:btn.frame.size] forState:UIControlStateDisabled];
+    [btn setTitle:@"删除(0)" forState:UIControlStateNormal];
+    btn.titleLabel.font = [UIFont systemFontOfSize:17];
+    [btn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    [btn addTarget:self action:@selector(deleteAction:) forControlEvents:UIControlEventTouchUpInside];
+    btn.enabled = NO;
+    [view addSubview:btn];
+    _editDeleteBtn = btn;
+    
+    UIButton *quanxuanBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    [quanxuanBtn setAdjustsImageWhenHighlighted:NO];
+    quanxuanBtn.frame = CGRectMake(14, 0, 70, 55);
+    [quanxuanBtn setImage:[UIImage imageNamed:@"gouwuche_icon_nor"] forState:UIControlStateNormal];
+    [quanxuanBtn setTitle:@"全选" forState:UIControlStateNormal];
+    [quanxuanBtn setTitleColor:HexRGB(0x6c6c6c) forState:UIControlStateNormal];
+    quanxuanBtn.titleLabel.font = [UIFont systemFontOfSize:15];
+    [quanxuanBtn setTitleEdgeInsets:UIEdgeInsetsMake(0, 10, 0, 0)];
+    quanxuanBtn.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
+    [quanxuanBtn addTarget:self action:@selector(editBottomQuanXuanAction:) forControlEvents:UIControlEventTouchUpInside];
+    [view addSubview:quanxuanBtn];
+    _editQuanXuanBtn = quanxuanBtn;
+    
+    _editBottomSelected = NO;
+    [self.view addSubview:view];
+    
+}
+
+#pragma mark - 删除商品
+- (void)deleteAction:(UIButton *)sender{
+    DeleteOrderView *delete = [[[NSBundle mainBundle] loadNibNamed:@"DeleteOrderView" owner:self options:nil] lastObject];
+    delete.frame = CGRectMake(0, 0, kScreenWidth, kScreenHeight);
+    delete.tishiLabel.text = @"确定要删除该商品吗？";
+    [delete.leftBtn setTitle:@"确定" forState:UIControlStateNormal];
+    [delete.rightBtn setTitle:@"取消" forState:UIControlStateNormal];
+    __weak typeof(self)weakself = self;
+    __weak typeof(delete)weakDelete = delete;
+    delete.leftBlock = ^{
+        NSLog(@"left");
+        [weakDelete dismiss];
+        [weakself deleteGoods];
+    };
+    delete.rightBlock = ^{
+        NSLog(@"right");
+        [weakDelete dismiss];
+    };
+    [delete show];
+}
+
+- (void)deleteGoods{
+    NSString *url = [NSString stringWithFormat:@"%@%@",BaseUrl, @"/store/delcart.html"];
+    NSMutableArray *arr = [NSMutableArray arrayWithCapacity:0];
+    for (SYShopcartShangjiaModel *shangjia in self.dataSourceArr) {
+        NSArray *goods = shangjia.goods;
+        for (SYShopcartShangpinModel *shangpin in goods) {
+            if ([shangpin.isSelected boolValue]) {
+                NSString *cartId = [shangpin.shangpinid stringValue];
+                [arr addObject:cartId];
+            }
+        }
+    }
+    NSString *carts = [arr componentsJoinedByString:@","];
+    NSDictionary *param = @{@"id":carts, @"token":UserToken};
+    [SVProgressHUD show];
+    [[SYHttpRequest sharedInstance] getDataWithUrl:url Parameter:param ResponseObject:^(NSDictionary *responseResult) {
+        [SVProgressHUD dismiss];
+        NSLog(@"删除商品 -  %@",responseResult);
+        if ([responseResult objectForKey:@"resError"]) {
+            
+        }else{
+            if ([[responseResult objectForKey:@"result"] integerValue] == 1) {
+                [self getData];
+
+                [self reloadBottomDataSource];
+            }else{
+                if ([responseResult objectForKey:@"msg"]) {
+                    [self showHint:[responseResult objectForKey:@"msg"]];
+                }
+            }
+        }
+    }];
+}
+#pragma mark - 编辑状态底部全选按钮
+- (void)editBottomQuanXuanAction:(UIButton *)sender{
+    NSLog(@"1111");
+    _editBottomSelected = !_editBottomSelected;
+    if (_editBottomSelected) {
+        for (SYShopcartShangjiaModel *shangjia in self.dataSourceArr) {
+            shangjia.isSelected = @YES;
+            for (SYShopcartShangpinModel *shangpin in shangjia.goods) {
+                if ([shangpin.state integerValue] == 0) {
+                    shangpin.isSelected = @NO;
+                }else{
+                    shangpin.isSelected = @YES;
+                }
+            }
+        }
+    }else{
+        for (SYShopcartShangjiaModel *shangjia in self.dataSourceArr) {
+            shangjia.isSelected = @NO;
+            NSArray *goods = shangjia.goods;
+            for (SYShopcartShangpinModel *shangpin in goods) {
+                shangpin.isSelected = @NO;
+                
+            }
+        }
+        
+    }
+    
+    [self.tableView reloadData];
+    [self reloadBottomDataSource];
 }
 
 - (void)initBottomView{
-    UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, kScreenHeight - 55 - 64, kScreenWidth, 55)];
+    UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, kScreenHeight - 55 - kNavigationBarHeightAndStatusBarHeight, kScreenWidth, 55)];
     view.backgroundColor = [UIColor whiteColor];
     _bottomView = view;
     
@@ -105,20 +268,10 @@
     _bottomYunFeiLabel = yunfeiLabel;
     
     [self.view addSubview:view];
-    
-
 }
 
 #pragma mark - 购物车结算按钮
 - (void)bottomJieSuanAction:(UIButton *)sender{
-    /* 
-    //计算选中的商品
-    SYShopcartPayOrderViewController *payorder = [[SYShopcartPayOrderViewController alloc] init];
-    payorder.dataSourceArr1 = self.dataSourceArr;
-    payorder.allPrice = [_bottomHejiLabel.text substringWithRange:NSMakeRange(3, _bottomHejiLabel.text.length - 3)];
-    NSLog(@"self.dataSourceArr - %ld",self.dataSourceArr.count);
-    [self.navigationController pushViewController:payorder animated:YES];
-     */
     
     NSString *url = [NSString stringWithFormat:@"%@%@",BaseUrl,@"/store/waitorder.html"];
     NSMutableArray *ids = [NSMutableArray arrayWithCapacity:0];
@@ -133,7 +286,6 @@
     NSDictionary *param = @{@"id":idsStr, @"token":UserToken};
     
     SYShopcartPayOrderViewController *payorder = [[SYShopcartPayOrderViewController alloc] init];
-//    payorder.dataSourceArr1 = shangjiaArr;
     payorder.allPrice = [_bottomHejiLabel.text substringWithRange:NSMakeRange(3, _bottomHejiLabel.text.length - 3)];
     NSLog(@"self.dataSourceArr - %ld",self.dataSourceArr.count);
     payorder.param = param;
@@ -172,6 +324,7 @@
 - (void)bottomQuanXuanAction:(UIButton *)sender{
     NSLog(@"1111");
     _bottomSelected = !_bottomSelected;
+
     if (_bottomSelected) {
         for (SYShopcartShangjiaModel *shangjia in self.dataSourceArr) {
             shangjia.isSelected = @YES;
@@ -183,23 +336,22 @@
                 }
             }
         }
-        /*
-        for (SYShopcartShangpinModel *shangpin in self.allShangpinArr) {
-            shangpin.isSelected = @YES;
-        }
-         */
     }else{
         for (SYShopcartShangjiaModel *shangjia in self.dataSourceArr) {
             shangjia.isSelected = @NO;
+            NSArray *goods = shangjia.goods;
+            for (SYShopcartShangpinModel *shangpin in goods) {
+                shangpin.isSelected = @NO;
+
+            }
         }
-        for (SYShopcartShangpinModel *shangpin in self.allShangpinArr) {
-            shangpin.isSelected = @NO;
-        }
+        
     }
     
     [self.tableView reloadData];
     [self reloadBottomDataSource];
 }
+
 - (void)reloadBottomDataSource{
     [self panduanBottomViewShifouquanxuan];
     float fee = 0.00f;
@@ -253,24 +405,49 @@
     [attStr1 addAttribute:NSForegroundColorAttributeName value:NavigationColor range:NSMakeRange(4, attStr1.length - 4)];
     _bottomYunFeiLabel.attributedText = attStr1;
     //全选按钮状态
-    if (_bottomSelected) {
-        [_bottomQuanXuanBtn setImage:[UIImage imageNamed:@"gouwuche_icon_sel"] forState:UIControlStateNormal];
+    if (_isEdit) {
+        if (_editBottomSelected) {
+            [_editQuanXuanBtn setImage:[UIImage imageNamed:@"gouwuche_icon_sel"] forState:UIControlStateNormal];
+        }else{
+            [_editQuanXuanBtn setImage:[UIImage imageNamed:@"gouwuche_icon_nor"] forState:UIControlStateNormal];
+        }
+
     }else{
-        [_bottomQuanXuanBtn setImage:[UIImage imageNamed:@"gouwuche_icon_nor"] forState:UIControlStateNormal];
-    }
-    //计算结算的数量
-    NSInteger jiesuanCount = 0;
-    for (SYShopcartShangpinModel *shangpin in self.allShangpinArr) {
-        if ([shangpin.isSelected boolValue]) {
-            jiesuanCount ++;
+        if (_bottomSelected) {
+            [_bottomQuanXuanBtn setImage:[UIImage imageNamed:@"gouwuche_icon_sel"] forState:UIControlStateNormal];
+        }else{
+            [_bottomQuanXuanBtn setImage:[UIImage imageNamed:@"gouwuche_icon_nor"] forState:UIControlStateNormal];
         }
     }
-    if (jiesuanCount > 0) {
-        _bottomJieSuanBtn.enabled = YES;
-    }else{
-        _bottomJieSuanBtn.enabled = NO;
+    
+    //计算结算的数量
+    NSInteger jiesuanCount = 0;
+    for (SYShopcartShangjiaModel *shangjia in self.dataSourceArr) {
+        NSArray *goods = shangjia.goods;
+        for (SYShopcartShangjiaModel *shangpin in goods) {
+            if ([shangpin.isSelected boolValue]) {
+                jiesuanCount ++;
+            }
+        }
     }
-    [_bottomJieSuanBtn setTitle:[NSString stringWithFormat:@"结算(%ld)",jiesuanCount] forState:UIControlStateNormal];
+    if (_isEdit) {
+        if (jiesuanCount > 0) {
+            _editDeleteBtn.enabled = YES;
+        }else{
+            _editDeleteBtn.enabled = NO;
+        }
+        [_editDeleteBtn setTitle:[NSString stringWithFormat:@"删除(%ld)",jiesuanCount] forState:UIControlStateNormal];
+
+    }else{
+        if (jiesuanCount > 0) {
+            _bottomJieSuanBtn.enabled = YES;
+        }else{
+            _bottomJieSuanBtn.enabled = NO;
+        }
+        [_bottomJieSuanBtn setTitle:[NSString stringWithFormat:@"结算(%ld)",jiesuanCount] forState:UIControlStateNormal];
+
+    }
+    
 }
 
 //判断bottom是否全选
@@ -302,11 +479,12 @@
     SYShopcartShangjiaModel *shangjia = self.dataSourceArr[indexPath.section];
     if (shangjia.goods.count > 0) {
         cell.shangpinModel = shangjia.goods[indexPath.row];
+        cell.isEdit = _isEdit;
     }
     __weak typeof(self)weakself = self;
     __weak typeof(indexPath)weakIP = indexPath;
     SYShopcartShangpinModel *shangpin = shangjia.goods[indexPath.row];
-    
+        
     cell.deleteBlock = ^(NSInteger tag) {
         DeleteOrderView *delete = [[[NSBundle mainBundle] loadNibNamed:@"DeleteOrderView" owner:self options:nil] lastObject];
         delete.frame = CGRectMake(0, 0, kScreenWidth, kScreenHeight);
@@ -359,7 +537,7 @@
                     [self.tableView reloadData];
                     [self reloadBottomDataSource];
                 }else{
-                    [self.allShangpinArr removeObject:shangpin];
+                    
                     SYShopcartShangjiaModel *shangjia = self.dataSourceArr[indexpath.section];
                     NSMutableArray *arr = [NSMutableArray arrayWithArray:shangjia.goods];
                     [arr removeObject:shangpin];
@@ -367,7 +545,7 @@
                     if (shangjia.goods.count == 0) {
                         [self.dataSourceArr removeObjectAtIndex:indexpath.section];
                     }
-                    if (self.allShangpinArr.count == 0) {
+                    if (self.dataSourceArr.count == 0) {
                         [self getData];
                     }else{
                         [self.tableView reloadData];
@@ -543,21 +721,13 @@
                             SYShopcartShangjiaModel *model = [SYShopcartShangjiaModel cartShangJiaWithDictionary:muDic];
                             [self.dataSourceArr addObject:model];
                         }
-                        //遍历 把所有的商品模型放在一个数组中
-                        [self.allShangpinArr removeAllObjects];
-                        for (SYShopcartShangjiaModel *shangjia in self.dataSourceArr) {
-                            NSArray *goods = shangjia.goods;
-                            if (goods.count > 0) {
-                                for (SYShopcartShangpinModel *shangpin in goods) {
-                                    [self.allShangpinArr addObject:shangpin];
-                                }
-                            }
-                        }
+                        
                         [self.noDataView removeFromSuperview];
 //                        [self.view addSubview:self.tableView];
                         [self initBottomView];
                     }else{
                         [_bottomView removeFromSuperview];
+                        [_editBottomView removeFromSuperview];
                         [self.noDataView removeFromSuperview];
                         [self.tableView removeFromSuperview];
                         [self.view addSubview:self.noThingView];
@@ -599,16 +769,7 @@
                             SYShopcartShangjiaModel *model = [SYShopcartShangjiaModel cartShangJiaWithDictionary:muDic];
                             [self.dataSourceArr addObject:model];
                         }
-                        //遍历 把所有的商品模型放在一个数组中
-                        [self.allShangpinArr removeAllObjects];
-                        for (SYShopcartShangjiaModel *shangjia in self.dataSourceArr) {
-                            NSArray *goods = shangjia.goods;
-                            if (goods.count > 0) {
-                                for (SYShopcartShangpinModel *shangpin in goods) {
-                                    [self.allShangpinArr addObject:shangpin];
-                                }
-                            }
-                        }
+                        
                         [self.noDataView removeFromSuperview];
                         [self.tableView reloadData];
                     }
@@ -626,7 +787,7 @@
 
 - (UITableView *)tableView{
     if (!_tableView) {
-        _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, kScreenHeight - 64 - 55) style:UITableViewStyleGrouped];
+        _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, kScreenHeight - kNavigationBarHeightAndStatusBarHeight - 55) style:UITableViewStyleGrouped];
         _tableView.delegate = self;
         _tableView.dataSource = self;
         _tableView.backgroundColor = RGB(248, 248, 248);
@@ -648,16 +809,9 @@
     return _dataSourceArr;
 }
 
-- (NSMutableArray *)allShangpinArr{
-    if (!_allShangpinArr) {
-        _allShangpinArr = [NSMutableArray arrayWithCapacity:0];
-    }
-    return _allShangpinArr;
-}
-
 - (UIView *)noThingView{
     if (!_noThingView) {
-        _noThingView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, kScreenHeight - 64)];
+        _noThingView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, kScreenHeight - kNavigationBarHeightAndStatusBarHeight)];
         UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, _noThingView.frame.size.height - 164)];
         imageView.image = [UIImage imageNamed:@"cart_nothing"];
         imageView.contentMode = UIViewContentModeCenter;
@@ -670,7 +824,7 @@
     if (!_noDataView) {
         __weak typeof(self)weakself = self;
         _noDataView = [[NSBundle mainBundle] loadNibNamed:@"NoDataView" owner:nil options:nil][0];
-        _noDataView.frame = CGRectMake(0, 0, kScreenWidth, kScreenHeight - 64);
+        _noDataView.frame = CGRectMake(0, 0, kScreenWidth, kScreenHeight - kNavigationBarHeightAndStatusBarHeight);
         _noDataView.block = ^{
             [weakself getData];
         };

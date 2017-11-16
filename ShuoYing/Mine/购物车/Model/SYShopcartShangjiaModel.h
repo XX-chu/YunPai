@@ -18,6 +18,7 @@
 
 @property (nonatomic, strong) NSNumber *isSelected;
 
+
 @property (nonatomic, strong) NSNumber *express;
 
 @property (nonatomic, strong) NSNumber *free;

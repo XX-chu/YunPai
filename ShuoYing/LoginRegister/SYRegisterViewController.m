@@ -90,7 +90,7 @@
     _countDown = 60;
     _isEndAnimation = NO;
     self.agreeBtn.selected = YES;
-    self.contentViewHeightCnstraint.constant = kScreenHeight - 64;
+    self.contentViewHeightCnstraint.constant = kScreenHeight - kNavigationBarHeightAndStatusBarHeight;
 }
 
 - (void)loadView{

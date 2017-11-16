@@ -44,6 +44,8 @@
     [aCoder encodeObject:self.pho forKey:@"pho"];
     [aCoder encodeObject:self.pholv forKey:@"pholv"];
     [aCoder encodeObject:self.teacherlv forKey:@"teacherlv"];
+    [aCoder encodeObject:self.master forKey:@"master"];
+
 }
 
 // 当从文件中读取一个对象的时候就会调用该方法
@@ -65,6 +67,8 @@
         self.pho=[aDecoder decodeObjectForKey:@"pho"];
         self.pholv = [aDecoder decodeObjectForKey:@"pholv"];
         self.teacherlv = [aDecoder decodeObjectForKey:@"teacherlv"];
+        self.master = [aDecoder decodeObjectForKey:@"master"];
+
     }
     return self;
 }

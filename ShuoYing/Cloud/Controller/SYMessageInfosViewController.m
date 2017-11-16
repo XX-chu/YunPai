@@ -29,7 +29,7 @@
 }
 
 - (void)loadSubViews{
-    UIScrollView *scrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, kScreenHeight - 64)];
+    UIScrollView *scrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, kScreenHeight - kNavigationBarHeightAndStatusBarHeight)];
     scrollView.backgroundColor = BackGroundColor;
     [self.view addSubview:scrollView];
     

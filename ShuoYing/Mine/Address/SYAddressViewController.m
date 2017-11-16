@@ -275,7 +275,7 @@
 #pragma mark - layzLoad
 - (UITableView *)tableView{
     if (!_tableView) {
-        _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, kScreenHeight - 64 - 40) style:UITableViewStylePlain];
+        _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, kScreenHeight - kNavigationBarHeightAndStatusBarHeight - 40) style:UITableViewStylePlain];
         _tableView.delegate = self;
         _tableView.dataSource = self;
         _tableView.showsVerticalScrollIndicator = NO;
@@ -295,7 +295,7 @@
 
 - (UIButton *)addAddressBtn{
     if (!_addAddressBtn) {
-        _addAddressBtn = [[UIButton alloc] initWithFrame:CGRectMake(0, kScreenHeight - 64 - 40, kScreenWidth, 40)];
+        _addAddressBtn = [[UIButton alloc] initWithFrame:CGRectMake(0, kScreenHeight - kNavigationBarHeightAndStatusBarHeight - 40, kScreenWidth, 40)];
         [_addAddressBtn setBackgroundImage:[UIImage imageWithColor:NavigationColor Size:_addAddressBtn.frame.size] forState:UIControlStateNormal];
         _addAddressBtn.adjustsImageWhenHighlighted = NO;
         [_addAddressBtn setTitle:@"新增收货地址" forState:UIControlStateNormal];

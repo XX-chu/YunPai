@@ -362,7 +362,7 @@
 
 - (UITableView *)tableView{
     if (!_tableView) {
-        _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, kScreenHeight - 64 - self.tabBarController.tabBar.frame.size.height - 40) style:UITableViewStylePlain];
+        _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, kScreenHeight - kNavigationBarHeightAndStatusBarHeight - self.tabBarController.tabBar.frame.size.height - 40) style:UITableViewStylePlain];
         _tableView.delegate = self;
         _tableView.dataSource = self;
         _tableView.backgroundColor = BackGroundColor;
@@ -381,7 +381,7 @@
 
 - (UITableView *)searchTableView{
     if (!_searchTableView) {
-        _searchTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, kScreenHeight - 64 - self.tabBarController.tabBar.frame.size.height - 40) style:UITableViewStylePlain];
+        _searchTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, kScreenHeight - kNavigationBarHeightAndStatusBarHeight - self.tabBarController.tabBar.frame.size.height - 40) style:UITableViewStylePlain];
         _searchTableView.delegate = self;
         _searchTableView.dataSource = self;
         _searchTableView.backgroundColor = BackGroundColor;

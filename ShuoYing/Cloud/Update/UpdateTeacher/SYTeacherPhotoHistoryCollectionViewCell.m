@@ -13,6 +13,15 @@
 - (void)awakeFromNib {
     [super awakeFromNib];
     // Initialization code
+    self.editBtn.hidden = YES;
+}
+
+
+- (IBAction)editAction:(UIButton *)sender {
+    if (self.editBlock) {
+        self.editBlock();
+    }
+
 }
 
 @end

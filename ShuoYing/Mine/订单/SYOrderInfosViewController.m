@@ -12,6 +12,10 @@
 #import "OrderPayTypeView.h"
 #import "SYUserInfos.h"
 #import "SYBisnessInfosViewController.h"
+#import "SYOrderInfosTableViewCell.h"
+#import "DeleteOrderView.h"
+#import "SYOrderPingJiaViewController.h"
+#import "SYOrderCreatTimeTableViewCell.h"
 @interface SYOrderInfosViewController ()<UITableViewDelegate, UITableViewDataSource, UIWebViewDelegate,XLPhotoBrowserDelegate,XLPhotoBrowserDatasource>
 {
     SYUserInfos *_userinfos;
@@ -23,6 +27,9 @@
 @property (nonatomic, strong) UITableView *tableView;
 
 @property (nonatomic, copy) NSMutableArray *dataSourceArr;
+
+@property (nonatomic, strong) UITextField *liuyanTF;
+
 @end
 
 @implementation SYOrderInfosViewController
@@ -82,7 +89,12 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     if (section == 0) {
         return 1;
-    }else{
+    }else if (section == self.dataSourceArr.count + 1){
+        if (self.type == OrderTypeWeiFuKuan) {
+            return 1;
+        }
+        return 2;
+    } else{
         NSDictionary *dic = self.dataSourceArr[section - 1];
         NSArray *goods = [dic objectForKey:@"goods"];
         return goods.count;
@@ -107,11 +119,45 @@
         cell.addressLabel.text = [dic objectForKey:@"address"];
         
         return cell;
-    }else{
-        static NSString *identifier = @"cell";
-        SYShangPinTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier];
+    }else if (indexPath.section == self.dataSourceArr.count + 1){
+        static NSString *identifier = @"creatcell";
+        SYOrderCreatTimeTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier];
         if (!cell) {
-            cell = [[NSBundle mainBundle] loadNibNamed:@"SYShangPinTableViewCell" owner:nil options:nil][0];
+            cell = [[NSBundle mainBundle] loadNibNamed:@"SYOrderCreatTimeTableViewCell" owner:nil options:nil][0];
+            cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        }
+        if (self.type == OrderTypeWeiFuKuan) {
+            cell.leftLabel.text = @"下单时间";
+        }else{
+            if (indexPath.row == 0) {
+                cell.leftLabel.text = @"下单时间";
+
+            }else{
+                cell.leftLabel.text = @"支付时间";
+
+            }
+        }
+        
+        NSDictionary *dic = [self.dataSourceArr firstObject];
+
+        if (self.type == OrderTypeWeiFuKuan) {
+            cell.rightLabel.text = [dic objectForKey:@"addtime"];
+        }else{
+            if (indexPath.row == 0) {
+                cell.rightLabel.text = [dic objectForKey:@"addtime"];
+
+            }else{
+                cell.rightLabel.text = [dic objectForKey:@"paytime"];
+
+            }
+        }
+        
+        return cell;
+    } else{
+        static NSString *identifier = @"cell";
+        SYOrderInfosTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier];
+        if (!cell) {
+            cell = [[NSBundle mainBundle] loadNibNamed:@"SYOrderInfosTableViewCell" owner:nil options:nil][0];
             cell.selectionStyle = UITableViewCellSelectionStyleNone;
         }
         NSDictionary *dic = self.dataSourceArr[indexPath.section - 1];
@@ -120,16 +166,18 @@
         
         [cell.headImageView sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@",ImgUrl,[goodDic objectForKey:@"img_200"]]] placeholderImage:NoPicture];
         
-        cell.shangpinLabel.text = [goodDic objectForKey:@"title"];
+        cell.shangpinNameLabel.text = [goodDic objectForKey:@"title"];
         
         float price = [(NSNumber *)[goodDic objectForKey:@"money"] floatValue] / 100;
         cell.priceLabel.text = [NSString stringWithFormat:@"¥%.2f",price];
         NSInteger num = [(NSNumber *)[goodDic objectForKey:@"num"] integerValue];
         cell.countLabel.text = [NSString stringWithFormat:@"x%ld",num];
+        cell.shuxingLabel.text = [goodDic objectForKey:@"spce"];;
+        cell.block = ^{
+            _imgsArr = [goodDic objectForKey:@"imgs"];
+            [XLPhotoBrowser showPhotoBrowserWithCurrentImageIndex:0 imageCount:_imgsArr.count datasource:self];
+        };
         
-
-        cell.shangpinShuxingLabel.text = [goodDic objectForKey:@"spce"];;
-
         return cell;
     }
 }
@@ -147,7 +195,7 @@
 
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
-    return self.dataSourceArr.count + 1;
+    return self.dataSourceArr.count + 1 + 1;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -155,17 +203,23 @@
 
         return 75;
     }
-    return 114;
+    if (indexPath.section == self.dataSourceArr.count + 1) {
+        return 45;
+    }
+    return 150;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
 
     if (section == 1) return 46;
+    if (section == self.dataSourceArr.count + 1) {
+        return 12;
+    }
     return 0.00001f;
 }
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
-
+    
     if (section == 1) {
         UIView *view = [[UIView alloc] init];
         view.backgroundColor = BackGroundColor;
@@ -183,30 +237,16 @@
         
         return view;
     }
-    return nil;
+    UIView *view = [[UIView alloc] init];
+    view.backgroundColor = BackGroundColor;
+
+    return view;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section{
 
     if (section == 1 ){
-        NSMutableArray *muarr = [NSMutableArray arrayWithCapacity:0];
-        NSDictionary *dic = self.dataSourceArr[section - 1];
-        NSArray *goods = [dic objectForKey:@"goods"];
-        for (NSDictionary *goodDic in goods) {
-            NSArray *imgs = goodDic[@"imgs"];
-            for (NSDictionary *imgDic in imgs) {
-                [muarr addObject:imgDic];
-            }
-        }
-        
-        if ([[self.param objectForKey:@"state"] integerValue] == 2 || [[self.param objectForKey:@"state"] integerValue] == 3 ) {
-            if (muarr.count > 0) {
-                return 88;
-            }
-            return 44;
-        }else{
-            return 44;
-        }
+        return 88;
     }
     
     return 0.00001f;
@@ -252,38 +292,20 @@
         lineView.backgroundColor = BackGroundColor;
         [view addSubview:lineView];
         
+        UIView *view1 = [[UIView alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(lineView.frame), kScreenWidth, 44)];
+        view1.backgroundColor = [UIColor whiteColor];
         
-        NSMutableArray *muarr = [NSMutableArray arrayWithCapacity:0];
-        for (NSDictionary *goodDic in goods) {
-            NSArray *imgs = goodDic[@"imgs"];
-            for (NSDictionary *imgDic in imgs) {
-                [muarr addObject:imgDic];
-            }
-        }
-        if ([[self.param objectForKey:@"state"] integerValue] == 2 || [[self.param objectForKey:@"state"] integerValue] == 3 ) {
-            if (muarr.count > 0) {
-                UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(15, CGRectGetMaxY(lineView.frame) + 10, 100, 24)];
-                label.text = @"已选照片";
-                label.textColor = HexRGB(0x434343);
-                label.font = [UIFont systemFontOfSize:14];
-                [view addSubview:label];
-                
-                UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(kScreenWidth - 35, CGRectGetMaxY(lineView.frame), 20, 44)];
-                imageView.contentMode = UIViewContentModeCenter;
-                imageView.image = [UIImage imageNamed:@"order_dress_jiantou"];
-                [view addSubview:imageView];
-                
-                UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
-                [btn setTitle:@"" forState:UIControlStateNormal];
-                [btn setAdjustsImageWhenHighlighted:NO];
-                btn.frame = CGRectMake(0, CGRectGetMaxY(lineView.frame), kScreenWidth, 44) ;
-                objc_setAssociatedObject(btn, "firstObject", muarr, OBJC_ASSOCIATION_RETAIN_NONATOMIC);   //实际上就是KVC
-                [btn addTarget:self action:@selector(chakanphoto:) forControlEvents:UIControlEventTouchUpInside];
-                [view addSubview:btn];
-            }
-
-            
-        }
+        UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(14, 1, 70, 44)];
+        label.text = @"买家留言:";
+        label.font = [UIFont systemFontOfSize:14];
+        label.textColor = HexRGB(0x3f3f3f);
+        [view1 addSubview:label];
+        
+        [view1 addSubview:self.liuyanTF];
+        NSDictionary *dic11 = self.dataSourceArr[section - 1];
+        self.liuyanTF.text = [dic11 objectForKey:@"msg"];
+        
+        [view addSubview:view1];
         
         return view;
     }
@@ -321,9 +343,7 @@
                     [weakself.dataSourceArr addObjectsFromArray:data];
                 }
                 [weakself.view addSubview:weakself.tableView];
-                if (self.type != isFromMyOrder) {
-                    [weakself initBottomView];
-                }
+                [weakself initBottomView];
             }else{
                 if ([responseResult objectForKey:@"msg"]) {
                     [weakself showHint:[responseResult objectForKey:@"msg"]];
@@ -334,20 +354,180 @@
 }
 
 - (void)initBottomView{
-    UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, kScreenHeight - 64 - 55, kScreenWidth, 55)];
-    UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
-    [btn setAdjustsImageWhenHighlighted:NO];
-    btn.frame = CGRectMake(0, 0, kScreenWidth, 55);
-    [btn setBackgroundImage:[UIImage imageWithColor:NavigationColor Size:btn.frame.size] forState:UIControlStateNormal];
-    float money = 0.0f;
-    for (NSDictionary *dic in self.dataSourceArr) {
-        money += [(NSNumber *)[dic objectForKey:@"money"] floatValue] / 100;
+    if (self.type == OrderTypeDaiFaHuo) {
+        return;
     }
-    [btn setTitle:[NSString stringWithFormat:@"确认支付%.2f",money] forState:UIControlStateNormal];
-    [btn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-    [view addSubview:btn];
-    [btn addTarget:self action:@selector(creatOrderAction:) forControlEvents:UIControlEventTouchUpInside];
+    UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, kScreenHeight - kNavigationBarHeightAndStatusBarHeight - 55, kScreenWidth, 55)];
+    if (self.type == OrderTypeWeiFuKuan) {
+        UIButton *cancelBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+        cancelBtn.frame = CGRectMake(0, 0, (kScreenWidth - 1) / 2, 55);
+        [cancelBtn setTitle:@"取消订单" forState:UIControlStateNormal];
+        [cancelBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+        [cancelBtn setBackgroundImage:[UIImage imageWithColor:NavigationColor Size:cancelBtn.frame.size] forState:UIControlStateNormal];
+        [cancelBtn addTarget:self action:@selector(cancelOrderAction:) forControlEvents:UIControlEventTouchUpInside];
+        [cancelBtn setAdjustsImageWhenHighlighted:NO];
+        cancelBtn.titleLabel.font = [UIFont systemFontOfSize:16];
+        [view addSubview:cancelBtn];
+        
+        UIButton *zhifuBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+        zhifuBtn.frame = CGRectMake((kScreenWidth - 1) / 2 + 1, 0, (kScreenWidth - 1) / 2, 55);
+        float money = 0.0f;
+        for (NSDictionary *dic in self.dataSourceArr) {
+            money += [(NSNumber *)[dic objectForKey:@"money"] floatValue] / 100;
+        }
+        [zhifuBtn setTitle:[NSString stringWithFormat:@"付款%.2f",money] forState:UIControlStateNormal];
+        [zhifuBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+        [zhifuBtn setBackgroundImage:[UIImage imageWithColor:NavigationColor Size:cancelBtn.frame.size] forState:UIControlStateNormal];
+        [zhifuBtn addTarget:self action:@selector(creatOrderAction:) forControlEvents:UIControlEventTouchUpInside];
+        [zhifuBtn setAdjustsImageWhenHighlighted:NO];
+        zhifuBtn.titleLabel.font = [UIFont systemFontOfSize:16];
+        [view addSubview:zhifuBtn];
+    }else if (self.type == OrderTypeDaiShouHuo){
+        UIButton *shouhuoBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+        shouhuoBtn.frame = CGRectMake(0, 0, kScreenWidth, 55);
+        [shouhuoBtn setTitle:@"确认收货" forState:UIControlStateNormal];
+        [shouhuoBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+        [shouhuoBtn setBackgroundImage:[UIImage imageWithColor:NavigationColor Size:shouhuoBtn.frame.size] forState:UIControlStateNormal];
+        [shouhuoBtn addTarget:self action:@selector(querenShouhuoAction:) forControlEvents:UIControlEventTouchUpInside];
+        [shouhuoBtn setAdjustsImageWhenHighlighted:NO];
+        shouhuoBtn.titleLabel.font = [UIFont systemFontOfSize:16];
+        [view addSubview:shouhuoBtn];
+    }else if (self.type == OrderTypeDaiPingJia){
+        UIButton *delBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+        delBtn.frame = CGRectMake(0, 0, (kScreenWidth - 1) / 2, 55);
+        [delBtn setTitle:@"删除订单" forState:UIControlStateNormal];
+        [delBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+        [delBtn setBackgroundImage:[UIImage imageWithColor:NavigationColor Size:delBtn.frame.size] forState:UIControlStateNormal];
+        [delBtn addTarget:self action:@selector(deleteOrderAction:) forControlEvents:UIControlEventTouchUpInside];
+        [delBtn setAdjustsImageWhenHighlighted:NO];
+        delBtn.titleLabel.font = [UIFont systemFontOfSize:16];
+        [view addSubview:delBtn];
+        
+        UIButton *pingjia = [UIButton buttonWithType:UIButtonTypeCustom];
+        pingjia.frame = CGRectMake((kScreenWidth - 1) / 2 + 1, 0, (kScreenWidth - 1) / 2, 55);
+  
+        [pingjia setTitle:@"评价" forState:UIControlStateNormal];
+        [pingjia setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+        [pingjia setBackgroundImage:[UIImage imageWithColor:NavigationColor Size:pingjia.frame.size] forState:UIControlStateNormal];
+        [pingjia addTarget:self action:@selector(pingjiaOrderAction:) forControlEvents:UIControlEventTouchUpInside];
+        [pingjia setAdjustsImageWhenHighlighted:NO];
+        pingjia.titleLabel.font = [UIFont systemFontOfSize:16];
+        [view addSubview:pingjia];
+    }else if (self.type == OrderTypeYiWanCheng){
+        UIButton *delBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+        delBtn.frame = CGRectMake(0, 0, kScreenWidth, 55);
+        [delBtn setTitle:@"删除订单" forState:UIControlStateNormal];
+        [delBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+        [delBtn setBackgroundImage:[UIImage imageWithColor:NavigationColor Size:delBtn.frame.size] forState:UIControlStateNormal];
+        [delBtn addTarget:self action:@selector(deleteOrderAction:) forControlEvents:UIControlEventTouchUpInside];
+        [delBtn setAdjustsImageWhenHighlighted:NO];
+        delBtn.titleLabel.font = [UIFont systemFontOfSize:16];
+        [view addSubview:delBtn];
+    }
+
     [self.view addSubview:view];
+}
+
+#pragma mark - 取消订单
+- (void)cancelOrderAction:(UIButton *)sender{
+    NSLog(@"取消订单");
+    DeleteOrderView *delete = [[[NSBundle mainBundle] loadNibNamed:@"DeleteOrderView" owner:self options:nil] lastObject];
+    delete.frame = CGRectMake(0, 0, kScreenWidth, kScreenHeight);
+    delete.tishiLabel.text = @"真的要取消该订单吗？";
+    [delete.leftBtn setTitle:@"确定" forState:UIControlStateNormal];
+    [delete.rightBtn setTitle:@"取消" forState:UIControlStateNormal];
+    __weak typeof(self)weakself = self;
+    __weak typeof(delete)weakDelete = delete;
+    delete.leftBlock = ^{
+        NSLog(@"left");
+        [weakDelete dismiss];
+        [weakself changeOrderState:@0 OrderID:[weakself.param objectForKey:@"id"]];
+    };
+    delete.rightBlock = ^{
+        NSLog(@"right");
+        [weakDelete dismiss];
+    };
+    [delete show];
+    
+}
+
+- (void)changeOrderState:(NSNumber *)state OrderID:(NSNumber *)orderid{
+    [SVProgressHUD show];
+    NSString *url = [NSString stringWithFormat:@"%@%@",BaseUrl,@"/order/editstate.html"];
+    NSDictionary *param = @{@"token":UserToken, @"state":state, @"id":orderid};
+    __weak typeof(self)weakself = self;
+    [SVProgressHUD show];
+    [[SYHttpRequest sharedInstance] getDataWithUrl:url Parameter:param ResponseObject:^(NSDictionary *responseResult) {
+        [SVProgressHUD dismiss];
+        NSLog(@"更改订单状态 -- %@",responseResult);
+        if ([responseResult objectForKey:@"resError"]) {
+            [weakself showHint:@"服务器不给力，请稍后重试"];
+            
+        }else{
+            if ([[responseResult objectForKey:@"result"] integerValue] == 1) {
+                [weakself.navigationController popViewControllerAnimated:YES];
+            }else{
+                
+            }
+        }
+    }];
+}
+
+#pragma mark - 确认收货
+- (void)querenShouhuoAction:(UIButton *)sender{
+    NSLog(@"确认收货");
+    DeleteOrderView *delete = [[[NSBundle mainBundle] loadNibNamed:@"DeleteOrderView" owner:self options:nil] lastObject];
+    delete.frame = CGRectMake(0, 0, kScreenWidth, kScreenHeight);
+    delete.tishiLabel.text = @"已收到宝贝";
+    [delete.leftBtn setTitle:@"取消" forState:UIControlStateNormal];
+    [delete.rightBtn setTitle:@"确定" forState:UIControlStateNormal];
+    __weak typeof(self)weakself = self;
+    __weak typeof(delete)weakDelete = delete;
+    delete.leftBlock = ^{
+        NSLog(@"left");
+        [weakDelete dismiss];
+        
+    };
+    delete.rightBlock = ^{
+        NSLog(@"right");
+        [weakDelete dismiss];
+        [weakself changeOrderState:@4 OrderID:[weakself.param objectForKey:@"id"]];
+    };
+    [delete show];
+    
+}
+
+#pragma mark - 删除订单
+- (void)deleteOrderAction:(UIButton *)sender{
+    NSLog(@"删除订单");
+    DeleteOrderView *delete = [[[NSBundle mainBundle] loadNibNamed:@"DeleteOrderView" owner:self options:nil] lastObject];
+    delete.frame = CGRectMake(0, 0, kScreenWidth, kScreenHeight);
+    delete.tishiLabel.text = @"确定要删除该商品吗？";
+    [delete.leftBtn setTitle:@"取消" forState:UIControlStateNormal];
+    [delete.rightBtn setTitle:@"确定" forState:UIControlStateNormal];
+    __weak typeof(self)weakself = self;
+    __weak typeof(delete)weakDelete = delete;
+    delete.leftBlock = ^{
+        NSLog(@"left");
+        [weakDelete dismiss];
+        
+    };
+    delete.rightBlock = ^{
+        NSLog(@"right");
+        [weakDelete dismiss];
+        [weakself changeOrderState:@5 OrderID:[weakself.param objectForKey:@"id"]];
+    };
+    [delete show];
+}
+
+#pragma mark - 评价订单
+- (void)pingjiaOrderAction:(UIButton *)sender{
+    NSLog(@"评价");
+    SYOrderPingJiaViewController *pingjia = [[SYOrderPingJiaViewController alloc] init];
+    
+    pingjia.orderID = [self.param objectForKey:@"id"];
+    pingjia.view.frame = CGRectMake(0, 0, kScreenWidth, kScreenHeight - kNavigationBarHeightAndStatusBarHeight);
+    [self.navigationController pushViewController:pingjia animated:YES];
 }
 
 - (void)creatOrderAction:(UIButton *)sender{
@@ -525,10 +705,11 @@
 
 - (UITableView *)tableView{
     if (!_tableView) {
-        if (self.type != isFromMyOrder) {
-            _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, kScreenHeight - 64 - 55) style:UITableViewStyleGrouped];
+        if (self.type == OrderTypeDaiFaHuo) {
+            _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, kScreenHeight - kNavigationBarHeightAndStatusBarHeight) style:UITableViewStyleGrouped];
+
         }else{
-        _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, kScreenHeight - 64) style:UITableViewStyleGrouped];
+            _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, kScreenHeight - kNavigationBarHeightAndStatusBarHeight - 55) style:UITableViewStyleGrouped];
         }
         _tableView.backgroundColor = HexRGB(0xf3f3f3);
         _tableView.delegate = self;
@@ -544,5 +725,16 @@
     }
     return _dataSourceArr;
 }
+
+- (UITextField *)liuyanTF{
+    if (!_liuyanTF) {
+        _liuyanTF = [[UITextField alloc] initWithFrame:CGRectMake(89, 7, kScreenWidth - 98, 30)];
+        _liuyanTF.placeholder = @"对卖家有什么想说的写在这里吧";
+        _liuyanTF.font = [UIFont systemFontOfSize:14];
+        _liuyanTF.enabled = NO;
+    }
+    return _liuyanTF;
+}
+
 
 @end

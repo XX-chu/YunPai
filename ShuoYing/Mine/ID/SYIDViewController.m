@@ -101,11 +101,13 @@
                     
                     SYGrapherCertifiedViewController *grapher = [[SYGrapherCertifiedViewController alloc] initWithNibName:@"SYGrapherCertifiedViewController" bundle:nil];
                     [self.navigationController pushViewController:grapher animated:YES];
-                }else{
+                }else if (self.state == isFromTeacher){
                     
                     SYTeacherCertifiedViewController *certifi = [[SYTeacherCertifiedViewController alloc] initWithNibName:@"SYTeacherCertifiedViewController" bundle:nil];
                     [self.navigationController pushViewController:certifi animated:YES];
                     
+                }else if (self.state == isFromYunPaiShi){
+                    [self.navigationController popViewControllerAnimated:YES];
                 }
                
             }else{

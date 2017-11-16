@@ -80,30 +80,35 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     SYOrderModel *orderModel = self.dataSourceArr[indexPath.section];
     if ([orderModel.state integerValue] == 1) {
-        NSArray *product = orderModel.product;
-        SYProductModel *model = product[indexPath.row];
-        SYBisnessInfosViewController *infos = [[SYBisnessInfosViewController alloc] initWithIsFromXSorXXType:isFromXS shangpinID:model.productId shangjiaID:orderModel.pid];
-        
+//        NSArray *product = orderModel.product;
+//        SYProductModel *model = product[indexPath.row];
+//        SYBisnessInfosViewController *infos = [[SYBisnessInfosViewController alloc] initWithIsFromXSorXXType:isFromXS shangpinID:model.productId shangjiaID:orderModel.pid];
+//
+//        [self.navigationController pushViewController:infos animated:YES];
+    
+        SYOrderInfosViewController *infos = [[SYOrderInfosViewController alloc] init];
+        infos.param = @{@"token":UserToken, @"id":orderModel.orderId, @"state":@1};
+        infos.type = OrderTypeWeiFuKuan;
         [self.navigationController pushViewController:infos animated:YES];
     }else if([orderModel.state integerValue] == 2){
         SYOrderInfosViewController *infos = [[SYOrderInfosViewController alloc] init];
         infos.param = @{@"token":UserToken, @"id":orderModel.orderId, @"state":@2};
-        infos.type = isFromMyOrder;
+        infos.type = OrderTypeDaiFaHuo;
         [self.navigationController pushViewController:infos animated:YES];
     }else if([orderModel.state integerValue] == 3){
         SYOrderInfosViewController *infos = [[SYOrderInfosViewController alloc] init];
         infos.param = @{@"token":UserToken, @"id":orderModel.orderId, @"state":@3};
-        infos.type = isFromMyOrder;
+        infos.type = OrderTypeDaiShouHuo;
         [self.navigationController pushViewController:infos animated:YES];
     }else if([orderModel.state integerValue] == 4){
         SYOrderInfosViewController *infos = [[SYOrderInfosViewController alloc] init];
         infos.param = @{@"token":UserToken, @"id":orderModel.orderId, @"state":@4};
-        infos.type = isFromMyOrder;
+        infos.type = OrderTypeDaiPingJia;
         [self.navigationController pushViewController:infos animated:YES];
     }else if([orderModel.state integerValue] == 5){
         SYOrderInfosViewController *infos = [[SYOrderInfosViewController alloc] init];
         infos.param = @{@"token":UserToken, @"id":orderModel.orderId, @"state":@5};
-        infos.type = isFromMyOrder;
+        infos.type = OrderTypeYiWanCheng;
         [self.navigationController pushViewController:infos animated:YES];
     }
 }
@@ -207,7 +212,7 @@
         case 5:
         {
             //已完成
-            return 44;
+            return 90;
         }
             
         default:
@@ -494,6 +499,26 @@
     lineView.backgroundColor = BackGroundColor;
     [view addSubview:lineView];
     
+    UIView *view1 = [[UIView alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(lineView.frame), kScreenWidth, 44)];
+    view1.backgroundColor = [UIColor whiteColor];
+    
+    UIButton *cancleBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    [cancleBtn setAdjustsImageWhenHighlighted:NO];
+    cancleBtn.frame = CGRectMake(kScreenWidth - 15 - 80, 5, 80, 35);
+    [cancleBtn setTitle:@"删除订单" forState:UIControlStateNormal];
+    cancleBtn.titleLabel.font = [UIFont systemFontOfSize:13];
+    [cancleBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    cancleBtn.layer.cornerRadius = 6;
+    cancleBtn.layer.masksToBounds = YES;
+    
+    [cancleBtn setBackgroundImage:[UIImage imageWithColor:HexRGB(0xff8401) Size:cancleBtn.frame.size] forState:UIControlStateNormal];
+    [cancleBtn addTarget:self action:@selector(deleteDingDanAction:) forControlEvents:UIControlEventTouchUpInside];
+    cancleBtn.tag = section;
+    [view1 addSubview:cancleBtn];
+
+    
+    [view addSubview:view1];
+    
     return view;
 }
 
@@ -562,7 +587,7 @@
     
     SYOrderModel *orderModel = self.dataSourceArr[sender.tag];
     pingjia.orderID = orderModel.orderId;
-    pingjia.view.frame = CGRectMake(0, 0, kScreenWidth, kScreenHeight - 64);
+    pingjia.view.frame = CGRectMake(0, 0, kScreenWidth, kScreenHeight - kNavigationBarHeightAndStatusBarHeight);
     [self.navigationController pushViewController:pingjia animated:YES];
 }
 //删除订单
@@ -613,7 +638,7 @@
 
 - (UITableView *)tableView{
     if (!_tableView) {
-        _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, kScreenHeight - 64 - 42 - 16 - 46) style:UITableViewStyleGrouped];
+        _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, kScreenHeight - kNavigationBarHeightAndStatusBarHeight - 42 - 16 - 46) style:UITableViewStyleGrouped];
         _tableView.backgroundColor = BackGroundColor;
         _tableView.delegate = self;
         _tableView.dataSource = self;
@@ -743,7 +768,7 @@
 - (NoDataView *)dataView{
     if (!_dataView) {
         _dataView = [[[NSBundle mainBundle] loadNibNamed:@"NoDataView" owner:self options:nil] lastObject];
-        _dataView.frame = CGRectMake(0, 0, kScreenWidth, kScreenHeight - 64 - 42 - 16 - 46);
+        _dataView.frame = CGRectMake(0, 0, kScreenWidth, kScreenHeight - kNavigationBarHeightAndStatusBarHeight - 42 - 16 - 46);
         __weak typeof(self)weakself = self;
         _dataView.block = ^(){
             [weakself getData];
@@ -755,7 +780,7 @@
 - (NoOrderView *)orderView{
     if (!_orderView) {
         _orderView = [[[NSBundle mainBundle] loadNibNamed:@"NoOrderView" owner:self options:nil] lastObject];
-        _orderView.frame = CGRectMake(0, 0, kScreenWidth, kScreenHeight - 64 - 42 - 16 - 46);
+        _orderView.frame = CGRectMake(0, 0, kScreenWidth, kScreenHeight - kNavigationBarHeightAndStatusBarHeight - 42 - 16 - 46);
     }
     return _orderView;
 }

@@ -89,7 +89,7 @@ static NSString *footerIdentifier = @"footer";
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.view.backgroundColor = BackGroundColor;
-    self.view.frame = CGRectMake(0, 0, kScreenWidth, kScreenHeight - 64 - 40);
+    self.view.frame = CGRectMake(0, 0, kScreenWidth, kScreenHeight - kNavigationBarHeightAndStatusBarHeight - 40);
     
     _count = 1;
 }
@@ -153,8 +153,7 @@ static NSString *footerIdentifier = @"footer";
     self.grapherView = view;
     
     [self.grapherView.updatePhotoBtn addTarget:self action:@selector(updatePhotoAction:) forControlEvents:UIControlEventTouchUpInside];
-    [self.grapherView.updateToCloudBtn addTarget:self action:@selector(updatePhotoToCloudAction:) forControlEvents:UIControlEventTouchUpInside];
-    [self.grapherView.setPriceBtn addTarget:self action:@selector(setPriceAction:) forControlEvents:UIControlEventTouchUpInside];
+
     if ([_userInfos.pholv integerValue] == 1) {
         view.xingjiImageView.image = [UIImage imageNamed:@"xingji-one"];
     }else if ([_userInfos.pholv integerValue] == 2){
@@ -278,11 +277,7 @@ static NSString *footerIdentifier = @"footer";
     
     [self.navigationController pushViewController:update animated:YES];
 }
-//发布到云拍
-- (void)updatePhotoToCloudAction:(UIButton *)sender{
-    SYGrapherUpdatePhotoToCloudViewController *cloud = [[SYGrapherUpdatePhotoToCloudViewController alloc] initWithNibName:@"SYGrapherUpdatePhotoToCloudViewController" bundle:nil];
-    [self.navigationController pushViewController:cloud animated:YES];
-}
+
 
 - (void)getDate{
     //获取图片

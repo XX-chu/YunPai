@@ -42,7 +42,7 @@
 #import "NoDataView.h"
 #import "LQPopUpView.h"
 #import "UIImage+GIF.h"
-
+#import "LSXAlertInputView.h"
 #ifdef DEBUG
 #define NSLog(FORMAT, ...) fprintf(stderr,"%s\n",[[NSString stringWithFormat:FORMAT, ##__VA_ARGS__] UTF8String]);
 #else
@@ -71,6 +71,12 @@
 #define kTableViewHeight [UIScreen mainScreen].bounds.size.height-64
 #define LAST_RUN_VERSION_KEY @"last_run_version_of_application"
 #define isFirstActionApp [[NSUserDefaults standardUserDefaults] boolForKey:@"isFirstActionApp"]
+
+#define kNavigationBarHeightAndStatusBarHeight ([UIScreen mainScreen].bounds.size.height == 812.00?88:64)
+
+#define kTabbarHeight ([UIScreen mainScreen].bounds.size.height == 812.00?83:49)
+
+
 
 #endif
 #endif 

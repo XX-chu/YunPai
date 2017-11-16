@@ -67,6 +67,33 @@
     self.countLabel.text = [shangpinModel.num stringValue];
 }
 
+- (void)setIsEdit:(BOOL)isEdit{
+    _isEdit = isEdit;
+    if (isEdit) {
+        self.selectedImageView.hidden = NO;
+        self.shixiaoLabel.hidden = YES;
+        [self.addBtn setUserInteractionEnabled:NO];
+        [self.minutBtn setUserInteractionEnabled:NO];
+    }else{
+        if ([self.shangpinModel.state integerValue] == 0) {
+            //失效
+            self.selectedImageView.hidden = YES;
+            self.shixiaoLabel.hidden = NO;
+            //加减删除按钮不能用
+            [self.addBtn setUserInteractionEnabled:NO];
+            [self.minutBtn setUserInteractionEnabled:NO];
+        }else{
+            self.selectedImageView.hidden = NO;
+            self.shixiaoLabel.hidden = YES;
+            [self.addBtn setUserInteractionEnabled:YES];
+            [self.minutBtn setUserInteractionEnabled:YES];
+            [self.deleteBtn setUserInteractionEnabled:YES];
+        }
+
+    }
+    
+}
+
 - (IBAction)deleteAction:(UIButton *)sender {
     if (self.deleteBlock) {
         self.deleteBlock(1);
@@ -87,6 +114,7 @@
 
 - (void)awakeFromNib {
     [super awakeFromNib];
+    self.deleteBtn.hidden = YES;
     if (kScreenWidth > 320 && kScreenWidth < 374) {
         //5s
         self.addBtnConstraint.constant = 20;

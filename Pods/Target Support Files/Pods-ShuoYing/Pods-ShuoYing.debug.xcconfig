@@ -6,5 +6,6 @@ OTHER_CFLAGS = $(inherited) -isystem "${PODS_ROOT}/Headers/Public" -isystem "${P
 OTHER_LDFLAGS = $(inherited) -ObjC -l"AFNetworking" -l"DTCoreText" -l"DTFoundation" -l"FLAnimatedImage" -l"IQKeyboardManager" -l"MBProgressHUD" -l"MJRefresh" -l"Masonry" -l"SDWebImage" -l"SVProgressHUD" -l"XFDialogBuilder" -l"YYKit" -l"c++" -l"pop" -l"sqlite3" -l"xml2" -l"z" -framework "Accelerate" -framework "AssetsLibrary" -framework "CoreFoundation" -framework "CoreGraphics" -framework "CoreImage" -framework "CoreText" -framework "Foundation" -framework "ImageIO" -framework "MediaPlayer" -framework "MobileCoreServices" -framework "QuartzCore" -framework "Security" -framework "SystemConfiguration" -framework "UIKit" -framework "WebP"
 PODS_BUILD_DIR = $BUILD_DIR
 PODS_CONFIGURATION_BUILD_DIR = $PODS_BUILD_DIR/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)
+PODS_PODFILE_DIR_PATH = ${SRCROOT}/.
 PODS_ROOT = ${SRCROOT}/Pods
 USER_HEADER_SEARCH_PATHS = $(inherited) $(SRCROOT)/FLAnimatedImage/FLAnimatedImage

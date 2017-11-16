@@ -16,10 +16,13 @@
     self.twoBtn.tag = 2222;
     self.threeBtn.tag = 3333;
     self.fourBtn.tag = 4444;
+    self.fiveBtn.tag = 5555;
     [self.oneBtn addTarget:self action:@selector(btnclick:) forControlEvents:UIControlEventTouchUpInside];
     [self.twoBtn addTarget:self action:@selector(btnclick:) forControlEvents:UIControlEventTouchUpInside];
     [self.threeBtn addTarget:self action:@selector(btnclick:) forControlEvents:UIControlEventTouchUpInside];
     [self.fourBtn addTarget:self action:@selector(btnclick:) forControlEvents:UIControlEventTouchUpInside];
+    [self.fiveBtn addTarget:self action:@selector(btnclick:) forControlEvents:UIControlEventTouchUpInside];
+
 }
 
 - (void)btnclick:(UIButton *)btn{

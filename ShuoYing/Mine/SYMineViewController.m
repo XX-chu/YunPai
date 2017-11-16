@@ -20,6 +20,9 @@
 #import "SYOrderViewController.h"//订单
 #import "SYShopcartViewController.h"//购物车
 #import "SYMyGuanZhuViewController.h"//我的关注
+#import "SYMyFaBuViewController.h"//我的发布
+#import "SYCertifieYunPaiShiViewController.h"//认证云拍师
+#import "SYMyYunPaiShopViewController.h"//我的云拍店
 const static CGFloat totleOffset = 200;
 
 @interface SYMineViewController ()<UITableViewDelegate,UITableViewDataSource>
@@ -47,13 +50,8 @@ const static CGFloat totleOffset = 200;
 
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
+    [self getUserInfos];
     
-//    self.tabBarController.navigationController.navigationBar.translucent = YES;
-//    self.tabBarController.navigationItem.leftBarButtonItem = nil;
-//    self.tabBarController.navigationItem.rightBarButtonItem = nil;
-//    self.tabBarController.navigationItem.titleView = nil;
-//    [self.navigationController.navigationBar setBackgroundImage:[UIImage new] forBarMetrics:UIBarMetricsDefault];
-//    self.navigationController.navigationBar.shadowImage = [UIImage new];
     [self.navigationController setNavigationBarHidden:YES animated:YES];
     //取出用户信息
     if ([[Tool sharedInstance] getObjectWithPath:[NSString stringWithFormat:@"%@",Mobile]]) {
@@ -68,10 +66,6 @@ const static CGFloat totleOffset = 200;
 }
 
 - (void)viewWillDisappear:(BOOL)animated{
-    
-//    self.tabBarController.navigationController.navigationBar.translucent = NO;
-//    [self.tabBarController.navigationController.navigationBar setBackgroundImage:[UIImage imageWithColor:NavigationColor Size:CGSizeMake(kScreenWidth, 64)] forBarMetrics:UIBarMetricsDefault];
-//    self.tabBarController.navigationController.navigationBar.shadowImage = [UIImage imageWithColor:NavigationColor Size:CGSizeMake(kScreenWidth, 1)];
     [self.navigationController setNavigationBarHidden:NO animated:YES];
 }
 
@@ -83,9 +77,6 @@ const static CGFloat totleOffset = 200;
 
     if ([[Tool sharedInstance] getObjectWithPath:[NSString stringWithFormat:@"%@",Mobile]]) {
         _userInfos = [[Tool sharedInstance] getObjectWithPath:[NSString stringWithFormat:@"%@",Mobile]];
-        NSLog(@"_userInfos.user - %@",_userInfos.user);
-        NSLog(@"_userInfos.nick - %@",_userInfos.nick);
-        NSLog(@"_userInfos.head - %@",_userInfos.head);
     }
     
     self.automaticallyAdjustsScrollViewInsets = NO;
@@ -101,10 +92,11 @@ const static CGFloat totleOffset = 200;
 #pragma mark - UITableViewDataSource
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
-    return 1;
+    return self.cellDataSource.count;
 }
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return self.cellDataSource.count;
+    NSArray *arr = self.cellDataSource[section];
+    return arr.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -115,53 +107,111 @@ const static CGFloat totleOffset = 200;
         cell = [[SYMineTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
     }
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
-
-    cell.cellNameLabel.text = self.cellDataSource[indexPath.row];
-    cell.cellImageView.image = [UIImage imageNamed:self.cellImages[indexPath.row]];
+    
+    NSArray *titleArr = self.cellDataSource[indexPath.section];
+    NSArray *imageArr = self.cellImages[indexPath.section];
+    
+    cell.cellNameLabel.text = titleArr[indexPath.row];
+    if (indexPath.section == 0 && indexPath.row == 3) {
+        if ([_userInfos.master integerValue] == 1) {
+            //认证通过
+            cell.cellNameLabel.text = @"我的云拍店";
+        }
+    }
+    cell.cellImageView.image = [UIImage imageNamed:imageArr[indexPath.row]];
+    if (indexPath.row == titleArr.count - 1) {
+        cell.lineView.hidden = YES;
+    }
     return cell;
 }
 
 #pragma mark - UITableViewDelegate
+
+- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section{
+    return 15;
+}
+
+- (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section{
+    UIView *view = [[UIView alloc] init];
+    view.backgroundColor = HexRGB(0xefefef);
+    return view;
+}
+
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     return 50;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    if (indexPath.row == 3) {
-        //我的钱包
-        SYMyWalletViewController *mywallet = [[SYMyWalletViewController alloc] init];
-        [self.navigationController pushViewController:mywallet animated:YES];
-    }else if (indexPath.row == 4){
-        //交易记录
-        SYRecordsViewController *recordVC = [[SYRecordsViewController alloc] init];
-        [self.navigationController pushViewController:recordVC animated:YES];
-    }else if (indexPath.row == 5){
-        //地址管理
-        SYAddressViewController *addressVC = [[SYAddressViewController alloc] init];
-        [self.navigationController pushViewController:addressVC animated:YES];
-    }else if (indexPath.row == 9999){
-        //绑定身份证
-        SYIDViewController *ID = [[SYIDViewController alloc] initWithNibName:@"SYIDViewController" bundle:nil];
-        [self.navigationController pushViewController:ID animated:YES];
-    }else if (indexPath.row == 6){
-        //分享二维码
-        SYErWeiMaViewController *erweima = [[SYErWeiMaViewController alloc] init];
-        [self.navigationController pushViewController:erweima animated:YES];
-    }else if (indexPath.row == 7){
-        //设置
-        SYSettingViewController *set = [[SYSettingViewController alloc] init];
-        [self.navigationController pushViewController:set animated:YES];
-    }else if (indexPath.row == 1){
-        //订单
-        SYOrderViewController *order = [[SYOrderViewController alloc] init];
-        [self.navigationController pushViewController:order animated:YES];
-    }else if (indexPath.row == 2){
-        SYShopcartViewController *shopcart = [[SYShopcartViewController alloc] init];
-        [self.navigationController pushViewController:shopcart animated:YES];
-    }else if(indexPath.row == 0){
-        //我的关注
-        SYMyGuanZhuViewController *guanzhu = [[SYMyGuanZhuViewController alloc] init];
-        [self.navigationController pushViewController:guanzhu animated:YES];
+    if (indexPath.section == 0) {
+        if (indexPath.row == 0) {
+            //我的关注
+            SYMyGuanZhuViewController *guanzhu = [[SYMyGuanZhuViewController alloc] init];
+            [self.navigationController pushViewController:guanzhu animated:YES];
+        }else if (indexPath.row == 1){
+            //分享二维码
+            SYErWeiMaViewController *erweima = [[SYErWeiMaViewController alloc] init];
+            [self.navigationController pushViewController:erweima animated:YES];
+
+        }else if (indexPath.row == 2){
+            //我的发布
+            SYMyFaBuViewController *fabu = [[SYMyFaBuViewController alloc] init];
+            [self.navigationController pushViewController:fabu animated:YES];
+        }else{
+            //我的云拍店
+            if ([_userInfos.master integerValue] == 1) {
+                SYMyYunPaiShopViewController *shop = [[SYMyYunPaiShopViewController alloc] init];
+                [self.navigationController pushViewController:shop animated:YES];
+            }else{
+                if ([_userInfos.idcard integerValue] == 1) {
+                    SYCertifieYunPaiShiViewController *renzheng = [[SYCertifieYunPaiShiViewController alloc] init];
+                    [self.navigationController pushViewController:renzheng animated:YES];
+                }else{
+                    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"温馨提示" message:@"您的账号还没有绑定身份证，请绑定身份证 后再认证云拍师" preferredStyle:UIAlertControllerStyleAlert];
+                    UIAlertAction *action = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+                        
+                    }];
+                    UIAlertAction *action1 = [UIAlertAction actionWithTitle:@"去绑定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+                        SYIDViewController *idvc = [[SYIDViewController alloc] init];
+                        idvc.state = isFromYunPaiShi;
+                        [self.navigationController pushViewController:idvc animated:YES];
+                    }];
+                    
+                    [alert addAction:action];
+                    [alert addAction:action1];
+                    [self presentViewController:alert animated:YES completion:nil];
+                    
+                }
+                
+            }
+        }
+    }else if (indexPath.section == 1) {
+        if (indexPath.row == 0) {
+            //订单
+            SYOrderViewController *order = [[SYOrderViewController alloc] init];
+            [self.navigationController pushViewController:order animated:YES];
+        }else if (indexPath.row == 1){
+            //购物车
+            SYShopcartViewController *shopcart = [[SYShopcartViewController alloc] init];
+            [self.navigationController pushViewController:shopcart animated:YES];
+        }else if (indexPath.row == 2){
+            //我的钱包
+            SYMyWalletViewController *mywallet = [[SYMyWalletViewController alloc] init];
+            [self.navigationController pushViewController:mywallet animated:YES];
+        }else{
+            //交易记录
+            SYRecordsViewController *recordVC = [[SYRecordsViewController alloc] init];
+            [self.navigationController pushViewController:recordVC animated:YES];
+        }
+    }else{
+        if (indexPath.row == 0) {
+            //地址管理
+            SYAddressViewController *addressVC = [[SYAddressViewController alloc] init];
+            [self.navigationController pushViewController:addressVC animated:YES];
+        }else{
+            //设置
+            SYSettingViewController *set = [[SYSettingViewController alloc] init];
+            [self.navigationController pushViewController:set animated:YES];
+        }
     }
 }
 
@@ -194,14 +244,7 @@ const static CGFloat totleOffset = 200;
 
 
 - (void)loadUpImageViewSubViews{
-    
-    
-//    NSArray *lines = [[Tool sharedInstance] getLinesArrayOfStringWithString:_phoneLabel.text Font:[UIFont systemFontOfSize:13] Rect:CGRectMake(0, 0, kScreenWidth - 40, 0)];
-//    if (lines.count == 1 || lines.count == 0) {
-//        
-//    }else{
-//        _phoneLabel.frame = CGRectMake(20, _upImageView.frame.size.height - 45, kScreenWidth - 40, 35);
-//    }
+
     _phoneLabel.frame = CGRectMake(20, _upImageView.frame.size.height - 35, kScreenWidth - 40, 15);
     
     _nickNameLabel.frame = CGRectMake(0, CGRectGetMinY(_phoneLabel.frame) - 25, kScreenWidth, 20);
@@ -216,15 +259,43 @@ const static CGFloat totleOffset = 200;
     [self.navigationController pushViewController:userinfo animated:YES];
 }
 
+#pragma mark - 获取用户数据
+- (void)getUserInfos{
+    
+    NSString *url = [NSString stringWithFormat:@"%@%@",BaseUrl,@"/user/user.html"];
+    NSDictionary *param = @{@"token":UserToken};
+    [[SYHttpRequest sharedInstance] getDataWithUrl:url Parameter:param ResponseObject:^(NSDictionary *responseResult) {
+        [SVProgressHUD dismiss];
+        NSLog(@"获取用户信息 -- %@",responseResult);
+        if ([responseResult objectForKey:@"resError"]) {
+
+        }else{
+            if ([[responseResult objectForKey:@"result"] integerValue] == 1) {
+                NSDictionary *data = [responseResult objectForKey:@"data"];
+                SYUserInfos *userinfos = [SYUserInfos userinfosWithDictionry:data];
+                _userInfos = userinfos;
+                //归档
+                [[Tool sharedInstance] saveObject:userinfos WithPath:[NSString stringWithFormat:@"%@",Mobile]];
+                [self.tableView reloadData];
+            }else{
+                if ([responseResult objectForKey:@"msg"]) {
+
+                }
+            }
+        }
+    }];
+}
+
+
 #pragma mark - layzLoad
 - (UITableView *)tableView{
     if (!_tableView) {
-        _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, kScreenHeight - 44)];
+        _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, kScreenHeight - kTabbarHeight) style:UITableViewStylePlain];
         [_tableView setTableFooterView:[[UIView alloc] initWithFrame:CGRectZero]];
         _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
         _tableView.delegate = self;
         _tableView.dataSource = self;
-        _tableView.backgroundColor = BackGroundColor;
+        _tableView.backgroundColor = HexRGB(0xefefef);
         _tableView.showsVerticalScrollIndicator = NO;
         _tableView.contentOffset = CGPointMake(0, totleOffset);
         _tableView.contentInset = UIEdgeInsetsMake(totleOffset,0, 0, 0);
@@ -279,14 +350,13 @@ const static CGFloat totleOffset = 200;
 - (NSMutableArray *)cellDataSource{
     if (!_cellDataSource) {
         _cellDataSource = [NSMutableArray arrayWithCapacity:0];
-        [_cellDataSource addObject:@"我的关注"];
-        [_cellDataSource addObject:@"我的订单"];
-        [_cellDataSource addObject:@"购物车"];
-        [_cellDataSource addObject:@"我的钱包"];
-        [_cellDataSource addObject:@"交易记录"];
-        [_cellDataSource addObject:@"地址管理"];
-        [_cellDataSource addObject:@"分享二维码"];
-        [_cellDataSource addObject:@"设置"];
+        NSArray *arr1 = @[@"我的关注", @"分享二维码", @"我的发布", @"认证云拍师"];
+        NSArray *arr2 = @[@"我的订单", @"购物车", @"我的钱包", @"交易记录"];
+        NSArray *arr3 = @[@"地址管理", @"设置"];
+        [_cellDataSource addObject:arr1];
+        [_cellDataSource addObject:arr2];
+        [_cellDataSource addObject:arr3];
+
         
     }
     return _cellDataSource;
@@ -295,14 +365,13 @@ const static CGFloat totleOffset = 200;
 - (NSMutableArray *)cellImages{
     if (!_cellImages) {
         _cellImages = [NSMutableArray arrayWithCapacity:0];
-        [_cellImages addObject:@"wode_icon_attention"];
-        [_cellImages addObject:@"wode_icon_dingdan"];
-        [_cellImages addObject:@"wode_icon_gouwuche"];
-        [_cellImages addObject:@"wode_icon_qianbao"];
-        [_cellImages addObject:@"wode_icon_jiaoyi"];
-        [_cellImages addObject:@"wode_icon_dizhi"];
-        [_cellImages addObject:@"wode_icon_fenxiang"];
-        [_cellImages addObject:@"wode_icon_shezhi"];
+        
+        NSArray *arr1 = @[@"wode_icon_attention", @"wode_icon_fenxiang", @"wodefabu", @"yunpaishi"];
+        NSArray *arr2 = @[@"wode_icon_dingdan", @"wode_icon_gouwuche", @"wode_icon_qianbao", @"wode_icon_jiaoyi"];
+        NSArray *arr3 = @[@"wode_icon_dizhi", @"wode_icon_shezhi"];
+        [_cellImages addObject:arr1];
+        [_cellImages addObject:arr2];
+        [_cellImages addObject:arr3];
         
     }
     return _cellImages;

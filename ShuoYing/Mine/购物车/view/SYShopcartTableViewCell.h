@@ -21,4 +21,5 @@ typedef void(^MinutBlock)(NSInteger tag);
 @property (nonatomic, copy) AddBlock addBlock;
 @property (nonatomic, copy) MinutBlock minutBlock;
 
+@property (nonatomic, assign) BOOL isEdit;
 @end

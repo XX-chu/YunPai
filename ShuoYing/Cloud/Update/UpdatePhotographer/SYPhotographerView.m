@@ -19,16 +19,6 @@
     self.updateHistoryLabel.text = @"传送历史";
     
     
-    [self.setPriceBtn setTitle:@"设置价格" forState:UIControlStateNormal];
-    [self.setPriceBtn setTitleColor:NavigationColor forState:UIControlStateNormal];
-
-    
-    
-    [self.updateToCloudBtn setTitle:@"发布到首页" forState:UIControlStateNormal];
-    [self.updateToCloudBtn setTitleColor:NavigationColor forState:UIControlStateNormal];
-    
-    
-    
     self.collectionView.backgroundColor = [UIColor whiteColor];
     
 }

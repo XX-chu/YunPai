@@ -265,7 +265,7 @@
 
 - (UITableView *)tableView{
     if (!_tableView) {
-        _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, kScreenHeight - 64 - 42 - 16 - 46) style:UITableViewStyleGrouped];
+        _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, kScreenHeight - kNavigationBarHeightAndStatusBarHeight - 42 - 16 - 46) style:UITableViewStyleGrouped];
         _tableView.backgroundColor = BackGroundColor;
         _tableView.delegate = self;
         _tableView.dataSource = self;
@@ -385,7 +385,7 @@
 - (NoDataView *)dataView{
     if (!_dataView) {
         _dataView = [[[NSBundle mainBundle] loadNibNamed:@"NoDataView" owner:self options:nil] lastObject];
-        _dataView.frame = CGRectMake(0, 0, kScreenWidth, kScreenHeight - 64 - 42 - 16 - 46);
+        _dataView.frame = CGRectMake(0, 0, kScreenWidth, kScreenHeight - kNavigationBarHeightAndStatusBarHeight - 42 - 16 - 46);
         __weak typeof(self)weakself = self;
         _dataView.block = ^(){
             [weakself getData];
@@ -397,7 +397,7 @@
 - (NoOrderView *)orderView{
     if (!_orderView) {
         _orderView = [[[NSBundle mainBundle] loadNibNamed:@"NoOrderView" owner:self options:nil] lastObject];
-        _orderView.frame = CGRectMake(0, 0, kScreenWidth, kScreenHeight - 64 - 42 - 16 - 46);
+        _orderView.frame = CGRectMake(0, 0, kScreenWidth, kScreenHeight - kNavigationBarHeightAndStatusBarHeight - 42 - 16 - 46);
     }
     return _orderView;
 }

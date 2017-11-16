@@ -514,7 +514,7 @@
 
 - (UITableView *)tableView{
     if (!_tableView) {
-        _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, kScreenHeight - 64 - 53) style:UITableViewStyleGrouped];
+        _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, kScreenHeight - kNavigationBarHeightAndStatusBarHeight - 53) style:UITableViewStyleGrouped];
         _tableView.backgroundColor = [UIColor whiteColor];
         _tableView.delegate = self;
         _tableView.dataSource = self;

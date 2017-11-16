@@ -30,8 +30,9 @@
 
 @interface SYBisnessInfosViewController ()<UITableViewDelegate, UITableViewDataSource, QTShareViewDelegate, UIWebViewDelegate>
 {
-    UIButton *_backBtn;
-    UIButton *_rightBtn;
+    UIView *_customNaviBar;
+    UIView *_lineView;
+    
     NSInteger _pinglunCount;
     
     NSString *_htmlStr;
@@ -87,46 +88,18 @@ NSString * const AttributedTextCellReuseIdentifier = @"AttributedTextCellReuseId
 @implementation SYBisnessInfosViewController
 
 - (void)viewWillAppear:(BOOL)animated{
+    [self.navigationController setNavigationBarHidden:YES animated:YES];
+    self.navBarBgAlpha = @"0";
     [super viewWillAppear:animated];
-
-    
-    [self.navigationController.navigationBar setBackgroundImage:[UIImage imageWithColor:HexRGB(0xfaf9f9) Size:CGSizeMake(kScreenWidth, 64)] forBarMetrics:UIBarMetricsDefault];
-    self.navigationController.navigationBar.shadowImage = [UIImage imageWithColor:HexRGB(0xeaeaea) Size:CGSizeMake(kScreenWidth, 1)];
-    self.navBarBgAlpha = @"0.0";
-//    [self.webView.scrollView addObserver:self forKeyPath:@"contentSize" options:NSKeyValueObservingOptionNew context:nil];
-
-    [self setbackBarBtn];
-    [self setrightBtn];
 }
 
 - (void)viewWillDisappear:(BOOL)animated{
+    [self.navigationController setNavigationBarHidden:NO animated:YES];
+    self.navBarBgAlpha = @"1";
+
     [super viewWillDisappear:animated];
 
-    [self.navigationController.navigationBar setBackgroundImage:[UIImage imageWithColor:NavigationColor Size:CGSizeMake(kScreenWidth, 64)] forBarMetrics:UIBarMetricsDefault];
-    self.navigationController.navigationBar.shadowImage = [UIImage imageWithColor:NavigationColor Size:CGSizeMake(kScreenWidth, 1)];
-//    [self.webView.scrollView removeObserver:self forKeyPath:@"contentSize" context:nil];
-}
-
-- (void)setbackBarBtn{
-    _backBtn = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 44, 44)];
-    [_backBtn setImageEdgeInsets:UIEdgeInsetsMake(0, -10, 0, 10)];
-    [_backBtn setImage:[UIImage imageNamed:@"PhotoShop_headnav_-return_icon"] forState:UIControlStateNormal];
-    [_backBtn setAdjustsImageWhenHighlighted:NO];
-    [_backBtn addTarget:self action:@selector(popAction) forControlEvents:UIControlEventTouchUpInside];
-    UIBarButtonItem *backBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:_backBtn];
     
-    self.navigationItem.leftBarButtonItem = backBarButtonItem;
-}
-
-- (void)setrightBtn{
-    _rightBtn = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 44, 44)];
-    [_rightBtn setImageEdgeInsets:UIEdgeInsetsMake(0, 15, 0, -15)];
-    [_rightBtn setImage:[UIImage imageNamed:@"PhotoShop_headnav_-stare_icon"] forState:UIControlStateNormal];
-    [_rightBtn setAdjustsImageWhenHighlighted:NO];
-    [_rightBtn addTarget:self action:@selector(shareAction:) forControlEvents:UIControlEventTouchUpInside];
-    UIBarButtonItem *backBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:_rightBtn];
-    
-    self.navigationItem.rightBarButtonItem = backBarButtonItem;
 }
 
 - (void)popAction{
@@ -215,6 +188,7 @@ NSString * const AttributedTextCellReuseIdentifier = @"AttributedTextCellReuseId
     _pinglunCount = 1;
 
     [self.view addSubview:self.tableView];
+    [self initCustomNavigationBar];
     [self getData];
     [self getGuiGe];
     [self getShangpinPinglun];
@@ -252,7 +226,7 @@ NSString * const AttributedTextCellReuseIdentifier = @"AttributedTextCellReuseId
 }
 
 - (void)initBottomView{
-    UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, kScreenHeight - 52 - 64, kScreenWidth, 52)];
+    UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, kScreenHeight - 52, kScreenWidth, 52)];
     UIButton *gouwuche = [UIButton buttonWithType:UIButtonTypeCustom];
     gouwuche.frame = CGRectMake(0, 0, kScreenWidth / 2, 52);
     [gouwuche setAdjustsImageWhenHighlighted:NO];
@@ -275,7 +249,7 @@ NSString * const AttributedTextCellReuseIdentifier = @"AttributedTextCellReuseId
 }
 
 - (void)initXXBottonView{
-    UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, kScreenHeight - 52 - 64, kScreenWidth, 52)];
+    UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, kScreenHeight - 52, kScreenWidth, 52)];
     view.backgroundColor = HexRGB(0xfafafa);
     [view.subviews makeObjectsPerformSelector:@selector(removeFromSuperview)];
     UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -570,11 +544,13 @@ NSString * const AttributedTextCellReuseIdentifier = @"AttributedTextCellReuseId
     
     float a = scrollView.contentOffset.y / 125;
     if (a <= 1.0) {
-        self.navBarBgAlpha = [NSString stringWithFormat:@"%f",a];
+        _lineView.backgroundColor = [HexRGB(0xeaeaea) colorWithAlphaComponent:a];
+        _customNaviBar.backgroundColor = [HexRGB(0xfaf9f9) colorWithAlphaComponent:a];
+        
     }else{
-        self.navBarBgAlpha = [NSString stringWithFormat:@"%f",1.0f];
+        _lineView.backgroundColor = [HexRGB(0xeaeaea) colorWithAlphaComponent:1];
+        _customNaviBar.backgroundColor = [HexRGB(0xfaf9f9) colorWithAlphaComponent:1];
     }
-    
     if (scrollView.contentOffset.y > 1000.0) {
         if (_isAppear) {
             [self.view addSubview:self.fanhuiDingbu];
@@ -585,6 +561,38 @@ NSString * const AttributedTextCellReuseIdentifier = @"AttributedTextCellReuseId
         [self.fanhuiDingbu removeFromSuperview];
     }
 }
+
+#pragma mark - 隐藏系统导航条 使用自定义导航条
+- (void)initCustomNavigationBar{
+    UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, kNavigationBarHeightAndStatusBarHeight)];
+    view.backgroundColor = [HexRGB(0xfaf9f9) colorWithAlphaComponent:0];
+    _customNaviBar = view;
+    [self.view addSubview:view];
+    [self.view bringSubviewToFront:view];
+    
+    UIView *lineView = [[UIView alloc] initWithFrame:CGRectMake(0, view.frame.size.height - 1, kScreenWidth, 1)];
+    lineView.backgroundColor = [HexRGB(0xeaeaea) colorWithAlphaComponent:0];
+    _lineView = lineView;
+    
+    [view addSubview:lineView];
+    
+    UIButton *leftBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    [leftBtn setFrame:CGRectMake(10, [UIApplication sharedApplication].statusBarFrame.size.height, 44, 44)];
+    [leftBtn setAdjustsImageWhenHighlighted:NO];
+    [leftBtn setImage:[UIImage imageNamed:@"PhotoShop_headnav_-return_icon"] forState:UIControlStateNormal];
+    [leftBtn addTarget:self action:@selector(popAction) forControlEvents:UIControlEventTouchUpInside];
+    [view addSubview:leftBtn];
+    
+    UIButton *rightBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    [rightBtn setFrame:CGRectMake(kScreenWidth - 10 - 44, [UIApplication sharedApplication].statusBarFrame.size.height, 44, 44)];
+    [rightBtn setImage:[UIImage imageNamed:@"PhotoShop_headnav_-stare_icon"] forState:UIControlStateNormal];
+    [rightBtn setAdjustsImageWhenHighlighted:NO];
+    [rightBtn addTarget:self action:@selector(shareAction:) forControlEvents:UIControlEventTouchUpInside];
+    
+    [view addSubview:rightBtn];
+    
+}
+
 
 #pragma mark - UITableViewDataSource
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
@@ -1313,7 +1321,7 @@ NSString * const AttributedTextCellReuseIdentifier = @"AttributedTextCellReuseId
 
 - (UITableView *)tableView{
     if (!_tableView) {
-        _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, -64, kScreenWidth, kScreenHeight - 52) style:UITableViewStyleGrouped];
+        _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, kScreenHeight - 52) style:UITableViewStyleGrouped];
         _tableView.delegate = self;
         _tableView.dataSource = self;
         _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
@@ -1358,7 +1366,7 @@ NSString * const AttributedTextCellReuseIdentifier = @"AttributedTextCellReuseId
 - (UIButton *)fanhuiDingbu{
     if (!_fanhuiDingbu) {
         _fanhuiDingbu = [UIButton buttonWithType:UIButtonTypeCustom];
-        _fanhuiDingbu.frame = CGRectMake(kScreenWidth - 48 - 15, kScreenHeight - 48 - 45 - 64 - 52, 48, 48);
+        _fanhuiDingbu.frame = CGRectMake(kScreenWidth - 48 - 15, kScreenHeight - 48 - 45 - kNavigationBarHeightAndStatusBarHeight - 52, 48, 48);
         [_fanhuiDingbu setAdjustsImageWhenHighlighted:NO];
         [_fanhuiDingbu setImage:[UIImage imageNamed:@"Stick_icon"] forState:UIControlStateNormal];
         [_fanhuiDingbu addTarget:self action:@selector(fanhuidingbuAction:) forControlEvents:UIControlEventTouchUpInside];

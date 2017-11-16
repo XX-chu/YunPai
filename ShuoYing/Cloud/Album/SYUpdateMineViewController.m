@@ -88,9 +88,9 @@ static NSString *groupIdentifier = @"groupCell";
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     [self getDataFromMine];
-    [self getDataFromTeacher];
-    [self getDateFromGrapher];
-    [self getDateFromGroup];
+//    [self getDataFromTeacher];
+//    [self getDateFromGrapher];
+//    [self getDateFromGroup];
 }
 
 - (void)viewDidLoad {
@@ -107,10 +107,10 @@ static NSString *groupIdentifier = @"groupCell";
 }
 
 - (void)setSubViews{
-    [self.view addSubview:self.mineView];
-    [self.view addSubview:self.teacherView];
-    [self.view addSubview:self.grapherView];
-    [self.view addSubview:self.groupView];
+//    [self.view addSubview:self.mineView];
+//    [self.view addSubview:self.teacherView];
+//    [self.view addSubview:self.grapherView];
+//    [self.view addSubview:self.groupView];
     [self loadMineCollectionView];
 }
 
@@ -167,7 +167,7 @@ static NSString *groupIdentifier = @"groupCell";
                     self.grapherView.frame = CGRectMake(0, kScreenHeight, kScreenWidth, 44);
                     self.groupView.frame = CGRectMake(0, kScreenHeight, kScreenWidth, 44);
                     
-                    self.teacherCollectionView.frame = CGRectMake(0, CGRectGetMaxY(self.teacherView.frame), kScreenWidth, kScreenHeight - 64 - 15 - 44);
+                    self.teacherCollectionView.frame = CGRectMake(0, CGRectGetMaxY(self.teacherView.frame), kScreenWidth, kScreenHeight - kNavigationBarHeightAndStatusBarHeight - 15 - 44);
                 }];
                 
             }
@@ -178,7 +178,7 @@ static NSString *groupIdentifier = @"groupCell";
                     self.mineView.frame = CGRectMake(0, - 44, kScreenWidth, 44);
                     self.teacherView.frame = CGRectMake(0, - 44, kScreenWidth, 44);
                     self.grapherView.frame = CGRectMake(0, 15, kScreenWidth, 44);
-                    self.grapherCollectionView.frame = CGRectMake(0, CGRectGetMaxY(self.grapherView.frame), kScreenWidth, kScreenHeight - 64 - 15 - 44);
+                    self.grapherCollectionView.frame = CGRectMake(0, CGRectGetMaxY(self.grapherView.frame), kScreenWidth, kScreenHeight - kNavigationBarHeightAndStatusBarHeight - 15 - 44);
                 }];
             }
             
@@ -190,7 +190,7 @@ static NSString *groupIdentifier = @"groupCell";
                     self.grapherView.frame = CGRectMake(0, - 44, kScreenWidth, 44);
                     self.groupView.frame = CGRectMake(0, 15, kScreenWidth, 44);
                     
-                    self.groupCollectionView.frame = CGRectMake(0, CGRectGetMaxY(self.groupView.frame), kScreenWidth, kScreenHeight - 64 - 15 - 44);
+                    self.groupCollectionView.frame = CGRectMake(0, CGRectGetMaxY(self.groupView.frame), kScreenWidth, kScreenHeight - kNavigationBarHeightAndStatusBarHeight - 15 - 44);
                 }];
                 
             }
@@ -209,9 +209,9 @@ static NSString *groupIdentifier = @"groupCell";
                 [UIView animateWithDuration:.5 animations:^{
                     self.mineView.frame = _mineOldFrame;
                     self.teacherView.frame = _teacherOldFrame;
-                    self.grapherView.frame = CGRectMake(0, kScreenHeight - 64 - 44 - 15 - 44, kScreenWidth, 44);;
-                    self.groupView.frame = CGRectMake(0, kScreenHeight - 64 - 44, kScreenWidth, 44);
-                    self.teacherCollectionView.frame = CGRectMake(0, CGRectGetMaxY(self.teacherView.frame), kScreenWidth, kScreenHeight - 64 - 44 * 4 - 15 * 3);
+                    self.grapherView.frame = CGRectMake(0, kScreenHeight - kNavigationBarHeightAndStatusBarHeight - 44 - 15 - 44, kScreenWidth, 44);;
+                    self.groupView.frame = CGRectMake(0, kScreenHeight - kNavigationBarHeightAndStatusBarHeight - 44, kScreenWidth, 44);
+                    self.teacherCollectionView.frame = CGRectMake(0, CGRectGetMaxY(self.teacherView.frame), kScreenWidth, kScreenHeight - kNavigationBarHeightAndStatusBarHeight - 44 * 4 - 15 * 3);
                 }];
                 
             }
@@ -222,8 +222,8 @@ static NSString *groupIdentifier = @"groupCell";
                     self.mineView.frame = _mineOldFrame;
                     self.teacherView.frame = _teacherOldFrame;
                     self.grapherView.frame = _grapherOldFrame;
-                    self.groupView.frame = CGRectMake(0, kScreenHeight - 64 - 44, kScreenWidth, 44);
-                    self.grapherCollectionView.frame = CGRectMake(0, CGRectGetMaxY(self.grapherView.frame), kScreenWidth, kScreenHeight - 64 - 44 * 4 - 15 * 3);
+                    self.groupView.frame = CGRectMake(0, kScreenHeight - kNavigationBarHeightAndStatusBarHeight - 44, kScreenWidth, 44);
+                    self.grapherCollectionView.frame = CGRectMake(0, CGRectGetMaxY(self.grapherView.frame), kScreenWidth, kScreenHeight - kNavigationBarHeightAndStatusBarHeight - 44 * 4 - 15 * 3);
                 }];
             }
             
@@ -234,7 +234,7 @@ static NSString *groupIdentifier = @"groupCell";
                     self.teacherView.frame = _teacherOldFrame;
                     self.grapherView.frame = _grapherOldFrame;
                     self.groupView.frame = _groupOldFrame;
-                    self.groupCollectionView.frame = CGRectMake(0, CGRectGetMaxY(self.groupView.frame), kScreenWidth, kScreenHeight - 64 - 44 * 4 - 15 * 3);
+                    self.groupCollectionView.frame = CGRectMake(0, CGRectGetMaxY(self.groupView.frame), kScreenWidth, kScreenHeight - kNavigationBarHeightAndStatusBarHeight - 44 * 4 - 15 * 3);
                 }];
                 
             }
@@ -277,9 +277,9 @@ static NSString *groupIdentifier = @"groupCell";
         _mineArrowIMG.image = [UIImage imageNamed:@"shangchuan_icon_sanjiao-_nor"];
         [self.mineCollectionView removeFromSuperview];
     }else{
-        self.teacherView.frame = CGRectMake(0, kScreenHeight - 64 - 44 - 15 - 44 - 15 - 44, kScreenWidth, 44);
-        self.grapherView.frame = CGRectMake(0, kScreenHeight - 64 - 44 - 15 - 44, kScreenWidth, 44);
-        self.groupView.frame = CGRectMake(0, kScreenHeight - 64 - 44, kScreenWidth, 44);
+        self.teacherView.frame = CGRectMake(0, kScreenHeight - kNavigationBarHeightAndStatusBarHeight - 44 - 15 - 44 - 15 - 44, kScreenWidth, 44);
+        self.grapherView.frame = CGRectMake(0, kScreenHeight - kNavigationBarHeightAndStatusBarHeight - 44 - 15 - 44, kScreenWidth, 44);
+        self.groupView.frame = CGRectMake(0, kScreenHeight - kNavigationBarHeightAndStatusBarHeight - 44, kScreenWidth, 44);
         _mineArrowIMG.image = [UIImage imageNamed:@"shangchuan_icon_sanjiao_sel"];
         [self.teacherCollectionView removeFromSuperview];
         [self.grapherCollectionView removeFromSuperview];
@@ -309,8 +309,8 @@ static NSString *groupIdentifier = @"groupCell";
     }else{
         self.mineView.frame = _mineOldFrame;
         self.teacherView.frame = _teacherOldFrame;
-        self.grapherView.frame = CGRectMake(0, kScreenHeight - 64 - 44 - 15 - 44, kScreenWidth, 44);
-        self.groupView.frame = CGRectMake(0, kScreenHeight - 64 - 44, kScreenWidth, 44);
+        self.grapherView.frame = CGRectMake(0, kScreenHeight - kNavigationBarHeightAndStatusBarHeight - 44 - 15 - 44, kScreenWidth, 44);
+        self.groupView.frame = CGRectMake(0, kScreenHeight - kNavigationBarHeightAndStatusBarHeight - 44, kScreenWidth, 44);
         _teacherArrowIMG.image = [UIImage imageNamed:@"shangchuan_icon_sanjiao_sel"];
         [self.mineCollectionView removeFromSuperview];
         [self.grapherCollectionView removeFromSuperview];
@@ -341,7 +341,7 @@ static NSString *groupIdentifier = @"groupCell";
         self.mineView.frame = _mineOldFrame;
         self.teacherView.frame = _teacherOldFrame;
         self.grapherView.frame = _grapherOldFrame;
-        self.groupView.frame = CGRectMake(0, kScreenHeight - 64 - 44, kScreenWidth, 44);
+        self.groupView.frame = CGRectMake(0, kScreenHeight - kNavigationBarHeightAndStatusBarHeight - 44, kScreenWidth, 44);
         
         _grapherArrowIMG.image = [UIImage imageNamed:@"shangchuan_icon_sanjiao_sel"];
         _isOpenGrapherAlbum = YES;
@@ -732,7 +732,9 @@ static NSString *groupIdentifier = @"groupCell";
     layout.itemSize = CGSizeMake((kScreenWidth - 40) / 3, (kScreenWidth - 40) / 3 + 50);
     layout.minimumLineSpacing = 10;
     
-    self.mineCollectionView = [[UICollectionView alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(self.mineView.frame), kScreenWidth, kScreenHeight - 64 - 44 * 4 - 15 * 3) collectionViewLayout:layout];
+//    self.mineCollectionView = [[UICollectionView alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(self.mineView.frame), kScreenWidth, kScreenHeight - 64 - 44 * 4 - 15 * 3) collectionViewLayout:layout];
+    self.mineCollectionView = [[UICollectionView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, kScreenHeight - kNavigationBarHeightAndStatusBarHeight) collectionViewLayout:layout];
+
     self.mineCollectionView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
         [self getDataFromMine];
     }];
@@ -753,7 +755,7 @@ static NSString *groupIdentifier = @"groupCell";
     layout.itemSize = CGSizeMake((kScreenWidth - 40 - 1) / 3, (kScreenWidth - 40 - 1) / 3 + 50);
     layout.minimumLineSpacing = 10;
     
-    self.teacherCollectionView = [[UICollectionView alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(self.teacherView.frame), kScreenWidth, kScreenHeight - 64 - 44 * 4 - 15 * 3) collectionViewLayout:layout];
+    self.teacherCollectionView = [[UICollectionView alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(self.teacherView.frame), kScreenWidth, kScreenHeight - kNavigationBarHeightAndStatusBarHeight - 44 * 4 - 15 * 3) collectionViewLayout:layout];
     
     self.teacherCollectionView.showsVerticalScrollIndicator = NO;
     [self.teacherCollectionView registerNib:[UINib nibWithNibName:@"SYUpdataMineCollectionViewCell" bundle:nil] forCellWithReuseIdentifier:teacherIdentifier];
@@ -778,7 +780,7 @@ static NSString *groupIdentifier = @"groupCell";
     layout.itemSize = CGSizeMake((kScreenWidth - 40 - 1) / 3, (kScreenWidth - 40 - 1) / 3 + 50);
     layout.minimumLineSpacing = 10;
     
-    self.grapherCollectionView = [[UICollectionView alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(self.grapherView.frame), kScreenWidth, kScreenHeight - 64 - 44 * 4 - 15 * 3) collectionViewLayout:layout];
+    self.grapherCollectionView = [[UICollectionView alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(self.grapherView.frame), kScreenWidth, kScreenHeight - kNavigationBarHeightAndStatusBarHeight - 44 * 4 - 15 * 3) collectionViewLayout:layout];
     
     self.grapherCollectionView.showsVerticalScrollIndicator = NO;
     [self.grapherCollectionView registerNib:[UINib nibWithNibName:@"SYUpdataMineCollectionViewCell" bundle:nil] forCellWithReuseIdentifier:grapherIdentifier];
@@ -802,7 +804,7 @@ static NSString *groupIdentifier = @"groupCell";
     layout.itemSize = CGSizeMake((kScreenWidth - 40 - 1) / 3, (kScreenWidth - 40 - 1) / 3 + 50);
     layout.minimumLineSpacing = 10;
     
-    self.groupCollectionView = [[UICollectionView alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(self.groupView.frame), kScreenWidth, kScreenHeight - 64 - 44 * 4 - 15 * 3) collectionViewLayout:layout];
+    self.groupCollectionView = [[UICollectionView alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(self.groupView.frame), kScreenWidth, kScreenHeight - kNavigationBarHeightAndStatusBarHeight - 44 * 4 - 15 * 3) collectionViewLayout:layout];
     self.groupCollectionView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
         [self getDateFromGroup];
     }];
@@ -882,7 +884,7 @@ static NSString *groupIdentifier = @"groupCell";
 - (UIView *)teacherView{
     if (!_teacherView) {
 //        _teacherView = [[UIView alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(self.mineView.frame) + 15, kScreenWidth, 44)];
-        _teacherView = [[UIView alloc] initWithFrame:CGRectMake(0, kScreenHeight - 64 - 44 - 15 - 44 - 15 - 44, kScreenWidth, 44)];
+        _teacherView = [[UIView alloc] initWithFrame:CGRectMake(0, kScreenHeight - kNavigationBarHeightAndStatusBarHeight - 44 - 15 - 44 - 15 - 44, kScreenWidth, 44)];
         _teacherOldFrame = CGRectMake(0, CGRectGetMaxY(self.mineView.frame) + 15, kScreenWidth, 44);
         _teacherView.backgroundColor = [UIColor whiteColor];
         UIView *upLineview = [[UIView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, 1)];
@@ -912,7 +914,7 @@ static NSString *groupIdentifier = @"groupCell";
 - (UIView *)grapherView{
     if (!_grapherView) {
 //        _grapherView = [[UIView alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(self.teacherView.frame) + 15, kScreenWidth, 44)];
-        _grapherView = [[UIView alloc] initWithFrame:CGRectMake(0, kScreenHeight - 64 - 44 - 15 - 44, kScreenWidth, 44)];
+        _grapherView = [[UIView alloc] initWithFrame:CGRectMake(0, kScreenHeight - kNavigationBarHeightAndStatusBarHeight - 44 - 15 - 44, kScreenWidth, 44)];
         _grapherOldFrame = CGRectMake(0, CGRectGetMaxY(_teacherOldFrame) + 15, kScreenWidth, 44);
         _grapherView.backgroundColor = [UIColor whiteColor];
         UIView *upLineview = [[UIView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, 1)];
@@ -942,7 +944,7 @@ static NSString *groupIdentifier = @"groupCell";
 - (UIView *)groupView{
     if (!_groupView) {
 //        _groupView = [[UIView alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(self.grapherView.frame) + 15, kScreenWidth, 44)];
-        _groupView = [[UIView alloc] initWithFrame:CGRectMake(0, kScreenHeight - 64 - 44, kScreenWidth, 44)];
+        _groupView = [[UIView alloc] initWithFrame:CGRectMake(0, kScreenHeight - kNavigationBarHeightAndStatusBarHeight - 44, kScreenWidth, 44)];
         _groupOldFrame = CGRectMake(0, CGRectGetMaxY(_grapherOldFrame) + 15, kScreenWidth, 44);
         _groupView.backgroundColor = [UIColor whiteColor];
         UIView *upLineview = [[UIView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, 1)];

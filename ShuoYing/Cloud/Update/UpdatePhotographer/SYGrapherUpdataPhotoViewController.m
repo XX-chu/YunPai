@@ -144,7 +144,7 @@
     [selectBtn addTarget:self action:@selector(selectPhotoAction:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:selectBtn];
     
-    UIScrollView *scroll = [[UIScrollView alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(selectBtn.frame) + 15, kScreenWidth, kScreenHeight - 64 - CGRectGetMaxY(selectBtn.frame) - 15)];
+    UIScrollView *scroll = [[UIScrollView alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(selectBtn.frame) + 15, kScreenWidth, kScreenHeight - kNavigationBarHeightAndStatusBarHeight - CGRectGetMaxY(selectBtn.frame) - 15)];
     _scrollView.showsVerticalScrollIndicator = NO;
     [self.view addSubview:scroll];
     self.scrollView = scroll;
@@ -538,7 +538,7 @@
             _indicatorLabel.frame = CGRectMake(_indicatorLabel.frame.origin.x, CGRectGetMaxY(_upView.frame) + 10, _indicatorLabel.frame.size.width, _indicatorLabel.frame.size.height);
             
             _selectBtn.frame = CGRectMake(15, CGRectGetMaxY(_indicatorLabel.frame) + 15, 75, 75);
-            _scrollView.frame = CGRectMake(0, CGRectGetMaxY(_selectBtn.frame) + 15, kScreenWidth, kScreenHeight - 64 - CGRectGetMaxY(_selectBtn.frame) - 15);
+            _scrollView.frame = CGRectMake(0, CGRectGetMaxY(_selectBtn.frame) + 15, kScreenWidth, kScreenHeight - kNavigationBarHeightAndStatusBarHeight - CGRectGetMaxY(_selectBtn.frame) - 15);
             self.historyTableView.frame = CGRectMake(0, 45 + 40, kScreenWidth, 0);
         } completion:^(BOOL finished) {
             //开启定时器
@@ -553,7 +553,7 @@
         _upView.frame = CGRectMake(0, CGRectGetMaxY(_isRegisterLabel.frame), kScreenWidth, 88);
         _indicatorLabel.frame = CGRectMake(_indicatorLabel.frame.origin.x, CGRectGetMaxY(_upView.frame) + 10, _indicatorLabel.frame.size.width, _indicatorLabel.frame.size.height);
         _selectBtn.frame = CGRectMake(15, CGRectGetMaxY(_indicatorLabel.frame) + 15, 75, 75);
-        _scrollView.frame = CGRectMake(0, CGRectGetMaxY(_selectBtn.frame) + 15, kScreenWidth, kScreenHeight - 64 - CGRectGetMaxY(_selectBtn.frame) - 15);
+        _scrollView.frame = CGRectMake(0, CGRectGetMaxY(_selectBtn.frame) + 15, kScreenWidth, kScreenHeight - kNavigationBarHeightAndStatusBarHeight - CGRectGetMaxY(_selectBtn.frame) - 15);
         self.historyTableView.frame = CGRectMake(0, 45, kScreenWidth, 0);
 
     } completion:^(BOOL finished) {

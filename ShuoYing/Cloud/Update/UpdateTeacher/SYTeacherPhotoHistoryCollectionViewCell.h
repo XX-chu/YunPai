@@ -10,7 +10,12 @@
 
 @interface SYTeacherPhotoHistoryCollectionViewCell : UICollectionViewCell
 
+
+typedef void(^TeacherAndGrapherEdit)();
+
 @property (weak, nonatomic) IBOutlet UIImageView *headImageView;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *headImageViewHeightConstraint;
+@property (nonatomic, copy) TeacherAndGrapherEdit editBlock;
+@property (weak, nonatomic) IBOutlet UIButton *editBtn;
 
 @end

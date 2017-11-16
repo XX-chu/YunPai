@@ -10,7 +10,7 @@
 #import "SYUserInfos.h"
 
 #define LineHeight 44.0
-#define TypeCount 4
+#define TypeCount 3
 static SYPayTypeView *_sharedInstance = nil;
 
 @interface SYPayTypeView ()

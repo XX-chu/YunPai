@@ -125,7 +125,7 @@
 #pragma mark - layzLoad
 - (UITableView *)tableView{
     if (!_tableView) {
-        _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, kScreenHeight - 64)];
+        _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, kScreenHeight - kNavigationBarHeightAndStatusBarHeight)];
         _tableView.delegate = self;
         _tableView.dataSource = self;
         _tableView.backgroundColor = BackGroundColor;

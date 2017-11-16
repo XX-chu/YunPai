@@ -93,7 +93,7 @@
     _wuliuTag = 0;
     _fuwuTag = 0;
     _hasPingjia = NO;
-    self.backViewHeightConstraints.constant = kScreenHeight - 64;
+    self.backViewHeightConstraints.constant = kScreenHeight - kNavigationBarHeightAndStatusBarHeight;
     [self setBtnLayer];
     self.miaoshuArr = @[self.miaoshu1, self.miaoshu2, self.miaoshu3, self.miaoshu4, self.miaoshu5];
     self.wuliuArr = @[self.wuliu1, self.wuliu2, self.wuliu3, self.wuliu4, self.wuliu5];
@@ -152,7 +152,7 @@
     if (count != 0) {
         self.backViewHeightConstraints.constant = 487 + (kScreenWidth - 14 * 2 - 21 * 2) / 3 + 15;
     }else{
-        self.backViewHeightConstraints.constant = kScreenHeight - 64;
+        self.backViewHeightConstraints.constant = kScreenHeight - kNavigationBarHeightAndStatusBarHeight;
     }
 
 }

@@ -146,54 +146,6 @@
 //支付宝支付
 - (void)alipay{
 
-    /*
-    [SVProgressHUD show];
-    NSString *url  = [NSString stringWithFormat:@"%@%@",BaseUrl,@"/zfbpay/pay.html"];
-    NSDictionary *param = nil;
-    
-    if (_isFrom == isFromTeacher) {
-        param = @{@"token":UserToken, @"id":[self.dataSourceDic objectForKey:@"id"], @"type":@2, @"paytype":@"APP"};
-    }else if (_isFrom == isFromGrapher){
-        param = @{@"token":UserToken, @"id":[self.dataSourceDic objectForKey:@"id"], @"type":@1, @"paytype":@"APP"};
-    }else if (_isFrom == isFromYuYueGrapher){
-        param = @{@"token":UserToken, @"id":[self.dataSourceDic objectForKey:@"id"], @"type":@5, @"paytype":@"APP"};
-    }else if (_isFrom == isFromGroup){
-        param = @{@"token":UserToken, @"id":[self.dataSourceDic objectForKey:@"id"], @"type":@7, @"paytype":@"APP"};
-    }else if (_isFrom == isFromShouYeXiaZai){
-        param = @{@"token":UserToken, @"id":[self.dataSourceDic objectForKey:@"id"], @"type":@8, @"paytype":@"APP"};
-    }
-     
-     [[SYHttpRequest sharedInstance] getDataWithUrl:url Parameter:param ResponseObject:^(NSDictionary *responseResult) {
-     self.commitBtn.enabled = YES;
-     NSLog(@"支付宝支付 -- %@",responseResult);
-     [SVProgressHUD dismiss];
-     if ([responseResult objectForKey:@"resError"]) {
-     [self showHint:@"服务器不给力，请稍后重试"];
-     
-     }else{
-     
-     if ([[responseResult objectForKey:@"result"] integerValue] == 4) {
-     [self.navigationController popViewControllerAnimated:YES];
-     [self showHint:@"支付成功，请下载!"];
-     return ;
-     }
-     
-     if ([[responseResult objectForKey:@"result"] integerValue] == 1) {
-     if (responseResult.count > 0) {
-     
-     if ([responseResult objectForKey:@"data"]) {
-     [self alipayWithOrderStr:[responseResult objectForKey:@"data"]];
-     
-     }
-     }
-     }else{
-     [self showHint:[responseResult objectForKey:@"msg"]];
-     }
-     
-     }
-     }];
-     
-    */
     NSString *url = @"";
     
     if (_isFrom == isFromTeacher) {

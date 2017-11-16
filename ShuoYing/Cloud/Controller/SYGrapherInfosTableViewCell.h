@@ -9,6 +9,8 @@
 #import <UIKit/UIKit.h>
 
 @interface SYGrapherInfosTableViewCell : UITableViewCell
+
 @property (weak, nonatomic) IBOutlet UIImageView *contentImageView;
+@property (weak, nonatomic) IBOutlet UILabel *infosLabel;
 
 @end

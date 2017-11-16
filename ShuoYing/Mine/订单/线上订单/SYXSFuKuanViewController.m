@@ -16,6 +16,7 @@
 #import "SYOrderModel.h"
 #import "SYProductModel.h"
 #import "SYBisnessInfosViewController.h"
+#import "SYOrderInfosViewController.h"
 @interface SYXSFuKuanViewController ()<UITableViewDelegate, UITableViewDataSource>
 {
     NSInteger _count;
@@ -76,10 +77,16 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+//    SYOrderModel *orderModel = self.dataSourceArr[indexPath.section];
+//    NSArray *product = orderModel.product;
+//    SYProductModel *model = product[indexPath.row];
+//    SYBisnessInfosViewController *infos = [[SYBisnessInfosViewController alloc] initWithIsFromXSorXXType:isFromXS shangpinID:model.productId shangjiaID:orderModel.pid];
+//    [self.navigationController pushViewController:infos animated:YES];
+    
     SYOrderModel *orderModel = self.dataSourceArr[indexPath.section];
-    NSArray *product = orderModel.product;
-    SYProductModel *model = product[indexPath.row];
-    SYBisnessInfosViewController *infos = [[SYBisnessInfosViewController alloc] initWithIsFromXSorXXType:isFromXS shangpinID:model.productId shangjiaID:orderModel.pid];
+    SYOrderInfosViewController *infos = [[SYOrderInfosViewController alloc] init];
+    infos.param = @{@"token":UserToken, @"id":orderModel.orderId, @"state":@1};
+    infos.type = OrderTypeWeiFuKuan;
     [self.navigationController pushViewController:infos animated:YES];
 }
 
@@ -279,7 +286,7 @@
 
 - (UITableView *)tableView{
     if (!_tableView) {
-        _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, kScreenHeight - 64 - 42 - 16 - 46) style:UITableViewStyleGrouped];
+        _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, kScreenHeight - kNavigationBarHeightAndStatusBarHeight - 42 - 16 - 46) style:UITableViewStyleGrouped];
         _tableView.backgroundColor = BackGroundColor;
         _tableView.delegate = self;
         _tableView.dataSource = self;
@@ -401,7 +408,7 @@
 - (NoDataView *)dataView{
     if (!_dataView) {
         _dataView = [[[NSBundle mainBundle] loadNibNamed:@"NoDataView" owner:self options:nil] lastObject];
-        _dataView.frame = CGRectMake(0, 0, kScreenWidth, kScreenHeight - 64 - 42 - 16 - 46);
+        _dataView.frame = CGRectMake(0, 0, kScreenWidth, kScreenHeight - kNavigationBarHeightAndStatusBarHeight - 42 - 16 - 46);
         __weak typeof(self)weakself = self;
         _dataView.block = ^(){
             [weakself getData];
@@ -413,7 +420,7 @@
 - (NoOrderView *)orderView{
     if (!_orderView) {
         _orderView = [[[NSBundle mainBundle] loadNibNamed:@"NoOrderView" owner:self options:nil] lastObject];
-        _orderView.frame = CGRectMake(0, 0, kScreenWidth, kScreenHeight - 64 - 42 - 16 - 46);
+        _orderView.frame = CGRectMake(0, 0, kScreenWidth, kScreenHeight - kNavigationBarHeightAndStatusBarHeight - 42 - 16 - 46);
     }
     return _orderView;
 }

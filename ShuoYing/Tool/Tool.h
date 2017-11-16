@@ -12,6 +12,17 @@
 
 + (instancetype)sharedInstance;
 
+
+/**
+ 计算文本高度
+ 
+ @param value 文本内容
+ @param width 限制宽度
+ @param size 字号大小
+ @return 计算完毕后高度
+ */
+- (CGFloat) heightForString:(NSString *)value andWidth:(CGFloat)width fontSize:(CGFloat)size;
+
 - (BOOL)isMobile:(NSString *)mobileNumbel;
 
 - (NSString *)timeWithTimeIntervalString:(NSString *)timeString WithDateFormat:(NSString *)format;

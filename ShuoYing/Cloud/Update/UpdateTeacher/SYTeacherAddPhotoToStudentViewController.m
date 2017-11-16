@@ -57,6 +57,11 @@ static NSString *studentheadIdentifier = @"studentheadIdentifier";
 
 @implementation SYTeacherAddPhotoToStudentViewController
 
+- (void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    [self getData];
+
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -66,7 +71,6 @@ static NSString *studentheadIdentifier = @"studentheadIdentifier";
     [self setRightbarItem];
     [self loadNewSubViews];
     
-    [self getData];
 }
 
 - (void)setRightbarItem{

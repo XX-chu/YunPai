@@ -71,7 +71,6 @@
     }else if (item.tag == 2){
         if (!LoginStatus) {
             
-            
             return;
         }
         self.navigationItem.rightBarButtonItem = nil;

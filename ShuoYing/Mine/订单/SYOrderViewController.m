@@ -44,7 +44,7 @@
     [self.childView.subviews makeObjectsPerformSelector:@selector(removeFromSuperview)];
     
     UIViewController *vc = self.childViewControllers[cor.selectedSegmentIndex];
-    vc.view.frame = CGRectMake(0, 0, kScreenWidth, kScreenHeight - 64 - SegmentHeight - 16);
+    vc.view.frame = CGRectMake(0, 0, kScreenWidth, kScreenHeight - kNavigationBarHeightAndStatusBarHeight - SegmentHeight - 16);
     
     [self.childView addSubview:vc.view];
     
@@ -52,7 +52,7 @@
 
 - (void)setChildViewControllers{
     SYXianShangViewController *xianshang = [[SYXianShangViewController alloc] init];
-    xianshang.view.frame = CGRectMake(0, 0, kScreenWidth, kScreenHeight - 64 - SegmentHeight - 16);
+    xianshang.view.frame = CGRectMake(0, 0, kScreenWidth, kScreenHeight - kNavigationBarHeightAndStatusBarHeight - SegmentHeight - 16);
     
     [self addChildViewController:xianshang];
     [self.childView addSubview:xianshang.view];
@@ -77,7 +77,7 @@
 
 - (UIView *)childView{
     if (!_childView) {
-        _childView = [[UIView alloc] initWithFrame:CGRectMake(0, SegmentHeight + 16, kScreenWidth, kScreenHeight - 64 - SegmentHeight - 16)];
+        _childView = [[UIView alloc] initWithFrame:CGRectMake(0, SegmentHeight + 16, kScreenWidth, kScreenHeight - kNavigationBarHeightAndStatusBarHeight - SegmentHeight - 16)];
         
     }
     return _childView;

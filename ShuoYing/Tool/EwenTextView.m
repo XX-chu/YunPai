@@ -97,9 +97,9 @@
     NSLog(@"height - %d",height);
     if (self.textView.text.length == 0) {
         
-        self.backGroundView.frame = CGRectMake(0, kScreenheight- height -selfHeight - 64, kScreenwidth, selfHeight);
+        self.backGroundView.frame = CGRectMake(0, kScreenheight- height -selfHeight - kNavigationBarHeightAndStatusBarHeight, kScreenwidth, selfHeight);
     }else{
-        CGRect rect = CGRectMake(0, kScreenheight - self.backGroundView.frame.size.height- height - 64, kScreenwidth, self.backGroundView.frame.size.height);
+        CGRect rect = CGRectMake(0, kScreenheight - self.backGroundView.frame.size.height- height - kNavigationBarHeightAndStatusBarHeight, kScreenwidth, self.backGroundView.frame.size.height);
         self.backGroundView.frame = rect;
     }
 }
@@ -109,11 +109,11 @@
 {
     if (self.textView.text.length == 0) {
         self.backGroundView.frame = CGRectMake(0, 0, kScreenwidth, selfHeight);
-        self.frame = CGRectMake(0, kScreenheight - selfHeight - 64, kScreenwidth, selfHeight);
+        self.frame = CGRectMake(0, kScreenheight - selfHeight - kNavigationBarHeightAndStatusBarHeight, kScreenwidth, selfHeight);
     }else{
         CGRect rect = CGRectMake(0, 0, kScreenwidth, self.backGroundView.frame.size.height);
         self.backGroundView.frame = rect;
-        self.frame = CGRectMake(0, kScreenheight - rect.size.height - 64, kScreenwidth, self.backGroundView.frame.size.height);
+        self.frame = CGRectMake(0, kScreenheight - rect.size.height - kNavigationBarHeightAndStatusBarHeight, kScreenwidth, self.backGroundView.frame.size.height);
     }
 }
 
@@ -172,7 +172,7 @@
     self.placeholderLabel.text = placeholderText;
 //    [self.sendButton setBackgroundColor:UIColorRGB(180, 180, 180)];
     self.sendButton.userInteractionEnabled = NO;
-    self.frame = CGRectMake(0, kScreenheight - selfHeight - 64, kScreenwidth, selfHeight);
+    self.frame = CGRectMake(0, kScreenheight - selfHeight - kNavigationBarHeightAndStatusBarHeight, kScreenwidth, selfHeight);
     self.backGroundView.frame = CGRectMake(0, 0, kScreenwidth, selfHeight);
 }
 

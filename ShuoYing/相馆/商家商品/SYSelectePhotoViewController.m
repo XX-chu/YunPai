@@ -187,7 +187,7 @@ static NSString *ShopcartSelectePhotoHeaderView = @"ShopcartSelectePhotoHeaderVi
     flowLayout.minimumInteritemSpacing = 20;
     flowLayout.headerReferenceSize = CGSizeMake(kScreenWidth, 115 + 56);
     
-    self.collectionView = [[UICollectionView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth , kScreenHeight - 64) collectionViewLayout:flowLayout];
+    self.collectionView = [[UICollectionView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth , kScreenHeight - kNavigationBarHeightAndStatusBarHeight) collectionViewLayout:flowLayout];
     self.collectionView.backgroundColor = [UIColor whiteColor];
     self.collectionView.delegate = self;
     self.collectionView.dataSource = self;

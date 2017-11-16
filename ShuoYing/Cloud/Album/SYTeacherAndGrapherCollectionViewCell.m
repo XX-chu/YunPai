@@ -10,6 +10,7 @@
 #import "SYTeacherAndGrapherModel.h"
 
 
+
 @implementation SYTeacherAndGrapherCollectionViewCell
 
 - (void)setModel:(SYTeacherAndGrapherModel *)model{
@@ -26,6 +27,19 @@
     }else{
         [self.downloadBtn setImage:[UIImage imageNamed:@"yixiazai"] forState:UIControlStateNormal];
     }
+    
+    if ([_model.isSelected boolValue]) {
+        [_editBtn setImage:[UIImage imageNamed:@"selected"] forState:UIControlStateNormal];
+
+    }else{
+        [_editBtn setImage:[UIImage imageNamed:@"unchecked"] forState:UIControlStateNormal];
+
+    }
+}
+
+- (void)setIsEdit:(BOOL)isEdit{
+    _isEdit = isEdit;
+    _editBtn.hidden = !isEdit;
 }
 
 - (void)awakeFromNib {
@@ -45,10 +59,24 @@
     UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
     self.downloadBtn = btn;
     btn.frame = CGRectMake((kScreenWidth - 50) / 3 - 25, (kScreenWidth - 50) / 3 - 25, 25, 25);
-//    [btn setImage:[UIImage imageNamed:@"xiazai"] forState:UIControlStateNormal];
     [btn addTarget:self action:@selector(downloadAction:) forControlEvents:UIControlEventTouchUpInside];
     [self.headImageView addSubview:btn];
     
+    UIButton *btn1 = [UIButton buttonWithType:UIButtonTypeCustom];
+    btn1.frame = CGRectMake((kScreenWidth - 50) / 3 - 25, 0, 25, 25);
+    [btn1 setImage:[UIImage imageNamed:@"unchecked"] forState:UIControlStateNormal];
+    [btn1 addTarget:self action:@selector(editAction:) forControlEvents:UIControlEventTouchUpInside];
+    _editBtn = btn1;
+    btn1.hidden = YES;
+    [self.headImageView addSubview:btn1];
+}
+
+- (void)editAction:(UIButton *)sender{
+    if (self.isEdit) {
+        if (self.editBlock) {
+            self.editBlock();
+        }
+    }
 }
 
 - (void)downloadAction:(UIButton *)sender{

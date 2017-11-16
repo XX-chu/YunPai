@@ -12,6 +12,7 @@ typedef NS_ENUM(NSUInteger, isFromState) {
     isFromTeacher,
     isFromGrapher,
     isFromGroup,
+    isFromYunPaiShi,
 };
 
 @interface SYIDViewController : SYBaseViewController

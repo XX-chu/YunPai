@@ -164,6 +164,7 @@ static NSString *photoListCell = @"photoListCell";
 }
 //上传照片
 - (void)getData{
+    [SVProgressHUD show];
     NSMutableSet *muSet = [NSMutableSet setWithArray:self.haveSelecteAlbumID];
     NSArray *arr = [muSet allObjects];
     NSMutableDictionary *dataSourceDic = [NSMutableDictionary dictionaryWithCapacity:0];
@@ -328,7 +329,7 @@ static NSString *photoListCell = @"photoListCell";
     flowLayout.minimumLineSpacing = 20;
     flowLayout.minimumInteritemSpacing = 20;
     
-    self.collectionView = [[UICollectionView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth , kScreenHeight - 64 - 55) collectionViewLayout:flowLayout];
+    self.collectionView = [[UICollectionView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth , kScreenHeight - kNavigationBarHeightAndStatusBarHeight - 55) collectionViewLayout:flowLayout];
     self.collectionView.backgroundColor = [UIColor whiteColor];
     self.collectionView.delegate = self;
     self.collectionView.dataSource = self;
@@ -345,7 +346,7 @@ static NSString *photoListCell = @"photoListCell";
 
 - (UIView *)noDataView{
     if (!_noDataView) {
-        _noDataView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, kScreenHeight - 64)];
+        _noDataView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, kScreenHeight - kNavigationBarHeightAndStatusBarHeight)];
         _noDataView.backgroundColor = RGB(235, 235, 235);
         UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0, 130, kScreenWidth, 20)];
         label.text = @"暂无照片";
@@ -357,7 +358,7 @@ static NSString *photoListCell = @"photoListCell";
 }
 
 - (void)initBottomView{
-    UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, kScreenHeight - 64 - 55, kScreenWidth, 55)];
+    UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, kScreenHeight - kNavigationBarHeightAndStatusBarHeight - 55, kScreenWidth, 55)];
     view.backgroundColor = [UIColor whiteColor];
     UIView *lineView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, 1)];
     lineView.backgroundColor = HexRGB(0xeaeaea);

@@ -79,7 +79,7 @@
 - (void)createView
 {
     // 弹出的整个视图
-    _wholeView = [[UIView alloc] initWithFrame:CGRectMake(0, kScreenHeight - 64, ScreenWidth, 250)];
+    _wholeView = [[UIView alloc] initWithFrame:CGRectMake(0, kScreenHeight - kNavigationBarHeightAndStatusBarHeight, ScreenWidth, 250)];
     [self addSubview:_wholeView];
     
     // 头部按钮视图
@@ -131,7 +131,7 @@
 {
     [UIView animateWithDuration:0.3 animations:^
     {
-        _wholeView.frame = CGRectMake(0, ScreenHeight-250 - 64, ScreenWidth, 250);
+        _wholeView.frame = CGRectMake(0, ScreenHeight-250 - kNavigationBarHeightAndStatusBarHeight, ScreenWidth, 250);
         
     } completion:^(BOOL finished) {}];
     
@@ -145,7 +145,7 @@
 {
     [UIView animateWithDuration:0.3 animations:^
     {
-        _wholeView.frame = CGRectMake(0, ScreenHeight - 64, ScreenWidth, 250);
+        _wholeView.frame = CGRectMake(0, ScreenHeight - kNavigationBarHeightAndStatusBarHeight, ScreenWidth, 250);
 
     } completion:^(BOOL finished) {
         [self removeFromSuperview];

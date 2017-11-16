@@ -360,7 +360,7 @@
 
 - (UITableView *)tableView{
     if (!_tableView) {
-        _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, kScreenHeight - 64 - self.tabBarController.tabBar.frame.size.height - 40) style:UITableViewStylePlain];
+        _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, kScreenHeight - kNavigationBarHeightAndStatusBarHeight - self.tabBarController.tabBar.frame.size.height - 40) style:UITableViewStylePlain];
         _tableView.delegate = self;
         _tableView.dataSource = self;
         _tableView.backgroundColor = BackGroundColor;
@@ -379,7 +379,7 @@
 
 - (UITableView *)searchTableView{
     if (!_searchTableView) {
-        _searchTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, kScreenHeight - 64 - self.tabBarController.tabBar.frame.size.height - 40) style:UITableViewStylePlain];
+        _searchTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, kScreenHeight - kNavigationBarHeightAndStatusBarHeight - self.tabBarController.tabBar.frame.size.height - 40) style:UITableViewStylePlain];
         _searchTableView.delegate = self;
         _searchTableView.dataSource = self;
         _searchTableView.backgroundColor = BackGroundColor;
@@ -413,7 +413,7 @@
 - (SYNoNetworkView *)noNetWorkView{
     if (!_noNetWorkView) {
         _noNetWorkView = [[[NSBundle mainBundle] loadNibNamed:@"SYNoNetworkView" owner:self options:nil] lastObject];
-        _noNetWorkView.frame = CGRectMake(0, 0, kScreenWidth, kScreenHeight - 40 - 64 - self.tabBarController.tabBar.frame.size.height);
+        _noNetWorkView.frame = CGRectMake(0, 0, kScreenWidth, kScreenHeight - 40 - kNavigationBarHeightAndStatusBarHeight - self.tabBarController.tabBar.frame.size.height);
         __weak typeof(self)weakself = self;
         _noNetWorkView.block = ^(){
             [weakself getData];

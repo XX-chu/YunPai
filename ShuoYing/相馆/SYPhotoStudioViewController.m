@@ -50,7 +50,9 @@ static NSString *oneHeaderIdentifier = @"oneheader";
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(fangqixiangying) name:@"fangqixiangying" object:nil];
+
     self.navBarBgAlpha = @"1.0";
+
     self.tabBarController.navigationItem.rightBarButtonItem = self.rightBarItem;
     self.tabBarController.navigationItem.titleView = self.titleView;
 }
@@ -653,7 +655,7 @@ static NSString *oneHeaderIdentifier = @"oneheader";
 
 - (UITableView *)tableView{
     if (!_tableView) {
-        _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 47, kScreenWidth, kScreenHeight - 64 - 49 - 47) style:UITableViewStyleGrouped];
+        _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 47, kScreenWidth, kScreenHeight - kNavigationBarHeightAndStatusBarHeight - 49 - 47) style:UITableViewStyleGrouped];
         _tableView.delegate = self;
         _tableView.dataSource = self;
         _tableView.backgroundColor = HexRGB(0xf3f3f3);
