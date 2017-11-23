@@ -94,7 +94,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     _imagesArr = @[@"fenzu_icon_cmm",@"fenzu_icon_jiahaoyou",@"pinliang",@"fenzu_icon_sc"];
-    _contentArr = @[@"重命名",@"添加学生到班级",@"群发班级照片",@"删除该班级"];
+    _contentArr = @[@"重命名",@"添加到圈",@"群发圈照片",@"删除该圈"];
     self.view.backgroundColor = BackGroundColor;
     
     if ([[Tool sharedInstance] getObjectWithPath:Mobile]) {
@@ -171,7 +171,7 @@
         changeSchool.center = CGPointMake(kScreenWidth - 50, 15);
         changeSchool.titleLabel.font = [UIFont systemFontOfSize:14];
         changeSchool.titleLabel.textAlignment = NSTextAlignmentRight;
-        [changeSchool setTitle:@"更改学校" forState:UIControlStateNormal];
+        [changeSchool setTitle:@"更改单位" forState:UIControlStateNormal];
         [changeSchool setTitleColor:[UIColor darkGrayColor] forState:UIControlStateNormal];
         [changeSchool addTarget:self action:@selector(changeSchool:) forControlEvents:UIControlEventTouchUpInside];
         [xingjiView addSubview:changeSchool];
@@ -197,13 +197,13 @@
 
     SYRenameView *view = [[[NSBundle mainBundle] loadNibNamed:@"SYRenameView" owner:self options:nil] lastObject];
     view.frame = [UIScreen mainScreen].bounds;
-    view.renameTF.placeholder = @"请输入班级名称";
-    view.titleLabel.text = @"添加班级";
+    view.renameTF.placeholder = @"请输入圈名称";
+    view.titleLabel.text = @"添加圈";
     [view show];
     __weak typeof(self)waekself = self;
     view.block = ^(NSString *rename){
         if (rename.length == 0) {
-            [waekself showHint:@"请输入班级名称！"];
+            [waekself showHint:@"请输入圈名称！"];
             return ;
         }
         [waekself addClassWithClass:rename];
@@ -416,7 +416,7 @@
                 __weak typeof(self)waekself = self;
                 view.block = ^(NSString *rename){
                     if (rename.length < 1 || rename.length > 12) {
-                        [waekself showHint:@"班级名字1-12个字！"];
+                        [waekself showHint:@"圈名字1-12个字！"];
                         return ;
                     }
                     [waekself renameWithsection:sender.tag NewclassName:rename];
@@ -459,7 +459,7 @@
                 break;
             case 3:
             {
-                UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"删除班级" message:@"" preferredStyle:UIAlertControllerStyleAlert];
+                UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"删除圈" message:@"" preferredStyle:UIAlertControllerStyleAlert];
                 
                 UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:^(UIAlertAction *action) {
                     return ;

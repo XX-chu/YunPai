@@ -126,8 +126,8 @@
     NSDictionary *param = @{@"state":@3, @"page":[NSNumber numberWithInteger:_count], @"token":UserToken};
     [[SYHttpRequest sharedInstance] getDataWithUrl:url Parameter:param ResponseObject:^(NSDictionary *responseResult) {
         NSLog(@"预约中 -- %@",responseResult);
-        if ([self.tableView.mj_header isRefreshing]) {
-            [self.tableView.mj_header endRefreshing];
+        if ([self.tableView.mj_footer isRefreshing]) {
+            [self.tableView.mj_footer endRefreshing];
         }
         if ([responseResult objectForKey:@"resError"]) {
             [self showHint:@"服务器不给力，请稍后重试"];

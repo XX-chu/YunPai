@@ -10,4 +10,6 @@
 
 @interface SYShopcartViewController : SYBaseViewController
 
+@property (nonatomic, strong) UIBarButtonItem *rightItem;
+
 @end

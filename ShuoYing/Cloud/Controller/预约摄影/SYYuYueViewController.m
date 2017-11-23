@@ -174,6 +174,19 @@
             if ([[responseResult objectForKey:@"result"] integerValue] == 1) {
                 _count = 1;
                 NSArray *data = [responseResult objectForKey:@"data"];
+                if (data.count == 0) {
+                    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"温馨提示" message:@"亲，该城市还没有专业摄影师在平台认证云拍师。请尽快找到有专业摄影装备的朋友认证为云拍师，您会有一个惊喜及源源不断的收益。每个城市奖励仅限前10名，快快行动吧！" preferredStyle:UIAlertControllerStyleAlert];
+                    UIAlertAction *action = [UIAlertAction actionWithTitle:@"关闭" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+                        
+                    }];
+                    UIAlertAction *action1 = [UIAlertAction actionWithTitle:@"我知道了" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+                        
+                    }];
+                    
+                    [alert addAction:action];
+                    [alert addAction:action1];
+                    [self presentViewController:alert animated:YES completion:nil];
+                }
                 [self.dataSourceArr removeAllObjects];
                 for (NSDictionary *dic in data) {
                     SYYuYueModel *model = [SYYuYueModel yuyueWithDicaionary:dic];

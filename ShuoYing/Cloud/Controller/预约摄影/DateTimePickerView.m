@@ -95,14 +95,14 @@
         [upVeiw addSubview:splitView];
         
         
-        NSCalendar *calendar0 = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
+        NSCalendar *calendar0 = [[NSCalendar alloc] initWithCalendarIdentifier:NSCalendarIdentifierGregorian];
         NSDateComponents *comps = [[NSDateComponents alloc] init];
-        NSInteger unitFlags =  NSYearCalendarUnit | NSMonthCalendarUnit | NSDayCalendarUnit | NSHourCalendarUnit | NSMinuteCalendarUnit;
+        NSInteger unitFlags =  NSCalendarUnitYear | NSCalendarUnitMonth | NSCalendarUnitDay | NSCalendarUnitHour | NSCalendarUnitMinute;
         comps = [calendar0 components:unitFlags fromDate:[NSDate date]];
         NSInteger year=[comps year];
         
-        startYear=year-15;
-        yearRange=50;
+        startYear=year;
+        yearRange=1;
         [self setCurrentDate:[NSDate date]];
     }
     return self;
@@ -205,10 +205,11 @@
 -(void)setCurrentDate:(NSDate *)currentDate
 {
     //获取当前时间
-    NSCalendar *calendar0 = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
+    NSCalendar *calendar0 = [[NSCalendar alloc] initWithCalendarIdentifier:NSCalendarIdentifierGregorian];
     NSDateComponents *comps = [[NSDateComponents alloc] init];
-    NSInteger unitFlags =  NSYearCalendarUnit | NSMonthCalendarUnit | NSDayCalendarUnit | NSHourCalendarUnit | NSMinuteCalendarUnit;
+    NSInteger unitFlags =  NSCalendarUnitYear | NSCalendarUnitMonth | NSCalendarUnitDay | NSCalendarUnitHour | NSCalendarUnitMinute;
     comps = [calendar0 components:unitFlags fromDate:currentDate];
+
     NSInteger year=[comps year];
     NSInteger month=[comps month];
     NSInteger day=[comps day];
@@ -259,6 +260,7 @@
 
 -(UIView*)pickerView:(UIPickerView *)pickerView viewForRow:(NSInteger)row forComponent:(NSInteger)component reusingView:(UIView *)view
 {
+    
     UILabel*label=[[UILabel alloc]initWithFrame:CGRectMake(screenWith*component/6.0, 0,screenWith/6.0, 30)];
     label.font=[UIFont systemFontOfSize:15.0];
     label.tag=component*100+row;

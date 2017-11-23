@@ -7,11 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
-
+typedef void(^ShareBlock)();
 @interface SYShareHIstoryTableViewCell : UITableViewCell
 @property (weak, nonatomic) IBOutlet UILabel *nameLabel;
 @property (weak, nonatomic) IBOutlet UIImageView *headImageView;
 @property (weak, nonatomic) IBOutlet UILabel *phoneLabel;
 @property (weak, nonatomic) IBOutlet UIButton *updateBtn;
-
+@property (nonatomic, copy) ShareBlock block;
 @end

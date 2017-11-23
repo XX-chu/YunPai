@@ -26,8 +26,11 @@
         UIImageView *imgView = self.xiaoguoImages[i];
         if (i > [_model.ping1 integerValue] - 1) {
             imgView.image = [UIImage imageNamed:@"pingjia_nor"];
+            imgView.hidden = YES;
         }else{
             imgView.image = [UIImage imageNamed:@"PhotoShop_xingji"];
+            imgView.hidden = NO;
+
         }
     }
     
@@ -35,8 +38,12 @@
         UIImageView *imgView = self.fenggeImages[i];
         if (i > [_model.ping2 integerValue] - 1) {
             imgView.image = [UIImage imageNamed:@"pingjia_nor"];
+            imgView.hidden = YES;
+
         }else{
             imgView.image = [UIImage imageNamed:@"PhotoShop_xingji"];
+            imgView.hidden = NO;
+
         }
     }
     
@@ -44,8 +51,12 @@
         UIImageView *imgView = self.guochengImages[i];
         if (i > [_model.ping3 integerValue] - 1) {
             imgView.image = [UIImage imageNamed:@"pingjia_nor"];
+            imgView.hidden = YES;
+
         }else{
             imgView.image = [UIImage imageNamed:@"PhotoShop_xingji"];
+            imgView.hidden = NO;
+
         }
     }
 

@@ -7,9 +7,9 @@
 //
 
 #import "SYLiJiYuYueViewController.h"
-#import "DateTimePickerView.h"
+#import "XHDatePickerView.h"
 #import "SYYunPaiOrderInfosViewController.h"
-@interface SYLiJiYuYueViewController ()<UITextViewDelegate, DateTimePickerViewDelegate>
+@interface SYLiJiYuYueViewController ()<UITextViewDelegate>
 @property (weak, nonatomic) IBOutlet UITextField *addressTF;
 @property (weak, nonatomic) IBOutlet UILabel *timeLabel;
 @property (weak, nonatomic) IBOutlet UITextView *zhutiTV;
@@ -37,12 +37,19 @@
 }
 
 - (IBAction)selecteTImeAction:(UIButton *)sender {
-    [self.view endEditing:YES];
-    DateTimePickerView *pickerView = [[DateTimePickerView alloc] init];
-    pickerView.delegate = self;
-    pickerView.pickerViewMode = DatePickerViewDateTimeMode;
-    [self.view addSubview:pickerView];
-    [pickerView showDateTimePickerView];
+    
+    __weak typeof(self)weakself = self;
+    XHDatePickerView *datepicker = [[XHDatePickerView alloc] initWithCurrentDate:[NSDate dateWithTimeInterval:24*60*60*2 sinceDate:[NSDate date]] CompleteBlock:^(NSDate *startDate, NSDate *endDate) {
+        NSLog(@"\n开始时间： %@，结束时间：%@",startDate,endDate);
+        NSDateFormatter* formatter = [[NSDateFormatter alloc]init];
+        [formatter setDateFormat:@"YYYY-MM-dd hh:mm"];
+        weakself.timeLabel.text = [formatter stringFromDate:endDate];
+    }];
+    datepicker.datePickerStyle = DateStyleShowYearMonthDayHourMinute;
+    datepicker.minLimitDate = [NSDate date];
+    NSLog(@"minLimitDate - %@",datepicker.minLimitDate);
+    datepicker.maxLimitDate = [NSDate dateWithTimeInterval:24*60*60*365*2 sinceDate:[NSDate date]];
+    [datepicker show];
 }
 
 - (void)didClickFinishDateTimePickerView:(NSString *)date{

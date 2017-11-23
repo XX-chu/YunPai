@@ -40,19 +40,19 @@
 
 - (void)viewDidAppear:(BOOL)animated{
     [super viewDidAppear:animated];
-    [self.tableView reloadData];
+    [self.tableView.mj_header beginRefreshing];
+
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     _count = 1;
-    self.title = @"我的发布";
+//    self.title = @"我的发布";
     if ([[Tool sharedInstance] getObjectWithPath:[NSString stringWithFormat:@"%@",Mobile]]) {
         _userInfos = [[Tool sharedInstance] getObjectWithPath:[NSString stringWithFormat:@"%@",Mobile]];
     }
 
-    [self getData];
     [self.view addSubview:self.tableView];
     self.view.backgroundColor = [UIColor whiteColor];
 
@@ -439,12 +439,10 @@
 
 
 - (void)getData{
-    [SVProgressHUD show];
     NSString *url = [NSString stringWithFormat:@"%@%@",BaseUrl,@"/pho/amigo.html"];
     NSDictionary *param = nil;
     param = @{@"token":UserToken, @"id":_userInfos.userId, @"page":@1};
     [[SYHttpRequest sharedInstance] getDataWithUrl:url Parameter:param ResponseObject:^(NSDictionary *responseResult) {
-        [SVProgressHUD dismiss];
         if ([_tableView.mj_header isRefreshing]) {
             [_tableView.mj_header endRefreshing];
         }

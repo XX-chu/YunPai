@@ -200,7 +200,7 @@
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     if (indexPath.section == 2) {
         UILabel *label = [[UILabel alloc] init];
-        label.text = @"提现说明: 提现额度最低50元，仅开放摄影师提现。为保证资金安全，每周三当天可提现一次，其他时间提现或者重复提交提现可能会被锁定账号。";
+        label.text = @"提现说明: 提现额度最低50元，仅支持实名认证过的会员。为保证资金安全，每周三当天可提现一次，其他时间提现或者重复提交提现可能会被锁定账号。";
         label.font = [UIFont systemFontOfSize:13];
         label.numberOfLines = 0;
         CGSize max = [label sizeThatFits:CGSizeMake(kScreenWidth - 30, MAXFLOAT)];

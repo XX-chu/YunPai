@@ -112,7 +112,7 @@ const static CGFloat totleOffset = 200;
     NSArray *imageArr = self.cellImages[indexPath.section];
     
     cell.cellNameLabel.text = titleArr[indexPath.row];
-    if (indexPath.section == 0 && indexPath.row == 3) {
+    if (indexPath.section == 0 && indexPath.row == 2) {
         if ([_userInfos.master integerValue] == 1) {
             //认证通过
             cell.cellNameLabel.text = @"我的云拍店";
@@ -152,10 +152,6 @@ const static CGFloat totleOffset = 200;
             SYErWeiMaViewController *erweima = [[SYErWeiMaViewController alloc] init];
             [self.navigationController pushViewController:erweima animated:YES];
 
-        }else if (indexPath.row == 2){
-            //我的发布
-            SYMyFaBuViewController *fabu = [[SYMyFaBuViewController alloc] init];
-            [self.navigationController pushViewController:fabu animated:YES];
         }else{
             //我的云拍店
             if ([_userInfos.master integerValue] == 1) {
@@ -190,10 +186,6 @@ const static CGFloat totleOffset = 200;
             SYOrderViewController *order = [[SYOrderViewController alloc] init];
             [self.navigationController pushViewController:order animated:YES];
         }else if (indexPath.row == 1){
-            //购物车
-            SYShopcartViewController *shopcart = [[SYShopcartViewController alloc] init];
-            [self.navigationController pushViewController:shopcart animated:YES];
-        }else if (indexPath.row == 2){
             //我的钱包
             SYMyWalletViewController *mywallet = [[SYMyWalletViewController alloc] init];
             [self.navigationController pushViewController:mywallet animated:YES];
@@ -350,8 +342,8 @@ const static CGFloat totleOffset = 200;
 - (NSMutableArray *)cellDataSource{
     if (!_cellDataSource) {
         _cellDataSource = [NSMutableArray arrayWithCapacity:0];
-        NSArray *arr1 = @[@"我的关注", @"分享二维码", @"我的发布", @"认证云拍师"];
-        NSArray *arr2 = @[@"我的订单", @"购物车", @"我的钱包", @"交易记录"];
+        NSArray *arr1 = @[@"我的关注", @"我的分享", @"认证云拍师"];
+        NSArray *arr2 = @[@"我的订单", @"我的钱包", @"交易记录"];
         NSArray *arr3 = @[@"地址管理", @"设置"];
         [_cellDataSource addObject:arr1];
         [_cellDataSource addObject:arr2];
@@ -366,8 +358,8 @@ const static CGFloat totleOffset = 200;
     if (!_cellImages) {
         _cellImages = [NSMutableArray arrayWithCapacity:0];
         
-        NSArray *arr1 = @[@"wode_icon_attention", @"wode_icon_fenxiang", @"wodefabu", @"yunpaishi"];
-        NSArray *arr2 = @[@"wode_icon_dingdan", @"wode_icon_gouwuche", @"wode_icon_qianbao", @"wode_icon_jiaoyi"];
+        NSArray *arr1 = @[@"wode_icon_attention", @"wode_icon_fenxiang", @"yunpaishi"];
+        NSArray *arr2 = @[@"wode_icon_dingdan", @"wode_icon_qianbao", @"wode_icon_jiaoyi"];
         NSArray *arr3 = @[@"wode_icon_dizhi", @"wode_icon_shezhi"];
         [_cellImages addObject:arr1];
         [_cellImages addObject:arr2];

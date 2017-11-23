@@ -44,7 +44,7 @@
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     NSLog(@"self.dataSourceArr - %@",self.dataSourceArr);
-    [self getData];
+    [self.tableView.mj_header beginRefreshing];
 
 }
 
@@ -57,20 +57,23 @@
     _editBottomSelected = NO;
     _count = 1;
     [self.view addSubview:self.tableView];
-    [self setRightBarItem];
 }
 
-- (void)setRightBarItem{
-    UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
-    btn.frame = CGRectMake(0, 0, 40, kNavigationBarHeightAndStatusBarHeight);
-    [btn setTitle:@"编辑" forState:UIControlStateNormal];
-    [btn setTitle:@"完成" forState:UIControlStateSelected];
-
-    [btn setAdjustsImageWhenHighlighted:NO];
-    btn.titleLabel.font = [UIFont systemFontOfSize:15];
-    [btn addTarget:self action:@selector(editShopCart:) forControlEvents:UIControlEventTouchUpInside];
-    UIBarButtonItem *item = [[UIBarButtonItem alloc] initWithCustomView:btn];
-    self.navigationItem.rightBarButtonItem = item;
+- (UIBarButtonItem *)rightItem{
+    if (!_rightItem) {
+        UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
+        btn.frame = CGRectMake(0, 0, 40, kNavigationBarHeightAndStatusBarHeight);
+        [btn setTitle:@"编辑" forState:UIControlStateNormal];
+        [btn setTitle:@"完成" forState:UIControlStateSelected];
+        
+        [btn setAdjustsImageWhenHighlighted:NO];
+        btn.titleLabel.font = [UIFont systemFontOfSize:15];
+        [btn addTarget:self action:@selector(editShopCart:) forControlEvents:UIControlEventTouchUpInside];
+        UIBarButtonItem *item = [[UIBarButtonItem alloc] initWithCustomView:btn];
+        //    self.navigationItem.rightBarButtonItem = item;
+        _rightItem = item;
+    }
+    return _rightItem;
 }
 
 - (void)editShopCart:(UIButton *)sender{
@@ -96,7 +99,7 @@
 }
 
 - (void)editBottom{
-    UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, kScreenHeight - 55 - kNavigationBarHeightAndStatusBarHeight, kScreenWidth, 55)];
+    UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, kScreenHeight - 55 - kNavigationBarHeightAndStatusBarHeight - kTabbarHeight, kScreenWidth, 55)];
     view.backgroundColor = [UIColor whiteColor];
     _editBottomView = view;
     
@@ -217,7 +220,7 @@
 }
 
 - (void)initBottomView{
-    UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, kScreenHeight - 55 - kNavigationBarHeightAndStatusBarHeight, kScreenWidth, 55)];
+    UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, kScreenHeight - 55 - kNavigationBarHeightAndStatusBarHeight - kTabbarHeight, kScreenWidth, 55)];
     view.backgroundColor = [UIColor whiteColor];
     _bottomView = view;
     
@@ -696,11 +699,9 @@
 }
 
 - (void)getData{
-    [SVProgressHUD show];
     NSString *url = [NSString stringWithFormat:@"%@%@",BaseUrl,@"/store/mycart.html"];
     NSDictionary *param = @{@"token":UserToken, @"page":@1};
     [[SYHttpRequest sharedInstance] getDataWithUrl:url Parameter:param ResponseObject:^(NSDictionary *responseResult) {
-        [SVProgressHUD dismiss];
         if ([self.tableView.mj_header isRefreshing]) {
             [self.tableView.mj_header endRefreshing];
         }
@@ -787,7 +788,7 @@
 
 - (UITableView *)tableView{
     if (!_tableView) {
-        _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, kScreenHeight - kNavigationBarHeightAndStatusBarHeight - 55) style:UITableViewStyleGrouped];
+        _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, kScreenHeight - kNavigationBarHeightAndStatusBarHeight - 55 - kTabbarHeight) style:UITableViewStyleGrouped];
         _tableView.delegate = self;
         _tableView.dataSource = self;
         _tableView.backgroundColor = RGB(248, 248, 248);
@@ -811,7 +812,7 @@
 
 - (UIView *)noThingView{
     if (!_noThingView) {
-        _noThingView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, kScreenHeight - kNavigationBarHeightAndStatusBarHeight)];
+        _noThingView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, kScreenHeight - kNavigationBarHeightAndStatusBarHeight - kTabbarHeight)];
         UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, _noThingView.frame.size.height - 164)];
         imageView.image = [UIImage imageNamed:@"cart_nothing"];
         imageView.contentMode = UIViewContentModeCenter;
@@ -824,7 +825,7 @@
     if (!_noDataView) {
         __weak typeof(self)weakself = self;
         _noDataView = [[NSBundle mainBundle] loadNibNamed:@"NoDataView" owner:nil options:nil][0];
-        _noDataView.frame = CGRectMake(0, 0, kScreenWidth, kScreenHeight - kNavigationBarHeightAndStatusBarHeight);
+        _noDataView.frame = CGRectMake(0, 0, kScreenWidth, kScreenHeight - kNavigationBarHeightAndStatusBarHeight - kTabbarHeight);
         _noDataView.block = ^{
             [weakself getData];
         };

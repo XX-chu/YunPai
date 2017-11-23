@@ -527,6 +527,7 @@
 		B21557311FB5449200005BBE /* SYOrderInfosTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B215572F1FB5449200005BBE /* SYOrderInfosTableViewCell.xib */; };
 		B21557351FB58AF300005BBE /* SYOrderCreatTimeTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B21557331FB58AF300005BBE /* SYOrderCreatTimeTableViewCell.m */; };
 		B21557361FB58AF300005BBE /* SYOrderCreatTimeTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B21557341FB58AF300005BBE /* SYOrderCreatTimeTableViewCell.xib */; };
+		B221E1FF1FC6CEFE00869D3A /* SYGuangGaoWebViewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B221E1FE1FC6CEFE00869D3A /* SYGuangGaoWebViewViewController.m */; };
 		B26BD0B81FB973DD0042EC1E /* SYMyYunPaiShopViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B26BD0B61FB973DD0042EC1E /* SYMyYunPaiShopViewController.m */; };
 		B26BD0B91FB973DD0042EC1E /* SYMyYunPaiShopViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B26BD0B71FB973DD0042EC1E /* SYMyYunPaiShopViewController.xib */; };
 		B26BD0BC1FB97B220042EC1E /* SYYunPaiShopEditViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B26BD0BB1FB97B220042EC1E /* SYYunPaiShopEditViewController.m */; };
@@ -549,6 +550,11 @@
 		B2EC94A21FAB0FA9008211D8 /* UIView+SDAutoLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = B2EC94991FAB0FA8008211D8 /* UIView+SDAutoLayout.m */; };
 		B2EC94A31FAB0FA9008211D8 /* LSXAlertInputView.m in Sources */ = {isa = PBXBuildFile; fileRef = B2EC949E1FAB0FA9008211D8 /* LSXAlertInputView.m */; };
 		B2EC94A41FAB0FA9008211D8 /* UITableView+SDAutoTableViewCellHeight.m in Sources */ = {isa = PBXBuildFile; fileRef = B2EC949F1FAB0FA9008211D8 /* UITableView+SDAutoTableViewCellHeight.m */; };
+		B2F7D7531FC513680064E495 /* XHDatePickerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B2F7D74C1FC513680064E495 /* XHDatePickerView.xib */; };
+		B2F7D7541FC513680064E495 /* XHDatePickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = B2F7D74D1FC513680064E495 /* XHDatePickerView.m */; };
+		B2F7D7551FC513680064E495 /* NSDate+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = B2F7D7511FC513680064E495 /* NSDate+Extension.m */; };
+		B2F7D7561FC513680064E495 /* UIView+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = B2F7D7521FC513680064E495 /* UIView+Extension.m */; };
+		B2F7D7591FC587F20064E495 /* SplashScreenView.m in Sources */ = {isa = PBXBuildFile; fileRef = B2F7D7581FC587F20064E495 /* SplashScreenView.m */; };
 		B2F7D7DF1FBD238C000BF65C /* SYYunPaiShiHaveCreatOrderInfosViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B2F7D7DE1FBD238C000BF65C /* SYYunPaiShiHaveCreatOrderInfosViewController.m */; };
 		B2F7D7E31FBD3262000BF65C /* SYTouSuYunPaiShiViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B2F7D7E11FBD3262000BF65C /* SYTouSuYunPaiShiViewController.m */; };
 		B2F7D7E41FBD3262000BF65C /* SYTouSuYunPaiShiViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B2F7D7E21FBD3262000BF65C /* SYTouSuYunPaiShiViewController.xib */; };
@@ -1559,6 +1565,8 @@
 		B21557321FB58AF300005BBE /* SYOrderCreatTimeTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SYOrderCreatTimeTableViewCell.h; sourceTree = "<group>"; };
 		B21557331FB58AF300005BBE /* SYOrderCreatTimeTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SYOrderCreatTimeTableViewCell.m; sourceTree = "<group>"; };
 		B21557341FB58AF300005BBE /* SYOrderCreatTimeTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SYOrderCreatTimeTableViewCell.xib; sourceTree = "<group>"; };
+		B221E1FD1FC6CEFE00869D3A /* SYGuangGaoWebViewViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SYGuangGaoWebViewViewController.h; sourceTree = "<group>"; };
+		B221E1FE1FC6CEFE00869D3A /* SYGuangGaoWebViewViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SYGuangGaoWebViewViewController.m; sourceTree = "<group>"; };
 		B26BD0B51FB973DD0042EC1E /* SYMyYunPaiShopViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SYMyYunPaiShopViewController.h; sourceTree = "<group>"; };
 		B26BD0B61FB973DD0042EC1E /* SYMyYunPaiShopViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SYMyYunPaiShopViewController.m; sourceTree = "<group>"; };
 		B26BD0B71FB973DD0042EC1E /* SYMyYunPaiShopViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SYMyYunPaiShopViewController.xib; sourceTree = "<group>"; };
@@ -1596,6 +1604,15 @@
 		B2EC949D1FAB0FA9008211D8 /* LSXAlertInputView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LSXAlertInputView.h; sourceTree = "<group>"; };
 		B2EC949E1FAB0FA9008211D8 /* LSXAlertInputView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LSXAlertInputView.m; sourceTree = "<group>"; };
 		B2EC949F1FAB0FA9008211D8 /* UITableView+SDAutoTableViewCellHeight.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITableView+SDAutoTableViewCellHeight.m"; sourceTree = "<group>"; };
+		B2F7D74B1FC513680064E495 /* XHDatePickerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XHDatePickerView.h; sourceTree = "<group>"; };
+		B2F7D74C1FC513680064E495 /* XHDatePickerView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = XHDatePickerView.xib; sourceTree = "<group>"; };
+		B2F7D74D1FC513680064E495 /* XHDatePickerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XHDatePickerView.m; sourceTree = "<group>"; };
+		B2F7D74F1FC513680064E495 /* NSDate+Extension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+Extension.h"; sourceTree = "<group>"; };
+		B2F7D7501FC513680064E495 /* UIView+Extension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Extension.h"; sourceTree = "<group>"; };
+		B2F7D7511FC513680064E495 /* NSDate+Extension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+Extension.m"; sourceTree = "<group>"; };
+		B2F7D7521FC513680064E495 /* UIView+Extension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Extension.m"; sourceTree = "<group>"; };
+		B2F7D7571FC587F10064E495 /* SplashScreenView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SplashScreenView.h; sourceTree = "<group>"; };
+		B2F7D7581FC587F20064E495 /* SplashScreenView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SplashScreenView.m; sourceTree = "<group>"; };
 		B2F7D7DD1FBD238C000BF65C /* SYYunPaiShiHaveCreatOrderInfosViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SYYunPaiShiHaveCreatOrderInfosViewController.h; sourceTree = "<group>"; };
 		B2F7D7DE1FBD238C000BF65C /* SYYunPaiShiHaveCreatOrderInfosViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SYYunPaiShiHaveCreatOrderInfosViewController.m; sourceTree = "<group>"; };
 		B2F7D7E01FBD3262000BF65C /* SYTouSuYunPaiShiViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SYTouSuYunPaiShiViewController.h; sourceTree = "<group>"; };
@@ -2298,6 +2315,8 @@
 				474657961E6ED1A20038AC04 /* SYNoNetworkView.h */,
 				474657971E6ED1A20038AC04 /* SYNoNetworkView.m */,
 				474657991E6ED1AD0038AC04 /* SYNoNetworkView.xib */,
+				B221E1FD1FC6CEFE00869D3A /* SYGuangGaoWebViewViewController.h */,
+				B221E1FE1FC6CEFE00869D3A /* SYGuangGaoWebViewViewController.m */,
 				4783B77B1E10CDC400EBCEF5 /* PrefixHeader.pch */,
 				4783B7311E10B0B400EBCEF5 /* Main.storyboard */,
 				4783B7341E10B0B400EBCEF5 /* Assets.xcassets */,
@@ -2528,6 +2547,8 @@
 		4783B7891E10E7E100EBCEF5 /* Tool */ = {
 			isa = PBXGroup;
 			children = (
+				B2F7D7571FC587F10064E495 /* SplashScreenView.h */,
+				B2F7D7581FC587F20064E495 /* SplashScreenView.m */,
 				B2EC94951FAB0F6C008211D8 /* LSXInputAlertView */,
 				476C97AA1F0D10AA00C1B305 /* KMCompent */,
 				471288071ECDD5C70075DB79 /* LQPopUpView.h */,
@@ -3246,6 +3267,7 @@
 		B274D6B31FBAC6FD00D37F51 /* 预约摄影 */ = {
 			isa = PBXGroup;
 			children = (
+				B2F7D7491FC513680064E495 /* XHDatePicker */,
 				B20C443B1FBC509B00EFAABD /* 我的预约 */,
 				B20C44211FBC075900EFAABD /* Model */,
 				B274D6B71FBACF0300D37F51 /* View */,
@@ -3295,6 +3317,36 @@
 				B2EC94991FAB0FA8008211D8 /* UIView+SDAutoLayout.m */,
 			);
 			path = LSXInputAlertView;
+			sourceTree = "<group>";
+		};
+		B2F7D7491FC513680064E495 /* XHDatePicker */ = {
+			isa = PBXGroup;
+			children = (
+				B2F7D74A1FC513680064E495 /* XHDatePicker */,
+				B2F7D74E1FC513680064E495 /* Tools */,
+			);
+			path = XHDatePicker;
+			sourceTree = "<group>";
+		};
+		B2F7D74A1FC513680064E495 /* XHDatePicker */ = {
+			isa = PBXGroup;
+			children = (
+				B2F7D74B1FC513680064E495 /* XHDatePickerView.h */,
+				B2F7D74C1FC513680064E495 /* XHDatePickerView.xib */,
+				B2F7D74D1FC513680064E495 /* XHDatePickerView.m */,
+			);
+			path = XHDatePicker;
+			sourceTree = "<group>";
+		};
+		B2F7D74E1FC513680064E495 /* Tools */ = {
+			isa = PBXGroup;
+			children = (
+				B2F7D74F1FC513680064E495 /* NSDate+Extension.h */,
+				B2F7D7501FC513680064E495 /* UIView+Extension.h */,
+				B2F7D7511FC513680064E495 /* NSDate+Extension.m */,
+				B2F7D7521FC513680064E495 /* UIView+Extension.m */,
+			);
+			path = Tools;
 			sourceTree = "<group>";
 		};
 		FBD33101230C56C531727235 /* Frameworks */ = {
@@ -3444,6 +3496,7 @@
 				47114FB91E46B60B00DCE3C4 /* lock.png in Resources */,
 				47215F3F1EB2169000C99D0F /* TagCell.xib in Resources */,
 				47D6AEF41EC19AC0005D6A80 /* SYSelectePhotoCollectionViewCell.xib in Resources */,
+				B2F7D7531FC513680064E495 /* XHDatePickerView.xib in Resources */,
 				4732E0E31E20E791005C4911 /* SYUpdateToStudentCollectionViewCell.xib in Resources */,
 				474D84B01E235D02007E981B /* SYPhotographerView.xib in Resources */,
 				4783B7BD1E11399100EBCEF5 /* SYMyWalletTableViewCell.xib in Resources */,
@@ -3795,6 +3848,7 @@
 				472B87E31E134BEB002DE70A /* SYUpdateViewController.m in Sources */,
 				47D976E61EC2F8910071EBB1 /* SYAnnotationView.m in Sources */,
 				4783B7A71E10E82600EBCEF5 /* UIDevice+iPhoneModel.m in Sources */,
+				B2F7D7541FC513680064E495 /* XHDatePickerView.m in Sources */,
 				4720BDB51EBC664300D4DCF2 /* CALayer+WebCache.m in Sources */,
 				47E591C41E2C7BA2009EEC30 /* SYPaymentInfosViewController.m in Sources */,
 				4720BE021EBC68F700D4DCF2 /* LWImageBrowserButton.m in Sources */,
@@ -3868,6 +3922,7 @@
 				473F56C91E8E5E7400992F12 /* SYXXShiYongViewController.m in Sources */,
 				47D6AF001EC1B162005D6A80 /* SYShopcartSelectePhotoTableViewCell.m in Sources */,
 				47D7CF7F1E7D41E30054E8D0 /* RSADataSigner.m in Sources */,
+				B2F7D7551FC513680064E495 /* NSDate+Extension.m in Sources */,
 				4710BC481E24D795003CE8D8 /* SYPhotoGrapherSetPriceViewController.m in Sources */,
 				473F56AE1E8E396500992F12 /* UIButton+Badge.m in Sources */,
 				473A638E1EAA0C2500D48E49 /* SYPhotoStudioHistoryCollectionViewCell.m in Sources */,
@@ -3875,6 +3930,7 @@
 				474C56741E63CFF400C7A6AF /* SYUpdataMineCollectionViewCell.m in Sources */,
 				47FE12571E175B3E00C5B569 /* XLProgressView.m in Sources */,
 				B20FD20B1FBA8B0B00848FC5 /* SYYunPaiSheBeiEditViewController.m in Sources */,
+				B2F7D7561FC513680064E495 /* UIView+Extension.m in Sources */,
 				B274D6BB1FBACF1500D37F51 /* SYYuYueTableViewCell.m in Sources */,
 				B20FD2251FBAB9ED00848FC5 /* SYKeHuPingJiaViewController.m in Sources */,
 				47FB984D1EFA4B9C00D89FDB /* SYCloudContentTableViewCell.m in Sources */,
@@ -3997,6 +4053,7 @@
 				4720BDDB1EBC664300D4DCF2 /* UIImage+Gallop.m in Sources */,
 				B2F7D7DF1FBD238C000BF65C /* SYYunPaiShiHaveCreatOrderInfosViewController.m in Sources */,
 				4720BE0B1EBC725000D4DCF2 /* SDWebImageManager+Gallop.m in Sources */,
+				B2F7D7591FC587F20064E495 /* SplashScreenView.m in Sources */,
 				47FE83AF1E1CF14400781AAA /* SYEditNickViewController.m in Sources */,
 				47AA164C1E94D9D3002BC2AE /* SYOrderPaymentViewController.m in Sources */,
 				47215F331EB2123700C99D0F /* SYGuiGeUpView.m in Sources */,
@@ -4105,6 +4162,7 @@
 				47E591E31E2CBEB8009EEC30 /* SYMessageTableViewCell.m in Sources */,
 				4720BDD41EBC664300D4DCF2 /* LWTransaction.m in Sources */,
 				47FE83A11E1CCB7300781AAA /* SYUserInfos.m in Sources */,
+				B221E1FF1FC6CEFE00869D3A /* SYGuangGaoWebViewViewController.m in Sources */,
 				47114FEB1E46FFDF00DCE3C4 /* SYTextField.m in Sources */,
 				471F32491E6A529600E410E3 /* SYChangeSchoolViewController.m in Sources */,
 				4720BE071EBC68F700D4DCF2 /* LWProgeressHUD.m in Sources */,

@@ -16,7 +16,8 @@
 #import "SYGrapherUpdataPhotoViewController.h"
 #import "SYCommentListViewController.h"
 #import <AlipaySDK/AlipaySDK.h>
-
+#import "SplashScreenView.h"
+#import "SYGuangGaoWebViewViewController.h"
 @interface AppDelegate ()<WXApiDelegate, QTWelcomeDelegate>
 
 @end
@@ -51,6 +52,44 @@
         SYBaseNavigationController *navigation = [[SYBaseNavigationController alloc] initWithRootViewController:tabbar];
         self.window.rootViewController = navigation;
         
+        NSUserDefaults *us = [NSUserDefaults standardUserDefaults];
+        NSInteger count = [[us objectForKey:@"currentCount"] integerValue];
+        NSArray *allguanggao = [us objectForKey:@"guanggaoAll"];
+        
+        if (allguanggao) {
+            NSString *imgUrl = @"";
+            if (count + 1 <= allguanggao.count) {
+                NSDictionary *dic = allguanggao[count];
+                imgUrl = [NSString stringWithFormat:@"%@%@",ImgUrl,[dic objectForKey:@"img"]];
+                SDWebImageManager *manger = [SDWebImageManager sharedManager];
+                UIImage *image = [manger.imageCache imageFromDiskCacheForKey:imgUrl];
+                if (image) {
+                    // 图片存在
+                    SplashScreenView *advertiseView = [[SplashScreenView alloc] initWithFrame:self.window.bounds];
+                    advertiseView.block = ^{
+                        NSString *webUrl = [dic objectForKey:@"url"];
+                        if (webUrl.length > 0) {
+                            SYGuangGaoWebViewViewController *web = [[SYGuangGaoWebViewViewController alloc] init];
+                            web.url = webUrl;
+                            SYBaseNavigationController *navigation = (SYBaseNavigationController *)self.window.rootViewController;
+                            [navigation pushViewController:web animated:YES];
+                        }
+                    };
+                    advertiseView.image = image;
+                    //        设置广告页显示的时间
+                    [advertiseView showSplashScreenWithTime:5];
+                    NSNumber *newCount = nil;
+                    if (count + 1 == allguanggao.count) {
+                        newCount = @0;
+                    }else{
+                        newCount = [NSNumber numberWithInteger:count + 1];
+                    }
+                    
+                    [us setObject:newCount forKey:@"currentCount"];
+                }
+            }
+            
+        }
     }
     //在这里实例化SVProgressHUD
     [SVProgressHUD setDefaultStyle:SVProgressHUDStyleDark];
@@ -64,9 +103,6 @@
     manager.enableAutoToolbar = NO;
     [[manager disabledDistanceHandlingClasses] addObject:[SYGrapherUpdataPhotoViewController class]];
     [[manager disabledDistanceHandlingClasses] addObject:[SYCommentListViewController class]];
-    
-    
-    
     
     //注册微信支付
     [WXApi registerApp:@"wx3fa3352427c88e20" withDescription:@"com.shuoying.yunpai"];
@@ -88,10 +124,42 @@
         [[UIApplication sharedApplication] registerUserNotificationSettings:settings];
         [application registerForRemoteNotifications];
     }
-    
+    [self getQiDongGuangGao];
     
     [self.window makeKeyAndVisible];
     return YES;
+}
+
+- (void)getQiDongGuangGao{
+    ///get/qidong.html
+    NSString *url = [NSString stringWithFormat:@"%@%@",BaseUrl,@"/get/qidong.html"];
+    [[SYHttpRequest sharedInstance] getDataWithUrl:url Parameter:nil ResponseObject:^(NSDictionary *responseResult) {
+        
+        NSLog(@"获取启动广告 -- %@",responseResult);
+        if ([responseResult objectForKey:@"resError"]) {
+            
+        }else{
+            if ([[responseResult objectForKey:@"result"] integerValue] == 1) {
+                NSArray *data = [responseResult objectForKey:@"data"];
+                NSUserDefaults *us = [NSUserDefaults standardUserDefaults];
+                NSString *time = [us objectForKey:@"guanggaoTime"];
+                if (time && [time isEqualToString:[[responseResult objectForKey:@"time"] stringValue]]) {
+                    return;
+                }
+                [us setObject:data forKey:@"guanggaoAll"];
+                [us setObject:@0 forKey:@"currentCount"];
+                [us setObject:[[responseResult objectForKey:@"time"] stringValue] forKey:@"guanggaoTime"];
+                [us synchronize];
+                
+                for (NSDictionary *dic in data) {
+                    NSString *imgUrl = [NSString stringWithFormat:@"%@%@",ImgUrl, [dic objectForKey:@"img"]];
+                    UIImageView *imageView = [[UIImageView alloc] init];
+                    [imageView sd_setImageWithURL:[NSURL URLWithString:imgUrl]];
+                    
+                }
+            }
+        }
+    }];
 }
 
 - (void)confitUShareSettings

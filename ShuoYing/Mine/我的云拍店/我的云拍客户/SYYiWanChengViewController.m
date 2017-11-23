@@ -10,6 +10,7 @@
 #import "SYYuYueOrderModel.h"
 #import "SYYunPaiDianTableViewCell.h"
 #import "SYYunPaiShiHaveCreatOrderInfosViewController.h"
+#import "SYGrapherUpdataPhotoViewController.h"
 @interface SYYiWanChengViewController ()<UITableViewDelegate, UITableViewDataSource>
 {
     NSInteger _count;
@@ -100,49 +101,54 @@
     btn.tag = section;
     [btn addTarget:self action:@selector(chuansongPhoto:) forControlEvents:UIControlEventTouchUpInside];
 
-    UIButton *btn1 = [UIButton buttonWithType:UIButtonTypeCustom];
-    [btn1 setTitle:@"删除订单" forState:UIControlStateNormal];
-    [btn1 setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-    btn1.titleLabel.font = [UIFont systemFontOfSize:16];
-    btn1.frame = CGRectMake(kScreenWidth - 85 - 13 - 25 - 85, 10, 85, 30);
-    [btn1 setBackgroundColor:NavigationColor];
-    btn1.layer.cornerRadius = 5;
-    btn1.layer.masksToBounds = YES;
-    [view1 addSubview:btn1];
-    btn1.tag = section;
-    [btn1 addTarget:self action:@selector(delOrder:) forControlEvents:UIControlEventTouchUpInside];
+//    UIButton *btn1 = [UIButton buttonWithType:UIButtonTypeCustom];
+//    [btn1 setTitle:@"删除订单" forState:UIControlStateNormal];
+//    [btn1 setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+//    btn1.titleLabel.font = [UIFont systemFontOfSize:16];
+//    btn1.frame = CGRectMake(kScreenWidth - 85 - 13 - 25 - 85, 10, 85, 30);
+//    [btn1 setBackgroundColor:NavigationColor];
+//    btn1.layer.cornerRadius = 5;
+//    btn1.layer.masksToBounds = YES;
+//    [view1 addSubview:btn1];
+//    btn1.tag = section;
+//    [btn1 addTarget:self action:@selector(delOrder:) forControlEvents:UIControlEventTouchUpInside];
     
     return view;
 }
 
 - (void)chuansongPhoto:(UIButton *)sender{
     //传送照片
+    SYYuYueOrderModel *model = self.dataSourceArr[sender.tag];
+    SYGrapherUpdataPhotoViewController *update = [[SYGrapherUpdataPhotoViewController alloc] init];
+    update.dataSourceDic = @{@"tel":model.tel};
+    update.isFromHistory = YES;
+    [self.navigationController pushViewController:update animated:YES];
 }
 
-- (void)delOrder:(UIButton *)sender{
-    [SVProgressHUD show];
-    NSString *url = [NSString stringWithFormat:@"%@%@",BaseUrl,@"/masters/del.html"];
-    SYYuYueOrderModel *model = self.dataSourceArr[sender.tag];
-    NSDictionary *param = @{@"id":model.orderid, @"token":UserToken};
-    [[SYHttpRequest sharedInstance] getDataWithUrl:url Parameter:param ResponseObject:^(NSDictionary *responseResult) {
-        [SVProgressHUD dismiss];
-        NSLog(@"拍摄完成 -- %@",responseResult);
-        if ([self.tableView.mj_header isRefreshing]) {
-            [self.tableView.mj_header endRefreshing];
-        }
-        if ([responseResult objectForKey:@"resError"]) {
-            [self showHint:@"服务器不给力，请稍后重试"];
-        }else{
-            if ([[responseResult objectForKey:@"result"] integerValue] == 1) {
-                [self getData];
-            }else{
-                if ([responseResult objectForKey:@"msg"] && ![[responseResult objectForKey:@"msg"] isKindOfClass:[NSNull class]]) {
-                    [self showHint:[responseResult objectForKey:@"msg"]];
-                }
-            }
-        }
-    }];
-}
+//- (void)delOrder:(UIButton *)sender{
+//    [SVProgressHUD show];
+//    NSString *url = [NSString stringWithFormat:@"%@%@",BaseUrl,@"/masters/del.html"];
+//    SYYuYueOrderModel *model = self.dataSourceArr[sender.tag];
+//    NSDictionary *param = @{@"id":model.orderid, @"token":UserToken};
+//    [[SYHttpRequest sharedInstance] getDataWithUrl:url Parameter:param ResponseObject:^(NSDictionary *responseResult) {
+//        [SVProgressHUD dismiss];
+//        NSLog(@"拍摄完成 -- %@",responseResult);
+//        if ([self.tableView.mj_header isRefreshing]) {
+//            [self.tableView.mj_header endRefreshing];
+//        }
+//        if ([responseResult objectForKey:@"resError"]) {
+//            [self showHint:@"服务器不给力，请稍后重试"];
+//        }else{
+//            if ([[responseResult objectForKey:@"result"] integerValue] == 1) {
+//                [self getData];
+//            }else{
+//                if ([responseResult objectForKey:@"msg"] && ![[responseResult objectForKey:@"msg"] isKindOfClass:[NSNull class]]) {
+//                    [self showHint:[responseResult objectForKey:@"msg"]];
+//                }
+//            }
+//        }
+//    }];
+//}
 
 /**
  获取数据
@@ -182,8 +188,8 @@
     NSDictionary *param = @{@"state":@4, @"page":[NSNumber numberWithInteger:_count], @"token":UserToken};
     [[SYHttpRequest sharedInstance] getDataWithUrl:url Parameter:param ResponseObject:^(NSDictionary *responseResult) {
         NSLog(@"预约中 -- %@",responseResult);
-        if ([self.tableView.mj_header isRefreshing]) {
-            [self.tableView.mj_header endRefreshing];
+        if ([self.tableView.mj_footer isRefreshing]) {
+            [self.tableView.mj_footer endRefreshing];
         }
         if ([responseResult objectForKey:@"resError"]) {
             [self showHint:@"服务器不给力，请稍后重试"];

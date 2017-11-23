@@ -211,6 +211,13 @@
         }
         __weak typeof(self)weakself = self;
         NSDictionary *dic = self.dataSourceArr[indexPath.row];
+        NSString *infos = [dic objectForKey:@"info"];
+        if (infos.length > 0) {
+            cell.contentLabelHeightConstraint.constant = [[Tool sharedInstance] heightForString:infos andWidth:kScreenWidth - 26 fontSize:16];
+        }else{
+            cell.contentLabelHeightConstraint.constant = 0;
+
+        }
         cell.contentLabel.text = [dic objectForKey:@"info"];
 
         UIImage *image = [[SDImageCache sharedImageCache] imageFromDiskCacheForKey:[NSString stringWithFormat:@"%@%@",ImgUrl,[dic objectForKey:@"img_min"]]];

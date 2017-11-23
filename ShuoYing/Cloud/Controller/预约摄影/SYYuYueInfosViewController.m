@@ -65,8 +65,8 @@
         yuyue.sheyingshiPhone = _infos.user;
         [weakself.navigationController pushViewController:yuyue animated:YES];
     }];
-    [alert addAction:action];
     [alert addAction:action1];
+    [alert addAction:action];
     [weakself presentViewController:alert animated:YES completion:nil];
 
 }
@@ -107,6 +107,13 @@
 
         __weak typeof(self)weakself = self;
         NSDictionary *dic = self.dataSourceArr[indexPath.row];
+        NSString *infos = [dic objectForKey:@"info"];
+        if (infos.length > 0) {
+            cell.contentLabelHeightConstraint.constant = [[Tool sharedInstance] heightForString:infos andWidth:kScreenWidth - 26 fontSize:16];
+        }else{
+            cell.contentLabelHeightConstraint.constant = 0;
+            
+        }
         cell.contentLabel.text = [dic objectForKey:@"info"];
         
         UIImage *image = [[SDImageCache sharedImageCache] imageFromDiskCacheForKey:[NSString stringWithFormat:@"%@%@",ImgUrl,[dic objectForKey:@"img_min"]]];
@@ -173,9 +180,9 @@
         label.font = [UIFont systemFontOfSize:16];
         label.textColor = HexRGB(0x444444);
         if (section == 1) {
-            label.text = @"摄影师自述";
+            label.text = @"摄影师自述：";
         }else if (section == 2){
-            label.text = @"摄影师作品展示";
+            label.text = @"摄影师作品展示：";
         }
         [view1 addSubview:label];
         

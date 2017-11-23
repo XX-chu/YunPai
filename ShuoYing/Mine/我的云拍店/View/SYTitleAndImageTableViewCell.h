@@ -13,5 +13,6 @@ typedef void(^DelBlock)();
 @property (weak, nonatomic) IBOutlet UIImageView *headImageView;
 @property (weak, nonatomic) IBOutlet UILabel *contentLabel;
 @property (weak, nonatomic) IBOutlet UIButton *delBtn;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *contentLabelHeightConstraint;
 @property (nonatomic, copy) DelBlock block;
 @end

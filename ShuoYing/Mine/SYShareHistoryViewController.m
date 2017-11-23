@@ -8,6 +8,7 @@
 
 #import "SYShareHistoryViewController.h"
 #import "SYShareHIstoryTableViewCell.h"
+#import "SYGrapherUpdataPhotoViewController.h"
 @interface SYShareHistoryViewController ()<UITableViewDelegate, UITableViewDataSource>
 {
     NSInteger _page;
@@ -47,7 +48,13 @@
     [cell.headImageView sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@",ImgUrl, [dic objectForKey:@"head"]]] placeholderImage:NoPicture];
     cell.nameLabel.text = [dic objectForKey:@"nick"];
     cell.phoneLabel.text = [dic objectForKey:@"user"];
-    
+    cell.block = ^{
+        //传送照片
+        SYGrapherUpdataPhotoViewController *update = [[SYGrapherUpdataPhotoViewController alloc] init];
+        update.dataSourceDic = @{@"tel":[dic objectForKey:@"user"]};
+        update.isFromHistory = YES;
+        [self.navigationController pushViewController:update animated:YES];
+    };
     
     return cell;
 }

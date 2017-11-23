@@ -1193,6 +1193,8 @@
     }];
 }
 
+
+
 #pragma mark - CLLocation
 - (void)initializeLocationService{
     //初始化定位管理器

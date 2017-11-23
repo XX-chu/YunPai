@@ -13,7 +13,7 @@
 #import "SYTixianViewController.h"
 
 #import "SYUserInfos.h"
-
+#import "SYIDViewController.h"
 @interface SYMyWalletViewController ()<UITableViewDelegate,UITableViewDataSource>
 
 {
@@ -67,6 +67,7 @@ static const CGFloat UpViewHeight = 150;;
             if ([[responseResult objectForKey:@"result"] integerValue] == 1) {
                 NSDictionary *data = [responseResult objectForKey:@"data"];
                 SYUserInfos *userinfos = [SYUserInfos userinfosWithDictionry:data];
+                _userInfos = userinfos;
                 //归档
                 [[Tool sharedInstance] saveObject:userinfos WithPath:[NSString stringWithFormat:@"%@",Mobile]];
                 
@@ -109,7 +110,25 @@ static const CGFloat UpViewHeight = 150;;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    
+    if (!_userInfos) {
+        return;
+    }
+    if ([_userInfos.idcard integerValue] == 0) {
+        UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"温馨提示" message:@"亲爱的用户，为了您的资金安全，请先绑定身份证" preferredStyle:UIAlertControllerStyleAlert];
+        UIAlertAction *action = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+            
+        }];
+        UIAlertAction *action1 = [UIAlertAction actionWithTitle:@"去绑定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+            SYIDViewController *idvc = [[SYIDViewController alloc] init];
+            idvc.state = isFromYunPaiShi;
+            [self.navigationController pushViewController:idvc animated:YES];
+        }];
+        
+        [alert addAction:action];
+        [alert addAction:action1];
+        [self presentViewController:alert animated:YES completion:nil];
+        return;
+    }
     SYTixianViewController *tixianVC = [[SYTixianViewController alloc] init];
     [self.navigationController pushViewController:tixianVC animated:YES];
 }

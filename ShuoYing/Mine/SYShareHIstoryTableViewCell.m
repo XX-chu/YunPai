@@ -24,7 +24,9 @@
 }
 
 - (IBAction)updateAction:(UIButton *)sender {
-    
+    if (self.block) {
+        self.block();
+    }
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
