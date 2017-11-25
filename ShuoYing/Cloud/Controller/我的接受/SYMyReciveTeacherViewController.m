@@ -61,8 +61,10 @@ static NSString *teacherReciveIdentifier = @"teacherRecive";
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
     SYTeacherAndGrapherInfosViewController *infos = [[SYTeacherAndGrapherInfosViewController alloc] init];
-    infos.model = self.dataSourceArr[indexPath.item];
-    infos.title = @"老师传送";
+    SYNewAlbumModel *model = self.dataSourceArr[indexPath.item];
+    infos.model = model;
+    infos.title = model.time;
+    infos.type = UpdateHistoryTypeTeacher;
     [self.navigationController pushViewController:infos animated:YES];
 }
 

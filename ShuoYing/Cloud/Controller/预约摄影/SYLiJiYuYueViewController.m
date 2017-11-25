@@ -37,7 +37,7 @@
 }
 
 - (IBAction)selecteTImeAction:(UIButton *)sender {
-    
+    [self.view endEditing:YES];
     __weak typeof(self)weakself = self;
     XHDatePickerView *datepicker = [[XHDatePickerView alloc] initWithCurrentDate:[NSDate dateWithTimeInterval:24*60*60*2 sinceDate:[NSDate date]] CompleteBlock:^(NSDate *startDate, NSDate *endDate) {
         NSLog(@"\n开始时间： %@，结束时间：%@",startDate,endDate);

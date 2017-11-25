@@ -94,7 +94,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     _imagesArr = @[@"fenzu_icon_cmm",@"fenzu_icon_jiahaoyou",@"pinliang",@"fenzu_icon_sc"];
-    _contentArr = @[@"重命名",@"添加到圈",@"群发圈照片",@"删除该圈"];
+    _contentArr = @[@"重命名",@"添加成员到圈",@"群发圈照片",@"删除该圈"];
     self.view.backgroundColor = BackGroundColor;
     
     if ([[Tool sharedInstance] getObjectWithPath:Mobile]) {
@@ -144,37 +144,6 @@
         [addBtn addTarget:self action:@selector(addFenZu:) forControlEvents:UIControlEventTouchUpInside];
         addBtn.imageView.contentMode = UIViewContentModeScaleAspectFit;
         [self.view addSubview:addBtn];
-        
-        
-        UIView *xingjiView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, 30)];
-        xingjiView.backgroundColor = BackGroundColor;
-        [self.view addSubview:xingjiView];
-        
-        UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(15, 5, 66, 20)];
-        label.text = @"当前星级:";
-        label.font = [UIFont systemFontOfSize:15];
-        [xingjiView addSubview:label];
-        
-        UIImageView *imageVIew = [[UIImageView alloc] initWithFrame:CGRectMake(CGRectGetMaxX(label.frame) + 5, 5, 84, 20)];
-        if ([_userInfos.teacherlv integerValue] == 1) {
-            imageVIew.image = [UIImage imageNamed:@"xingji-one"];
-        }else if ([_userInfos.teacherlv integerValue] == 2){
-            imageVIew.image = [UIImage imageNamed:@"xingji-two"];
-        }else{
-            imageVIew.image = [UIImage imageNamed:@"xingji-three"];
-        }
-        [xingjiView addSubview:imageVIew];
-        
-        //更换学校按钮
-        UIButton *changeSchool = [UIButton buttonWithType:UIButtonTypeCustom];
-        changeSchool.frame = CGRectMake(0, 0, 70, 20);
-        changeSchool.center = CGPointMake(kScreenWidth - 50, 15);
-        changeSchool.titleLabel.font = [UIFont systemFontOfSize:14];
-        changeSchool.titleLabel.textAlignment = NSTextAlignmentRight;
-        [changeSchool setTitle:@"更改单位" forState:UIControlStateNormal];
-        [changeSchool setTitleColor:[UIColor darkGrayColor] forState:UIControlStateNormal];
-        [changeSchool addTarget:self action:@selector(changeSchool:) forControlEvents:UIControlEventTouchUpInside];
-        [xingjiView addSubview:changeSchool];
         
         
         [self.view addSubview:self.tableView];
@@ -315,7 +284,7 @@
             SYEditStudentView *view = [[[NSBundle mainBundle] loadNibNamed:@"SYEditStudentView" owner:self options:nil] lastObject];
             view.frame = [UIScreen mainScreen].bounds;
             view.renameTF.placeholder = @"请输入新的名称";
-            view.deleteLabel.text = @"与该学生的传送记录也将删除";
+            view.deleteLabel.text = @"与该成员的传送记录也将删除";
             
             [view show];
             __weak typeof(self)waekself = self;
@@ -326,7 +295,7 @@
 //                    [waekself renameWithsection:indexPath.section NewclassName:[dic objectForKey:@"studentName"]];
                     NSString *name = [dic objectForKey:@"studentName"];
                     if (name.length < 1 || name.length > 10) {
-                        [self showHint:@"学生名称1-10个字！"];
+                        [self showHint:@"成员名称1-10个字！"];
                         return ;
                     }
                     [waekself renameStudentNameWithIndexPath:indexPath Name:[dic objectForKey:@"studentName"]];
@@ -443,11 +412,11 @@
                 __weak typeof(self)weakself = self;
                 view.block = ^(NSString *name, NSString *phone){
                     if (name.length == 0){
-                        [weakself showHint:@"请输入学生姓名！"];
+                        [weakself showHint:@"请输入成员姓名！"];
                         return ;
                     }
                     if (phone.length == 0) {
-                        [weakself showHint:@"请输入家长手机号！"];
+                        [weakself showHint:@"请输入成员手机号！"];
                         return ;
                     }
                     
@@ -743,7 +712,7 @@
 
 - (UITableView *)tableView{
     if (!_tableView) {
-        _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 30, kScreenWidth, kScreenHeight - kNavigationBarHeightAndStatusBarHeight - 40 - 30) style:UITableViewStylePlain];
+        _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, kScreenHeight - kNavigationBarHeightAndStatusBarHeight - 40) style:UITableViewStylePlain];
         _tableView.backgroundColor = BackGroundColor;
         _tableView.delegate = self;
         _tableView.dataSource = self;

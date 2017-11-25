@@ -8,9 +8,17 @@
 
 #import "SYBaseViewController.h"
 
+typedef NS_ENUM(NSUInteger, UpdateHistoryType) {
+    UpdateHistoryTypeTeacher,
+    UpdateHistoryTypeGrapher,
+    UpdateHistoryTypeOther,
+};
+
 @class SYNewAlbumModel;
 @interface SYTeacherAndGrapherInfosViewController : SYBaseViewController
 
 @property (nonatomic, strong) SYNewAlbumModel *model;
+
+@property (nonatomic, assign) UpdateHistoryType type;
 
 @end

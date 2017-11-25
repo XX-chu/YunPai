@@ -126,6 +126,11 @@
 #pragma mark - privateMethod
 - (void)userRegist{
     SYRegisterViewController *registe = [[SYRegisterViewController alloc] initWithNibName:@"SYRegisterViewController" bundle:nil];
+    registe.sucessBlock = ^(NSString *phone, NSString *password) {
+        self.phoneTextField.text = phone;
+        self.passwordTextField.text = password;
+        [self loginAction];
+    };
     [self.navigationController pushViewController:registe animated:YES];
 }
 

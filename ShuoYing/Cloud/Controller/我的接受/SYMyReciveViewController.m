@@ -76,18 +76,16 @@
 
 #pragma mark - loadChildControllers
 - (void)addChildControllers{
-    
-    if (!_grapherVC) {
-        _grapherVC = [[SYMyReciveGrapherViewController alloc] init];
-    }
-    [self addChildViewController:_grapherVC];
-    [self.scrollView addSubview:_grapherVC.view];
-    
     if (!_teacherVC) {
         _teacherVC = [[SYMyReciveTeacherViewController alloc] init];
     }
     [self addChildViewController:_teacherVC];
-    
+    [self.scrollView addSubview:_teacherVC.view];
+
+    if (!_grapherVC) {
+        _grapherVC = [[SYMyReciveGrapherViewController alloc] init];
+    }
+    [self addChildViewController:_grapherVC];
 
 }
 
@@ -126,7 +124,7 @@
     if (!_labelView) {
         _labelView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, 40)];
         _labelView.backgroundColor = [UIColor whiteColor];
-        NSArray *arr = @[@"云拍师及会员",@"云拍圈"];
+        NSArray *arr = @[@"云拍圈", @"云拍师及会员"];
         for (int i = 0; i < arr.count; i++) {
             UIButton *btn = [[UIButton alloc] initWithFrame:CGRectMake((kScreenWidth / 2) * i, 0, kScreenWidth / 2, 39)];
             [btn setTitle:arr[i] forState:UIControlStateNormal];
@@ -147,7 +145,7 @@
         backView.backgroundColor = BackGroundColor;
         [_labelView addSubview:backView];
         
-        UIView *lineView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 95, 1)];
+        UIView *lineView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 45, 1)];
         lineView.backgroundColor = NavigationColor;
         lineView.center = CGPointMake(_currentSelectedBtn.center.x, 0);
         _currentLineView = lineView;

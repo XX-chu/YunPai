@@ -14,6 +14,7 @@
     [super awakeFromNib];
     // Initialization code
     self.imagesViewHeightConstraint.constant = (kScreenWidth - 118) * 62 / 227;
+    self.yiwanchengLabel.hidden = YES;
 }
 
 - (void)setModel:(SYYuYueModel *)model{
@@ -23,13 +24,10 @@
     for (int i = 0; i < self.stars.count; i++) {
         UIImageView *imgView = self.stars[i];
         if (i > [_model.ping integerValue] - 1) {
-            
             imgView.image = [UIImage imageNamed:@"pingjia_nor"];
-
         }else{
             imgView.image = [UIImage imageNamed:@"PhotoShop_xingji"];
         }
-        
     }
     
     self.juliLabel.text = [NSString stringWithFormat:@"距您%@km",_model.juli];

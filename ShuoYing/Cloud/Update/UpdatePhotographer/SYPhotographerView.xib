@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13174"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -16,10 +16,10 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1u3-T2-YRM">
-                    <rect key="frame" x="0.0" y="0.0" width="375" height="70"/>
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="31"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6El-gV-Z2b">
-                            <rect key="frame" x="15" y="44" width="345" height="21"/>
+                            <rect key="frame" x="15" y="5" width="345" height="21"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="21" id="QiA-Ho-ChD"/>
                             </constraints>
@@ -27,33 +27,13 @@
                             <color key="textColor" red="0.38431372549019605" green="0.38431372549019605" blue="0.38431372549019605" alpha="1" colorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="当前星级:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1sL-Md-cgT">
-                            <rect key="frame" x="15" y="10" width="66" height="20"/>
-                            <constraints>
-                                <constraint firstAttribute="height" constant="20" id="95B-wg-t3Y"/>
-                            </constraints>
-                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                            <nil key="textColor"/>
-                            <nil key="highlightedColor"/>
-                        </label>
-                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="pXI-xt-GKn">
-                            <rect key="frame" x="86" y="10" width="84" height="20"/>
-                            <constraints>
-                                <constraint firstAttribute="height" constant="20" id="aUY-49-uHX"/>
-                                <constraint firstAttribute="width" constant="84" id="ldx-ln-MgR"/>
-                            </constraints>
-                        </imageView>
                     </subviews>
                     <color key="backgroundColor" red="0.97647058823529409" green="0.97647058823529409" blue="0.97647058823529409" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
                         <constraint firstItem="6El-gV-Z2b" firstAttribute="leading" secondItem="1u3-T2-YRM" secondAttribute="leading" constant="15" id="7fz-yF-kT9"/>
-                        <constraint firstItem="1sL-Md-cgT" firstAttribute="leading" secondItem="1u3-T2-YRM" secondAttribute="leading" constant="15" id="DJj-hW-wkp"/>
-                        <constraint firstItem="1sL-Md-cgT" firstAttribute="top" secondItem="1u3-T2-YRM" secondAttribute="top" constant="10" id="EPb-ur-lBC"/>
                         <constraint firstAttribute="trailing" secondItem="6El-gV-Z2b" secondAttribute="trailing" constant="15" id="Nlh-YX-Bg6"/>
-                        <constraint firstAttribute="height" constant="70" id="P1z-xJ-won"/>
-                        <constraint firstItem="pXI-xt-GKn" firstAttribute="top" secondItem="1u3-T2-YRM" secondAttribute="top" constant="10" id="Pn1-QT-cl8"/>
+                        <constraint firstAttribute="height" constant="31" id="P1z-xJ-won"/>
                         <constraint firstAttribute="bottom" secondItem="6El-gV-Z2b" secondAttribute="bottom" constant="5" id="UuB-4d-btn"/>
-                        <constraint firstItem="pXI-xt-GKn" firstAttribute="leading" secondItem="1sL-Md-cgT" secondAttribute="trailing" constant="5" id="gUX-7K-oMZ"/>
                     </constraints>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0dQ-2f-sra">
@@ -84,7 +64,7 @@
                     </constraints>
                 </view>
                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="4sa-TX-xKO">
-                    <rect key="frame" x="0.0" y="70" width="375" height="547"/>
+                    <rect key="frame" x="0.0" y="31" width="375" height="586"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <collectionViewLayout key="collectionViewLayout" id="kFK-Wv-e7S" customClass="SYUpdateGrapherFlowLayout"/>
                 </collectionView>
@@ -106,7 +86,6 @@
                 <outlet property="collectionView" destination="4sa-TX-xKO" id="fb0-36-ltz"/>
                 <outlet property="updateHistoryLabel" destination="6El-gV-Z2b" id="Y2u-mu-0cD"/>
                 <outlet property="updatePhotoBtn" destination="zkP-lf-Okx" id="BPz-wO-4QN"/>
-                <outlet property="xingjiImageView" destination="pXI-xt-GKn" id="Ogf-YD-lxN"/>
             </connections>
             <point key="canvasLocation" x="-64.5" y="47.5"/>
         </view>

@@ -96,6 +96,13 @@ const static CGFloat totleOffset = 200;
 }
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     NSArray *arr = self.cellDataSource[section];
+    if (section == 0) {
+        if ([_userInfos.idcard integerValue] == 0) {
+            return 4;
+        }else{
+            return 3;
+        }
+    }
     return arr.count;
 }
 
@@ -152,7 +159,7 @@ const static CGFloat totleOffset = 200;
             SYErWeiMaViewController *erweima = [[SYErWeiMaViewController alloc] init];
             [self.navigationController pushViewController:erweima animated:YES];
 
-        }else{
+        }else if (indexPath.row == 2){
             //我的云拍店
             if ([_userInfos.master integerValue] == 1) {
                 SYMyYunPaiShopViewController *shop = [[SYMyYunPaiShopViewController alloc] init];
@@ -179,6 +186,9 @@ const static CGFloat totleOffset = 200;
                 }
                 
             }
+        }else{
+            SYIDViewController *idvc = [[SYIDViewController alloc] init];
+            [self.navigationController pushViewController:idvc animated:YES];
         }
     }else if (indexPath.section == 1) {
         if (indexPath.row == 0) {
@@ -342,7 +352,7 @@ const static CGFloat totleOffset = 200;
 - (NSMutableArray *)cellDataSource{
     if (!_cellDataSource) {
         _cellDataSource = [NSMutableArray arrayWithCapacity:0];
-        NSArray *arr1 = @[@"我的关注", @"我的分享", @"认证云拍师"];
+        NSArray *arr1 = @[@"我的关注", @"我的分享", @"认证云拍师", @"绑定身份证"];
         NSArray *arr2 = @[@"我的订单", @"我的钱包", @"交易记录"];
         NSArray *arr3 = @[@"地址管理", @"设置"];
         [_cellDataSource addObject:arr1];
@@ -358,7 +368,7 @@ const static CGFloat totleOffset = 200;
     if (!_cellImages) {
         _cellImages = [NSMutableArray arrayWithCapacity:0];
         
-        NSArray *arr1 = @[@"wode_icon_attention", @"wode_icon_fenxiang", @"yunpaishi"];
+        NSArray *arr1 = @[@"wode_icon_attention", @"wode_icon_fenxiang", @"yunpaishi", @"wode_icon_bdsfz"];
         NSArray *arr2 = @[@"wode_icon_dingdan", @"wode_icon_qianbao", @"wode_icon_jiaoyi"];
         NSArray *arr3 = @[@"wode_icon_dizhi", @"wode_icon_shezhi"];
         [_cellImages addObject:arr1];

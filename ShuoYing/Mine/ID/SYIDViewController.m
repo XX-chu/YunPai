@@ -21,6 +21,13 @@
     
     NSString *_lastImageViewStr;
     NSString *_currentPicCode;
+    
+    UIView *_backView;
+    UIImageView *_animationIMG;
+    
+//    NSTimer *_imgTimer;
+    NSInteger _imgIndex;
+    BOOL _isEndAnimation;
 }
 @property (weak, nonatomic) IBOutlet UIView *firstView;
 @property (weak, nonatomic) IBOutlet UIView *secondView;
@@ -44,6 +51,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title = @"绑定身份证";
+    _isEndAnimation = NO;
     _countDown = 60;
     if ([[Tool sharedInstance] getObjectWithPath:Mobile]) {
         _userInfos = [[Tool sharedInstance] getObjectWithPath:Mobile];
@@ -97,18 +105,7 @@
             [self showHint:@"服务器不给力，请稍后重试"];
         }else{
             if ([[responseResult objectForKey:@"result"] integerValue] == 1) {
-                if (self.state == isFromGrapher || self.state == isFromGroup) {
-                    
-                    SYGrapherCertifiedViewController *grapher = [[SYGrapherCertifiedViewController alloc] initWithNibName:@"SYGrapherCertifiedViewController" bundle:nil];
-                    [self.navigationController pushViewController:grapher animated:YES];
-                }else if (self.state == isFromTeacher){
-                    
-                    SYTeacherCertifiedViewController *certifi = [[SYTeacherCertifiedViewController alloc] initWithNibName:@"SYTeacherCertifiedViewController" bundle:nil];
-                    [self.navigationController pushViewController:certifi animated:YES];
-                    
-                }else if (self.state == isFromYunPaiShi){
-                    [self.navigationController popViewControllerAnimated:YES];
-                }
+                [self redBag];
                
             }else{
                 if ([responseResult objectForKey:@"msg"] && ![[responseResult objectForKey:@"msg"] isKindOfClass:[NSNull class]]) {
@@ -118,6 +115,83 @@
         }
     }];
 }
+
+
+//红包
+- (void)redBag{
+    UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, kScreenHeight)];
+    view.backgroundColor = [[UIColor blackColor] colorWithAlphaComponent:.6];
+    view.userInteractionEnabled = YES;
+    UITapGestureRecognizer *distap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(disMissView)];
+    [view addGestureRecognizer:distap];
+    _backView = view;
+    UIWindow *window = [UIApplication sharedApplication].keyWindow;
+    [window addSubview:view];
+    
+    
+    UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(20, 100, kScreenWidth - 40, kScreenHeight / 2 + 40)];
+    _animationIMG = imageView;
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(imageViewAnimation:)];
+    [imageView addGestureRecognizer:tap];
+    imageView.userInteractionEnabled = YES;
+    imageView.image = [UIImage imageNamed:@"hongbao_weikai"];
+    imageView.contentMode = UIViewContentModeScaleAspectFit;
+    [view addSubview:imageView];
+    
+    
+}
+
+- (void)imageViewAnimation:(UITapGestureRecognizer *)tap{
+    if (_isEndAnimation) {
+        [self disMissView];
+        
+    }else{
+        if (![_animationIMG isAnimating]) {
+            _animationIMG.image = [UIImage imageNamed:@"hongbao_yidakai"];
+            
+            NSArray *imgArr = @[@"hongbao1", @"hongbao2", @"hongbao3", @"hongbao4", @"hongbao5", @"hongbao6", @"hongbao7", @"hongbao8", @"hongbao9", @"hongbao10", @"hongbao11", @"hongbao12", @"hongbao13"];
+            NSMutableArray *images = [NSMutableArray arrayWithCapacity:0];
+            for (int i = 0; i < 13; i++) {
+                UIImage *image = [UIImage imageNamed:imgArr[i]];
+                [images addObject:image];
+            }
+            _animationIMG.animationImages = images;
+            _animationIMG.animationDuration = .6;
+            _animationIMG.animationRepeatCount = 1;
+            [_animationIMG startAnimating];
+            _isEndAnimation = YES;
+            
+        }
+    }
+    
+}
+
+
+
+- (void)disMissView{
+    if (![_animationIMG isAnimating]) {
+        [UIView animateWithDuration:.3 animations:^{
+            _backView.alpha = 0;
+        } completion:^(BOOL finished) {
+            [_backView removeFromSuperview];
+            _backView = nil;
+            if (self.state == isFromGrapher || self.state == isFromGroup) {
+                
+                SYGrapherCertifiedViewController *grapher = [[SYGrapherCertifiedViewController alloc] initWithNibName:@"SYGrapherCertifiedViewController" bundle:nil];
+                [self.navigationController pushViewController:grapher animated:YES];
+            }else if (self.state == isFromTeacher){
+                
+                SYTeacherCertifiedViewController *certifi = [[SYTeacherCertifiedViewController alloc] initWithNibName:@"SYTeacherCertifiedViewController" bundle:nil];
+                [self.navigationController pushViewController:certifi animated:YES];
+                
+            }else if (self.state == isFromYunPaiShi){
+                [self.navigationController popViewControllerAnimated:YES];
+            }
+            
+        }];
+    }
+}
+
 
 - (void)onTimer{
     if (_countDown > 0) {

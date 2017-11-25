@@ -153,9 +153,9 @@ static NSString *identifier = @"cell";
                 [muArr addObject:ids];
             }
         }
-        if ([self.title isEqualToString:@"老师传送"]) {
+        if (self.type == UpdateHistoryTypeTeacher) {
             param = @{@"token":UserToken, @"type":@"teacher", @"id":[muArr componentsJoinedByString:@","]};
-        }else if ([self.title isEqualToString:@"摄影师传送"]){
+        }else if (self.type == UpdateHistoryTypeGrapher){
             param = @{@"token":UserToken, @"type":@"pho", @"id":[muArr componentsJoinedByString:@","]};
         }
         NSLog(@"param - %@",param);
@@ -214,12 +214,10 @@ static NSString *identifier = @"cell";
     };
     
     cell.alipyBlock = ^(SYTeacherAndGrapherCollectionViewCell *cell){
-        if ([self.title isEqualToString:@"老师传送"]) {
+        if (self.type == UpdateHistoryTypeTeacher) {
             [self shifou0YuanWithPhotoId:[model.ID stringValue] type:@2 indexPath:indexPath];
-        }else if ([self.title isEqualToString:@"摄影师传送"]){
+        }else if (self.type == UpdateHistoryTypeGrapher){
             [self shifou0YuanWithPhotoId:[model.ID stringValue] type:@1 indexPath:indexPath];
-        }else{
-            [self shifou0YuanWithPhotoId:[model.ID stringValue] type:@7 indexPath:indexPath];
         }
         
     };
@@ -384,12 +382,10 @@ static NSString *identifier = @"cell";
 
 - (void)getData{
     NSString *url = @"";
-    if ([self.title isEqualToString:@"老师传送"]) {
+    if (self.type == UpdateHistoryTypeTeacher) {
         url = [NSString stringWithFormat:@"%@%@",BaseUrl,@"/my/teacherphoto.html"];
-    }else if ([self.title isEqualToString:@"摄影师传送"]){
+    }else if (self.type == UpdateHistoryTypeGrapher){
         url = [NSString stringWithFormat:@"%@%@",BaseUrl,@"/my/phophoto.html"];
-    }else{
-        url = [NSString stringWithFormat:@"%@%@",BaseUrl,@"/my/groupphoto.html"];
     }
     NSDictionary *param = @{@"token":UserToken, @"page":@1, @"time":self.model.time};
     [[SYHttpRequest sharedInstance] getDataWithUrl:url Parameter:param ResponseObject:^(NSDictionary *responseResult) {
@@ -440,12 +436,10 @@ static NSString *identifier = @"cell";
 - (void)getMoreData{
     _count ++;
     NSString *url = @"";
-    if ([self.title isEqualToString:@"老师传送"]) {
+    if (self.type == UpdateHistoryTypeTeacher) {
         url = [NSString stringWithFormat:@"%@%@",BaseUrl,@"/my/teacherphoto.html"];
-    }else if ([self.title isEqualToString:@"摄影师传送"]){
+    }else if (self.type == UpdateHistoryTypeGrapher){
         url = [NSString stringWithFormat:@"%@%@",BaseUrl,@"/my/phophoto.html"];
-    }else{
-        url = [NSString stringWithFormat:@"%@%@",BaseUrl,@"/my/groupphoto.html"];
     }
     NSDictionary *param = @{@"token":UserToken, @"page":[NSNumber numberWithInteger:_count], @"time":self.model.time};
     [[SYHttpRequest sharedInstance] getDataWithUrl:url Parameter:param ResponseObject:^(NSDictionary *responseResult) {

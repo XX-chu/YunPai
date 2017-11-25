@@ -67,8 +67,7 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-    
-    
+    [self redBag];
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
@@ -339,7 +338,7 @@
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(imageViewAnimation:)];
     [imageView addGestureRecognizer:tap];
     imageView.userInteractionEnabled = YES;
-    imageView.image = [UIImage imageNamed:@"chai"];
+    imageView.image = [UIImage imageNamed:@"hongbao_weikai"];
     imageView.contentMode = UIViewContentModeScaleAspectFit;
     [view addSubview:imageView];
     
@@ -352,9 +351,9 @@
 
     }else{
         if (![_animationIMG isAnimating]) {
-            _animationIMG.image = [UIImage imageNamed:@"yilingqu"];
+            _animationIMG.image = [UIImage imageNamed:@"lingqu"];
             
-            NSArray *imgArr = @[@"1", @"2", @"3", @"4", @"5", @"6", @"7", @"8", @"9", @"10", @"11", @"12", @"13", @"14", @"15"];
+            NSArray *imgArr = @[@"hongbao1", @"hongbao2", @"hongbao3", @"hongbao4", @"hongbao5", @"hongbao6", @"hongbao7", @"hongbao8", @"hongbao9", @"hongbao10", @"hongbao11", @"hongbao12", @"hongbao13"];
             NSMutableArray *images = [NSMutableArray arrayWithCapacity:0];
             for (int i = 0; i < 13; i++) {
                 UIImage *image = [UIImage imageNamed:imgArr[i]];
@@ -365,6 +364,7 @@
             _animationIMG.animationRepeatCount = 1;
             [_animationIMG startAnimating];
             _isEndAnimation = YES;
+            
         }
     }
     
@@ -380,6 +380,9 @@
         } completion:^(BOOL finished) {
             [_backView removeFromSuperview];
             _backView = nil;
+            if (self.sucessBlock) {
+                self.sucessBlock(self.phoneTextField.text, self.passwordTextField.text);
+            }
             [self.navigationController popViewControllerAnimated:YES];
         }];
     }

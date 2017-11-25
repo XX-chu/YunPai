@@ -6,8 +6,13 @@
 //  Copyright © 2016年 硕影. All rights reserved.
 //
 
+
 #import "SYBaseViewController.h"
 
+typedef void(^RegisterSucessBlock)(NSString *phone, NSString *password);
+
 @interface SYRegisterViewController : SYBaseViewController
+
+@property (nonatomic, copy) RegisterSucessBlock sucessBlock;
 
 @end

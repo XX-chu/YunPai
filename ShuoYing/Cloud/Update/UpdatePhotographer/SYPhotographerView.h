@@ -10,8 +10,6 @@
 
 @interface SYPhotographerView : UIView
 
-@property (weak, nonatomic) IBOutlet UIImageView *xingjiImageView;
-
 @property (weak, nonatomic) IBOutlet UIButton *updatePhotoBtn;
 @property (weak, nonatomic) IBOutlet UILabel *updateHistoryLabel;
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;

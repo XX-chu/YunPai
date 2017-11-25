@@ -154,13 +154,6 @@ static NSString *footerIdentifier = @"footer";
     
     [self.grapherView.updatePhotoBtn addTarget:self action:@selector(updatePhotoAction:) forControlEvents:UIControlEventTouchUpInside];
 
-    if ([_userInfos.pholv integerValue] == 1) {
-        view.xingjiImageView.image = [UIImage imageNamed:@"xingji-one"];
-    }else if ([_userInfos.pholv integerValue] == 2){
-        view.xingjiImageView.image = [UIImage imageNamed:@"xingji-two"];
-    }else{
-        view.xingjiImageView.image = [UIImage imageNamed:@"xingji-three"];
-    }
     view.collectionView.delegate = self;
     view.collectionView.dataSource = self;
     [view.collectionView registerNib:[UINib nibWithNibName:@"SYUpdateGrapherCollectionViewCell" bundle:nil] forCellWithReuseIdentifier:identifier];
