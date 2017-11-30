@@ -751,20 +751,21 @@
         view1.backgroundColor = NavigationColor;
         [view addSubview:view1];
         
-        UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(CGRectGetMaxX(view1.frame) + 8, 16, 70, 16)];
+        UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(CGRectGetMaxX(view1.frame) + 8, 15, 70, 16)];
         label.text = @"首页晒图";
         label.font = [UIFont systemFontOfSize:16];
         label.textColor = HexRGB(0x434343);
         [view addSubview:label];
         
-        UIImageView *imageview = [[UIImageView alloc] initWithFrame:CGRectMake(kScreenWidth - 15 - 31, 10, 31, 27)];
-        imageview.image = [UIImage imageNamed:@"fabu"];
+        UIImageView *imageview = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 25, 25)];
+        imageview.center = CGPointMake(kScreenWidth - 15 - 25 / 2, 47 / 2);
+        imageview.image = [UIImage imageNamed:@"shouyefabu"];
         [view addSubview:imageview];
         
-        UILabel *label1 = [[UILabel alloc] initWithFrame:CGRectMake(kScreenWidth - 15 - 31 - 70 - 7, 16, 70, 14)];
+        UILabel *label1 = [[UILabel alloc] initWithFrame:CGRectMake(kScreenWidth - 15 - 25 - 70 - 7, 16, 70, 14)];
         label1.textColor = NavigationColor;
         label1.text = @"我要发布";
-        label1.font = [UIFont systemFontOfSize:14];
+        label1.font = [UIFont fontWithName:@"Helvetica-Bold" size:14];
         label1.textAlignment = NSTextAlignmentRight;
         [view addSubview:label1];
         

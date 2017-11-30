@@ -105,8 +105,19 @@
             [self showHint:@"服务器不给力，请稍后重试"];
         }else{
             if ([[responseResult objectForKey:@"result"] integerValue] == 1) {
-                [self redBag];
-               
+//                [self redBag];
+                if (self.state == isFromGrapher || self.state == isFromGroup) {
+                    
+                    SYGrapherCertifiedViewController *grapher = [[SYGrapherCertifiedViewController alloc] initWithNibName:@"SYGrapherCertifiedViewController" bundle:nil];
+                    [self.navigationController pushViewController:grapher animated:YES];
+                }else if (self.state == isFromTeacher){
+                    
+                    SYTeacherCertifiedViewController *certifi = [[SYTeacherCertifiedViewController alloc] initWithNibName:@"SYTeacherCertifiedViewController" bundle:nil];
+                    [self.navigationController pushViewController:certifi animated:YES];
+                    
+                }else if (self.state == isFromYunPaiShi){
+                    [self.navigationController popViewControllerAnimated:YES];
+                }
             }else{
                 if ([responseResult objectForKey:@"msg"] && ![[responseResult objectForKey:@"msg"] isKindOfClass:[NSNull class]]) {
                     [self showHint:[responseResult objectForKey:@"msg"]];
@@ -175,18 +186,7 @@
         } completion:^(BOOL finished) {
             [_backView removeFromSuperview];
             _backView = nil;
-            if (self.state == isFromGrapher || self.state == isFromGroup) {
-                
-                SYGrapherCertifiedViewController *grapher = [[SYGrapherCertifiedViewController alloc] initWithNibName:@"SYGrapherCertifiedViewController" bundle:nil];
-                [self.navigationController pushViewController:grapher animated:YES];
-            }else if (self.state == isFromTeacher){
-                
-                SYTeacherCertifiedViewController *certifi = [[SYTeacherCertifiedViewController alloc] initWithNibName:@"SYTeacherCertifiedViewController" bundle:nil];
-                [self.navigationController pushViewController:certifi animated:YES];
-                
-            }else if (self.state == isFromYunPaiShi){
-                [self.navigationController popViewControllerAnimated:YES];
-            }
+            
             
         }];
     }

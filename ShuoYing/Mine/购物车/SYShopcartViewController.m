@@ -196,11 +196,8 @@
         for (SYShopcartShangjiaModel *shangjia in self.dataSourceArr) {
             shangjia.isSelected = @YES;
             for (SYShopcartShangpinModel *shangpin in shangjia.goods) {
-                if ([shangpin.state integerValue] == 0) {
-                    shangpin.isSelected = @NO;
-                }else{
-                    shangpin.isSelected = @YES;
-                }
+                shangpin.isSelected = @YES;
+
             }
         }
     }else{
@@ -337,6 +334,7 @@
                 }else{
                     shangpin.isSelected = @YES;
                 }
+                
             }
         }
     }else{
@@ -461,8 +459,10 @@
     }
     if ([bools containsObject:@NO]) {
         _bottomSelected = NO;
+        _editBottomSelected = NO;
     }else{
         _bottomSelected = YES;
+        _editBottomSelected = YES;
     }
 }
 
@@ -570,7 +570,15 @@
     SYShopcartShangjiaModel *shangjia = self.dataSourceArr[indexPath.section];
     SYShopcartShangpinModel *shangpin = shangjia.goods[indexPath.row];
     if ([shangpin.state integerValue] == 0) {
-        shangpin.isSelected = @NO;
+        if (_isEdit) {
+            if ([shangpin.isSelected boolValue]) {
+                shangpin.isSelected = @NO;
+            }else{
+                shangpin.isSelected = @YES;
+            }
+        }else{
+            shangpin.isSelected = @NO;
+        }
     }else{
         if ([shangpin.isSelected boolValue]) {
             shangpin.isSelected = @NO;
@@ -588,11 +596,16 @@
 
     NSMutableArray *bools = [NSMutableArray arrayWithCapacity:0];
     for (SYShopcartShangpinModel *shangpin in goods) {
-        if ([shangpin.state integerValue] == 0) {
-            
-        }else{
+        if (_isEdit) {
             [bools addObject:shangpin.isSelected];
+        }else{
+            if ([shangpin.state integerValue] == 0) {
+                
+            }else{
+                [bools addObject:shangpin.isSelected];
+            }
         }
+        
     }
     if ([bools containsObject:@NO]) {
         shangjia.isSelected = @NO;
@@ -658,12 +671,17 @@
     }else{
         model.isSelected = @YES;
         for (SYShopcartShangpinModel *shangpinModel in model.goods) {
-            if ([shangpinModel.state integerValue] == 0) {
-                //失效
-                shangpinModel.isSelected = @NO;
-            }else{
+            if (_isEdit) {
                 shangpinModel.isSelected = @YES;
+            }else{
+                if ([shangpinModel.state integerValue] == 0) {
+                    //失效
+                    shangpinModel.isSelected = @NO;
+                }else{
+                    shangpinModel.isSelected = @YES;
+                }
             }
+            
         }
     }
     [self.tableView reloadData];
@@ -715,7 +733,7 @@
                     NSArray *data = [responseResult objectForKey:@"data"];
                     if (data.count > 0) {
                         [self.dataSourceArr removeAllObjects];
-                        
+                        _editBottomSelected = NO;
                         for (NSDictionary *dic in data) {
                             NSMutableDictionary *muDic = [NSMutableDictionary dictionaryWithDictionary:dic];
                             [muDic setObject:@NO forKey:@"isSelected"];
@@ -725,7 +743,11 @@
                         
                         [self.noDataView removeFromSuperview];
 //                        [self.view addSubview:self.tableView];
-                        [self initBottomView];
+                        if (_isEdit) {
+                            [self editBottom];
+                        }else{
+                            [self initBottomView];
+                        }
                     }else{
                         [_bottomView removeFromSuperview];
                         [_editBottomView removeFromSuperview];
