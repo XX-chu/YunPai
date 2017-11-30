@@ -742,6 +742,7 @@
                         }
                         
                         [self.noDataView removeFromSuperview];
+                        [self.noThingView removeFromSuperview];
 //                        [self.view addSubview:self.tableView];
                         if (_isEdit) {
                             [self editBottom];
@@ -749,10 +750,10 @@
                             [self initBottomView];
                         }
                     }else{
-                        [_bottomView removeFromSuperview];
-                        [_editBottomView removeFromSuperview];
+//                        [_bottomView removeFromSuperview];
+//                        [_editBottomView removeFromSuperview];
                         [self.noDataView removeFromSuperview];
-                        [self.tableView removeFromSuperview];
+//                        [self.tableView removeFromSuperview];
                         [self.view addSubview:self.noThingView];
                     }
                     
@@ -835,6 +836,7 @@
 - (UIView *)noThingView{
     if (!_noThingView) {
         _noThingView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, kScreenHeight - kNavigationBarHeightAndStatusBarHeight - kTabbarHeight)];
+        _noThingView.backgroundColor = [UIColor whiteColor];
         UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, _noThingView.frame.size.height - 164)];
         imageView.image = [UIImage imageNamed:@"cart_nothing"];
         imageView.contentMode = UIViewContentModeCenter;

@@ -411,8 +411,9 @@
         SYShopcartShangpinModel *shangpin = nil;
         if (_shangjiaModel.goods.count > 0) {
             shangpin = [[_shangjiaModel goods] firstObject];
-            if ([shangpin.upimg integerValue] * [shangpin.num integerValue] != [shangpin.c_img integerValue]) {
-                NSInteger count = [shangpin.upimg integerValue] * [shangpin.num integerValue] - [shangpin.c_img integerValue];
+            if ([shangpin.upimg integerValue] * [shangpin.num integerValue] != [shangpin.c_img integerValue] || [shangpin.upimg integerValue] != [shangpin.c_img integerValue]) {
+                NSInteger maxCount = [shangpin.upimg integerValue] * [shangpin.num integerValue] - [shangpin.c_img integerValue];
+                NSInteger minCount = [shangpin.upimg integerValue] - [shangpin.c_img integerValue];
                 cell.haveSelectePhotoCountLabel.text = [NSString stringWithFormat:@"还有%ld张照片没选",count];
                 cell.haveSelectePhotoCountLabel.textColor = NavigationColor;
             }else{
