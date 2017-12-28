@@ -2,7 +2,7 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "weixin.png",
+      "filename" : "weixin@1x.png",
       "scale" : "1x"
     },
     {

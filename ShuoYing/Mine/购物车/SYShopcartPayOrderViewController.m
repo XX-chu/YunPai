@@ -72,9 +72,15 @@
     for (SYShopcartShangjiaModel *shangjia in self.dataSourceArr) {
         NSArray *goods = shangjia.goods;
         for (SYShopcartShangpinModel *shangpin in goods) {
-            if ([shangpin.upimg integerValue] * [shangpin.num integerValue] != [shangpin.c_img integerValue]) {
-                NSInteger count = [shangpin.upimg integerValue] * [shangpin.num integerValue] - [shangpin.c_img integerValue];
-                NSString *tishi = [NSString stringWithFormat:@"您在%@、%@还有%ld照片没选择，请先选择完照片再提交订单",shangjia.name,shangpin.title,count];
+            if ([shangpin.upimg integerValue] * [shangpin.num integerValue] != [shangpin.c_img integerValue] && [shangpin.c_img integerValue] != [shangpin.upimg integerValue]) {
+//                NSInteger count = [shangpin.upimg integerValue] * [shangpin.num integerValue] - [shangpin.c_img integerValue];
+                
+                NSInteger num = [shangpin.num integerValue];
+                NSInteger maxCount = [shangpin.num integerValue] * [shangpin.upimg integerValue];
+                NSInteger minCount = [shangpin.upimg integerValue];
+                NSString *tishi = [NSString stringWithFormat:@"您在“%@”相馆里的“%@”商品已选%ld张照片，您可以选择%d张定制%d个相同的产品，还可以选择%d张制作%d个不同的产品，请根据您的需求上传照片数量",shangjia.name, shangpin.title, (long)[shangpin.c_img integerValue], minCount, num, maxCount, num];
+                
+//                NSString *tishi = [NSString stringWithFormat:@"您在%@、%@还有%ld照片没选择，请先选择完照片再提交订单",shangjia.name,shangpin.title,count];
                 LQPopUpView *popUpView = [[LQPopUpView alloc] initWithTitle:@"提示" message:tishi];
                 popUpView.btnStyleDefaultTextColor = NavigationColor;
                 popUpView.frame = CGRectMake(0, 0, kScreenWidth, kScreenHeight - kNavigationBarHeightAndStatusBarHeight);

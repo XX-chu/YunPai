@@ -11,7 +11,7 @@
 
 #import "SYRechargeViewController.h"
 #import "SYTixianViewController.h"
-
+#import "SYChongZhiViewController.h"
 #import "SYUserInfos.h"
 #import "SYIDViewController.h"
 @interface SYMyWalletViewController ()<UITableViewDelegate,UITableViewDataSource>
@@ -86,7 +86,7 @@ static const CGFloat UpViewHeight = 150;;
 #pragma mark - UITableViewDataSource
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return 1;
+    return 2;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -96,11 +96,18 @@ static const CGFloat UpViewHeight = 150;;
 
     if (!cell) {
         cell = [[SYMyWalletTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
+
     }
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
 
-    cell.contentLabel.text = @"提现";
-    cell.imageVIew.image = [UIImage imageNamed:@"zh_icon_tx"];
+    if (indexPath.row == 0) {
+        cell.contentLabel.text = @"提现";
+        cell.imageVIew.image = [UIImage imageNamed:@"zh_icon_tx"];
+    }else{
+        cell.contentLabel.text = @"充值";
+        cell.imageVIew.image = [UIImage imageNamed:@"zh_icon_cz"];
+    }
+    
     return cell;
 }
 
@@ -129,8 +136,14 @@ static const CGFloat UpViewHeight = 150;;
         [self presentViewController:alert animated:YES completion:nil];
         return;
     }
-    SYTixianViewController *tixianVC = [[SYTixianViewController alloc] init];
-    [self.navigationController pushViewController:tixianVC animated:YES];
+    if (indexPath.row == 0) {
+        SYTixianViewController *tixianVC = [[SYTixianViewController alloc] init];
+        [self.navigationController pushViewController:tixianVC animated:YES];
+    }else{
+        SYChongZhiViewController *chongzhi = [[SYChongZhiViewController alloc] init];
+        [self.navigationController pushViewController:chongzhi animated:YES];
+    }
+    
 }
 
 

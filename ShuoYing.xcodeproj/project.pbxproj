@@ -484,6 +484,8 @@
 		B205E9711FA86B2400C79A9E /* SYMyReciveViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B205E9701FA86B2400C79A9E /* SYMyReciveViewController.m */; };
 		B205E9741FA86B7600C79A9E /* SYMyReciveTeacherViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B205E9731FA86B7600C79A9E /* SYMyReciveTeacherViewController.m */; };
 		B205E9771FA86B8600C79A9E /* SYMyReciveGrapherViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B205E9761FA86B8600C79A9E /* SYMyReciveGrapherViewController.m */; };
+		B20893F61FD913BA00603DF7 /* SYChongZhiViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B20893F41FD913BA00603DF7 /* SYChongZhiViewController.m */; };
+		B20893F71FD913BA00603DF7 /* SYChongZhiViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B20893F51FD913BA00603DF7 /* SYChongZhiViewController.xib */; };
 		B20C44241FBC076E00EFAABD /* SYYuYueModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B20C44231FBC076E00EFAABD /* SYYuYueModel.m */; };
 		B20C44271FBC12D000EFAABD /* SYYuYueInfosViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B20C44261FBC12D000EFAABD /* SYYuYueInfosViewController.m */; };
 		B20C442B1FBC12F600EFAABD /* SYYuYueInfosTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B20C44291FBC12F600EFAABD /* SYYuYueInfosTableViewCell.m */; };
@@ -1491,6 +1493,9 @@
 		B205E9731FA86B7600C79A9E /* SYMyReciveTeacherViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SYMyReciveTeacherViewController.m; sourceTree = "<group>"; };
 		B205E9751FA86B8600C79A9E /* SYMyReciveGrapherViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SYMyReciveGrapherViewController.h; sourceTree = "<group>"; };
 		B205E9761FA86B8600C79A9E /* SYMyReciveGrapherViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SYMyReciveGrapherViewController.m; sourceTree = "<group>"; };
+		B20893F31FD913BA00603DF7 /* SYChongZhiViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SYChongZhiViewController.h; sourceTree = "<group>"; };
+		B20893F41FD913BA00603DF7 /* SYChongZhiViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SYChongZhiViewController.m; sourceTree = "<group>"; };
+		B20893F51FD913BA00603DF7 /* SYChongZhiViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SYChongZhiViewController.xib; sourceTree = "<group>"; };
 		B20C44221FBC076E00EFAABD /* SYYuYueModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SYYuYueModel.h; sourceTree = "<group>"; };
 		B20C44231FBC076E00EFAABD /* SYYuYueModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SYYuYueModel.m; sourceTree = "<group>"; };
 		B20C44251FBC12D000EFAABD /* SYYuYueInfosViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SYYuYueInfosViewController.h; sourceTree = "<group>"; };
@@ -2638,6 +2643,9 @@
 				47D488F31E7904B1001FF914 /* SYTiXianTixingView.h */,
 				47D488F41E7904B1001FF914 /* SYTiXianTixingView.m */,
 				47D488F61E7904BA001FF914 /* SYTiXianTixingView.xib */,
+				B20893F31FD913BA00603DF7 /* SYChongZhiViewController.h */,
+				B20893F41FD913BA00603DF7 /* SYChongZhiViewController.m */,
+				B20893F51FD913BA00603DF7 /* SYChongZhiViewController.xib */,
 			);
 			path = MyWallet;
 			sourceTree = "<group>";
@@ -3606,6 +3614,7 @@
 				B26BD0CC1FB9842A0042EC1E /* SYYunPaiDeviceTableViewCell.xib in Resources */,
 				475E73201E97881E0059CE05 /* SYOrderPingJiaViewController.xib in Resources */,
 				4748C1791E8FA80700844207 /* NoDataView.xib in Resources */,
+				B20893F71FD913BA00603DF7 /* SYChongZhiViewController.xib in Resources */,
 				47114FBF1E46B60B00DCE3C4 /* ZLPhotoBrowserCell.xib in Resources */,
 				B2F7D7E41FBD3262000BF65C /* SYTouSuYunPaiShiViewController.xib in Resources */,
 				47E591B41E2C55A9009EEC30 /* SYReportTableViewCell.xib in Resources */,
@@ -3812,6 +3821,7 @@
 			files = (
 				47AA16551E94F495002BC2AE /* SYOrderPaymentTableViewCell.m in Sources */,
 				47FE12451E175B0A00C5B569 /* FSActionSheet.m in Sources */,
+				B20893F61FD913BA00603DF7 /* SYChongZhiViewController.m in Sources */,
 				470260C81E286A8400FE8921 /* SYGrapherInfosTableViewCell.m in Sources */,
 				47D0B53A1E6D694F000D0307 /* SYGroupPhotosViewController.m in Sources */,
 				476C97AF1F0D10CD00C1B305 /* KMMessagView.m in Sources */,

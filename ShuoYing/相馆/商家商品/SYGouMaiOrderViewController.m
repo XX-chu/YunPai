@@ -65,12 +65,10 @@
     _upimg = @0;
     _c_img = @0;
     //对传过来的数据进行处理
-//    [self initDataSource];
     [self getDefaultAddress];
 
     [self.view addSubview:self.tableView];
     [self initBottomView];
-//    [self getData];
     
 }
 
@@ -142,20 +140,27 @@
         shangpin = [_shangjiaModel.goods firstObject];
     }
     
-    if ([shangpin.upimg integerValue] * [shangpin.num integerValue] != [shangpin.c_img integerValue]) {
+    if ([shangpin.upimg integerValue] * [shangpin.num integerValue] == [shangpin.c_img integerValue] || [shangpin.upimg integerValue] == [shangpin.c_img integerValue]) {
         
-        NSString *message = [NSString stringWithFormat:@"您在“%@”相馆里的“%@”商品还有照片没有选择，请先选择完照片再提交订单",_shangjiaModel.name, shangpin.title];
+        [self creatOrder];
+        
+    }else {
+        
+        //        NSString *message = [NSString stringWithFormat:@"您在“%@”相馆里的“%@”商品还有照片没有选择，请先选择完照片再提交订单",_shangjiaModel.name, shangpin.title];
+        NSInteger num = [shangpin.num integerValue];
+        NSInteger maxCount = [shangpin.num integerValue] * [shangpin.upimg integerValue];
+        NSInteger minCount = [shangpin.upimg integerValue];
+        NSString *message = [NSString stringWithFormat:@"您在“%@”相馆里的“%@”商品已选%ld张照片，您可以选择%ld张定制%ld个相同的产品，还可以选择%ld张制作%ld个不同的产品，请根据您的需求上传照片数量",_shangjiaModel.name, shangpin.title, (long)[_c_img integerValue], (long)minCount, (long)num, (long)maxCount, (long)num];
+        
         LQPopUpView *popUpView = [[LQPopUpView alloc] initWithTitle:@"提示" message:message];
         popUpView.frame = CGRectMake(0, 0, kScreenWidth, kScreenHeight - kNavigationBarHeightAndStatusBarHeight);
         popUpView.btnStyleDefaultTextColor = NavigationColor;
         [popUpView addBtnWithTitle:@"好的" type:LQPopUpBtnStyleDefault handler:^{
             // do something...
-
+            
         }];
         
         [popUpView showInView:self.view preferredStyle:0];
-    }else {
-        [self creatOrder];
     }
 }
 
@@ -411,14 +416,14 @@
         SYShopcartShangpinModel *shangpin = nil;
         if (_shangjiaModel.goods.count > 0) {
             shangpin = [[_shangjiaModel goods] firstObject];
-            if ([shangpin.upimg integerValue] * [shangpin.num integerValue] != [shangpin.c_img integerValue] || [shangpin.upimg integerValue] != [shangpin.c_img integerValue]) {
-                NSInteger maxCount = [shangpin.upimg integerValue] * [shangpin.num integerValue] - [shangpin.c_img integerValue];
-                NSInteger minCount = [shangpin.upimg integerValue] - [shangpin.c_img integerValue];
-                cell.haveSelectePhotoCountLabel.text = [NSString stringWithFormat:@"还有%ld张照片没选",count];
-                cell.haveSelectePhotoCountLabel.textColor = NavigationColor;
-            }else{
+            if ([shangpin.upimg integerValue] * [shangpin.num integerValue] == [shangpin.c_img integerValue] || [shangpin.upimg integerValue] == [shangpin.c_img integerValue]) {
                 cell.haveSelectePhotoCountLabel.text = @"已选好";
                 cell.haveSelectePhotoCountLabel.textColor = [UIColor lightGrayColor];
+            }else{
+                NSInteger maxCount = [shangpin.upimg integerValue] * [shangpin.num integerValue];
+                NSInteger minCount = [shangpin.upimg integerValue];
+                cell.haveSelectePhotoCountLabel.text = [NSString stringWithFormat:@"您可以选择%ld张或%ld张照片,您已选择%ld张照片",(long)minCount, (long)maxCount, [shangpin.c_img integerValue]];
+                cell.haveSelectePhotoCountLabel.textColor = NavigationColor;
             }
         }
         

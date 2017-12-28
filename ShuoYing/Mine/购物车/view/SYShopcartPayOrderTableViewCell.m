@@ -41,15 +41,20 @@
         self.selectePhotoHeightConstaint.constant = 0;
     }
     
-    if ([model.upimg integerValue] * [model.num integerValue] == [model.c_img integerValue]) {
+    if ([model.upimg integerValue] * [model.num integerValue] == [model.c_img integerValue] || [model.upimg integerValue] == [model.c_img integerValue]) {
         //已经上传完毕
         self.haveSelectePhotoCountLabel.text = @"已选好";
         self.haveSelectePhotoCountLabel.textColor = [UIColor lightGrayColor];
     }else{
         NSInteger count = [model.upimg integerValue] * [model.num integerValue] - [model.c_img integerValue];
         self.haveSelectePhotoCountLabel.text = [NSString stringWithFormat:@"还有%ld张照片没选",count];
+        NSInteger maxCount = [model.upimg integerValue] * [model.num integerValue];
+        NSInteger minCount = [model.upimg integerValue];
+        self.haveSelectePhotoCountLabel.text = [NSString stringWithFormat:@"您可以选择%ld张或%ld张照片,您已选择%ld张照片",(long)minCount, (long)maxCount, [model.c_img integerValue]];
         self.haveSelectePhotoCountLabel.textColor = NavigationColor;
     }
+
+    
 }
 - (IBAction)selecteAction:(UIButton *)sender {
     if (self.block) {

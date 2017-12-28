@@ -16,6 +16,11 @@
 {
     NSURLSessionTask *_dataTask;
     UIButton *_backBtn;
+    
+    UIView *_backView;
+    UIImageView *_animationIMG;
+    BOOL _isEndAnimation;
+
 }
 @property (weak, nonatomic) IBOutlet UIImageView *headImageView;
 @property (weak, nonatomic) IBOutlet UIView *phoneView;
@@ -184,7 +189,8 @@
                 [us setBool:YES forKey:@"LoginStatus"];
                 [us setObject:self.phoneTextField.text forKey:@"LastMobile"];
                 [us synchronize];
-                [self getUserInfos];
+                [self getUserInfosWithDic:responseResult];
+                
                 
             }else{
                 if ([responseResult objectForKey:@"msg"]) {
@@ -197,7 +203,7 @@
 }
 
 //获取用户信息
-- (void)getUserInfos{
+- (void)getUserInfosWithDic:(NSDictionary *)dic{
     
     NSString *url = [NSString stringWithFormat:@"%@%@",BaseUrl,@"/user/user.html"];
     NSDictionary *param = @{@"token":UserToken};
@@ -212,7 +218,26 @@
                 SYUserInfos *userinfos = [SYUserInfos userinfosWithDictionry:data];
                 //归档
                 [[Tool sharedInstance] saveObject:userinfos WithPath:[NSString stringWithFormat:@"%@",Mobile]];
-                [self.navigationController popToRootViewControllerAnimated:YES];
+                
+                if ([[dic objectForKey:@"one"] integerValue] != 0) {
+                    if ([[dic objectForKey:@"xuni"] integerValue] == 0) {
+                        //不是虚拟号
+                        [self redBag];
+                    }else{
+                        UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"温馨提示" message:@"亲！你的手机号码在国家电信局显示非正常状态，不能获取红包及分享奖励，您仍可正常使用云拍的其他功能。" preferredStyle:UIAlertControllerStyleAlert];
+                        UIAlertAction *action = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+                            [self.navigationController popViewControllerAnimated:YES];
+                        }];
+                        UIAlertAction *action1 = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+                            [self.navigationController popViewControllerAnimated:YES];
+                        }];
+                        [alert addAction:action];
+                        [alert addAction:action1];
+                        [self presentViewController:alert animated:YES completion:nil];
+                    }
+                }else{
+                    [self.navigationController popViewControllerAnimated:YES];
+                }
             }else{
                 if ([responseResult objectForKey:@"msg"]) {
                     [self showHint:[responseResult objectForKey:@"msg"]];
@@ -220,6 +245,67 @@
             }
         }
     }];
+}
+
+//红包
+- (void)redBag{
+    UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, kScreenHeight)];
+    view.backgroundColor = [[UIColor blackColor] colorWithAlphaComponent:.6];
+    view.userInteractionEnabled = YES;
+    UITapGestureRecognizer *distap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(disMissView)];
+    [view addGestureRecognizer:distap];
+    _backView = view;
+    UIWindow *window = [UIApplication sharedApplication].keyWindow;
+    [window addSubview:view];
+    
+    
+    UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(20, 100, kScreenWidth - 40, kScreenHeight / 2 + 40)];
+    _animationIMG = imageView;
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(imageViewAnimation:)];
+    [imageView addGestureRecognizer:tap];
+    imageView.userInteractionEnabled = YES;
+    imageView.image = [UIImage imageNamed:@"hongbao_weikai"];
+    imageView.contentMode = UIViewContentModeScaleAspectFit;
+    [view addSubview:imageView];
+    
+    
+}
+
+- (void)imageViewAnimation:(UITapGestureRecognizer *)tap{
+    if (_isEndAnimation) {
+        [self disMissView];
+        
+    }else{
+        if (![_animationIMG isAnimating]) {
+            _animationIMG.image = [UIImage imageNamed:@"lingqu"];
+            
+            NSArray *imgArr = @[@"hongbao1", @"hongbao2", @"hongbao3", @"hongbao4", @"hongbao5", @"hongbao6", @"hongbao7", @"hongbao8", @"hongbao9", @"hongbao10", @"hongbao11", @"hongbao12", @"hongbao13"];
+            NSMutableArray *images = [NSMutableArray arrayWithCapacity:0];
+            for (int i = 0; i < 13; i++) {
+                UIImage *image = [UIImage imageNamed:imgArr[i]];
+                [images addObject:image];
+            }
+            _animationIMG.animationImages = images;
+            _animationIMG.animationDuration = .6;
+            _animationIMG.animationRepeatCount = 1;
+            [_animationIMG startAnimating];
+            _isEndAnimation = YES;
+            
+        }
+    }
+}
+
+- (void)disMissView{
+    if (![_animationIMG isAnimating]) {
+        [UIView animateWithDuration:.3 animations:^{
+            _backView.alpha = 0;
+        } completion:^(BOOL finished) {
+            [_backView removeFromSuperview];
+            _backView = nil;
+            
+            [self.navigationController popViewControllerAnimated:YES];
+        }];
+    }
 }
 
 

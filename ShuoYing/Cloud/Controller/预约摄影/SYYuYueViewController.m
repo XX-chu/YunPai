@@ -12,10 +12,13 @@
 #import "SYYuYueTableViewCell.h"
 #import "SYYuYueInfosViewController.h"
 #import "SYMyYuYueViewController.h"
+#import "UIButton+Badge.h"
+
 @interface SYYuYueViewController ()<JSDropDownMenuDelegate, JSDropDownMenuDataSource, UITableViewDataSource, UITableViewDelegate>
 {
     NSInteger _currentIndex;
     NSInteger _count;
+    UIButton *_doneBtn;
 }
 
 @property (nonatomic, strong) JSDropDownMenu *menu;
@@ -26,6 +29,12 @@
 @end
 
 @implementation SYYuYueViewController
+
+- (void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    [self getYuyueUnreadMessageCount];
+}
+
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -42,11 +51,14 @@
 - (void)initRightBarItem{
     UIButton *done = [UIButton buttonWithType:UIButtonTypeCustom];
     done.frame = CGRectMake(0, 0, 70, 44);
+    
     [done setTitle:@"我的预约" forState:UIControlStateNormal];
     [done setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     done.titleLabel.font = [UIFont systemFontOfSize:16];
     [done addTarget:self action:@selector(myYuYueAction:) forControlEvents:UIControlEventTouchUpInside];
     [done setTitleEdgeInsets:UIEdgeInsetsMake(0, 10, 0, -10)];
+
+    _doneBtn = done;
     UIBarButtonItem *right = [[UIBarButtonItem alloc] initWithCustomView:done];
     self.navigationItem.rightBarButtonItem = right;
 }
@@ -240,7 +252,41 @@
     }];
 }
 
+- (void)getYuyueUnreadMessageCount{
+    NSString *url = [NSString stringWithFormat:@"%@%@",BaseUrl,@"/masters/count.html"];
+    NSDictionary *param = @{@"token":UserToken};
 
+    [[SYHttpRequest sharedInstance] getDataWithUrl:url Parameter:param ResponseObject:^(NSDictionary *responseResult) {
+        NSLog(@"未读消息 -- %@",responseResult);
+
+        if ([responseResult objectForKey:@"resError"]) {
+            
+        }else{
+            if ([[responseResult objectForKey:@"result"] integerValue] == 1) {
+                if ([responseResult objectForKey:@"data"] && [[responseResult objectForKey:@"data"] isKindOfClass:[NSDictionary class]]) {
+                    NSDictionary *data = [responseResult objectForKey:@"data"];
+                    NSArray *arr = [data allValues];
+                    NSInteger count = 0;
+                    for (id value in arr) {
+                        if ([value isKindOfClass:[NSNumber class]]) {
+                            NSInteger valueCount = [(NSNumber *)value integerValue];
+                            count += valueCount;
+                        }
+                    }
+                    _doneBtn.badgeValue = [NSString stringWithFormat:@"%ld",(long)count];
+
+                    _doneBtn.badgePadding = 1;
+                    _doneBtn.badgeFont = [UIFont systemFontOfSize:12];
+                    _doneBtn.badgeOriginX = (_doneBtn.frame.size.width - 70) / 2 + 70;
+                    _doneBtn.badgeOriginY = 8;
+                }
+            }else{
+                if ([responseResult objectForKey:@"msg"] && ![[responseResult objectForKey:@"msg"] isKindOfClass:[NSNull class]]) {
+                }
+            }
+        }
+    }];
+}
 
 - (JSDropDownMenu *)menu{
     if (!_menu) {

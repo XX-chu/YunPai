@@ -67,12 +67,10 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-    [self redBag];
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
-    
     if([self.navigationController respondsToSelector:@selector(interactivePopGestureRecognizer)]) {
         self.navigationController.interactivePopGestureRecognizer.enabled = YES;
     }
@@ -311,7 +309,10 @@
             [self showHint:@"服务器不给力，请稍后重试"];
         }else{
             if ([[responseResult objectForKey:@"result"] integerValue] == 1) {
-                [self redBag];
+                if (self.sucessBlock) {
+                    self.sucessBlock(self.phoneTextField.text, self.passwordTextField.text);
+                }
+                [self.navigationController popViewControllerAnimated:YES];
             }else{
                 if ([responseResult objectForKey:@"msg"]) {
                     [self showHint:[responseResult objectForKey:@"msg"]];
@@ -319,73 +320,6 @@
             }
         }
     }];
-}
-
-//红包
-- (void)redBag{
-    UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, kScreenHeight)];
-    view.backgroundColor = [[UIColor blackColor] colorWithAlphaComponent:.6];
-    view.userInteractionEnabled = YES;
-    UITapGestureRecognizer *distap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(disMissView)];
-    [view addGestureRecognizer:distap];
-    _backView = view;
-    UIWindow *window = [UIApplication sharedApplication].keyWindow;
-    [window addSubview:view];
-    
-    
-    UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(20, 100, kScreenWidth - 40, kScreenHeight / 2 + 40)];
-    _animationIMG = imageView;
-    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(imageViewAnimation:)];
-    [imageView addGestureRecognizer:tap];
-    imageView.userInteractionEnabled = YES;
-    imageView.image = [UIImage imageNamed:@"hongbao_weikai"];
-    imageView.contentMode = UIViewContentModeScaleAspectFit;
-    [view addSubview:imageView];
-    
-    
-}
-
-- (void)imageViewAnimation:(UITapGestureRecognizer *)tap{
-    if (_isEndAnimation) {
-        [self disMissView];
-
-    }else{
-        if (![_animationIMG isAnimating]) {
-            _animationIMG.image = [UIImage imageNamed:@"lingqu"];
-            
-            NSArray *imgArr = @[@"hongbao1", @"hongbao2", @"hongbao3", @"hongbao4", @"hongbao5", @"hongbao6", @"hongbao7", @"hongbao8", @"hongbao9", @"hongbao10", @"hongbao11", @"hongbao12", @"hongbao13"];
-            NSMutableArray *images = [NSMutableArray arrayWithCapacity:0];
-            for (int i = 0; i < 13; i++) {
-                UIImage *image = [UIImage imageNamed:imgArr[i]];
-                [images addObject:image];
-            }
-            _animationIMG.animationImages = images;
-            _animationIMG.animationDuration = .6;
-            _animationIMG.animationRepeatCount = 1;
-            [_animationIMG startAnimating];
-            _isEndAnimation = YES;
-            
-        }
-    }
-    
-    
-}
-
-
-
-- (void)disMissView{
-    if (![_animationIMG isAnimating]) {
-        [UIView animateWithDuration:.3 animations:^{
-            _backView.alpha = 0;
-        } completion:^(BOOL finished) {
-            [_backView removeFromSuperview];
-            _backView = nil;
-            if (self.sucessBlock) {
-                self.sucessBlock(self.phoneTextField.text, self.passwordTextField.text);
-            }
-            [self.navigationController popViewControllerAnimated:YES];
-        }];
-    }
 }
 
 #pragma mark - NetworkRequest
@@ -411,10 +345,7 @@
     }];
 }
 
-
 #pragma mark - LayzLoad
-
-
 - (NSMutableArray *)codeArr{
     if (!_codeArr) {
         NSArray *arr = @[@"0", @"1", @"2", @"3", @"4", @"5", @"6", @"7", @"8", @"9", @"a", @"b", @"c", @"d", @"e", @"f", @"g", @"h", @"i", @"j", @"k", @"l", @"m", @"n", @"o", @"p", @"q", @"r", @"s", @"t", @"u", @"v", @"w", @"x", @"y", @"z"];
