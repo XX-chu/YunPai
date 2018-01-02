@@ -530,6 +530,7 @@
 		B21557351FB58AF300005BBE /* SYOrderCreatTimeTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B21557331FB58AF300005BBE /* SYOrderCreatTimeTableViewCell.m */; };
 		B21557361FB58AF300005BBE /* SYOrderCreatTimeTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B21557341FB58AF300005BBE /* SYOrderCreatTimeTableViewCell.xib */; };
 		B221E1FF1FC6CEFE00869D3A /* SYGuangGaoWebViewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B221E1FE1FC6CEFE00869D3A /* SYGuangGaoWebViewViewController.m */; };
+		B24B7B4D1FFB6FA700808972 /* city的副本.plist in Resources */ = {isa = PBXBuildFile; fileRef = B24B7B4C1FFB6FA600808972 /* city的副本.plist */; };
 		B26BD0B81FB973DD0042EC1E /* SYMyYunPaiShopViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B26BD0B61FB973DD0042EC1E /* SYMyYunPaiShopViewController.m */; };
 		B26BD0B91FB973DD0042EC1E /* SYMyYunPaiShopViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B26BD0B71FB973DD0042EC1E /* SYMyYunPaiShopViewController.xib */; };
 		B26BD0BC1FB97B220042EC1E /* SYYunPaiShopEditViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B26BD0BB1FB97B220042EC1E /* SYYunPaiShopEditViewController.m */; };
@@ -1572,6 +1573,7 @@
 		B21557341FB58AF300005BBE /* SYOrderCreatTimeTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SYOrderCreatTimeTableViewCell.xib; sourceTree = "<group>"; };
 		B221E1FD1FC6CEFE00869D3A /* SYGuangGaoWebViewViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SYGuangGaoWebViewViewController.h; sourceTree = "<group>"; };
 		B221E1FE1FC6CEFE00869D3A /* SYGuangGaoWebViewViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SYGuangGaoWebViewViewController.m; sourceTree = "<group>"; };
+		B24B7B4C1FFB6FA600808972 /* city的副本.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "city的副本.plist"; sourceTree = "<group>"; };
 		B26BD0B51FB973DD0042EC1E /* SYMyYunPaiShopViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SYMyYunPaiShopViewController.h; sourceTree = "<group>"; };
 		B26BD0B61FB973DD0042EC1E /* SYMyYunPaiShopViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SYMyYunPaiShopViewController.m; sourceTree = "<group>"; };
 		B26BD0B71FB973DD0042EC1E /* SYMyYunPaiShopViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SYMyYunPaiShopViewController.xib; sourceTree = "<group>"; };
@@ -2666,6 +2668,7 @@
 			isa = PBXGroup;
 			children = (
 				472B87D81E120210002DE70A /* city.plist */,
+				B24B7B4C1FFB6FA600808972 /* city的副本.plist */,
 				472B87F21E13D66A002DE70A /* SYAddressModel.h */,
 				472B87F31E13D66A002DE70A /* SYAddressModel.m */,
 				4783B7C81E11478F00EBCEF5 /* SYAddressViewController.h */,
@@ -3579,6 +3582,7 @@
 				47114FB51E46B60B00DCE3C4 /* btn_unselected.png in Resources */,
 				472B87F91E13D9EB002DE70A /* SYAddToAddressViewController.xib in Resources */,
 				47563EAC1E1DDC6B00BE9961 /* SYChangePasswordViewController.xib in Resources */,
+				B24B7B4D1FFB6FA700808972 /* city的副本.plist in Resources */,
 				B20FD2301FBAC08100848FC5 /* SYYunPaiShiCommentTableViewCell.xib in Resources */,
 				47FE49761E14ED4C0028A37F /* SYCloudTableViewCell.xib in Resources */,
 				474C566B1E63CFF400C7A6AF /* SYMyAlbumInfosHeaderCollectionReusableView.xib in Resources */,

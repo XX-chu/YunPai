@@ -291,17 +291,8 @@
         cell.shangpinName.text = _shangpinName;
         cell.priceLabel.text = _danjia;
         cell.numLabel.text = [NSString stringWithFormat:@"x%ld",self.selecteCount];
-        cell.totalNumLabel.text = [NSString stringWithFormat:@"共%ld件商品",self.selecteCount];
         cell.shangpinShuxingLabel.text = _shangpinShuxing;
-        NSString *str = [NSString stringWithFormat:@"合计:%@(含快递¥%@)",_heji,_kuaidi];
-        NSMutableAttributedString *attStr = [[NSMutableAttributedString alloc] initWithString:str];
-        NSArray *arr = [str componentsSeparatedByString:@"("];
-        [attStr addAttribute:NSFontAttributeName value:[UIFont systemFontOfSize:16] range:NSMakeRange(0, [arr[0] length])];
-        [attStr addAttribute:NSForegroundColorAttributeName value:HexRGB(0xff8401) range:NSMakeRange(0, [arr[0] length])];
-        [attStr addAttribute:NSFontAttributeName value:[UIFont systemFontOfSize:16] range:NSMakeRange([arr[0] length], [arr[1] length] + 1)];
-        [attStr addAttribute:NSForegroundColorAttributeName value:HexRGB(0x939393) range:NSMakeRange([arr[0] length], [arr[1] length] + 1)];
-        cell.hejiLabel.attributedText = attStr;
-        
+
         return cell;
         
     

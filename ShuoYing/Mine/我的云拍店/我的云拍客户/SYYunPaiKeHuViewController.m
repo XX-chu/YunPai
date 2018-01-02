@@ -76,6 +76,8 @@
     [self setLabelView];
     
     [self setChildViewControllers];
+    
+    [self getYuyueUnreadMessageCount];
 }
 
 - (void)orderState:(UIButton *)btn{
@@ -153,14 +155,14 @@
         
         if (self.unreadMsgDic.count > 0) {
             if (i > 0) {
-                NSString *value = [[self.unreadMsgDic objectForKey:[NSString stringWithFormat:@"c%d",i]] stringValue];
+                NSString *value = [[self.unreadMsgDic objectForKey:[NSString stringWithFormat:@"state%d",i + 2]] stringValue];
                 if (![value isEqualToString:@"0"]) {
                     btn.badgeValue = value;
                 }
                 btn.badgePadding = 1;
-                btn.badgeFont = [UIFont systemFontOfSize:14];
+                btn.badgeFont = [UIFont systemFontOfSize:12];
                 btn.badgeOriginX = (btn.frame.size.width - 45) / 2 + 45 - 10;
-                btn.badgeOriginY = 0;
+                btn.badgeOriginY = 7;
             }
         }
         [self.btnsArr addObject:btn];
@@ -196,6 +198,29 @@
         _btnsArr = [NSMutableArray arrayWithCapacity:0];
     }
     return _btnsArr;
+}
+
+- (void)getYuyueUnreadMessageCount{
+    NSString *url = [NSString stringWithFormat:@"%@%@",BaseUrl,@"/master/count.html"];
+    NSDictionary *param = @{@"token":UserToken};
+    
+    [[SYHttpRequest sharedInstance] getDataWithUrl:url Parameter:param ResponseObject:^(NSDictionary *responseResult) {
+        NSLog(@"未读消息 -- %@",responseResult);
+        
+        if ([responseResult objectForKey:@"resError"]) {
+            
+        }else{
+            if ([[responseResult objectForKey:@"result"] integerValue] == 1) {
+                if ([responseResult objectForKey:@"data"] && [[responseResult objectForKey:@"data"] isKindOfClass:[NSDictionary class]]) {
+                    self.unreadMsgDic = [responseResult objectForKey:@"data"];
+                    [self setLabelView];
+                }
+            }else{
+                if ([responseResult objectForKey:@"msg"] && ![[responseResult objectForKey:@"msg"] isKindOfClass:[NSNull class]]) {
+                }
+            }
+        }
+    }];
 }
 
 @end

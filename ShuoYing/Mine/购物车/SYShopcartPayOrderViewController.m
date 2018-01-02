@@ -78,7 +78,7 @@
                 NSInteger num = [shangpin.num integerValue];
                 NSInteger maxCount = [shangpin.num integerValue] * [shangpin.upimg integerValue];
                 NSInteger minCount = [shangpin.upimg integerValue];
-                NSString *tishi = [NSString stringWithFormat:@"您在“%@”相馆里的“%@”商品已选%ld张照片，您可以选择%d张定制%d个相同的产品，还可以选择%d张制作%d个不同的产品，请根据您的需求上传照片数量",shangjia.name, shangpin.title, (long)[shangpin.c_img integerValue], minCount, num, maxCount, num];
+                NSString *tishi = [NSString stringWithFormat:@"您在“%@”相馆里的“%@”商品已选%ld张照片，您可以选择%ld张定制%ld个相同的产品，还可以选择%ld张制作%ld个不同的产品，请根据您的需求上传照片数量",shangjia.name, shangpin.title, (long)[shangpin.c_img integerValue], minCount, num, maxCount, num];
                 
 //                NSString *tishi = [NSString stringWithFormat:@"您在%@、%@还有%ld照片没选择，请先选择完照片再提交订单",shangjia.name,shangpin.title,count];
                 LQPopUpView *popUpView = [[LQPopUpView alloc] initWithTitle:@"提示" message:tishi];
@@ -419,7 +419,7 @@
     if (section == 0) {
         return 14;
     }else{
-        return 60 + 50;
+        return 80 + 50;
     }
 }
 
@@ -433,6 +433,7 @@
         float kuaidi = [[dic objectForKey:@"kuaidi"] floatValue];
         NSInteger num = [[dic objectForKey:@"num"] integerValue];
         float heji = [[dic objectForKey:@"heji"] floatValue];
+        float zongjia = heji - kuaidi;
         UIView *view = [[UIView alloc] init];
         view.backgroundColor = RGB(248, 248, 248);
         
@@ -448,33 +449,56 @@
         
         [view2 addSubview:self.liuyanTF];
         
-        UIView *view1 = [[UIView alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(view2.frame) + 1, kScreenWidth, 46)];
-        view1.backgroundColor = [UIColor whiteColor];
+        //设置商品总价 运费 合计
         
-        UILabel *label1 = [[UILabel alloc] initWithFrame:CGRectMake(14, 14, (kScreenWidth - 28) / 3, 15)];
-        label1.text = [NSString stringWithFormat:@"共%ld件商品",num];
-        label1.font = [UIFont systemFontOfSize:14];
-        label1.textColor = HexRGB(0x434343);
-        label1.textAlignment = NSTextAlignmentLeft;
-        [view1 addSubview:label1];
+        UIView *downView = [[UIView alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(view2.frame), kScreenWidth, 80)];
+        downView.backgroundColor = [UIColor whiteColor];
         
-        UILabel *label2 = [[UILabel alloc] initWithFrame:CGRectMake(CGRectGetMaxX(label1.frame), 14, (kScreenWidth - 28) / 3, 17)];
-        label2.text = [NSString stringWithFormat:@"合计:¥%.2f",heji];
-        label2.font = [UIFont systemFontOfSize:14];
-        label2.textColor = HexRGB(0xff8501);
-        label2.textAlignment = NSTextAlignmentCenter;
-        [view1 addSubview:label2];
+        UILabel *allPrice = [[UILabel alloc] initWithFrame:CGRectMake(14, 9.5, 55, 13)];
+        allPrice.text = @"商品总价";
+        allPrice.textColor = HexRGB(0x999999);
+        allPrice.textAlignment = NSTextAlignmentLeft;
+        allPrice.font = [UIFont systemFontOfSize:12];
+        [downView addSubview:allPrice];
+        
+        UILabel *allPriceRight = [[UILabel alloc] initWithFrame:CGRectMake(CGRectGetMaxX(allPrice.frame), 9.5, kScreenWidth - 28 - allPrice.frame.size.width, 13)];
+        allPriceRight.text = [NSString stringWithFormat:@"¥%.2f",zongjia];
+        allPriceRight.textColor = HexRGB(0x999999);
+        allPriceRight.textAlignment = NSTextAlignmentRight;
+        allPriceRight.font = [UIFont systemFontOfSize:12];
+        [downView addSubview:allPriceRight];
+        
+        UILabel *yunfei = [[UILabel alloc] initWithFrame:CGRectMake(14, 9.5 + CGRectGetMaxY(allPrice.frame), 55, 13)];
+        yunfei.text = @"运费";
+        yunfei.textColor = HexRGB(0x999999);
+        yunfei.textAlignment = NSTextAlignmentLeft;
+        yunfei.font = [UIFont systemFontOfSize:12];
+        [downView addSubview:yunfei];
+        
+        UILabel *yunfeiRight = [[UILabel alloc] initWithFrame:CGRectMake(CGRectGetMaxX(yunfei.frame), 9.5 + CGRectGetMaxY(allPriceRight.frame), kScreenWidth - 28 - allPrice.frame.size.width, 13)];
+        yunfeiRight.text = [NSString stringWithFormat:@"¥%.2f",kuaidi];
+        yunfeiRight.textColor = HexRGB(0x999999);
+        yunfeiRight.textAlignment = NSTextAlignmentRight;
+        yunfeiRight.font = [UIFont systemFontOfSize:12];
+        [downView addSubview:yunfeiRight];
+        
+        UILabel *hejilabel = [[UILabel alloc] initWithFrame:CGRectMake(14, 9.5 + CGRectGetMaxY(yunfei.frame), 55, 16)];
+        hejilabel.text = @"合计";
+        hejilabel.textColor = HexRGB(0xff6b00);
+        hejilabel.textAlignment = NSTextAlignmentLeft;
+        hejilabel.font = [UIFont systemFontOfSize:15];
+        [downView addSubview:hejilabel];
         
         
-        UILabel *label3 = [[UILabel alloc] initWithFrame:CGRectMake(CGRectGetMaxX(label2.frame), 14, (kScreenWidth - 28) / 3, 17)];
-        label3.text = [NSString stringWithFormat:@"快递:¥%.2f",kuaidi];
-        label3.font = [UIFont systemFontOfSize:12];
-        label3.textColor = HexRGB(0x939393);
-        label3.textAlignment = NSTextAlignmentRight;
-        [view1 addSubview:label3];
+        UILabel *hejiRight = [[UILabel alloc] initWithFrame:CGRectMake(CGRectGetMaxX(hejilabel.frame), 9.5 + CGRectGetMaxY(yunfeiRight.frame), kScreenWidth - 28 - hejilabel.frame.size.width, 13)];
+        hejiRight.text = [NSString stringWithFormat:@"¥%.2f",heji];
 
-        [view addSubview:view1];
+        hejiRight.textColor = HexRGB(0xff6b00);
+        hejiRight.textAlignment = NSTextAlignmentRight;
+        hejiRight.font = [UIFont systemFontOfSize:15];
+        [downView addSubview:hejiRight];
         
+        [view addSubview:downView];
         return view;
     }
 }

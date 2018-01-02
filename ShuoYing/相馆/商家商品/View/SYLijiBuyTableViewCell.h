@@ -14,8 +14,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *shangpinName;
 @property (weak, nonatomic) IBOutlet UILabel *priceLabel;
 @property (weak, nonatomic) IBOutlet UILabel *numLabel;
-@property (weak, nonatomic) IBOutlet UILabel *totalNumLabel;
-@property (weak, nonatomic) IBOutlet UILabel *hejiLabel;
+
 @property (weak, nonatomic) IBOutlet UILabel *shangpinShuxingLabel;
 
 @property (weak, nonatomic) IBOutlet UIView *selectePhotoView;

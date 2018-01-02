@@ -399,17 +399,10 @@
         cell.priceLabel.text = _danjia;
 
         cell.numLabel.text = [NSString stringWithFormat:@"x%ld",self.selecteCount];
-        cell.totalNumLabel.text = [NSString stringWithFormat:@"共%ld件商品",self.selecteCount];
+        
         cell.shangpinShuxingLabel.text = _shangpinShuxing;
         
-        NSString *str = [NSString stringWithFormat:@"合计:¥%@(含快递¥%@)",_heji,_kuaidi];
-        NSMutableAttributedString *attStr = [[NSMutableAttributedString alloc] initWithString:str];
-        NSArray *arr = [str componentsSeparatedByString:@"("];
-        [attStr addAttribute:NSFontAttributeName value:[UIFont systemFontOfSize:16] range:NSMakeRange(0, [arr[0] length])];
-        [attStr addAttribute:NSForegroundColorAttributeName value:HexRGB(0xff8401) range:NSMakeRange(0, [arr[0] length])];
-        [attStr addAttribute:NSFontAttributeName value:[UIFont systemFontOfSize:16] range:NSMakeRange([arr[0] length], [arr[1] length] + 1)];
-        [attStr addAttribute:NSForegroundColorAttributeName value:HexRGB(0x939393) range:NSMakeRange([arr[0] length], [arr[1] length] + 1)];
-        cell.hejiLabel.attributedText = attStr;
+
         //选择照片按钮的事件方法
         [cell.selectePhotoBtn addTarget:self action:@selector(selectePhotoAction:) forControlEvents:UIControlEventTouchUpInside];
         
@@ -472,9 +465,9 @@
             return 75;
         }
         if ([_upimg integerValue] == 0) {
-            return 151;
+            return 105;
         }
-        return 197;
+        return 151;
     }
     return 0;
 }
@@ -493,7 +486,7 @@
 }
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
     if (self.dataSourceDic.count > 0) {
-        //线上
+        
         if (section == 0) {
             return nil;
         }
@@ -525,7 +518,7 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section{
     if (section == 1) {
-        return 50;
+        return 130;
     }
     return 0.00001f;
 }
@@ -542,8 +535,91 @@
         label.font = [UIFont systemFontOfSize:14];
         label.textColor = HexRGB(0x3f3f3f);
         [view addSubview:label];
-        
         [view addSubview:self.liuyanTF];
+        
+        UIView *lineView1 = [[UIView alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(label.frame), kScreenWidth, 1)];
+        lineView1.backgroundColor = HexRGB(0xeaeaea);
+        [view addSubview:lineView1];
+        //设置商品总价 运费 合计
+        
+        NSArray *data = [self.dataSourceDic objectForKey:@"data"];
+        NSDictionary *dic = nil;
+        if (data.count > 0) {
+            dic = data[0];
+        }
+        
+        UIView *downView = [[UIView alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(lineView1.frame), kScreenWidth, 80)];
+        
+        UILabel *allPrice = [[UILabel alloc] initWithFrame:CGRectMake(14, 9.5, 55, 13)];
+        allPrice.text = @"商品总价";
+        allPrice.textColor = HexRGB(0x999999);
+        allPrice.textAlignment = NSTextAlignmentLeft;
+        allPrice.font = [UIFont systemFontOfSize:12];
+        [downView addSubview:allPrice];
+        
+        UILabel *allPriceRight = [[UILabel alloc] initWithFrame:CGRectMake(CGRectGetMaxX(allPrice.frame), 9.5, kScreenWidth - 28 - allPrice.frame.size.width, 13)];
+        if (_danjia) {
+            allPriceRight.text = [NSString stringWithFormat:@"¥%.2f",[_danjia floatValue] * self.selecteCount];
+        }else{
+            allPriceRight.text = @"";
+        }
+        allPriceRight.textColor = HexRGB(0x999999);
+        allPriceRight.textAlignment = NSTextAlignmentRight;
+        allPriceRight.font = [UIFont systemFontOfSize:12];
+        [downView addSubview:allPriceRight];
+        
+        UILabel *yunfei = [[UILabel alloc] initWithFrame:CGRectMake(14, 9.5 + CGRectGetMaxY(allPrice.frame), 55, 13)];
+        yunfei.text = @"运费";
+        yunfei.textColor = HexRGB(0x999999);
+        yunfei.textAlignment = NSTextAlignmentLeft;
+        yunfei.font = [UIFont systemFontOfSize:12];
+        [downView addSubview:yunfei];
+        
+        UILabel *yunfeiRight = [[UILabel alloc] initWithFrame:CGRectMake(CGRectGetMaxX(yunfei.frame), 9.5 + CGRectGetMaxY(allPriceRight.frame), kScreenWidth - 28 - allPrice.frame.size.width, 13)];
+        if (_danjia) {
+            float free = [(NSNumber *)[dic objectForKey:@"free"] floatValue] / 100;
+            float express = [(NSNumber *)[dic objectForKey:@"express"] floatValue] / 100;
+            if ([_danjia floatValue] * self.selecteCount >= free) {
+                yunfeiRight.text = @"¥0.00";
+            }else{
+                yunfeiRight.text = [NSString stringWithFormat:@"¥%.2f",express];
+            }
+        }else{
+            yunfeiRight.text = @"";
+        }
+        
+        
+        yunfeiRight.textColor = HexRGB(0x999999);
+        yunfeiRight.textAlignment = NSTextAlignmentRight;
+        yunfeiRight.font = [UIFont systemFontOfSize:12];
+        [downView addSubview:yunfeiRight];
+        
+        UILabel *heji = [[UILabel alloc] initWithFrame:CGRectMake(14, 9.5 + CGRectGetMaxY(yunfei.frame), 55, 16)];
+        heji.text = @"合计";
+        heji.textColor = HexRGB(0xff6b00);
+        heji.textAlignment = NSTextAlignmentLeft;
+        heji.font = [UIFont systemFontOfSize:15];
+        [downView addSubview:heji];
+        
+        
+        UILabel *hejiRight = [[UILabel alloc] initWithFrame:CGRectMake(CGRectGetMaxX(heji.frame), 9.5 + CGRectGetMaxY(yunfeiRight.frame), kScreenWidth - 28 - heji.frame.size.width, 13)];
+        if (_heji && _kuaidi) {
+            float free = [(NSNumber *)[dic objectForKey:@"free"] floatValue] / 100;
+            float express = [(NSNumber *)[dic objectForKey:@"express"] floatValue] / 100;
+            if ([_danjia floatValue] * self.selecteCount >= free) {
+                hejiRight.text = [NSString stringWithFormat:@"¥%.2f",[_danjia floatValue] * self.selecteCount];
+            }else{
+                hejiRight.text = [NSString stringWithFormat:@"¥%.2f",[_danjia floatValue] * self.selecteCount + express];
+            }
+        }else{
+            hejiRight.text = @"";
+        }
+        hejiRight.textColor = HexRGB(0xff6b00);
+        hejiRight.textAlignment = NSTextAlignmentRight;
+        hejiRight.font = [UIFont systemFontOfSize:15];
+        [downView addSubview:hejiRight];
+        
+        [view addSubview:downView];
     }
     return view;
 }
