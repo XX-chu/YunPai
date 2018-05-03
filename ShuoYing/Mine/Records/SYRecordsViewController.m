@@ -30,11 +30,9 @@
     _count = 1;
     self.title = @"交易记录";
     self.view.backgroundColor = BackGroundColor;
-    
-    [self getData];
+    [self.view addSubview:self.tableView];
+    [self.tableView.mj_header beginRefreshing];
 }
-
-#pragma mark - getDataFaildLoadView
 
 #pragma mark - NetworkRequest
 - (void)getData{
@@ -62,12 +60,11 @@
                     if (self.dataSourceArr.count > 0) {
 //                        [self.tableView removeFromSuperview];
                         [self.getDataFaildLabel removeFromSuperview];
-                        [self.view addSubview:self.tableView];
                     }else{
-                        [self.tableView removeFromSuperview];
                         [self.view addSubview:self.getDataFaildLabel];
                     }
                 }
+                [self.tableView reloadData];
                 
             }else{
                 if ([responseResult objectForKey:@"msg"]) {
@@ -147,7 +144,7 @@
 #pragma mark - layzLoad
 - (UITableView *)tableView{
     if (!_tableView) {
-        _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, kTableViewHeight) style:UITableViewStylePlain];
+        _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, kScreenHeight - kNavigationBarHeightAndStatusBarHeight) style:UITableViewStylePlain];
         _tableView.delegate = self;
         _tableView.dataSource = self;
         _tableView.showsVerticalScrollIndicator = NO;

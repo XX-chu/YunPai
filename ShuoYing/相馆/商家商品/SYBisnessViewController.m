@@ -325,10 +325,24 @@ self.navigationController.navigationBar.shadowImage = [UIImage imageWithColor:Na
         label.numberOfLines = 0;
         CGSize maxSize = [label sizeThatFits:CGSizeMake(label.frame.size.width, MAXFLOAT)];
         CGFloat pictureHeight = (kScreenWidth - 65 - 14 - 26) / 3;
+        
+        NSString *reply = [NSString stringWithFormat:@"商家回复:%@",model.reply];
+        UILabel *reply_label = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth - 80, 0)];
+        reply_label.text = reply;
+        reply_label.font = [UIFont systemFontOfSize:14];
+        reply_label.numberOfLines = 0;
+        CGSize reply_maxSize = [reply_label sizeThatFits:CGSizeMake(label.frame.size.width, MAXFLOAT)];
+        
         if (model.img_200.count > 0) {
+            if (model.reply.length > 0) {
+                return 140 + pictureHeight + maxSize.height + reply_maxSize.height;
+            }
             return 130 + pictureHeight + maxSize.height;
         }else{
-            return 130 + maxSize.height;
+            if (model.reply.length > 0) {
+                return 130 + maxSize.height + reply_maxSize.height;
+            }
+            return 120 + maxSize.height;
         }
         
     }

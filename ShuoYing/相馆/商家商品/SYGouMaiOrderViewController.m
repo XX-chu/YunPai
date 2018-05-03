@@ -141,12 +141,30 @@
     }
     
     if ([shangpin.upimg integerValue] * [shangpin.num integerValue] == [shangpin.c_img integerValue] || [shangpin.upimg integerValue] == [shangpin.c_img integerValue]) {
-        
-        [self creatOrder];
-        
+        if ([self.addressModel.zone rangeOfString:@"北京"].location !=NSNotFound) {
+            NSString *message = @"亲爱的用户，因快递公司原因送至北京地区的商品可能会延期到达，给您带来的不便敬请谅解";
+            __weak typeof(self)weakself = self;
+            LQPopUpView *popUpView = [[LQPopUpView alloc] initWithTitle:@"温馨提示" message:message];
+            popUpView.frame = CGRectMake(0, 0, kScreenWidth, kScreenHeight - kNavigationBarHeightAndStatusBarHeight);
+            popUpView.btnStyleDefaultTextColor = NavigationColor;
+            [popUpView addBtnWithTitle:@"取消订单" type:LQPopUpBtnStyleDefault handler:^{
+                // do something...
+                [weakself.navigationController popViewControllerAnimated:YES];
+            }];
+            [popUpView addBtnWithTitle:@"继续购买" type:LQPopUpBtnStyleDefault handler:^{
+                // do something...
+                [self creatOrder];
+                
+            }];
+            
+            [popUpView showInView:self.view preferredStyle:0];
+        }else{
+            [self creatOrder];
+
+        }
+
     }else {
         
-        //        NSString *message = [NSString stringWithFormat:@"您在“%@”相馆里的“%@”商品还有照片没有选择，请先选择完照片再提交订单",_shangjiaModel.name, shangpin.title];
         NSInteger num = [shangpin.num integerValue];
         NSInteger maxCount = [shangpin.num integerValue] * [shangpin.upimg integerValue];
         NSInteger minCount = [shangpin.upimg integerValue];
@@ -165,30 +183,76 @@
 }
 
 - (void)creatOrder{
-    //生成订单
-    [SVProgressHUD show];
-    NSString *url = [NSString stringWithFormat:@"%@%@",BaseUrl,@"/store/createorder.html"];
+    __weak typeof(self)weakself = self;
+    if (_danjia) {
+        float price = [_danjia floatValue] * self.selecteCount;
 
-    NSDictionary *param = @{@"token":UserToken, @"id":self.gouwucheID, @"addressid":self.addressModel.addressId, @"msg":self.liuyanTF.text};
-    [[SYHttpRequest sharedInstance] getDataWithUrl:url Parameter:param ResponseObject:^(NSDictionary *responseResult) {
-        [SVProgressHUD dismiss];
-        NSLog(@"生成订单 -- %@",responseResult);
-        if ([responseResult objectForKey:@"resError"]) {
-            
-        }else{
-            if ([[responseResult objectForKey:@"result"] integerValue] == 1) {
+        if (price < 10.0) {
+            NSString *message = @"亲！新会员前三个订单免运费。加入购物车一起支付，每单超过10元还免运费哦！";
+            LQPopUpView *popUpView = [[LQPopUpView alloc] initWithTitle:@"温馨提示" message:message];
+            popUpView.frame = CGRectMake(0, 0, kScreenWidth, kScreenHeight - kNavigationBarHeightAndStatusBarHeight);
+            popUpView.btnStyleDefaultTextColor = NavigationColor;
+            [popUpView addBtnWithTitle:@"加入购物车" type:LQPopUpBtnStyleDefault handler:^{
+                // do something...
+                [weakself showHint:@"加入购物车成功"];
+            }];
+            [popUpView addBtnWithTitle:@"现在支付" type:LQPopUpBtnStyleDefault handler:^{
+                // do something...
+                //生成订单
+                [SVProgressHUD show];
+                NSString *url = [NSString stringWithFormat:@"%@%@",BaseUrl,@"/store/createorder.html"];
                 
-                SYOrderInfosViewController *orderInfos = [[SYOrderInfosViewController alloc] init];
-                orderInfos.param = @{@"id":[responseResult objectForKey:@"order"], @"token":UserToken, @"state":@1};
-                orderInfos.type = OrderTypeWeiFuKuan;
-                [self.navigationController pushViewController:orderInfos animated:YES];
-            }else{
-                if ([responseResult objectForKey:@"msg"]) {
-                    [self showHint:[responseResult objectForKey:@"msg"]];
+                NSDictionary *param = @{@"token":UserToken, @"id":self.gouwucheID, @"addressid":self.addressModel.addressId, @"msg":self.liuyanTF.text};
+                [[SYHttpRequest sharedInstance] getDataWithUrl:url Parameter:param ResponseObject:^(NSDictionary *responseResult) {
+                    [SVProgressHUD dismiss];
+                    NSLog(@"生成订单 -- %@",responseResult);
+                    if ([responseResult objectForKey:@"resError"]) {
+                        
+                    }else{
+                        if ([[responseResult objectForKey:@"result"] integerValue] == 1) {
+                            
+                            SYOrderInfosViewController *orderInfos = [[SYOrderInfosViewController alloc] init];
+                            orderInfos.param = @{@"id":[responseResult objectForKey:@"order"], @"token":UserToken, @"state":@1};
+                            orderInfos.type = OrderTypeWeiFuKuan;
+                            [weakself.navigationController pushViewController:orderInfos animated:YES];
+                        }else{
+                            if ([responseResult objectForKey:@"msg"]) {
+                                [weakself showHint:[responseResult objectForKey:@"msg"]];
+                            }
+                        }
+                    }
+                }];
+            }];
+            
+            [popUpView showInView:self.view preferredStyle:0];
+        }else{
+            //生成订单
+            [SVProgressHUD show];
+            NSString *url = [NSString stringWithFormat:@"%@%@",BaseUrl,@"/store/createorder.html"];
+            
+            NSDictionary *param = @{@"token":UserToken, @"id":self.gouwucheID, @"addressid":self.addressModel.addressId, @"msg":self.liuyanTF.text};
+            [[SYHttpRequest sharedInstance] getDataWithUrl:url Parameter:param ResponseObject:^(NSDictionary *responseResult) {
+                [SVProgressHUD dismiss];
+                NSLog(@"生成订单 -- %@",responseResult);
+                if ([responseResult objectForKey:@"resError"]) {
+                    
+                }else{
+                    if ([[responseResult objectForKey:@"result"] integerValue] == 1) {
+                        
+                        SYOrderInfosViewController *orderInfos = [[SYOrderInfosViewController alloc] init];
+                        orderInfos.param = @{@"id":[responseResult objectForKey:@"order"], @"token":UserToken, @"state":@1};
+                        orderInfos.type = OrderTypeWeiFuKuan;
+                        [self.navigationController pushViewController:orderInfos animated:YES];
+                    }else{
+                        if ([responseResult objectForKey:@"msg"]) {
+                            [self showHint:[responseResult objectForKey:@"msg"]];
+                        }
+                    }
                 }
-            }
+            }];
         }
-    }];
+    }
+    
 }
 
 - (void)seletePaytypeWithOrderid:(NSNumber *)orderid{

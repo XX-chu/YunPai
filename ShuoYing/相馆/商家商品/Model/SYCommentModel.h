@@ -24,6 +24,8 @@
 
 @property (nonatomic, copy) NSString *head;
 
+@property (nonatomic, copy) NSString *reply;
+
 @property (nonatomic, strong) NSNumber *wu;
 
 @property (nonatomic, strong) NSArray *img_200;

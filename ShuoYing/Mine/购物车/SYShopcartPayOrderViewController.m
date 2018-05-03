@@ -92,9 +92,29 @@
             }
         }
     }
+    __weak typeof(self)weakself = self;
+
+    if ([self.addressModel.zone rangeOfString:@"北京"].location !=NSNotFound) {
+        NSString *message = @"亲爱的用户，因快递公司原因送至北京地区的商品可能会延期到达，给您带来的不便敬请谅解";
+        LQPopUpView *popUpView = [[LQPopUpView alloc] initWithTitle:@"温馨提示" message:message];
+        popUpView.frame = CGRectMake(0, 0, kScreenWidth, kScreenHeight - kNavigationBarHeightAndStatusBarHeight);
+        popUpView.btnStyleDefaultTextColor = NavigationColor;
+        [popUpView addBtnWithTitle:@"取消订单" type:LQPopUpBtnStyleDefault handler:^{
+            // do something...
+            [weakself.navigationController popViewControllerAnimated:YES];
+        }];
+        [popUpView addBtnWithTitle:@"继续购买" type:LQPopUpBtnStyleDefault handler:^{
+            // do something...
+            //生成订单
+            [weakself alipy];
+        }];
+        
+        [popUpView showInView:self.view preferredStyle:0];
+    }else{
+        //生成订单
+        [weakself alipy];
+    }
     
-    //生成订单
-    [self alipy];
 }
 
 - (void)alipy{

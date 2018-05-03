@@ -339,7 +339,7 @@
 - (void)shareImageToPlatformType:(UMSocialPlatformType)platformType
 {
     //分享的内容
-    NSString *url = [NSString stringWithFormat:@"http://app.yunxiangguan.cn/photoShow02.html?id=%@&history=index&app=app",_currentCloudModel.ID];
+    NSString *url = [NSString stringWithFormat:@"http://m.yunxiangguan.cn/photoShow02.html?id=%@&history=index&app=app",_currentCloudModel.ID];
     NSString *title = [NSString stringWithFormat:@"来自%@【龙果云拍】的精彩分享",_currentCloudModel.nick];
     UIImage *image = [[SDImageCache sharedImageCache] imageFromCacheForKey:[NSString stringWithFormat:@"%@%@",ImgUrl,_currentCloudModel.head]];
     //创建分享消息对象

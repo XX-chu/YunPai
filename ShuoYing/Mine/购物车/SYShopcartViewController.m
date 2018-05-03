@@ -28,6 +28,8 @@
     UIButton *_editQuanXuanBtn;
     UIButton *_editDeleteBtn;
     UIView *_editBottomView;
+    
+    UIButton *_rightItemBtn;
 }
 
 @property (nonatomic, strong) UITableView *tableView;
@@ -44,6 +46,9 @@
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     NSLog(@"self.dataSourceArr - %@",self.dataSourceArr);
+    _isEdit = NO;
+    _bottomSelected = NO;
+    _editBottomSelected = NO;
     [self.tableView.mj_header beginRefreshing];
 
 }
@@ -52,27 +57,24 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.title = @"购物车";
-    _isEdit = NO;
-    _bottomSelected = NO;
-    _editBottomSelected = NO;
+    
     _count = 1;
     [self.view addSubview:self.tableView];
 }
 
 - (UIBarButtonItem *)rightItem{
-    if (!_rightItem) {
-        UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
-        btn.frame = CGRectMake(0, 0, 40, kNavigationBarHeightAndStatusBarHeight);
-        [btn setTitle:@"编辑" forState:UIControlStateNormal];
-        [btn setTitle:@"完成" forState:UIControlStateSelected];
-        
-        [btn setAdjustsImageWhenHighlighted:NO];
-        btn.titleLabel.font = [UIFont systemFontOfSize:15];
-        [btn addTarget:self action:@selector(editShopCart:) forControlEvents:UIControlEventTouchUpInside];
-        UIBarButtonItem *item = [[UIBarButtonItem alloc] initWithCustomView:btn];
-        //    self.navigationItem.rightBarButtonItem = item;
-        _rightItem = item;
-    }
+    UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
+    btn.frame = CGRectMake(0, 0, 40, kNavigationBarHeightAndStatusBarHeight);
+    [btn setTitle:@"编辑" forState:UIControlStateNormal];
+    [btn setTitle:@"完成" forState:UIControlStateSelected];
+    
+    [btn setAdjustsImageWhenHighlighted:NO];
+    btn.titleLabel.font = [UIFont systemFontOfSize:15];
+    [btn addTarget:self action:@selector(editShopCart:) forControlEvents:UIControlEventTouchUpInside];
+    _rightItemBtn = btn;
+    UIBarButtonItem *item = [[UIBarButtonItem alloc] initWithCustomView:btn];
+    //    self.navigationItem.rightBarButtonItem = item;
+    _rightItem = item;
     return _rightItem;
 }
 
@@ -420,7 +422,6 @@
             [_bottomQuanXuanBtn setImage:[UIImage imageNamed:@"gouwuche_icon_nor"] forState:UIControlStateNormal];
         }
     }
-    
     //计算结算的数量
     NSInteger jiesuanCount = 0;
     for (SYShopcartShangjiaModel *shangjia in self.dataSourceArr) {
@@ -731,8 +732,8 @@
             if ([[responseResult objectForKey:@"result"] integerValue] == 1) {
                 if ([responseResult objectForKey:@"data"]) {
                     NSArray *data = [responseResult objectForKey:@"data"];
+                    [self.dataSourceArr removeAllObjects];
                     if (data.count > 0) {
-                        [self.dataSourceArr removeAllObjects];
                         _editBottomSelected = NO;
                         for (NSDictionary *dic in data) {
                             NSMutableDictionary *muDic = [NSMutableDictionary dictionaryWithDictionary:dic];
@@ -745,8 +746,12 @@
                         [self.noThingView removeFromSuperview];
 //                        [self.view addSubview:self.tableView];
                         if (_isEdit) {
+                            [_editBottomView removeFromSuperview];
+                            _editBottomView = nil;
                             [self editBottom];
                         }else{
+                            [_bottomView removeFromSuperview];
+                            _bottomView = nil;
                             [self initBottomView];
                         }
                     }else{

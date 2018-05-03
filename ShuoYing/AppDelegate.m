@@ -18,6 +18,7 @@
 #import <AlipaySDK/AlipaySDK.h>
 #import "SplashScreenView.h"
 #import "SYGuangGaoWebViewViewController.h"
+
 @interface AppDelegate ()<WXApiDelegate, QTWelcomeDelegate>
 
 @end
@@ -125,7 +126,6 @@
         [application registerForRemoteNotifications];
     }
     [self getQiDongGuangGao];
-    
     [self.window makeKeyAndVisible];
     return YES;
 }
@@ -184,7 +184,7 @@
 - (void)configUSharePlatforms
 {
     /* 设置微信的appKey和appSecret */
-    [[UMSocialManager defaultManager] setPlaform:UMSocialPlatformType_WechatSession appKey:@"wx3fa3352427c88e20" appSecret:@"a6bb54e582292148c4ffcbb4776041e9" redirectURL:@"http://wap.yunxiangguan.cn"];
+    [[UMSocialManager defaultManager] setPlaform:UMSocialPlatformType_WechatSession appKey:@"wx3fa3352427c88e20" appSecret:@"a6bb54e582292148c4ffcbb4776041e9" redirectURL:@"http://m.yunxiangguan.cn"];
     /*
      * 移除相应平台的分享，如微信收藏
      */
@@ -193,7 +193,7 @@
     /* 设置分享到QQ互联的appID
      * U-Share SDK为了兼容大部分平台命名，统一用appKey和appSecret进行参数设置，而QQ平台仅需将appID作为U-Share的appKey参数传进即可。
      */
-    [[UMSocialManager defaultManager] setPlaform:UMSocialPlatformType_QQ appKey:@"1106027896"/*设置QQ平台的appID*/  appSecret:@"Of4GooloPT6LMeRp" redirectURL:@"http://wap.yunxiangguan.cn"];
+    [[UMSocialManager defaultManager] setPlaform:UMSocialPlatformType_QQ appKey:@"1106027896"/*设置QQ平台的appID*/  appSecret:@"Of4GooloPT6LMeRp" redirectURL:@"http://m.yunxiangguan.cn"];
     
     /* 设置新浪的appKey和appSecret */
 //    [[UMSocialManager defaultManager] setPlaform:UMSocialPlatformType_Sina appKey:@"3921700954"  appSecret:@"04b48b094faeb16683c32669824ebdad" redirectURL:@"https://sns.whalecloud.com/sina2/callback"];

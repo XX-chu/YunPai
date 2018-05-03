@@ -29,6 +29,8 @@
     NSArray *_bankArr;
     NSDictionary *_resultDic;
     SYUserInfos *_userInfos;
+    
+    NSString *_info;
 }
 
 @property (nonatomic, strong) UITableView *tableView;
@@ -52,10 +54,8 @@
     _haveSelecteIndex = 9999;
     self.title = @"提现";
     [self.view addSubview:self.tableView];
-    [self.tableView addSubview:self.nextBtn];
     [self getBank];
-    
-    
+    [self.view addSubview:self.nextBtn];
 }
 
 #pragma mark - PrivateMethod
@@ -103,7 +103,7 @@
         return;
     }
     
-    
+    [SVProgressHUD show];
     NSString *url = [NSString stringWithFormat:@"%@%@",BaseUrl,@"/my/take.html"];
     NSDictionary *param = @{@"token":UserToken, @"bank":[_bankArr[_haveSelecteIndex] objectForKey:@"id"], @"card":_cardIDTF.text, @"money":_moneyTF.text};
     [[SYHttpRequest sharedInstance] getDataWithUrl:url Parameter:param ResponseObject:^(NSDictionary *responseResult) {
@@ -114,7 +114,8 @@
         }else{
             if ([[responseResult objectForKey:@"result"] integerValue] == 1) {
                 
-                
+                [self showHint:[responseResult objectForKey:@"msg"]];
+
             }else{
                 if ([responseResult objectForKey:@"msg"]) {
                     [self showHint:[responseResult objectForKey:@"msg"]];
@@ -219,7 +220,8 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section{
     if (section == 2) {
-        return 30;
+        CGFloat height = [[Tool sharedInstance] heightForString:[NSString stringWithFormat:@"友情提示：%@",_info] andWidth:kScreenWidth fontSize:11];
+        return 15 + height;
     }
     return 0.0001f;
 }
@@ -247,11 +249,20 @@
         view.backgroundColor = BackGroundColor;
         
         UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(15, 7, kScreenWidth - 30, 15)];
-        label.text = @"友情提示：24小时内到账";
+        if (_info) {
+            label.text = [NSString stringWithFormat:@"友情提示：%@",_info];
+        }else{
+            label.text = @"友情提示：";
+        }
+        label.numberOfLines = 0;
         label.font = [UIFont systemFontOfSize:11];
         label.textColor = [UIColor redColor];
+        CGSize maxSize = [label sizeThatFits:CGSizeMake(kScreenWidth - 30, MAXFLOAT)];
+        label.frame = CGRectMake(15, 7, kScreenWidth - 30, maxSize.height);
         [view addSubview:label];
         
+//        self.nextBtn.frame = CGRectMake(15, CGRectGetMaxY(label.frame) + 7, kScreenWidth - 30, 44);
+//        [view addSubview:self.nextBtn];;
         return view;
     }
     return nil;
@@ -271,8 +282,8 @@
             _haveSelecteIndex = selectIndex;
         } selectValue:^(NSString *selectValue) {
             _selecteValue = selectValue;
-            NSIndexSet *set = [NSIndexSet indexSetWithIndex:0];
-            [self.tableView reloadSections:set withRowAnimation:UITableViewRowAnimationNone];
+
+            [self.tableView reloadData];
             
         } showCloseButton:NO];
         alert.haveSeletedIndex = _haveSelecteIndex;
@@ -320,6 +331,7 @@
             if ([[responseResult objectForKey:@"result"] integerValue] == 1) {
                 _bankArr = [responseResult objectForKey:@"data"];
                 _resultDic = responseResult;
+                _info = [responseResult objectForKey:@"info"];
                 [self.tableView reloadData];
             }else{
                 if ([responseResult objectForKey:@"msg"]) {
@@ -334,7 +346,7 @@
 #pragma mark - layzLoad
 - (UITableView *)tableView{
     if (!_tableView) {
-        _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, kTableViewHeight) style:UITableViewStyleGrouped];
+        _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, kScreenHeight - kNavigationBarHeightAndStatusBarHeight - 44) style:UITableViewStyleGrouped];
         _tableView.backgroundColor = RGB(249, 249, 249);
         _tableView.delegate = self;
         _tableView.dataSource = self;
@@ -345,13 +357,15 @@
 
 - (UIButton *)nextBtn{
     if (!_nextBtn) {
-        _nextBtn = [[UIButton alloc] initWithFrame:CGRectMake(15, 410, kScreenWidth - 30, 44)];
+//        _nextBtn = [[UIButton alloc] initWithFrame:CGRectMake(15, 410, kScreenWidth - 30, 44)];
+        _nextBtn = [[UIButton alloc] initWithFrame:CGRectMake(0, kScreenHeight - kNavigationBarHeightAndStatusBarHeight - 44, kScreenWidth, 44)];
+
         [_nextBtn setTitle:@"确认转出" forState:UIControlStateNormal];
         [_nextBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
         [_nextBtn setBackgroundImage:[UIImage imageWithColor:NavigationColor Size:_nextBtn.frame.size] forState:UIControlStateNormal];
         [_nextBtn setShowsTouchWhenHighlighted:NO];
-        _nextBtn.layer.cornerRadius = 5;
-        _nextBtn.layer.masksToBounds = YES;
+//        _nextBtn.layer.cornerRadius = 5;
+//        _nextBtn.layer.masksToBounds = YES;
         [_nextBtn addTarget:self action:@selector(nextAction:) forControlEvents:UIControlEventTouchUpInside];
     }
     return _nextBtn;

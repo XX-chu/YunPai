@@ -59,7 +59,7 @@
         
         viewController.navigationItem.hidesBackButton = YES;
         _backBtn = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 44, 44)];
-        [_backBtn setImageEdgeInsets:UIEdgeInsetsMake(0, -25, 0, 25)];
+        [_backBtn setImageEdgeInsets:UIEdgeInsetsMake(0, -15, 0, 15)];
         [_backBtn setImage:[UIImage imageNamed:@"wode_photo_gerenshezhi_fanhui"] forState:UIControlStateNormal];
         [_backBtn setAdjustsImageWhenHighlighted:NO];
         [_backBtn addTarget:self action:@selector(popAction) forControlEvents:UIControlEventTouchUpInside];

@@ -547,6 +547,14 @@
 		B274D6B61FBAC81300D37F51 /* SYYuYueViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B274D6B51FBAC81300D37F51 /* SYYuYueViewController.m */; };
 		B274D6BB1FBACF1500D37F51 /* SYYuYueTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B274D6B91FBACF1500D37F51 /* SYYuYueTableViewCell.m */; };
 		B274D6BC1FBACF1500D37F51 /* SYYuYueTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B274D6BA1FBACF1500D37F51 /* SYYuYueTableViewCell.xib */; };
+		B29D23942016D81D00284A27 /* SYTiXianJiluViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B29D23932016D81D00284A27 /* SYTiXianJiluViewController.m */; };
+		B29D23982016D87A00284A27 /* SYTiXianJiLuTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B29D23962016D87A00284A27 /* SYTiXianJiLuTableViewCell.m */; };
+		B29D23992016D87A00284A27 /* SYTiXianJiLuTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B29D23972016D87A00284A27 /* SYTiXianJiLuTableViewCell.xib */; };
+		B29D239C2016E8A800284A27 /* SYTiXianJiluDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B29D239B2016E8A800284A27 /* SYTiXianJiluDetailViewController.m */; };
+		B29D23A02016E98200284A27 /* SYTiXianJiLuStateTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B29D239E2016E98200284A27 /* SYTiXianJiLuStateTableViewCell.m */; };
+		B29D23A12016E98200284A27 /* SYTiXianJiLuStateTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B29D239F2016E98200284A27 /* SYTiXianJiLuStateTableViewCell.xib */; };
+		B29D23A52016E9BC00284A27 /* SYLeftRightTextTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B29D23A32016E9BC00284A27 /* SYLeftRightTextTableViewCell.m */; };
+		B29D23A62016E9BC00284A27 /* SYLeftRightTextTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B29D23A42016E9BC00284A27 /* SYLeftRightTextTableViewCell.xib */; };
 		B2E186FC1FB597C000DFD9EF /* SYMyFaBuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B2E186FB1FB597C000DFD9EF /* SYMyFaBuViewController.m */; };
 		B2EC94A01FAB0FA9008211D8 /* LSXPlacehoderTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = B2EC94961FAB0FA8008211D8 /* LSXPlacehoderTextView.m */; };
 		B2EC94A11FAB0FA9008211D8 /* UIColor+YMHex.m in Sources */ = {isa = PBXBuildFile; fileRef = B2EC94981FAB0FA8008211D8 /* UIColor+YMHex.m */; };
@@ -1599,6 +1607,19 @@
 		B274D6B81FBACF1500D37F51 /* SYYuYueTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SYYuYueTableViewCell.h; sourceTree = "<group>"; };
 		B274D6B91FBACF1500D37F51 /* SYYuYueTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SYYuYueTableViewCell.m; sourceTree = "<group>"; };
 		B274D6BA1FBACF1500D37F51 /* SYYuYueTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SYYuYueTableViewCell.xib; sourceTree = "<group>"; };
+		B29D23922016D81D00284A27 /* SYTiXianJiluViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SYTiXianJiluViewController.h; sourceTree = "<group>"; };
+		B29D23932016D81D00284A27 /* SYTiXianJiluViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SYTiXianJiluViewController.m; sourceTree = "<group>"; };
+		B29D23952016D87A00284A27 /* SYTiXianJiLuTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SYTiXianJiLuTableViewCell.h; sourceTree = "<group>"; };
+		B29D23962016D87A00284A27 /* SYTiXianJiLuTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SYTiXianJiLuTableViewCell.m; sourceTree = "<group>"; };
+		B29D23972016D87A00284A27 /* SYTiXianJiLuTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SYTiXianJiLuTableViewCell.xib; sourceTree = "<group>"; };
+		B29D239A2016E8A800284A27 /* SYTiXianJiluDetailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SYTiXianJiluDetailViewController.h; sourceTree = "<group>"; };
+		B29D239B2016E8A800284A27 /* SYTiXianJiluDetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SYTiXianJiluDetailViewController.m; sourceTree = "<group>"; };
+		B29D239D2016E98200284A27 /* SYTiXianJiLuStateTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SYTiXianJiLuStateTableViewCell.h; sourceTree = "<group>"; };
+		B29D239E2016E98200284A27 /* SYTiXianJiLuStateTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SYTiXianJiLuStateTableViewCell.m; sourceTree = "<group>"; };
+		B29D239F2016E98200284A27 /* SYTiXianJiLuStateTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SYTiXianJiLuStateTableViewCell.xib; sourceTree = "<group>"; };
+		B29D23A22016E9BC00284A27 /* SYLeftRightTextTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SYLeftRightTextTableViewCell.h; sourceTree = "<group>"; };
+		B29D23A32016E9BC00284A27 /* SYLeftRightTextTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SYLeftRightTextTableViewCell.m; sourceTree = "<group>"; };
+		B29D23A42016E9BC00284A27 /* SYLeftRightTextTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SYLeftRightTextTableViewCell.xib; sourceTree = "<group>"; };
 		B2E186FA1FB597C000DFD9EF /* SYMyFaBuViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SYMyFaBuViewController.h; sourceTree = "<group>"; };
 		B2E186FB1FB597C000DFD9EF /* SYMyFaBuViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SYMyFaBuViewController.m; sourceTree = "<group>"; };
 		B2EC94961FAB0FA8008211D8 /* LSXPlacehoderTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LSXPlacehoderTextView.m; sourceTree = "<group>"; };
@@ -2621,6 +2642,7 @@
 		4783B7B01E11381000EBCEF5 /* MyWallet */ = {
 			isa = PBXGroup;
 			children = (
+				B29D23912016D7FA00284A27 /* 提现记录 */,
 				4783B7B61E1138C900EBCEF5 /* SYMyWalletViewController.h */,
 				4783B7B71E1138C900EBCEF5 /* SYMyWalletViewController.m */,
 				4783B7B91E11399100EBCEF5 /* SYMyWalletTableViewCell.h */,
@@ -3313,6 +3335,26 @@
 			path = View;
 			sourceTree = "<group>";
 		};
+		B29D23912016D7FA00284A27 /* 提现记录 */ = {
+			isa = PBXGroup;
+			children = (
+				B29D23922016D81D00284A27 /* SYTiXianJiluViewController.h */,
+				B29D23932016D81D00284A27 /* SYTiXianJiluViewController.m */,
+				B29D23952016D87A00284A27 /* SYTiXianJiLuTableViewCell.h */,
+				B29D23962016D87A00284A27 /* SYTiXianJiLuTableViewCell.m */,
+				B29D23972016D87A00284A27 /* SYTiXianJiLuTableViewCell.xib */,
+				B29D239A2016E8A800284A27 /* SYTiXianJiluDetailViewController.h */,
+				B29D239B2016E8A800284A27 /* SYTiXianJiluDetailViewController.m */,
+				B29D239D2016E98200284A27 /* SYTiXianJiLuStateTableViewCell.h */,
+				B29D239E2016E98200284A27 /* SYTiXianJiLuStateTableViewCell.m */,
+				B29D239F2016E98200284A27 /* SYTiXianJiLuStateTableViewCell.xib */,
+				B29D23A22016E9BC00284A27 /* SYLeftRightTextTableViewCell.h */,
+				B29D23A32016E9BC00284A27 /* SYLeftRightTextTableViewCell.m */,
+				B29D23A42016E9BC00284A27 /* SYLeftRightTextTableViewCell.xib */,
+			);
+			path = "提现记录";
+			sourceTree = "<group>";
+		};
 		B2EC94951FAB0F6C008211D8 /* LSXInputAlertView */ = {
 			isa = PBXGroup;
 			children = (
@@ -3525,6 +3567,7 @@
 				470260C91E286A8400FE8921 /* SYGrapherInfosTableViewCell.xib in Resources */,
 				473A63851EAA056800D48E49 /* SYPhotoStudioHeaderOneCollectionReusableView.xib in Resources */,
 				B26BD0B91FB973DD0042EC1E /* SYMyYunPaiShopViewController.xib in Resources */,
+				B29D23A62016E9BC00284A27 /* SYLeftRightTextTableViewCell.xib in Resources */,
 				47215F351EB2123E00C99D0F /* SYGuiGeUpView.xib in Resources */,
 				47FE12441E175B0A00C5B569 /* FSActionSheet_cancel@3x.png in Resources */,
 				47EBE38A1EB0A4F7008F021A /* SYBusnessInfosTableViewCell.xib in Resources */,
@@ -3560,6 +3603,7 @@
 				47EC6E8F1E6FA0F200829A57 /* read_me.txt in Resources */,
 				47FE83961E1C8FF300781AAA /* SYRechargeMoneyTableViewCell.xib in Resources */,
 				B20C444F1FBC570F00EFAABD /* SYMyYuYueZhongTableViewCell.xib in Resources */,
+				B29D23992016D87A00284A27 /* SYTiXianJiLuTableViewCell.xib in Resources */,
 				47829FB51EB8B642003AE9ED /* CollectionFootView.xib in Resources */,
 				473738261E95E61C00D776E8 /* OrderPayTypeView.xib in Resources */,
 				47D7CF171E7D41890054E8D0 /* AlipaySDK.bundle in Resources */,
@@ -3636,6 +3680,7 @@
 				47351F2D1E666E9800B8DDFE /* SYUpdateToStudentCollectionReusableView.xib in Resources */,
 				473F73B11E5EB1FE0024C13C /* SYAddStudentToClassView.xib in Resources */,
 				47707D7B1F05EBF000667860 /* SYCommentViewController.xib in Resources */,
+				B29D23A12016E98200284A27 /* SYTiXianJiLuStateTableViewCell.xib in Resources */,
 				47215F3D1EB2169000C99D0F /* CollectionHeadView.xib in Resources */,
 				4783B7AF1E1115ED00EBCEF5 /* SYMineTableViewCell.xib in Resources */,
 				B26BD0C71FB981660042EC1E /* SYYuePaiPriceTableViewCell.xib in Resources */,
@@ -3863,6 +3908,7 @@
 				47D976E61EC2F8910071EBB1 /* SYAnnotationView.m in Sources */,
 				4783B7A71E10E82600EBCEF5 /* UIDevice+iPhoneModel.m in Sources */,
 				B2F7D7541FC513680064E495 /* XHDatePickerView.m in Sources */,
+				B29D23A02016E98200284A27 /* SYTiXianJiLuStateTableViewCell.m in Sources */,
 				4720BDB51EBC664300D4DCF2 /* CALayer+WebCache.m in Sources */,
 				47E591C41E2C7BA2009EEC30 /* SYPaymentInfosViewController.m in Sources */,
 				4720BE021EBC68F700D4DCF2 /* LWImageBrowserButton.m in Sources */,
@@ -3938,6 +3984,7 @@
 				47D7CF7F1E7D41E30054E8D0 /* RSADataSigner.m in Sources */,
 				B2F7D7551FC513680064E495 /* NSDate+Extension.m in Sources */,
 				4710BC481E24D795003CE8D8 /* SYPhotoGrapherSetPriceViewController.m in Sources */,
+				B29D23942016D81D00284A27 /* SYTiXianJiluViewController.m in Sources */,
 				473F56AE1E8E396500992F12 /* UIButton+Badge.m in Sources */,
 				473A638E1EAA0C2500D48E49 /* SYPhotoStudioHistoryCollectionViewCell.m in Sources */,
 				4720BDD91EBC664300D4DCF2 /* SDImageCache+Gallop.m in Sources */,
@@ -3997,6 +4044,7 @@
 				4720BDD31EBC664300D4DCF2 /* LWTextStorage.m in Sources */,
 				B20C444E1FBC570F00EFAABD /* SYMyYuYueZhongTableViewCell.m in Sources */,
 				47EBE38D1EB0AA88008F021A /* SYBusnessInfosModel.m in Sources */,
+				B29D239C2016E8A800284A27 /* SYTiXianJiluDetailViewController.m in Sources */,
 				4720BDD51EBC664300D4DCF2 /* LWTransactionGroup.m in Sources */,
 				47FE83901E1C8F7B00781AAA /* SYRechargeTableViewCell.m in Sources */,
 				47EAE44C1E30B79B00B19D84 /* SYJianJieViewController.m in Sources */,
@@ -4030,6 +4078,7 @@
 				4732E0D61E20B599005C4911 /* FTPopOverMenu.m in Sources */,
 				4748C1771E8FA7FD00844207 /* NoDataView.m in Sources */,
 				47D7CF7B1E7D41E30054E8D0 /* Order.m in Sources */,
+				B29D23A52016E9BC00284A27 /* SYLeftRightTextTableViewCell.m in Sources */,
 				B21557351FB58AF300005BBE /* SYOrderCreatTimeTableViewCell.m in Sources */,
 				4720BDFB1EBC68F700D4DCF2 /* LWActiveIncator.m in Sources */,
 				B20C44271FBC12D000EFAABD /* SYYuYueInfosViewController.m in Sources */,
@@ -4044,6 +4093,7 @@
 				47351F301E66AEC100B8DDFE /* SYUpdateToClassViewController.m in Sources */,
 				47114FDD1E46B61500DCE3C4 /* ToastUtils.m in Sources */,
 				B20FD2191FBAB85700848FC5 /* SYYunPaiKeHuViewController.m in Sources */,
+				B29D23982016D87A00284A27 /* SYTiXianJiLuTableViewCell.m in Sources */,
 				B20C44411FBC50E400EFAABD /* SYMyYiWanChengViewController.m in Sources */,
 				B2022FC71FB6DEB800F09219 /* SYMapViewController.m in Sources */,
 				47FE126A1E17A76700C5B569 /* SYDocumentarViewController.m in Sources */,

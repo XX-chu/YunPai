@@ -129,7 +129,7 @@
     if (!_labelView) {
         _labelView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, 40)];
         _labelView.backgroundColor = [UIColor whiteColor];
-        NSArray *arr = @[@"来自云拍圈", @"来自其他"];
+        NSArray *arr = @[@"云拍圈传送", @"会员传送"];
         for (int i = 0; i < arr.count; i++) {
             UIButton *btn = [[UIButton alloc] initWithFrame:CGRectMake((kScreenWidth / 2) * i, 0, kScreenWidth / 2, 39)];
             [btn setTitle:arr[i] forState:UIControlStateNormal];

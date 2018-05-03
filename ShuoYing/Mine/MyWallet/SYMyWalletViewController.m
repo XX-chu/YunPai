@@ -14,6 +14,7 @@
 #import "SYChongZhiViewController.h"
 #import "SYUserInfos.h"
 #import "SYIDViewController.h"
+#import "SYTiXianJiluViewController.h"
 @interface SYMyWalletViewController ()<UITableViewDelegate,UITableViewDataSource>
 
 {
@@ -50,7 +51,22 @@ static const CGFloat UpViewHeight = 150;;
 //        _moneyLabel.text = [NSString stringWithFormat:@"%.2f",[_userInfos.money floatValue] / 100];
 //    }else{
 //    }
+    [self setrightItem];
+}
+
+- (void)setrightItem{
+    UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
+    [btn setTitle:@"提现记录" forState:UIControlStateNormal];
+    btn.titleLabel.font = [UIFont systemFontOfSize:15];
+    [btn addTarget:self action:@selector(tixianAction:) forControlEvents:UIControlEventTouchUpInside];
     
+    UIBarButtonItem *item = [[UIBarButtonItem alloc] initWithCustomView:btn];
+    self.navigationItem.rightBarButtonItem = item;
+}
+
+- (void)tixianAction:(UIButton *)sender{
+    SYTiXianJiluViewController *tixian = [[SYTiXianJiluViewController alloc] init];
+    [self.navigationController pushViewController:tixian animated:YES];
 }
 
 //获取用户信息

@@ -62,7 +62,7 @@
     NSNumber *_uid;//回复的人的uid
     
     SYCloudModel *_currentCloudModel;
-
+    NSNumber *_photoID;
 }
 
 @property (nonatomic, strong) CLLocationManager *locationManager;
@@ -88,7 +88,7 @@
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     
-    self.tabBarController.navigationController.navigationBar.translucent = NO;
+//self.tabBarController.navigationController.navigationBar.translucent = NO;
     self.tabBarController.navigationItem.leftBarButtonItem = self.leftBarItem;
     self.tabBarController.navigationItem.rightBarButtonItem = self.rightBarItem;
     self.tabBarController.navigationItem.titleView = self.titleView;
@@ -97,13 +97,10 @@
         [self getUserInfos];
         [self getUnreadMessage];
     }
-    [self getGunDongMessage];
-
 }
 
 - (void)viewDidAppear:(BOOL)animated{
     [super viewDidAppear:animated];
-    [self.tableView reloadData];
 }
 
 - (void)viewWillDisappear:(BOOL)animated{
@@ -112,15 +109,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-    if (@available(iOS 11.0, *))
-    {
-        self.tableView.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
-    }
-    else
-    {
-        self.automaticallyAdjustsScrollViewInsets = NO;
-    }
+    _photoID = @1;
     
     self.page = 1;
     [self.view addSubview:self.tableView];
@@ -134,7 +123,8 @@
 //    [self getLocation];
     [self getAllLocation];
     [self initializeLocationService];
-    
+    [self getGunDongMessage];
+
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(loginOut) name:@"LoginOut" object:nil];
 }
 
@@ -243,24 +233,25 @@
                     break;
                 case 2222:
                 {
-                    SYMyReciveViewController *recive = [[SYMyReciveViewController alloc] init];
-                    [self.navigationController pushViewController:recive animated:YES];
+                    SYUpdateViewController *updateVC = [[SYUpdateViewController alloc] init];
+                    
+                    [self.navigationController pushViewController:updateVC animated:YES];
+                    
+                    
 
                 }
                     break;
                 case 3333:
                 {
-                    SYBisnessViewController *buiness = [[SYBisnessViewController alloc] init];
-                    buiness.photoID = @1;
-                    [self.navigationController pushViewController:buiness animated:YES];
-                    
+                    SYMyReciveViewController *recive = [[SYMyReciveViewController alloc] init];
+                    [self.navigationController pushViewController:recive animated:YES];
                 }
                     break;
                 case 4444:
                 {
-                    SYUpdateViewController *updateVC = [[SYUpdateViewController alloc] init];
-                    
-                    [self.navigationController pushViewController:updateVC animated:YES];
+                    SYBisnessViewController *buiness = [[SYBisnessViewController alloc] init];
+                    buiness.photoID = _photoID;
+                    [self.navigationController pushViewController:buiness animated:YES];
                     
                 }
                     break;
@@ -562,7 +553,7 @@
 - (void)shareImageToPlatformType:(UMSocialPlatformType)platformType
 {
     //分享的内容
-    NSString *url = [NSString stringWithFormat:@"http://app.yunxiangguan.cn/photoShow02.html?id=%@&history=index&app=app",_currentCloudModel.ID];
+    NSString *url = [NSString stringWithFormat:@"http://m.yunxiangguan.cn/photoShow02.html?id=%@&history=index&app=app",_currentCloudModel.ID];
     NSString *title = [NSString stringWithFormat:@"来自%@【龙果云拍】的精彩分享",_currentCloudModel.nick];
     UIImage *image = [[SDImageCache sharedImageCache] imageFromCacheForKey:[NSString stringWithFormat:@"%@%@",ImgUrl,_currentCloudModel.head]];
     //创建分享消息对象
@@ -1018,9 +1009,7 @@
                 [[Tool sharedInstance] saveObject:userinfos WithPath:[NSString stringWithFormat:@"%@",Mobile]];
                 
             }else{
-                if ([responseResult objectForKey:@"msg"]) {
-                    [self showHint:[responseResult objectForKey:@"msg"]];
-                }
+                
             }
         }
     }];
@@ -1045,6 +1034,12 @@
             
         }else{
             if ([[responseResult objectForKey:@"result"] integerValue] == 1) {
+                if ([responseResult objectForKey:@"store"]) {
+                    NSDictionary *store = [responseResult objectForKey:@"store"];
+                    if ([store objectForKey:@"id"]) {
+                        _photoID = (NSNumber *)[store objectForKey:@"id"];
+                    }
+                }
                 if ([responseResult objectForKey:@"count"]) {
                     NSInteger count = [[responseResult objectForKey:@"count"] integerValue];
                     
@@ -1058,9 +1053,7 @@
                 }
                 
             }else{
-                if ([responseResult objectForKey:@"msg"]) {
-                    [self showHint:[responseResult objectForKey:@"msg"]];
-                }
+                
             }
         }
     }];

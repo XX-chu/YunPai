@@ -41,9 +41,14 @@
 
 @property (weak, nonatomic) IBOutlet UIView *pinglunPictureView;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *pinglunPictureConstraintHeight;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *pinglunPictureTopSpaceConstraint;
 
 @property (weak, nonatomic) IBOutlet UILabel *youyongLabel;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *youyongConstraintWidth;
+
+@property (weak, nonatomic) IBOutlet UILabel *shangjiaPinLunLabel;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *shangjiaPinLunTopSpaceConstraint;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *shangjiaPingLunHeightConstraint;
 
 @property (weak, nonatomic) IBOutlet UILabel *wuyongLabel;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *wuyongConstraintWidth;
@@ -69,6 +74,8 @@
         //图片宽度
         CGFloat pictureWidth = (kScreenWidth - 65 - 14 - 26) / 3;
         self.pinglunPictureConstraintHeight.constant = pictureWidth;
+        self.pinglunPictureTopSpaceConstraint.constant = 10;
+
         if (_commemtModel.img_200.count < 4) {
             for (int i = 0 ; i < _commemtModel.img_200.count; i++) {
                 UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(pictureWidth * i + i * 13, 0, pictureWidth, pictureWidth)];
@@ -83,6 +90,23 @@
         
     }else{
         self.pinglunPictureConstraintHeight.constant = 0;
+        self.pinglunPictureTopSpaceConstraint.constant = 0;
+    }
+    
+    if (_commemtModel.reply.length > 0) {
+        NSString *reply = [NSString stringWithFormat:@"商家回复:%@",_commemtModel.reply];
+        CGFloat replyHeight = [[Tool sharedInstance] heightForString:reply andWidth:kScreenWidth - 80 fontSize:14];
+        self.shangjiaPingLunHeightConstraint.constant = replyHeight;
+        self.shangjiaPinLunTopSpaceConstraint.constant = 10;
+        
+        NSMutableAttributedString *attStr = [[NSMutableAttributedString alloc] initWithString:reply];
+        [attStr addAttribute:NSForegroundColorAttributeName value:NavigationColor range:NSMakeRange(0, 5)];
+        [attStr addAttribute:NSForegroundColorAttributeName value:HexRGB(0x666666) range:NSMakeRange(5, reply.length - 5)];
+
+        self.shangjiaPinLunLabel.attributedText = attStr;
+    }else{
+        self.shangjiaPingLunHeightConstraint.constant = 0;
+        self.shangjiaPinLunTopSpaceConstraint.constant = 0;
     }
     
     NSString *youyongStr = [NSString stringWithFormat:@"有用%@",[_commemtModel.you stringValue]];
